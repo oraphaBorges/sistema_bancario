@@ -1,1 +1,5 @@
+<<<<<<< HEAD
+/target/
+=======
 src/main/resources/META-INF/persistence.xml
+>>>>>>> 29cdff1e35700fd213acc4d571606227201b0312

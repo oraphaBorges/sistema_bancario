@@ -1,7 +1,13 @@
 package sistemaBancario.models;
 
 public class Conta {
+	
 	public String nome;
+	
+	public Sigla sigla;
+	
+	public Double saldo;
+	
 	public String getNome() {
 		return nome;
 	}
@@ -20,6 +26,5 @@ public class Conta {
 	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
 	}
-	public Sigla sigla;
-	public Double saldo;
+	
 }
