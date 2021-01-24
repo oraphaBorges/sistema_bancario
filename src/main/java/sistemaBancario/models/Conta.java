@@ -1,5 +1,6 @@
 package sistemaBancario.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,10 +13,13 @@ public class Conta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer id;
 	
+	@Column(nullable = false)
 	public String nome;
 	
+	@Column(nullable = false)
 	public Sigla sigla;
 		
+	@Column(nullable = false)
 	public Double saldo;
 	
 	public String getNome() {
