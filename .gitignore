@@ -1,5 +1,3 @@
-<<<<<<< HEAD
 /target/
-=======
 src/main/resources/META-INF/persistence.xml
->>>>>>> 29cdff1e35700fd213acc4d571606227201b0312
+target/classes/META-INF/maven/com.accenture.gama_academy.sistemaBancario/sistemaBancario/pom.properties
