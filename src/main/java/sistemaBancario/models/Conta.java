@@ -1,7 +1,15 @@
 package sistemaBancario.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Conta {
 	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Integer id;
 	public String nome;
 	
 	public Sigla sigla;
@@ -25,6 +33,9 @@ public class Conta {
 	}
 	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
+	}
+	public Integer getId() {
+		return id;
 	}
 	
 }
