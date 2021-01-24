@@ -8,12 +8,14 @@ import javax.persistence.Id;
 @Entity
 public class Conta {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer id;
+	
 	public String nome;
 	
 	public Sigla sigla;
-	
+		
 	public Double saldo;
 	
 	public String getNome() {
