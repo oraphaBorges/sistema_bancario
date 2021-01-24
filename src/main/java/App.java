@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import sistemaBancario.models.Conta;
@@ -12,12 +15,29 @@ public class App {
 		// DATABASE CONNECTION CHECK
 		//EntityManager em = ConexaoFactory.getConexao();
 		
-		// USUARIO CRUD
+		// CONTA CRUD
+		Conta conta = new Conta();
+		conta.setNome("ForgenKey");
+		conta.setSaldo(1253.66);
+		conta.setSigla(Sigla.CORRENTE);
+		
+		
+		ContaRepository crep = new ContaRepository();
+		//CREATE
+		crep.create(conta);
+		System.out.println("CREATED");
+		
+				
+		// USUARIO CRUD	 && CONTA CRUD	
 		Usuario user = new Usuario();
 		user.setLogin("login");
 		user.setCpf("11111111111");
-		user.setNome("Rafael Marangoni");
+		user.setNome("testeForeng Key");
 		user.setSenha("1234");
+		user.addConta(conta);
+		
+		//ASSOAÇÃO DO USUARIO A CONTA 
+		conta.setUsuario(user);
 		
 		UsuarioRepository urep = new UsuarioRepository();
 		//CREATE
@@ -42,15 +62,15 @@ public class App {
 		
 		
 		// CONTA CRUD
-		Conta conta = new Conta();
-		conta.setNome("teste");
-		conta.setSaldo(1253.66);
-		conta.setSigla(Sigla.CORRENTE);
+//		Conta conta = new Conta();
+//		conta.setNome("teste");
+//		conta.setSaldo(1253.66);
+//		conta.setSigla(Sigla.CORRENTE);
 		
-		ContaRepository crep = new ContaRepository();
-		//CREATE
-		crep.create(conta);
-		System.out.println("CREATED");
+//		ContaRepository crep = new ContaRepository();
+//		//CREATE
+//		crep.create(conta);
+//		System.out.println("CREATED");
 		
 		//FIND
 //		Conta contaCheck = crep.findById(conta.getId());
