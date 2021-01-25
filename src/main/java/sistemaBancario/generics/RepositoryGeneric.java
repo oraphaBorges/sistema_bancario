@@ -2,6 +2,7 @@ package sistemaBancario.generics;
 
 import javax.persistence.EntityManager;
 
+import sistemaBancario.models.Conta;
 import sistemaBancario.utils.ConexaoFactory;
 
 public class RepositoryGeneric <T> {
@@ -41,4 +42,5 @@ public class RepositoryGeneric <T> {
 			e.printStackTrace();
 		}
 	}
+	
 }
