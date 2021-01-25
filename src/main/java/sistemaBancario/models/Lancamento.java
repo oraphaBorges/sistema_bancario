@@ -7,8 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "tb_lancamento")
 public class Lancamento {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,12 +21,16 @@ public class Lancamento {
 	@Column(nullable = false)
 	private LocalDate dataLancamento;
 	
-	@Column(nullable = false)
+	@OneToOne
+	@JoinColumn(referencedColumnName = "id")
 	private Conta contaOrigem;
 	
+	@OneToOne
+	@JoinColumn(referencedColumnName = "id")
 	private Conta contaDestino;
 	
-	@Column(nullable = false)
+	@OneToOne
+	@JoinColumn(referencedColumnName = "id")
 	private PlanoConta planoConta;
 	
 	@Column(nullable = false)
