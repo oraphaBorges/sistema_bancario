@@ -44,9 +44,9 @@ public class ContaServiceTest {
 		
 		ContaService csvc = new ContaService();
 		Double saldo = csvc.consultarSaldo(usuario.getContas().get(0));
-		Double esperado = saldo + 150;
+		Double esperado = saldo + 100;
 		
-		csvc.depositar(usuario.getContas().get(0),150);
+		csvc.depositar(usuario.getContas().get(0),100);
 		
 		Double recebido = csvc.consultarSaldo(usuario.getContas().get(0));
 		
