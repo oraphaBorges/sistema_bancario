@@ -1,35 +1,29 @@
 package sistemaBancario.Services;
 
-import java.time.LocalDate;
-
 import sistemaBancario.models.Conta;
+import sistemaBancario.repository.ContaRepository;
 
 public class ContaService {
-			
-	public double pagamento(String nomePagamento, double valorPagamento, Conta conta) {
-		LocalDate transacao = null ;
-		
-		 if(valorPagamento > conta.getSaldo()) {		
-				System.out.println("saldo insulficiente");
-				}else {
-					 conta.setSaldo(conta.getSaldo() - valorPagamento); 
-					 
-					 System.out.println("Seu saldo atual é " + conta.getSaldo() + " Data data transação " + transacao.now());
-					 
-				}		 
-		 return conta.getSaldo();
-	}
-	
-	public void consultarSaldo (Conta conta) {		
-		System.out.println("O saldo atual da tua conta é" + conta.getSaldo());
-	}
-	
-	public void depositar(Conta conta, double deposito) {
-		LocalDate dataDeposito = null ;
-		conta.setSaldo(conta.getSaldo() + deposito);
-		System.out.println("Você depositou" + deposito + "\n O teu saldo atual é :" + conta.getSaldo());
-		System.out.println("Data deposito :" + dataDeposito.now());
-	}	
-	
-}
 
+	private ContaRepository rep = new ContaRepository();
+	
+	public void pagar(Conta conta, double valor) {
+		if (valor > conta.getSaldo()) {
+			throw new ArithmeticException("Saldo Insulficiente");
+		} else {
+			conta.setSaldo(conta.getSaldo() - valor);
+			rep.update(conta);
+		}
+	}
+
+	public void depositar(Conta conta, double valor) {
+		conta.setSaldo(conta.getSaldo() + valor);
+		rep.update(conta);
+	}
+	
+	public Double consultarSaldo(Conta conta) {
+		return conta.getSaldo();
+	}
+
+
+}
