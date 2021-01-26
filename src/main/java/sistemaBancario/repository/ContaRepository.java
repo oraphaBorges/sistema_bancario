@@ -1,8 +1,5 @@
 package sistemaBancario.repository;
 
-import java.sql.PreparedStatement;
-
-import sistemaBancario.Services.ContaService;
 import sistemaBancario.generics.RepositoryGeneric;
 import sistemaBancario.models.Conta;
 

@@ -2,13 +2,10 @@ package sistemaBancario.generics;
 
 import javax.persistence.EntityManager;
 
-import sistemaBancario.models.Conta;
 import sistemaBancario.utils.ConexaoFactory;
 
 public class RepositoryGeneric <T> {
 	protected EntityManager em;
-	private Class entidadeGenerica;
-
 	public RepositoryGeneric() {
 		this.em = ConexaoFactory.getConexao();
 	}
