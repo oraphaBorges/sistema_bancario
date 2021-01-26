@@ -1,6 +1,5 @@
 package sistemaBancario.Services;
 
-import javax.persistence.Query;
 
 import sistemaBancario.models.Usuario;
 import sistemaBancario.repository.UsuarioRepository;
