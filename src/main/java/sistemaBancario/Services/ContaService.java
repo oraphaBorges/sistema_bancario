@@ -1,6 +1,10 @@
 package sistemaBancario.Services;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 import sistemaBancario.models.Conta;
+import sistemaBancario.models.Lancamento;
 import sistemaBancario.models.PlanoConta;
 import sistemaBancario.models.Usuario;
 import sistemaBancario.repository.ContaRepository;
@@ -45,6 +49,13 @@ public class ContaService {
 	public void cadastrar(Usuario usuario, Conta conta) {
 		repository.create(conta);
 		usuario.addConta(conta);
+	}
+
+	public ArrayList<Lancamento> consultarExtrato(Conta conta, LocalDate dataInicio, LocalDate dataFim){
+		return lancamentoService.getLancamentosContaPeriodo(conta, dataInicio, dataFim);
+	}
+	public ArrayList<Lancamento> consultarExtrato(Conta conta){
+		return lancamentoService.getLancamentosContaAll(conta);
 	}
 
 }

@@ -1,6 +1,7 @@
 package sistemaBancario.Services;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import sistemaBancario.models.Conta;
 import sistemaBancario.models.Lancamento;
@@ -25,6 +26,13 @@ public class LancamentoService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public ArrayList<Lancamento> getLancamentosContaPeriodo(Conta conta, LocalDate dataInicio, LocalDate dataFim) {
+		return repository.getLancamentosPeriodo(conta, dataInicio, dataFim); 
+	}
+	public ArrayList<Lancamento> getLancamentosContaAll(Conta conta) {
+		return repository.getLancamentosAll(conta); 
 	}
 
 }
