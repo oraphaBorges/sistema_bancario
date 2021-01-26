@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -33,9 +32,16 @@ public class Usuario {
 	@Column(length = 11, nullable = false)
 	private String cpf;
 
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "titular", cascade = CascadeType.PERSIST)
 	private List<Conta> contas = new ArrayList<Conta>();
-
+	
+	public Usuario() {}
+	public Usuario(String nome, String login,String senha, String cpf) {
+		this.nome = nome;
+		this.login = login;
+		this.senha = senha;
+		this.cpf = cpf;
+	}
 
 	public Integer getId() {
 		return id;

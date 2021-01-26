@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import sistemaBancario.enums.Sigla;
+
 @Entity
 @Table(name = "tb_conta")
 public class Conta {
@@ -24,13 +26,19 @@ public class Conta {
 	private Sigla sigla;
 		
 	@Column(nullable = false)
-	private Double saldo;
+	private Double saldo=0.0;
 	
 	@OneToOne
 	@JoinColumn(referencedColumnName = "id")
-	private Usuario usuario; 
+	private Usuario titular; 
 	
-
+	public Conta() {}
+	public Conta(String nome, Sigla sigla,Usuario titular ) {
+		this.nome = nome;
+		this.sigla = sigla;
+		this.titular = titular;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -53,10 +61,10 @@ public class Conta {
 		return id;
 	}
 	
-	public Usuario getUsuario() {
-		return usuario;
+	public Usuario getTitular() {
+		return titular;
 	}
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setTitular(Usuario usuario) {
+		this.titular = usuario;
 	}
 }
