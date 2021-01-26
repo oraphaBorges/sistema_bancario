@@ -16,6 +16,9 @@ public class PlanoConta {
 	@Column(nullable = false)
 	private String finalidade;
 	
+	public PlanoConta(String finalidade) {
+		this.finalidade = finalidade;
+	}
 	public Integer getId() {
 		return id;
 	}

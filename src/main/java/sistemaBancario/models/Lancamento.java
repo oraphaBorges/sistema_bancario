@@ -41,6 +41,17 @@ public class Lancamento {
 	public Integer getId() {
 		return id;
 	}
+	
+	public Lancamento() {}
+	public Lancamento(Conta origem, Double valor, Conta destino, 
+					  PlanoConta planoConta, String descricao) {
+		this.dataLancamento = LocalDate.now();
+		this.contaOrigem = origem;
+		this.contaDestino = destino;
+		this.planoConta = planoConta;
+		this.descricao = descricao;
+	}
+	
 
 	public LocalDate getDataLancamento() {
 		return dataLancamento;

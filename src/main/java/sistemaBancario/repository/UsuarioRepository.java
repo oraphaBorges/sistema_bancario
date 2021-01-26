@@ -11,6 +11,12 @@ public class UsuarioRepository extends RepositoryGeneric<Usuario>{
 		return em.find(Usuario.class, id);
 	}
 	
+	public Usuario findByLogin(String login) {
+		Query query = em.createQuery("select u from Usuario u where u.login = :login"); //JPQL
+		query.setParameter("login", login);
+		return (Usuario) query.getSingleResult();
+	}
+	
 	public boolean exists(String login) {
 		Query query = em.createQuery("select u from Usuario u where u.login = :login"); //JPQL
 		query.setParameter("login", login);

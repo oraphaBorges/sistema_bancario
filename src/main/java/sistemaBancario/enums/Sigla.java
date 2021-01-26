@@ -1,4 +1,4 @@
-package sistemaBancario.models;
+package sistemaBancario.enums;
 
 public enum Sigla {
 	CORRENTE,
