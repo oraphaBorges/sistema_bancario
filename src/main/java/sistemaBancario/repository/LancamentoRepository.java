@@ -6,17 +6,21 @@ import java.util.ArrayList;
 
 import javax.persistence.Query;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import sistemaBancario.generics.RepositoryGeneric;
 import sistemaBancario.models.Conta;
 import sistemaBancario.models.Lancamento;
 
-public class LancamentoRepository extends RepositoryGeneric<Lancamento> {
+@Repository
+public interface LancamentoRepository extends JpaRepository<Lancamento,Long> {
 
-	public Lancamento findById(Integer id) {
-		return em.find(Lancamento.class, id);
-	}
 
-	public ArrayList<Lancamento> getLancamentosPeriodo(Conta conta, LocalDate dataInicio, LocalDate dataFim) {
+/*
+ *  VERIFICAR SE AINDA SERA UTILIZADO ESSE METODO
+ *  
+ *  	public ArrayList<Lancamento> getLancamentosPeriodo(Conta conta, LocalDate dataInicio, LocalDate dataFim) {
 		Query query = em.createQuery("select u from Lancamento u where "
 										+ "contaOrigem_id = :conta and "
 										+ "u.dataLancamento between "
@@ -35,5 +39,10 @@ public class LancamentoRepository extends RepositoryGeneric<Lancamento> {
 		query.setParameter("conta", conta.getId());
 		
 		return (ArrayList<Lancamento>) query.getResultList();
-	}
+	
+ *  }
+ */
+	
+	
+
 }

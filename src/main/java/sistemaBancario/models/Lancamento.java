@@ -10,15 +10,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tb_lancamento")
 public class Lancamento {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	
-	@Column(nullable = false)
+	@NotNull
 	private LocalDate dataLancamento;
 	
 	@OneToOne
@@ -33,14 +35,8 @@ public class Lancamento {
 	@JoinColumn(referencedColumnName = "id")
 	private PlanoConta planoConta;
 	
-	@Column(nullable = false)
+	@NotNull
 	private Double valor;
-	
-	private String descricao;
-
-	public Integer getId() {
-		return id;
-	}
 	
 	public Lancamento() {}
 	public Lancamento(Conta origem, Double valor, Conta destino, 
@@ -52,6 +48,11 @@ public class Lancamento {
 		this.descricao = descricao;
 	}
 	
+	private String descricao;
+
+	public Long getId() {
+		return id;
+	}	
 
 	public LocalDate getDataLancamento() {
 		return dataLancamento;

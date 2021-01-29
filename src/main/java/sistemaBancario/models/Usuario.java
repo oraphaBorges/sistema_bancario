@@ -18,7 +18,7 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 
 	@Column(nullable = false)
 	private String nome;
@@ -43,7 +43,7 @@ public class Usuario {
 		this.cpf = cpf;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
