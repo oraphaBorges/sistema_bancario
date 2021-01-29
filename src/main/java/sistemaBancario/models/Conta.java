@@ -1,6 +1,7 @@
 package sistemaBancario.models;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,7 +31,10 @@ public class Conta {
 	
 	@OneToOne
 	@JoinColumn(referencedColumnName = "id")
-	private Usuario titular; 
+	private Usuario titular;
+	
+	@Embedded
+    private Registro data = new Registro();
 	
 	public Conta() {}
 	public Conta(String nome, Sigla sigla,Usuario titular ) {
@@ -66,5 +70,11 @@ public class Conta {
 	}
 	public void setTitular(Usuario usuario) {
 		this.titular = usuario;
+	}
+	public Registro getData() {
+		return data;
+	}
+	public void setData(Registro data) {
+		this.data = data;
 	}
 }

@@ -3,6 +3,7 @@ package sistemaBancario.models;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,6 +38,9 @@ public class Lancamento {
 	
 	@NotNull
 	private Double valor;
+	
+	@Embedded
+    private Registro data = new Registro();
 	
 	public Lancamento() {}
 	public Lancamento(Conta origem, Double valor, Conta destino, 
@@ -100,6 +104,12 @@ public class Lancamento {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	public Registro getData() {
+		return data;
+	}
+	public void setData(Registro data) {
+		this.data = data;
 	}
 
 }

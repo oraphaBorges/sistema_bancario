@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,6 +35,9 @@ public class Usuario {
 
 	@OneToMany(mappedBy = "titular", cascade = CascadeType.PERSIST)
 	private List<Conta> contas = new ArrayList<Conta>();
+	
+	@Embedded
+    private Registro data = new Registro();
 	
 	public Usuario() {}
 	public Usuario(String nome, String login,String senha, String cpf) {
@@ -86,6 +90,12 @@ public class Usuario {
 	public void addConta(Conta conta) {
 		//conta.setProprietario(this);
 		this.contas.add(conta);
+	}
+	public Registro getData() {
+		return data;
+	}
+	public void setData(Registro data) {
+		this.data = data;
 	}
 
 	
