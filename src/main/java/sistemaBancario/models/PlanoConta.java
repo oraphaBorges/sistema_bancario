@@ -11,15 +11,16 @@ import javax.persistence.Table;
 @Table(name = "tb_plano_contas")
 public class PlanoConta {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	@Column(nullable = false)
 	private String finalidade;
 	
 	public PlanoConta(String finalidade) {
 		this.finalidade = finalidade;
 	}
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 	public String getFinalidade() {
