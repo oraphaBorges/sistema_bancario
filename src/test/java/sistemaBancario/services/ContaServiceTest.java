@@ -6,11 +6,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import sistemaBancario.Services.ContaService;
-import sistemaBancario.Services.UsuarioService;
+
 import sistemaBancario.enums.Sigla;
 import sistemaBancario.models.Conta;
 import sistemaBancario.models.Usuario;
+import sistemaBancario.services.ContaService;
+import sistemaBancario.services.UsuarioService;
 
 public class ContaServiceTest {
 	private static UsuarioService usuarioService = new UsuarioService();

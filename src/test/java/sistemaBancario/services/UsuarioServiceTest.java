@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer;
 
-import sistemaBancario.Services.UsuarioService;
 import sistemaBancario.models.Usuario;
+import sistemaBancario.services.UsuarioService;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UsuarioServiceTest {

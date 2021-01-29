@@ -4,11 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import sistemaBancario.Services.ContaService;
 import sistemaBancario.models.Usuario;
 import sistemaBancario.repository.ContaRepository;
 import sistemaBancario.repository.LancamentoRepository;
 import sistemaBancario.repository.UsuarioRepository;
+import sistemaBancario.services.ContaService;
 
 public class LancamentoServiceTest {
 	

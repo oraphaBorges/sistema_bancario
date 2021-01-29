@@ -1,4 +1,4 @@
-package sistemaBancario.Services;
+package sistemaBancario.services;
 
 import sistemaBancario.models.PlanoConta;
 import sistemaBancario.repository.PlanoContaRepository;

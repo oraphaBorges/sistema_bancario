@@ -1,9 +1,9 @@
-import sistemaBancario.Services.ContaService;
-import sistemaBancario.Services.PlanoContaService;
-import sistemaBancario.Services.UsuarioService;
 import sistemaBancario.enums.Sigla;
 import sistemaBancario.models.Conta;
 import sistemaBancario.models.Usuario;
+import sistemaBancario.services.ContaService;
+import sistemaBancario.services.PlanoContaService;
+import sistemaBancario.services.UsuarioService;
 
 public class SeedDB {
 

@@ -1,4 +1,4 @@
-package sistemaBancario.Services;
+package sistemaBancario.services;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

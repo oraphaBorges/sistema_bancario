@@ -1,11 +1,11 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import sistemaBancario.Services.ContaService;
-import sistemaBancario.Services.UsuarioService;
 import sistemaBancario.models.Conta;
 import sistemaBancario.models.Lancamento;
 import sistemaBancario.models.Usuario;
+import sistemaBancario.services.ContaService;
+import sistemaBancario.services.UsuarioService;
 
 public class App {
 	
