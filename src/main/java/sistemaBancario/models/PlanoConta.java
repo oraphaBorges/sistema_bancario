@@ -1,6 +1,7 @@
 package sistemaBancario.models;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,15 +12,18 @@ import javax.persistence.Table;
 @Table(name = "tb_plano_contas")
 public class PlanoConta {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	@Column(nullable = false)
 	private String finalidade;
+	@Embedded
+    private Registro data = new Registro();
 	
 	public PlanoConta(String finalidade) {
 		this.finalidade = finalidade;
 	}
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 	public String getFinalidade() {
@@ -27,5 +31,11 @@ public class PlanoConta {
 	}
 	public void setFinalidade(String finalidade) {
 		this.finalidade = finalidade;
+	}
+	public Registro getData() {
+		return data;
+	}
+	public void setData(Registro data) {
+		this.data = data;
 	}
 }

@@ -1,15 +1,18 @@
 package sistemaBancario.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import sistemaBancario.generics.RepositoryGeneric;
 import sistemaBancario.models.Conta;
 
-public class ContaRepository extends RepositoryGeneric<Conta> {
+@Repository
+public interface ContaRepository extends JpaRepository<Conta, Long> {
 		
-	public Conta findById(Integer id) {
-		return em.find(Conta.class, id);
-	}
-	
 	
 }
+	
+	
+
 
 
