@@ -16,6 +16,6 @@ public class PlanoContaService {
 			throw new IllegalStateException("Finalidade já cadastrada anteriormente");
 
 		repository.save(new PlanoConta(finalidade));
-	}git
+	}
 	
 }
