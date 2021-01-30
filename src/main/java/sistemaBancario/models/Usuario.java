@@ -1,5 +1,7 @@
 package sistemaBancario.models;
 
+import org.hibernate.annotations.NaturalId;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +26,7 @@ public class Usuario {
 	@Column(nullable = false)
 	private String nome;
 
+	@NaturalId
 	@Column(nullable = false, length = 20)
 	private String login;
 
@@ -88,8 +91,8 @@ public class Usuario {
 	}
 
 	public void addConta(Conta conta) {
-		//conta.setProprietario(this);
 		this.contas.add(conta);
+		conta.setTitular(this);
 	}
 	public Registro getData() {
 		return data;
