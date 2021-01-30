@@ -9,7 +9,7 @@ import java.util.List;
 public interface PlanoContaRepository extends JpaRepository<PlanoConta, Long> {
 
 	PlanoConta getPlanoByFinalidadeAndUsuarioLogin(String finalidade, String login);
-
+  
 	List<PlanoConta> findPlanoContaByUsuarioLogin(String login);
 
 }

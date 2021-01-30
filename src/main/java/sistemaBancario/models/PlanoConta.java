@@ -17,7 +17,7 @@ public class PlanoConta {
 	private Usuario usuario;
 
 	@Embedded
-    private Registro data = new Registro();
+  private Registro data = new Registro();
 	
 	public PlanoConta(Usuario usuario, String finalidade) {
 		this.usuario = usuario;

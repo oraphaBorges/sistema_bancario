@@ -18,14 +18,14 @@ import sistemaBancario.models.Usuario;
 import sistemaBancario.repository.UsuarioRepository;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/usuarios")
 public class UsuarioResource {
 
 	@Autowired
 	private UsuarioRepository repository;
     
 	@GetMapping
-	public ResponseEntity<List<Usuario>> getAll(){
+	public ResponseEntity<Iterable<Usuario>> getAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	

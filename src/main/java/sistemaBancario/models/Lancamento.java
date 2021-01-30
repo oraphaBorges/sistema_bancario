@@ -25,11 +25,11 @@ public class Lancamento {
 	private LocalDate dataLancamento;
 	
 	@OneToOne
-	@JoinColumn(referencedColumnName = "id")
+	@JoinColumn(referencedColumnName = "id", name = "conta_origem_id")
 	private Conta contaOrigem;
 	
 	@OneToOne
-	@JoinColumn(referencedColumnName = "id")
+	@JoinColumn(referencedColumnName = "id", name = "conta_destino_id")
 	private Conta contaDestino;
 	
 	@OneToOne
