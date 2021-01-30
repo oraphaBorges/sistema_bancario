@@ -11,6 +11,7 @@ import sistemaBancario.repository.UsuarioRepository;
 import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PlanoContaService {
@@ -79,6 +80,10 @@ public class PlanoContaService {
 			existe = true;
 
 		return existe;
+	}
+
+	public Optional<PlanoConta> buscar(Long conta) {
+		return repository.findById(conta);
 	}
 	
 }
