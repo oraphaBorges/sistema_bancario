@@ -1,12 +1,6 @@
 package sistemaBancario.models;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_plano_contas")
@@ -17,18 +11,21 @@ public class PlanoConta {
 	private Long id;
 	@Column(nullable = false)
 	private String finalidade;
+
+	@ManyToOne
+	@JoinColumn(name = "usuario_login", referencedColumnName = "usuario_login", nullable = false, foreignKey = @ForeignKey(name = "pk_conta_login"))
+	private Conta conta;
+
 	@Embedded
     private Registro data = new Registro();
 	
-	
-	
-	public PlanoConta() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+
 	public PlanoConta(String finalidade) {
 		this.finalidade = finalidade;
 	}
+
+	public PlanoConta() {}
+
 	public Long getId() {
 		return id;
 	}
