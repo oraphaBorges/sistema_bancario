@@ -25,7 +25,7 @@ public class UsuarioResource {
 	private UsuarioRepository repository;
     
 	@GetMapping
-	public ResponseEntity<List<Usuario>> getAll(){
+	public ResponseEntity<Iterable<Usuario>> getAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	

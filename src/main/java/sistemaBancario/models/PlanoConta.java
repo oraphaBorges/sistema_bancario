@@ -20,6 +20,12 @@ public class PlanoConta {
 	@Embedded
     private Registro data = new Registro();
 	
+	
+	
+	public PlanoConta() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public PlanoConta(String finalidade) {
 		this.finalidade = finalidade;
 	}

@@ -5,9 +5,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import sistemaBancario.dto.LancamentoDTO;
 import sistemaBancario.models.Lancamento;
 import sistemaBancario.repository.LancamentoRepository;
 
@@ -24,6 +27,8 @@ public class LancamentoResource {
         return repository.findById(id).map(resp -> ResponseEntity.ok(resp))
         		.orElse(ResponseEntity.notFound().build()); 
     }
+    
+   
     
   
 }
