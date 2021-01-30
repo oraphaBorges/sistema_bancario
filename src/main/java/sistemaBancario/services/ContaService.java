@@ -10,7 +10,6 @@ import sistemaBancario.dto.ContaDTO;
 import sistemaBancario.enums.Sigla;
 import sistemaBancario.models.Conta;
 import sistemaBancario.models.Lancamento;
-import sistemaBancario.models.PlanoConta;
 import sistemaBancario.models.Usuario;
 import sistemaBancario.repository.ContaRepository;
 
@@ -23,38 +22,7 @@ public class ContaService {
 	@Autowired
 	private LancamentoService lancamentoService;
 
-	public void pagar(Conta conta, double valor, PlanoConta finalidade, String descricao) {
-		if (valor > conta.getSaldo())
-			throw new ArithmeticException("Saldo Insulficiente");
-
-		conta.setSaldo(conta.getSaldo() - valor);
-		repository.save(conta);
-		lancamentoService.realizarLancamento(conta, null, valor, finalidade, descricao);
-
-	}
-
-	public void transferir(Conta origem, double valor, Conta destino, PlanoConta finalidade, String descricao) {
-		if (valor > origem.getSaldo())
-			throw new ArithmeticException("Saldo Insulficiente");
-
-		origem.setSaldo(origem.getSaldo() - valor);
-		repository.save(origem);
-		destino.setSaldo(destino.getSaldo() + valor);
-		repository.save(destino);
-		lancamentoService.realizarLancamento(origem, destino, valor, finalidade, descricao);
-
-	}
-
-	public void depositar(Conta conta, double valor, String descricao) {
-		conta.setSaldo(conta.getSaldo() + valor);
-		repository.save(conta);
-		lancamentoService.realizarLancamento(conta, null, valor, null, descricao);
-	}
-
-	public Double consultarSaldo(Conta conta) {
-		return conta.getSaldo();
-	}
-
+	
 	public void cadastrar(Usuario usuario, Conta conta) {
 		repository.save(conta);
 		usuario.addConta(conta);
@@ -71,5 +39,9 @@ public class ContaService {
 	public Conta buscar(Usuario usuario, Sigla sigla) {
 		return repository.findByTitularAndSigla(usuario,sigla);
 	}
-
+	
+	public Double consultarSaldo(Conta conta) {
+		return conta.getSaldo();
+	}
+	
 }
