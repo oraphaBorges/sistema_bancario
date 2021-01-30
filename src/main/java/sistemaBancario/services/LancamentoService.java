@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import sistemaBancario.models.Conta;
+import sistemaBancario.dto.ContaDTO;
 import sistemaBancario.models.Lancamento;
 import sistemaBancario.models.PlanoConta;
 import sistemaBancario.repository.LancamentoRepository;
@@ -33,11 +34,11 @@ public class LancamentoService {
 	}
 
 
-	public ArrayList<Lancamento> getLancamentosContaPeriodo(Long id, LocalDate dataInicio, LocalDate dataFim) {
-		return repository.findAllByDataLancamentoBetween(id, dataInicio, dataFim); 
+	public ArrayList<Lancamento> getLancamentosContaPeriodo(ContaDTO conta, LocalDate dataInicio, LocalDate dataFim) {
+		return repository.findAllByDataLancamentoBetween(conta.getId(), dataInicio, dataFim); 
 	}
-	public ArrayList<Lancamento> getLancamentosContaAll(Conta conta) {
-		return repository.findAll(conta); 
+	public ArrayList<Lancamento> getLancamentosContaAll(Long contaId) {
+		return repository.findAllByContaOrigem_id(contaId); 
 	}
 
 }

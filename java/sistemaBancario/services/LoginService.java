@@ -2,6 +2,7 @@ package sistemaBancario.services;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,9 @@ public class LoginService {
 			throw new RuntimeException("Login e senha são requeridos");
 		}
 
-		Usuario usuario = repository.findByLogin(loginDTO.usuario);
-		
+		Optional<Usuario> optuser = repository.findByLogin(loginDTO.usuario);
+
+		Usuario usuario = optuser.get();
 		boolean senhaOk = encoder.matches(loginDTO.senha,usuario.getSenha());
 
 		if (!senhaOk) {
