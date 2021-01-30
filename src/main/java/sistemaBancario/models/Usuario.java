@@ -2,6 +2,7 @@ package sistemaBancario.models;
 
 import org.hibernate.annotations.NaturalId;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_usuario")
-public class Usuario {
+public class Usuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +39,9 @@ public class Usuario {
 
 	@OneToMany(mappedBy = "titular", cascade = CascadeType.PERSIST)
 	private List<Conta> contas = new ArrayList<Conta>();
+
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.PERSIST)
+	private List<PlanoConta> planosContas = new ArrayList<PlanoConta>();
 	
 	@Embedded
     private Registro data = new Registro();
@@ -100,7 +104,5 @@ public class Usuario {
 	public void setData(Registro data) {
 		this.data = data;
 	}
-
-	
 
 }
