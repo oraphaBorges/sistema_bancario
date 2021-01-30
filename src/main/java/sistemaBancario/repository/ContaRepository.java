@@ -1,15 +1,14 @@
 package sistemaBancario.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
-import sistemaBancario.generics.RepositoryGeneric;
+import sistemaBancario.enums.Sigla;
 import sistemaBancario.models.Conta;
+import sistemaBancario.models.Usuario;
 
-@Repository
-public interface ContaRepository extends JpaRepository<Conta, Long> {
+public interface ContaRepository extends CrudRepository<Conta, Long> {
 		
-	
+	Conta findByTitularAndSigla(Usuario usuario, Sigla sigla);
 }
 	
 	

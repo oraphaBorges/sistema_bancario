@@ -2,18 +2,14 @@ package sistemaBancario.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
-import sistemaBancario.models.Conta;
 import sistemaBancario.models.PlanoConta;
 import sistemaBancario.models.Usuario;
-import sistemaBancario.repository.ContaRepository;
 import sistemaBancario.repository.PlanoContaRepository;
 import sistemaBancario.repository.UsuarioRepository;
 
 import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -84,6 +80,10 @@ public class PlanoContaService {
 			existe = true;
 
 		return existe;
+	}
+
+	public Optional<PlanoConta> buscar(Long conta) {
+		return repository.findById(conta);
 	}
 	
 }
