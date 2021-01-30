@@ -2,9 +2,6 @@ package sistemaBancario.dto;
 
 import java.time.LocalDate;
 
-import sistemaBancario.models.Conta;
-import sistemaBancario.models.Lancamento;
-
 public class LancamentoDTO {
 	
 	private LocalDate date; 
@@ -14,20 +11,11 @@ public class LancamentoDTO {
 	private double valor;
 	private String descricao;
 			
-	public LancamentoDTO(Lancamento lancamento, Conta conta, double valor, String descricao) {
-		super();
-		this.date = lancamento.getDataLancamento();
-		this.contaOrigem = conta.getId();
-		this.contaDestino = conta.getId();
-		this.planoDeConta = conta.getId();
-		this.valor = valor;
-		this.descricao = descricao;
-	}
-	
-	public LancamentoDTO(LocalDate date ,Long contaOrigem, Long contaDestino, double valor, String descricao) {
-		this.date = date;
-		this.contaOrigem = contaOrigem; 
-		this.contaDestino = contaDestino;
+
+	public LancamentoDTO(Long origem, Long destino, double valor, String descricao) {
+		this.date = LocalDate.now();
+		this.contaOrigem = origem; 
+		this.contaDestino = destino;
 		this.valor = valor;
 		this.descricao = descricao;
 	}
