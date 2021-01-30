@@ -20,6 +20,11 @@ import javax.persistence.Table;
 @Table(name = "tb_usuario")
 public class Usuario implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -39,9 +44,6 @@ public class Usuario implements Serializable {
 
 	@OneToMany(mappedBy = "titular", cascade = CascadeType.PERSIST)
 	private List<Conta> contas = new ArrayList<Conta>();
-
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.PERSIST)
-	private List<PlanoConta> planosContas = new ArrayList<PlanoConta>();
 	
 	@Embedded
     private Registro data = new Registro();
@@ -98,15 +100,13 @@ public class Usuario implements Serializable {
 		this.contas.add(conta);
 		conta.setTitular(this);
 	}
-	public void addPlanoConta(PlanoConta planoConta) {
-		this.planosContas.add(planoConta);
-		planoConta.setUsuario(this);
-	}
 	public Registro getData() {
 		return data;
 	}
 	public void setData(Registro data) {
 		this.data = data;
 	}
+
+	
 
 }

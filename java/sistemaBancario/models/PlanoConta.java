@@ -13,22 +13,17 @@ public class PlanoConta {
 	private String finalidade;
 
 	@ManyToOne
-	@JoinColumn(name = "usuario_login", referencedColumnName = "login", nullable = false, foreignKey = @ForeignKey(name = "pk_conta_login"))
-	private Usuario usuario;
+	@JoinColumn(name = "usuario_login", referencedColumnName = "usuario_login", nullable = false, foreignKey = @ForeignKey(name = "pk_conta_login"))
+	private Conta conta;
 
 	@Embedded
-  private Registro data = new Registro();
+    private Registro data = new Registro();
 	
-	public PlanoConta(Usuario usuario, String finalidade) {
-		this.usuario = usuario;
+	public PlanoConta(String finalidade) {
 		this.finalidade = finalidade;
 	}
 
 	public PlanoConta() {}
-
-	public PlanoConta(String finalidade) {
-		this.finalidade = finalidade;
-	}
 
 	public Long getId() {
 		return id;
@@ -44,13 +39,5 @@ public class PlanoConta {
 	}
 	public void setData(Registro data) {
 		this.data = data;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
 	}
 }

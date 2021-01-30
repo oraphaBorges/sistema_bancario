@@ -5,79 +5,57 @@ import java.time.LocalDate;
 public class LancamentoDTO {
 	
 	private LocalDate date; 
-	private Long contaOrigem; 
-	private Long contaDestino; 
-	private Long planoConta;
+	private long contaOrigem; 
+	private long contaDestino; 
+	private long planoConta;
 	private double valor;
 	private String descricao;
 			
-
-	public LancamentoDTO(Long origem, double valor, Long destino,Long planoConta, String descricao) {
+	public LancamentoDTO(long contaOrigem,double valor, long contaDestino, long planoConta, String descricao) {
+		super();
 		this.date = LocalDate.now();
-		this.contaOrigem = origem; 
-		this.contaDestino = destino;
+		this.contaOrigem = contaOrigem;
+		this.contaDestino = contaDestino;
+		this.planoConta = planoConta;
 		this.valor = valor;
 		this.descricao = descricao;
-		this.setPlanoConta(planoConta);
 	}
-
-
+	
 	public LocalDate getDate() {
 		return date;
 	}
-
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
-
-	public Long getContaOrigem() {
+	public long getContaOrigem() {
 		return contaOrigem;
 	}
-
-	public void setContaOrigem(Long contaOrigem) {
+	public void setContaOrigem(long contaOrigem) {
 		this.contaOrigem = contaOrigem;
 	}
-
-	public Long getContaDestino() {
+	public long getContaDestino() {
 		return contaDestino;
 	}
-
-	public void setContaDestino(Long contaDestino) {
+	public void setContaDestino(long contaDestino) {
 		this.contaDestino = contaDestino;
 	}
-
-	public Long getPlanoDeConta() {
-		return getPlanoConta();
+	public long getPlanoConta() {
+		return planoConta;
 	}
-
-	public void setPlanoDeConta(Long planoConta) {
-		this.setPlanoConta(planoConta);
+	public void setPlanoConta(long planoConta) {
+		this.planoConta = planoConta;
 	}
-
 	public double getValor() {
 		return valor;
 	}
-
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
-
 	public String getDescricao() {
 		return descricao;
 	}
-
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-
-
-	public Long getPlanoConta() {
-		return planoConta;
-	}
-
-
-	public void setPlanoConta(Long planoConta) {
-		this.planoConta = planoConta;
-	}	
+	} 
 		
 }

@@ -24,15 +24,15 @@ public class Lancamento {
 	private LocalDate dataLancamento;
 	
 	@OneToOne
-	@JoinColumn(referencedColumnName = "id", name = "conta_origem_id")
+	@JoinColumn(referencedColumnName = "id")
 	private Conta contaOrigem;
 	
 	@OneToOne
-	@JoinColumn(referencedColumnName = "id", name = "conta_destino_id")
+	@JoinColumn(referencedColumnName = "id",nullable = true)
 	private Conta contaDestino;
 	
 	@OneToOne
-	@JoinColumn(referencedColumnName = "id")
+	@JoinColumn(referencedColumnName = "id",nullable = true)
 	private PlanoConta planoConta;
 	
 	@NotNull
@@ -45,7 +45,6 @@ public class Lancamento {
 	public Lancamento(Conta origem, Double valor, Conta destino, 
 					  PlanoConta planoConta, String descricao) {
 		this.dataLancamento = LocalDate.now();
-		this.valor = valor;
 		this.contaOrigem = origem;
 		this.contaDestino = destino;
 		this.planoConta = planoConta;
