@@ -4,14 +4,17 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import sistemaBancario.dto.ContaDTO;
+import sistemaBancario.enums.Sigla;
 import sistemaBancario.models.Conta;
 import sistemaBancario.models.Lancamento;
 import sistemaBancario.models.PlanoConta;
 import sistemaBancario.models.Usuario;
 import sistemaBancario.repository.ContaRepository;
 
+@Service
 public class ContaService {
 
 	@Autowired
@@ -63,6 +66,10 @@ public class ContaService {
 	
 	public ArrayList<Lancamento> consultarExtrato(Conta conta){
 		return lancamentoService.getLancamentosContaAll(conta.getId());
+	}
+
+	public Conta buscar(Usuario usuario, Sigla sigla) {
+		return repository.findByTitularAndSigla(usuario,sigla);
 	}
 
 }

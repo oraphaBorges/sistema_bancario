@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import sistemaBancario.models.Conta;
 import sistemaBancario.dto.ContaDTO;
@@ -11,6 +12,7 @@ import sistemaBancario.models.Lancamento;
 import sistemaBancario.models.PlanoConta;
 import sistemaBancario.repository.LancamentoRepository;
 
+@Service
 public class LancamentoService {
 	
 	@Autowired
