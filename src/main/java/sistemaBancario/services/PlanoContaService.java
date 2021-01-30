@@ -13,6 +13,8 @@ import sistemaBancario.repository.UsuarioRepository;
 
 import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,40 +26,64 @@ public class PlanoContaService {
 
 	@Transactional
 	public void cadastrar(String finalidade, String login) {
-		PlanoConta plano = repository.getPlanoByFinalidadeAndUsuarioLogin(finalidade, login);
-		if (plano != null)
-			throw new IllegalStateException("Finalidade já cadastrada para esse login.");
+		usuarioExiste(login);
+
+		if (finalidadeExiste(login, finalidade))
+			throw new IllegalStateException("Finalidade já cadastrada para esse usuário.");
 
 		Usuario usuario = usuarioRepository.findByLogin(login);
-
-		if (usuario == null)
-			throw new NoResultException("Usuário não cadastrado no sistema.");
 
 		repository.save(new PlanoConta(usuario, finalidade));
 	}
 
 	@Transactional
 	public void atualizar(String login, String antigaFinalidade, String novaFinalidade){
-		PlanoConta planoBd = repository.getPlanoByFinalidadeAndUsuarioLogin(novaFinalidade, login);
-		if (planoBd != null)
+		usuarioExiste(login);
+
+		if (finalidadeExiste(login, novaFinalidade))
 			throw new IllegalStateException("Finalidade já cadastrada para esse usuário.");
 
-		PlanoConta plano = repository.getPlanoByFinalidadeAndUsuarioLogin(antigaFinalidade, login);
-		if (plano == null)
+		if (!finalidadeExiste(login, antigaFinalidade))
 			throw new IllegalStateException("Finalidade não cadastrada para esse usuário. Por gentileza, realize o cadastro primeiro.");
 
+		PlanoConta plano = repository.getPlanoByFinalidadeAndUsuarioLogin(antigaFinalidade, login);
 		plano.setFinalidade(novaFinalidade);
 
 		repository.save(plano);
 	}
 
 	@Transactional
-	public void delete(String login, String finalidade){
+	public void deletar(String login, String finalidade){
+		usuarioExiste(login);
+
 		PlanoConta planoBd = repository.getPlanoByFinalidadeAndUsuarioLogin(finalidade, login);
 		if (planoBd == null)
 			throw new NoResultException("Essa finalidade não existe para esse usuário!");
 
 		repository.delete(planoBd);
+	}
+
+	public List<PlanoConta> buscarPorLogin(String login) {
+		usuarioExiste(login);
+
+		return repository.findPlanoContaByUsuarioLogin(login);
+	}
+
+	private void usuarioExiste(String login) throws NoResultException {
+		Usuario usuario = usuarioRepository.findByLogin(login);
+
+		if(usuario == null)
+			throw new NoResultException("Usuario não cadastrado no sistema.");
+	}
+
+	private boolean finalidadeExiste(String login, String finalidade){
+		PlanoConta plano = repository.getPlanoByFinalidadeAndUsuarioLogin(finalidade, login);
+		boolean existe = false;
+
+		if (plano != null)
+			existe = true;
+
+		return existe;
 	}
 	
 }
