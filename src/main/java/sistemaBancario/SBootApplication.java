@@ -6,7 +6,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import sistemaBancario.dto.LancamentoDTO;
+import sistemaBancario.enums.Sigla;
+import sistemaBancario.models.Conta;
+import sistemaBancario.models.Usuario;
 import sistemaBancario.repository.LancamentoRepository;
+import sistemaBancario.services.ContaService;
+import sistemaBancario.services.UsuarioService;
 
 @SpringBootApplication
 public class SBootApplication {
@@ -19,26 +25,16 @@ public class SBootApplication {
 		
 	}
 	@Bean
-	public CommandLineRunner run(LancamentoRepository lr) throws Exception {
+	public CommandLineRunner run(UsuarioService us, ContaService cs) throws Exception {
 		return args -> {
-//			Usuario u = new Usuario();
-//			u.setCpf("11111111111");
-//			u.setNome("admin");
-//			u.setLogin("admin");
-//			u.setSenha("admin");
-//			s.cadastrar(u);
+			Usuario u;
+			u = new Usuario("Jisoo Black", "jisoo.black", "123456", "11111111111");
+			us.cadastrar(u);
+			u = new Usuario("admin","admin","admin","11111111111");
+			us.cadastrar(u);
 			
-			LocalDate date = LocalDate.of(2020, 1, 20);
-			LocalDate date2 = LocalDate.of(2022, 1, 20);
-////			
-			
-			try {
-				
-				System.out.println(lr.findAllByDataLancamentoBetween(2L, date, date2));
-				System.out.println(lr.findAllByContaOrigem_id(2L));
-			} catch (Exception e) {
-				System.out.println(e);
-			}
+			u = us.buscar("jisoo.black");
+			System.out.println(u.getLogin());
 			
 		};
 	}
