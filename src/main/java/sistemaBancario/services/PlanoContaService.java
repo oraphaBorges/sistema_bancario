@@ -26,22 +26,29 @@ public class PlanoContaService {
 	public void cadastrar(String finalidade, String login) {
 		PlanoConta plano = repository.getPlanoByFinalidadeAndUsuarioLogin(finalidade, login);
 		if (plano != null)
-			throw new IllegalStateException("Finalidade já cadastrada para esse login!");
+			throw new IllegalStateException("Finalidade já cadastrada para esse login.");
 
 		Usuario usuario = usuarioRepository.findByLogin(login);
 
 		if (usuario == null)
-			throw new IllegalStateException("Usuário não cadastrado no sistema!");
+			throw new NoResultException("Usuário não cadastrado no sistema.");
 
 		repository.save(new PlanoConta(usuario, finalidade));
 	}
 
 	@Transactional
-	public void atualizar(long id, String finalidade){
-		PlanoConta planoBD = repository.findById(id).orElseThrow(() -> new NoResultException("Plano de conta não registrado"));
-		planoBD.setFinalidade(finalidade);
+	public void atualizar(String login, String antigaFinalidade, String novaFinalidade){
+		PlanoConta planoBd = repository.getPlanoByFinalidadeAndUsuarioLogin(novaFinalidade, login);
+		if (planoBd != null)
+			throw new IllegalStateException("Finalidade já cadastrada para esse usuário.");
 
-		repository.save(planoBD);
+		PlanoConta plano = repository.getPlanoByFinalidadeAndUsuarioLogin(antigaFinalidade, login);
+		if (plano == null)
+			throw new IllegalStateException("Finalidade não cadastrada para esse usuário. Por gentileza, realize o cadastro primeiro.");
+
+		plano.setFinalidade(novaFinalidade);
+
+		repository.save(plano);
 	}
 	
 }
