@@ -24,7 +24,7 @@ public class PlanoContaService {
 
 	@Transactional
 	public void cadastrar(String finalidade, String login) {
-		PlanoConta plano = repository.getPlanoByFinalidadeAndLogin(finalidade, login);
+		PlanoConta plano = repository.getPlanoByFinalidadeAndUsuarioLogin(finalidade, login);
 		if (plano != null)
 			throw new IllegalStateException("Finalidade já cadastrada para esse login!");
 

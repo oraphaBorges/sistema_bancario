@@ -6,11 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import sistemaBancario.models.PlanoConta;
 
 public interface PlanoContaRepository extends JpaRepository<PlanoConta, Long> {
-	
-	public PlanoConta findByFinalidade(String finalidade);
 
-	@Query("select u from PlanoConta u where u.finalidade = :finalidade")
-	PlanoConta getPlanoByFinalidade(String finalidade);
-
+	PlanoConta getPlanoByFinalidadeAndUsuarioLogin(String finalidade, String login);
 
 }
