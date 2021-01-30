@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import sistemaBancario.dto.ContaDTO;
 import sistemaBancario.models.Conta;
 import sistemaBancario.models.Lancamento;
 import sistemaBancario.models.PlanoConta;
@@ -56,12 +57,12 @@ public class ContaService {
 		usuario.addConta(conta);
 	}
 
-	public ArrayList<Lancamento> consultarExtrato(Conta conta, LocalDate dataInicio, LocalDate dataFim){
+	public ArrayList<Lancamento> consultarExtrato(ContaDTO conta, LocalDate dataInicio, LocalDate dataFim){
 		return lancamentoService.getLancamentosContaPeriodo(conta, dataInicio, dataFim);
 	}
 	
 	public ArrayList<Lancamento> consultarExtrato(Conta conta){
-		return lancamentoService.getLancamentosContaAll(conta);
+		return lancamentoService.getLancamentosContaAll(conta.getId());
 	}
 
 }
