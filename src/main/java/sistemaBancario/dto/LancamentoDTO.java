@@ -21,6 +21,8 @@ public class LancamentoDTO {
 		this.setPlanoConta(planoConta);
 	}
 
+	public LancamentoDTO(){}
+
 
 	public LocalDate getDate() {
 		return date;
