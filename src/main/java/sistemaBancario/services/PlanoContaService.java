@@ -50,5 +50,14 @@ public class PlanoContaService {
 
 		repository.save(plano);
 	}
+
+	@Transactional
+	public void delete(String login, String finalidade){
+		PlanoConta planoBd = repository.getPlanoByFinalidadeAndUsuarioLogin(finalidade, login);
+		if (planoBd == null)
+			throw new NoResultException("Essa finalidade não existe para esse usuário!");
+
+		repository.delete(planoBd);
+	}
 	
 }
