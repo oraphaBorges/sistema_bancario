@@ -18,7 +18,7 @@ import sistemaBancario.models.Usuario;
 import sistemaBancario.repository.UsuarioRepository;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/usuarios")
 public class UsuarioResource {
 
 	@Autowired

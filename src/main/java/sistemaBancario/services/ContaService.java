@@ -59,6 +59,7 @@ public class ContaService {
 	public ArrayList<Lancamento> consultarExtrato(Conta conta, LocalDate dataInicio, LocalDate dataFim){
 		return lancamentoService.getLancamentosContaPeriodo(conta, dataInicio, dataFim);
 	}
+	
 	public ArrayList<Lancamento> consultarExtrato(Conta conta){
 		return lancamentoService.getLancamentosContaAll(conta);
 	}

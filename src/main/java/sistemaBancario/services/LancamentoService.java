@@ -33,11 +33,11 @@ public class LancamentoService {
 	}
 
 
-//	public ArrayList<Lancamento> getLancamentosContaPeriodo(Conta conta, LocalDate dataInicio, LocalDate dataFim) {
-//		return repository.getLancamentosPeriodo(conta, dataInicio, dataFim); 
-//	}
-//	public ArrayList<Lancamento> getLancamentosContaAll(Conta conta) {
-//		return repository.find(conta); 
-//	}
+	public ArrayList<Lancamento> getLancamentosContaPeriodo(Long id, LocalDate dataInicio, LocalDate dataFim) {
+		return repository.findAllByDataLancamentoBetween(id, dataInicio, dataFim); 
+	}
+	public ArrayList<Lancamento> getLancamentosContaAll(Conta conta) {
+		return repository.findAll(conta); 
+	}
 
 }
