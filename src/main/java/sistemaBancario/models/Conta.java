@@ -1,14 +1,6 @@
 package sistemaBancario.models;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import sistemaBancario.enums.Sigla;
 
@@ -28,9 +20,9 @@ public class Conta {
 		
 	@Column(nullable = false)
 	private Double saldo=0.0;
-	
+
 	@OneToOne
-	@JoinColumn(referencedColumnName = "id")
+	@JoinColumn(name = "usuario_login", referencedColumnName = "login", nullable = false, foreignKey = @ForeignKey(name = "pk_login"))
 	private Usuario titular;
 	
 	@Embedded
