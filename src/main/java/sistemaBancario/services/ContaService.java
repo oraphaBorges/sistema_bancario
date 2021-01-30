@@ -34,16 +34,59 @@ public class ContaService {
 		Optional<Conta> optconta = repository.findById(lancamentoDTO.getContaOrigem());
 		Conta conta = optconta.get();
 		
-		Optional<PlanoConta> optplanoconta = planoContaService.buscar(lancamentoDTO.getContaOrigem());
+		Optional<PlanoConta> optplanoconta = planoContaService.buscar(lancamentoDTO.getPlanoConta());
 		PlanoConta planoConta = optplanoconta.get();
 		
 		conta.setSaldo(conta.getSaldo() + lancamentoDTO.getValor());
-		repository.save(conta);
 		
-		System.out.println("\n\n"+lancamentoDTO.getValor()+"\n\n");
 		Lancamento lancamento = new Lancamento(conta, lancamentoDTO.getValor(), conta,
-				   							 planoConta,lancamentoDTO.getDescricao());
+				   							   planoConta,lancamentoDTO.getDescricao());
 		lancamentoService.realizarLancamento(lancamento);
+		repository.save(conta);
+	}
+	
+	@Transactional
+	public void pagar(LancamentoDTO lancamentoDTO) {
+		Optional<Conta> optconta = repository.findById(lancamentoDTO.getContaOrigem());
+		Conta conta = optconta.get();
+		
+		Optional<PlanoConta> optplanoconta = planoContaService.buscar(lancamentoDTO.getPlanoConta());
+		PlanoConta planoConta = optplanoconta.get();
+		
+		lancamentoDTO.setValor(lancamentoDTO.getValor()*(-1));
+		
+		conta.setSaldo(conta.getSaldo() + lancamentoDTO.getValor());
+		
+		Lancamento lancamento = new Lancamento(conta, lancamentoDTO.getValor(), conta,
+				planoConta,lancamentoDTO.getDescricao());
+		lancamentoService.realizarLancamento(lancamento);
+		repository.save(conta);
+	}
+	
+	@Transactional
+	public void transferir(LancamentoDTO lancamentoDTO) {
+		Optional<Conta> optconta;
+		optconta = repository.findById(lancamentoDTO.getContaOrigem());
+		Conta origem = optconta.get();
+		optconta = repository.findById(lancamentoDTO.getContaDestino());
+		Conta destino = optconta.get();
+		
+		Optional<PlanoConta> optplanoconta = planoContaService.buscar(lancamentoDTO.getPlanoConta());
+		PlanoConta planoConta = optplanoconta.get();
+		
+		Lancamento lancamento;
+		destino.setSaldo(origem.getSaldo() + lancamentoDTO.getValor());
+		lancamento = new Lancamento(destino, lancamentoDTO.getValor(), origem,
+									planoConta,lancamentoDTO.getDescricao());
+		lancamentoService.realizarLancamento(lancamento);
+		lancamentoDTO.setValor(lancamentoDTO.getValor()*(-1));		
+		origem.setSaldo(origem.getSaldo() + lancamentoDTO.getValor());
+		
+		lancamento = new Lancamento(origem, lancamentoDTO.getValor(), destino,
+									planoConta,lancamentoDTO.getDescricao());
+		lancamentoService.realizarLancamento(lancamento);
+		repository.save(origem);
+		repository.save(destino);
 	}
 	
 	public void cadastrar(Usuario usuario, Conta conta) {

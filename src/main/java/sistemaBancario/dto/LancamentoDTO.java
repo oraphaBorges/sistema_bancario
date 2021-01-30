@@ -7,17 +7,18 @@ public class LancamentoDTO {
 	private LocalDate date; 
 	private Long contaOrigem; 
 	private Long contaDestino; 
-	private Long planoDeConta;
+	private Long planoConta;
 	private double valor;
 	private String descricao;
 			
 
-	public LancamentoDTO(Long origem, Long destino, double valor, String descricao) {
+	public LancamentoDTO(Long origem, double valor, Long destino,Long planoConta, String descricao) {
 		this.date = LocalDate.now();
 		this.contaOrigem = origem; 
 		this.contaDestino = destino;
 		this.valor = valor;
 		this.descricao = descricao;
+		this.setPlanoConta(planoConta);
 	}
 
 
@@ -46,11 +47,11 @@ public class LancamentoDTO {
 	}
 
 	public Long getPlanoDeConta() {
-		return planoDeConta;
+		return getPlanoConta();
 	}
 
-	public void setPlanoDeConta(Long planoDeConta) {
-		this.planoDeConta = planoDeConta;
+	public void setPlanoDeConta(Long planoConta) {
+		this.setPlanoConta(planoConta);
 	}
 
 	public double getValor() {
@@ -67,6 +68,16 @@ public class LancamentoDTO {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+
+	public Long getPlanoConta() {
+		return planoConta;
+	}
+
+
+	public void setPlanoConta(Long planoConta) {
+		this.planoConta = planoConta;
 	}	
 		
 }

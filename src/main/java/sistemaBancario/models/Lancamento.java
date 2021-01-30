@@ -2,7 +2,6 @@ package sistemaBancario.models;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -46,6 +45,7 @@ public class Lancamento {
 	public Lancamento(Conta origem, Double valor, Conta destino, 
 					  PlanoConta planoConta, String descricao) {
 		this.dataLancamento = LocalDate.now();
+		this.valor = valor;
 		this.contaOrigem = origem;
 		this.contaDestino = destino;
 		this.planoConta = planoConta;
