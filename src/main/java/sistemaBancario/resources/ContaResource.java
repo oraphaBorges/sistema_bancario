@@ -20,24 +20,14 @@ import sistemaBancario.models.Conta;
 import sistemaBancario.repository.ContaRepository;
 
 @RestController
-@CrossOrigin("*")
-@RequestMapping("/conta")
 public class ContaResource {
 	
 	@Autowired
 	private ContaRepository repository; 
 	
-	
-	//Metodo GetMapping ALL apenas para teste
 	@GetMapping
 	public ResponseEntity<List<Conta>> getAll(){
 		return ResponseEntity.ok(repository.findAll());
-	}
-	
-	@GetMapping("/{id}")
-	public ResponseEntity<Conta> getById(@PathVariable long id){
-		return repository.findById(id).map(resp -> ResponseEntity.ok(resp))
-				.orElse(ResponseEntity.notFound().build());
 	}
 	
 	@PostMapping

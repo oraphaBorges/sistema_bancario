@@ -9,8 +9,10 @@ public interface PlanoContaRepository extends JpaRepository<PlanoConta, Long> {
 	
 	public PlanoConta findByFinalidade(String finalidade);
 
+
 	@Query("select u from PlanoConta u where u.finalidade = :finalidade")
-	PlanoConta getPlanoByFinalidade(String finalidade);
+	public PlanoConta getPlanoByFinalidade(String finalidade);
+
 
 
 }

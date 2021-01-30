@@ -15,28 +15,29 @@ public class LancamentoService {
 	@Autowired
 	private LancamentoRepository repository;
 
-//	public void realizarLancamento(Conta origem, Conta destino, double valor, PlanoConta finalidade, String descricao) {
-//		try {
-//			LocalDate dataTransacao = LocalDate.now();
-//			Lancamento lancamento = new Lancamento();
-//			lancamento.setContaOrigem(origem);
-//			lancamento.setValor(valor);
-//			lancamento.setContaDestino(destino);
-//			lancamento.setPlanoConta(finalidade);
-//			lancamento.setDataLancamento(dataTransacao);
-//			lancamento.setDescricao(descricao);
-//			repository.create(lancamento);
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
-//
-//	public ArrayList<Lancamento> getLancamentosContaPeriodo(Conta conta, LocalDate dataInicio, LocalDate dataFim) {
-//		return repository.getLancamentosPeriodo(conta, dataInicio, dataFim); 
-//	}
-//	public ArrayList<Lancamento> getLancamentosContaAll(Conta conta) {
-//		return repository.getLancamentosAll(conta); 
-//	}
+	public void realizarLancamento(Conta origem, Conta destino, double valor, PlanoConta finalidade, String descricao) {
+		try {
+			LocalDate dataTransacao = LocalDate.now();
+			Lancamento lancamento = new Lancamento();
+			lancamento.setContaOrigem(origem);
+			lancamento.setValor(valor);
+			lancamento.setContaDestino(destino);
+			lancamento.setPlanoConta(finalidade);
+			lancamento.setDataLancamento(dataTransacao);
+			lancamento.setDescricao(descricao);
+			repository.save(lancamento);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	public ArrayList<Lancamento> getLancamentosContaPeriodo(Long id, LocalDate dataInicio, LocalDate dataFim) {
+		return repository.findAllByDataLancamentoBetween(id, dataInicio, dataFim); 
+	}
+	public ArrayList<Lancamento> getLancamentosContaAll(Conta conta) {
+		return repository.findAll(conta); 
+	}
 
 }

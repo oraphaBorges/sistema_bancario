@@ -19,6 +19,7 @@ public class PlanoConta {
 	@Embedded
     private Registro data = new Registro();
 	
+
 	public PlanoConta(String finalidade) {
 		this.finalidade = finalidade;
 	}
