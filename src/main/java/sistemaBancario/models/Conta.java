@@ -4,12 +4,13 @@ import javax.persistence.*;
 
 import sistemaBancario.enums.Sigla;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "tb_conta")
-public class Conta {
+public class Conta implements Serializable {
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,9 +24,6 @@ public class Conta {
 		
 	@Column(nullable = false)
 	private Double saldo=0.0;
-
-	@OneToMany(mappedBy = "conta", cascade = CascadeType.PERSIST)
-	private List<PlanoConta> planoConta = new ArrayList<PlanoConta>();
 
 	@OneToOne
 	@JoinColumn(name = "usuario_login", referencedColumnName = "login", nullable = false, foreignKey = @ForeignKey(name = "pk_login"))
