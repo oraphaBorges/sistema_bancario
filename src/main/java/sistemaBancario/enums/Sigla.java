@@ -2,6 +2,6 @@ package sistemaBancario.enums;
 
 public enum Sigla {
 	CORRENTE,
-	POPANCA,
+	POUPANCA,
 	CREDITO
 }

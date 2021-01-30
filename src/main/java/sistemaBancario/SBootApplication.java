@@ -12,6 +12,7 @@ import sistemaBancario.models.Conta;
 import sistemaBancario.models.Usuario;
 import sistemaBancario.repository.LancamentoRepository;
 import sistemaBancario.services.ContaService;
+import sistemaBancario.services.PlanoContaService;
 import sistemaBancario.services.UsuarioService;
 
 @SpringBootApplication
@@ -25,7 +26,9 @@ public class SBootApplication {
 		
 	}
 	@Bean
-	public CommandLineRunner run(UsuarioService us, ContaService cs) throws Exception {
+	public CommandLineRunner run(UsuarioService us, ContaService cs,
+								 PlanoContaService ps
+			) throws Exception {
 		return args -> {
 			Usuario u;
 			u = new Usuario("Jisoo Black", "jisoo.black", "123456", "11111111111");
@@ -35,6 +38,7 @@ public class SBootApplication {
 			
 			u = us.buscar("jisoo.black");
 			System.out.println(u.getLogin());
+						
 			
 		};
 	}

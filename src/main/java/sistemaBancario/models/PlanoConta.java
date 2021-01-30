@@ -26,6 +26,10 @@ public class PlanoConta {
 
 	public PlanoConta() {}
 
+	public PlanoConta(String finalidade) {
+		this.finalidade = finalidade;
+	}
+
 	public Long getId() {
 		return id;
 	}

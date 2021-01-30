@@ -98,6 +98,10 @@ public class Usuario implements Serializable {
 		this.contas.add(conta);
 		conta.setTitular(this);
 	}
+	public void addPlanoConta(PlanoConta planoConta) {
+		this.planosContas.add(planoConta);
+		planoConta.setUsuario(this);
+	}
 	public Registro getData() {
 		return data;
 	}

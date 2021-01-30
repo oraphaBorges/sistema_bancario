@@ -2,14 +2,18 @@ package sistemaBancario.services;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import sistemaBancario.dto.ContaDTO;
+import sistemaBancario.dto.LancamentoDTO;
 import sistemaBancario.enums.Sigla;
 import sistemaBancario.models.Conta;
 import sistemaBancario.models.Lancamento;
+import sistemaBancario.models.PlanoConta;
 import sistemaBancario.models.Usuario;
 import sistemaBancario.repository.ContaRepository;
 
@@ -21,7 +25,26 @@ public class ContaService {
 	
 	@Autowired
 	private LancamentoService lancamentoService;
+	
+	@Autowired
+	private PlanoContaService planoContaService;
 
+	@Transactional
+	public void depositar(LancamentoDTO lancamentoDTO) {
+		Optional<Conta> optconta = repository.findById(lancamentoDTO.getContaOrigem());
+		Conta conta = optconta.get();
+		
+		Optional<PlanoConta> optplanoconta = planoContaService.buscar(lancamentoDTO.getContaOrigem());
+		PlanoConta planoConta = optplanoconta.get();
+		
+		conta.setSaldo(conta.getSaldo() + lancamentoDTO.getValor());
+		repository.save(conta);
+		
+		System.out.println("\n\n"+lancamentoDTO.getValor()+"\n\n");
+		Lancamento lancamento = new Lancamento(conta, lancamentoDTO.getValor(), conta,
+				   							 planoConta,lancamentoDTO.getDescricao());
+		lancamentoService.realizarLancamento(lancamento);
+	}
 	
 	public void cadastrar(Usuario usuario, Conta conta) {
 		repository.save(conta);
