@@ -1,5 +1,7 @@
 package sistemaBancario.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -23,7 +25,10 @@ public class UsuarioService {
 		//	throw new IllegalStateException("JÃ¡ existe um usuario com o login " + usuario.getLogin());
 		usuario.setSenha(passCrip);
 		repository.save(usuario);
-
+	}
+	
+	public Usuario buscar(String login) {
+		return repository.findByLogin(login);
 	}
 
 }
