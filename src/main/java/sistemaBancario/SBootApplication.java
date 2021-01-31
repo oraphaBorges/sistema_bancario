@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import sistemaBancario.dto.ContaDTO;
+import sistemaBancario.dto.ContaSimplesDTO;
 import sistemaBancario.dto.LancamentoDTO;
 import sistemaBancario.dto.UsuarioDTO;
 import sistemaBancario.enums.Sigla;
@@ -37,18 +37,15 @@ public class SBootApplication {
 			u2 = us.buscar("admin");
 			System.out.println(u2.getLogin());
 			
-			ContaDTO c1,c2;
-			c1 = cs.buscar(u.getLogin(),Sigla.POUPANCA);
-			c2 = cs.buscar(u2.getLogin(),Sigla.POUPANCA);
-			
-			Long origem = c1.getId();
-			Long destino = c2.getId();
+		
+			ContaSimplesDTO origem = new ContaSimplesDTO(u.getLogin(),Sigla.POUPANCA);
+			ContaSimplesDTO destino = new ContaSimplesDTO(u2.getLogin(),Sigla.POUPANCA);
 			
 			System.out.println(origem + " " + destino);
 		
-			cs.depositar(new LancamentoDTO(origem,100,origem,2L,"DEPOSITO"));
-			cs.pagar(new LancamentoDTO(origem,30,origem,1L,"PAGAMENTO"));
-			cs.transferir(new LancamentoDTO(origem,40,destino,3L,"TRANSFERENCIA"));						
+			cs.depositar(new LancamentoDTO(origem,100,origem,"PAGAMENTO","Gardar DIMDIM"));
+			cs.pagar(new LancamentoDTO(origem,30,origem,"PAGAMENTO","Pagar Boleto"));
+			cs.transferir(new LancamentoDTO(origem,40,destino,"TRANSFERENCIA","Pagar Agiota"));						
 			
 		};
 	}

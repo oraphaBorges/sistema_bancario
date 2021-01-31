@@ -72,6 +72,7 @@ public class PlanoContaService {
 			throw new NoResultException("Usuario não cadastrado no sistema.");
 	}
 
+	
 	private boolean finalidadeExiste(String login, String finalidade){
 		PlanoConta plano = repository.getPlanoByFinalidadeAndUsuarioLogin(finalidade, login);
 		boolean existe = false;
@@ -82,9 +83,13 @@ public class PlanoContaService {
 		return existe;
 	}
 
-	public PlanoConta buscar(Long conta) {
-		Optional<PlanoConta> optional = repository.findById(conta);
+	public PlanoConta buscar(Long id) {
+		Optional<PlanoConta> optional = repository.findById(id);
 		return optional.get();
+	}
+	public PlanoConta buscar(String finalidade, String login) {
+		return repository.getPlanoByFinalidadeAndUsuarioLogin(finalidade,login);
+
 	}
 	
 }

@@ -30,9 +30,9 @@ public class ContaService {
 
 	@Transactional
 	public void depositar(LancamentoDTO lancamentoDTO) {
-		Conta conta = buscar(lancamentoDTO.getContaOrigem());
+		Conta conta = buscar(lancamentoDTO.getContaOrigem().login,lancamentoDTO.getContaOrigem().sigla);
 
-		PlanoConta planoConta = planoContaService.buscar(lancamentoDTO.getPlanoConta());
+		PlanoConta planoConta = planoContaService.buscar(lancamentoDTO.getPlanoConta(),lancamentoDTO.getContaOrigem().login);
 		
 		conta.setSaldo(conta.getSaldo() + lancamentoDTO.getValor());
 		
@@ -44,9 +44,9 @@ public class ContaService {
 	
 	@Transactional
 	public void pagar(LancamentoDTO lancamentoDTO) {
-		Conta conta = buscar(lancamentoDTO.getContaOrigem());
+		Conta conta = buscar(lancamentoDTO.getContaOrigem().login,lancamentoDTO.getContaOrigem().sigla);
 		
-		PlanoConta planoConta = planoContaService.buscar(lancamentoDTO.getPlanoConta());
+		PlanoConta planoConta = planoContaService.buscar(lancamentoDTO.getPlanoConta(),lancamentoDTO.getContaOrigem().login);
 		
 		lancamentoDTO.setValor(lancamentoDTO.getValor()*(-1));
 		
@@ -60,10 +60,10 @@ public class ContaService {
 	
 	@Transactional
 	public void transferir(LancamentoDTO lancamentoDTO) {
-		Conta origem = buscar(lancamentoDTO.getContaOrigem());
-		Conta destino = buscar(lancamentoDTO.getContaDestino());
+		Conta origem = buscar(lancamentoDTO.getContaOrigem().login,lancamentoDTO.getContaOrigem().sigla);
+		Conta destino = buscar(lancamentoDTO.getContaDestino().login,lancamentoDTO.getContaDestino().sigla);
 
-		PlanoConta planoConta = planoContaService.buscar(lancamentoDTO.getPlanoConta());
+		PlanoConta planoConta = planoContaService.buscar(lancamentoDTO.getPlanoConta(),lancamentoDTO.getContaOrigem().login);
 		
 		Lancamento lancamento;
 		// Registro da saída da conta de origem
@@ -84,13 +84,13 @@ public class ContaService {
 		repository.save(destino);
 	}
 	
-	public ArrayList<LancamentoDTO> consultarExtratoPorPeriodo(String login, Sigla sigla, LocalDate dataInicio, LocalDate dataFim){
+	public ArrayList<LancamentoDTO> consultarExtrato(String login, Sigla sigla, LocalDate dataInicio, LocalDate dataFim){
 		Long idConta = buscar(login, sigla).getId();
 
 		return lancamentoService.getLancamentosContaPeriodo(idConta, dataInicio, dataFim);
 	}
 	
-	public ArrayList<LancamentoDTO> consultarExtratoPorConta(String login, Sigla sigla){
+	public ArrayList<LancamentoDTO> consultarExtrato(String login, Sigla sigla){
 		Long idConta = buscar(login, sigla).getId();
 
 		return lancamentoService.getLancamentosContaAll(idConta);
@@ -101,12 +101,9 @@ public class ContaService {
 		return conta.getSaldo();
 	}
 
-	public ContaDTO buscar(String login, Sigla sigla) {
-		Conta contaBd = repository.findByTitularLoginAndSigla(login,sigla);
-		ContaDTO contaDTO = new ContaDTO(contaBd);
-		contaDTO.setId(contaBd.getId());
-
-		return contaDTO;
+	public Conta buscar(String login, Sigla sigla) {
+		Conta conta = repository.findByTitularLoginAndSigla(login,sigla);
+		return conta;
 	}
 	
 	public Conta buscar(Long id) {
