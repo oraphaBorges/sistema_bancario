@@ -1,5 +1,6 @@
 package sistemaBancario.resources;
 
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import sistemaBancario.dto.LancamentoDTO;
 import sistemaBancario.enums.TipoOperacao;
 import sistemaBancario.models.Lancamento;
 import sistemaBancario.services.LancamentoService;
+import sistemaBancario.services.PlanoContaService;
 
 @RestController
 @RequestMapping("/lancamentos")
@@ -23,10 +25,12 @@ import sistemaBancario.services.LancamentoService;
 public class LancamentoResource {
 
 	@Autowired
-	LancamentoService lancamentoService;
+	private LancamentoService lancamentoService;
+	@Autowired
+	private PlanoContaService planoContaService;
 	
     @PostMapping("/")
-    public ResponseEntity<?> GetById(@RequestParam TipoOperacao operacao,@RequestBody LancamentoDTO lancamento){
+    public ResponseEntity<?> realizarLancamento(@RequestParam TipoOperacao operacao,@RequestBody LancamentoDTO lancamento){
 		try {
 			return new ResponseEntity<String>(lancamentoService.realizarOperacao(lancamento,operacao),HttpStatus.OK);
 		} catch (ArithmeticException e) {
@@ -41,8 +45,8 @@ public class LancamentoResource {
     }
     
     @GetMapping("/planos-conta/")
-    public String getPlanosConta(@RequestParam String login ){
-    	return "login" + login;
+    public ResponseEntity<?> getPlanosConta(@RequestParam String login){
+    	return new ResponseEntity<ArrayList<?>>(planoContaService.buscar(login),HttpStatus.OK);
     }
     
     @PostMapping("/planos-conta")
