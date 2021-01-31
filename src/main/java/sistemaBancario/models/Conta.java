@@ -5,8 +5,6 @@ import javax.persistence.*;
 import sistemaBancario.enums.Sigla;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "tb_conta")

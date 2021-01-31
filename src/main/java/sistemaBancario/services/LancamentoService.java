@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sistemaBancario.dto.ContaSimplesDTO;
 import sistemaBancario.dto.LancamentoDTO;
 import sistemaBancario.models.Lancamento;
 import sistemaBancario.repository.LancamentoRepository;
@@ -39,9 +40,9 @@ public class LancamentoService {
 		lancamentos.forEach(lancamento -> {
 			LancamentoDTO lancamentoDTO = new LancamentoDTO();
 			lancamentoDTO.setDate(lancamento.getData().getCreatedAt().toLocalDate());
-			lancamentoDTO.setLoginOrigem(lancamento.getContaOrigem().getTitular().getLogin());
-			lancamentoDTO.setLoginDestino(lancamento.getContaOrigem().getTitular().getLogin());
-			lancamentoDTO.setPlanoContaFinalidade(lancamento.getPlanoConta().getFinalidade());
+			lancamentoDTO.setContaOrigem(new ContaSimplesDTO(lancamento.getContaOrigem().getTitular().getLogin(),lancamento.getContaOrigem().getSigla()));
+			lancamentoDTO.setContaDestino(new ContaSimplesDTO(lancamento.getContaDestino().getTitular().getLogin(),lancamento.getContaDestino().getSigla()));
+			lancamentoDTO.setPlanoConta(lancamento.getPlanoConta().getFinalidade());
 			lancamentoDTO.setValor(lancamento.getValor());
 			lancamentoDTO.setDescricao(lancamento.getDescricao());
 			lancamentosDTO.add(lancamentoDTO);
