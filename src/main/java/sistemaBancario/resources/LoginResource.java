@@ -1,7 +1,8 @@
 package sistemaBancario.resources;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import sistemaBancario.dto.LoginDTO;
-import sistemaBancario.dto.SessaoDTO;
 import sistemaBancario.services.LoginService;
 
 @RestController
@@ -19,24 +19,32 @@ public class LoginResource {
 	@Autowired
 	private LoginService service;
 
-    @GetMapping("/hello")
-    public String helloWorld(){
-        return "Hello World";
-    }
-    
+   
 	@PostMapping("/login")
-	public SessaoDTO logar (@RequestBody LoginDTO loginDTO) throws Exception {
-		return service.logar(loginDTO);
+	public ResponseEntity<?> logar (@RequestBody LoginDTO loginDTO) throws Exception {
+		try {
+			return 	new ResponseEntity<>(service.logar(loginDTO), HttpStatus.ACCEPTED);
+		} catch (RuntimeException e) {
+			return  new ResponseEntity<>("Usuário ou senha Inválida", HttpStatus.BAD_REQUEST);			
+		}
 	}
 	
 	@PutMapping("/altera-senha/{senhaTemporaria}")
-	public String alteraSenha(@RequestParam String senhaTemporaria) {
-		return "senha alterada";
+	public ResponseEntity<?> alteraSenha(@RequestParam String senhaTemporaria) {
+		try {
+			return 	new ResponseEntity<>("Ainda não estamos alterando a senha", HttpStatus.ACCEPTED);
+		} catch (RuntimeException e) {
+			return  new ResponseEntity<>("Não foi possível alterar senha", HttpStatus.BAD_REQUEST);			
+		}
 	}
 	
 	@PostMapping("/nova-senha")
-	public String novaSenha(@RequestParam String novasenha) {
-		return "nova senha";
+	public ResponseEntity<?> novaSenha(@RequestParam String novasenha) {
+		try {
+			return 	new ResponseEntity<>("Ainda não estamos alterando a senha", HttpStatus.ACCEPTED);
+		} catch (RuntimeException e) {
+			return  new ResponseEntity<>("Não foi possível alterar senha", HttpStatus.BAD_REQUEST);			
+		}
 	}
 	
 	

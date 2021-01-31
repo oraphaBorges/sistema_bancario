@@ -24,7 +24,6 @@ public class UsuarioDTO {
 	public UsuarioDTO() {}
 	
 	public UsuarioDTO(String cpf, String login, String nome, String senha) {
-		super();
 		this.cpf = cpf;
 		this.login = login;
 		this.nome = nome;
