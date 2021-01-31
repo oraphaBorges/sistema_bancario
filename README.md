@@ -1,6 +1,5 @@
 # Sistema Bancario
 **Sistema realizado em paralelo à realização da academia da Gama Academy**
-****
 ## Sobre
 O projeto consiste em uma `API REST` que realiza operações bancárias a partir de `requisições HTTP` de um cliente.
 _Entenda-se cliente qualquer um que consiga realizar requisições HTTP_.
@@ -50,7 +49,6 @@ Aqui você pode realizar a consulta da documentação do projeto, bem como reali
 > O projeto, por padrão, irá executar no {host}:8080/. (ex.: http://localhost:8080)
 
 ## Sobre a estrutura e inteligência do projeto
-****
 
 ### Design e código fonte
 O projeto segue um padrão de atribuição de responsabilidades às classes seguindo as boas práticas. Todo o código fonte está disponível dentro da pasta `src`.
