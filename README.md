@@ -1,7 +1,7 @@
-# Sistema Bancario ![img.png](img.png)
+# Sistema Bancario
 **Sistema realizado em paralelo à realização da academia da Gama Academy**
 ****
-##Sobre
+## Sobre
 O projeto consiste em uma `API REST` que realiza operações bancárias a partir de `requisições HTTP` de um cliente.
 _Entenda-se cliente qualquer um que consiga realizar requisições HTTP_.
 
@@ -13,12 +13,12 @@ _Entenda-se cliente qualquer um que consiga realizar requisições HTTP_.
 - Swagger
 - JWT
 
-##Swagger
+## Swagger
 Aqui você pode realizar a consulta da documentação do projeto, bem como realizar requisições por meio de nossos endpoints.
 
-##Funcionalidades
+## Funcionalidades
 
-###Para usuários
+### Para usuários
 - Criação de novos usuários
 - Realização de login
 - Controle de sessão
@@ -27,7 +27,7 @@ Aqui você pode realizar a consulta da documentação do projeto, bem como reali
 > - Ao criar um novo usuário, três contas são associadas a ele: Corrente, Poupança e de Crédito.
 > - Também são associados três tipos de planos de conta: Pagamento, Depósito e Transferência
 
-###Para contas
+### Para contas
 - Consultar extrato por período
 - Consultar extrato completo
 - Realizar depósitos
@@ -88,10 +88,10 @@ _Esse tópico poderia ser bem longo, mas será resumido da seguinte forma:_
 - Controle de rotas autenticadas e públicas
 - ... Muitas outras que você poderá ver em `services`.
 
-####Encriptação da senha e login
+#### Encriptação da senha e login
 
 Se você pensou nisso... Sim! As senhas estão sendo gravadas encriptadas! Logo o login também está bem seguro :).
 
-##Participantes
+## Participantes
 
 Você pode ver os contribuidores **[clicando aqui.](https://github.com/RafaelMarangoni/sistema_bancario/graphs/contributors)**
