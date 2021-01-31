@@ -21,7 +21,11 @@ public class DashboardService {
 	private LancamentoService lancamentoService;
 	
 	public ArrayList<DashboardDTO> build(String login, LocalDate inicio, LocalDate fim) {
+		if(inicio.compareTo(fim) > 0)
+			throw new IllegalStateException();
 		ArrayList<Conta> contas = contaService.buscar(login);
+		if(contas.isEmpty())
+			throw new NullPointerException();
 		ArrayList<DashboardDTO> dtos = new ArrayList<DashboardDTO>();
 		DashboardDTO dto;
 		for(Conta c: contas) {
