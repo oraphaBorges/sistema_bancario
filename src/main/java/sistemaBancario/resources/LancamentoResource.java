@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import sistemaBancario.dto.LancamentoDTO;
 import sistemaBancario.enums.TipoOperacao;
-import sistemaBancario.models.Lancamento;
 import sistemaBancario.services.LancamentoService;
 import sistemaBancario.services.PlanoContaService;
 
@@ -50,8 +49,15 @@ public class LancamentoResource {
     }
     
     @PostMapping("/planos-conta")
-    public void PostLancamento(Lancamento lancamento ) {
-    	System.out.println("Create");
+    public ResponseEntity<?> PostLancamento(@RequestParam String finalidade, @RequestParam String login ) {
+    	try {
+    		planoContaService.cadastrar(finalidade, login);
+    		return new ResponseEntity<String>("Cadatrada Plano de Conta com Sucesso",HttpStatus.OK);
+    	}catch (IllegalStateException e) {
+			return  new ResponseEntity<>(String.format("Plano de Conta %s já existe no sistema e não pode ser criado novamente, por favor tente um Plano de Conta diferente.",finalidade), HttpStatus.NOT_ACCEPTABLE);			
+		}catch (Exception e) {
+			return  new ResponseEntity<>(String.format("Houve algum erro nas operações causado pelos dados informados, por favor confira os dados e tente novamente."), HttpStatus.BAD_REQUEST);			
+		} 
     }
     
     
