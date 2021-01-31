@@ -5,21 +5,23 @@ import java.time.LocalDate;
 public class LancamentoDTO {
 	
 	private LocalDate date; 
-	private Long contaOrigem; 
-	private Long contaDestino; 
-	private Long planoConta;
+	private ContaSimplesDTO contaOrigem;
+	private ContaSimplesDTO contaDestino;
+	private String planoConta;
 	private double valor;
 	private String descricao;
 			
 
-	public LancamentoDTO(Long origem, double valor, Long destino,Long planoConta, String descricao) {
+	public LancamentoDTO(ContaSimplesDTO origem, double valor, ContaSimplesDTO destino,String planoConta, String descricao) {
 		this.date = LocalDate.now();
-		this.contaOrigem = origem; 
-		this.contaDestino = destino;
+		this.setContaOrigem(origem); 
+		this.setContaDestino(destino);
 		this.valor = valor;
 		this.descricao = descricao;
-		this.setPlanoConta(planoConta);
+		this.planoConta = planoConta;
 	}
+
+	public LancamentoDTO (){}
 
 
 	public LocalDate getDate() {
@@ -28,30 +30,6 @@ public class LancamentoDTO {
 
 	public void setDate(LocalDate date) {
 		this.date = date;
-	}
-
-	public Long getContaOrigem() {
-		return contaOrigem;
-	}
-
-	public void setContaOrigem(Long contaOrigem) {
-		this.contaOrigem = contaOrigem;
-	}
-
-	public Long getContaDestino() {
-		return contaDestino;
-	}
-
-	public void setContaDestino(Long contaDestino) {
-		this.contaDestino = contaDestino;
-	}
-
-	public Long getPlanoDeConta() {
-		return getPlanoConta();
-	}
-
-	public void setPlanoDeConta(Long planoConta) {
-		this.setPlanoConta(planoConta);
 	}
 
 	public double getValor() {
@@ -70,14 +48,29 @@ public class LancamentoDTO {
 		this.descricao = descricao;
 	}
 
-
-	public Long getPlanoConta() {
+	public String getPlanoConta() {
 		return planoConta;
 	}
 
-
-	public void setPlanoConta(Long planoConta) {
+	public void setPlanoConta(String planoConta) {
 		this.planoConta = planoConta;
-	}	
-		
+	}
+
+	public ContaSimplesDTO getContaOrigem() {
+		return contaOrigem;
+	}
+
+	public void setContaOrigem(ContaSimplesDTO contaOrigem) {
+		this.contaOrigem = contaOrigem;
+	}
+
+	public ContaSimplesDTO getContaDestino() {
+		return contaDestino;
+	}
+
+	public void setContaDestino(ContaSimplesDTO contaDestino) {
+		this.contaDestino = contaDestino;
+	}
+
+
 }
