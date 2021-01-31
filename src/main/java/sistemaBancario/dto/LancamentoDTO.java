@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class LancamentoDTO {
 	
-	private LocalDate date; 
+	private String date; 
 	private ContaSimplesDTO contaOrigem;
 	private ContaSimplesDTO contaDestino;
 	private String planoConta;
@@ -13,7 +13,7 @@ public class LancamentoDTO {
 			
 
 	public LancamentoDTO(ContaSimplesDTO origem, double valor, ContaSimplesDTO destino,String planoConta, String descricao) {
-		this.date = LocalDate.now();
+		this.setDate(LocalDate.now().toString());
 		this.setContaOrigem(origem); 
 		this.setContaDestino(destino);
 		this.valor = valor;
@@ -22,15 +22,6 @@ public class LancamentoDTO {
 	}
 
 	public LancamentoDTO (){}
-
-
-	public LocalDate getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
 
 	public double getValor() {
 		return valor;
@@ -70,6 +61,14 @@ public class LancamentoDTO {
 
 	public void setContaDestino(ContaSimplesDTO contaDestino) {
 		this.contaDestino = contaDestino;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 

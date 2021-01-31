@@ -1,17 +1,22 @@
 package sistemaBancario.resources;
 
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import sistemaBancario.models.Lancamento;
-import sistemaBancario.repository.LancamentoRepository;
+import sistemaBancario.dto.LancamentoDTO;
+import sistemaBancario.enums.TipoOperacao;
+import sistemaBancario.services.LancamentoService;
+import sistemaBancario.services.PlanoContaService;
 
 @RestController
 @RequestMapping("/lancamentos")
@@ -19,22 +24,40 @@ import sistemaBancario.repository.LancamentoRepository;
 public class LancamentoResource {
 
 	@Autowired
-	LancamentoRepository repository;
+	private LancamentoService lancamentoService;
+	@Autowired
+	private PlanoContaService planoContaService;
 	
-    @GetMapping("/{id}")
-    public ResponseEntity<Lancamento> GetById(@PathVariable long id){
-        return repository.findById(id).map(resp -> ResponseEntity.ok(resp))
-        		.orElse(ResponseEntity.notFound().build()); 
+    @PostMapping("/")
+    public ResponseEntity<?> realizarLancamento(@RequestParam TipoOperacao operacao,@RequestBody LancamentoDTO lancamento){
+		try {
+			return new ResponseEntity<String>(lancamentoService.realizarOperacao(lancamento,operacao),HttpStatus.OK);
+		} catch (ArithmeticException e) {
+			return  new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);			
+		} catch (NullPointerException e) {
+			return  new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);			
+		} catch (HttpMessageNotReadableException e) {
+			return  new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);			
+		} catch (Exception e) {
+			return  new ResponseEntity<>(String.format("Houve algum erro nas operações causado pelos dados informados, por favor confira os dados e tente novamente."), HttpStatus.BAD_REQUEST);			
+		} 
     }
     
-    @GetMapping("/planos-conta/{login}")
-    public String getPlanosConta(@RequestParam String login ){
-    	return "login" + login;
+    @GetMapping("/planos-conta/")
+    public ResponseEntity<?> getPlanosConta(@RequestParam String login){
+    	return new ResponseEntity<ArrayList<?>>(planoContaService.buscar(login),HttpStatus.OK);
     }
     
     @PostMapping("/planos-conta")
-    public void PostLancamento(Lancamento lancamento ) {
-    	System.out.println("Create");
+    public ResponseEntity<?> PostLancamento(@RequestParam String finalidade, @RequestParam String login ) {
+    	try {
+    		planoContaService.cadastrar(finalidade, login);
+    		return new ResponseEntity<String>("Cadatrada Plano de Conta com Sucesso",HttpStatus.OK);
+    	}catch (IllegalStateException e) {
+			return  new ResponseEntity<>(String.format("Plano de Conta %s já existe no sistema e não pode ser criado novamente, por favor tente um Plano de Conta diferente.",finalidade), HttpStatus.NOT_ACCEPTABLE);			
+		}catch (Exception e) {
+			return  new ResponseEntity<>(String.format("Houve algum erro nas operações causado pelos dados informados, por favor confira os dados e tente novamente."), HttpStatus.BAD_REQUEST);			
+		} 
     }
     
     
