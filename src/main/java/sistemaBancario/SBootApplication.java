@@ -24,8 +24,7 @@ public class SBootApplication {
 	@Bean
 	public CommandLineRunner run(UsuarioService us, ContaService cs
 			) throws Exception {
-		return args -> {
-		
+		return args -> {	
 			UsuarioDTO u,u2;
 			u = new UsuarioDTO("22222222222", "DTO.black", "DTO.nome", "123456");
 			us.cadastrar(u);
