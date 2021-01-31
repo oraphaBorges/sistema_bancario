@@ -14,7 +14,6 @@ import sistemaBancario.enums.Sigla;
 import sistemaBancario.models.Conta;
 import sistemaBancario.models.Lancamento;
 import sistemaBancario.models.PlanoConta;
-import sistemaBancario.models.Usuario;
 import sistemaBancario.repository.ContaRepository;
 
 @Service
@@ -31,11 +30,9 @@ public class ContaService {
 
 	@Transactional
 	public void depositar(LancamentoDTO lancamentoDTO) {
-		Optional<Conta> optconta = repository.findById(lancamentoDTO.getContaOrigem());
-		Conta conta = optconta.get();
-		
-		Optional<PlanoConta> optplanoconta = planoContaService.buscar(lancamentoDTO.getPlanoConta());
-		PlanoConta planoConta = optplanoconta.get();
+		Conta conta = buscar(lancamentoDTO.getContaOrigem());
+
+		PlanoConta planoConta = planoContaService.buscar(lancamentoDTO.getPlanoConta());
 		
 		conta.setSaldo(conta.getSaldo() + lancamentoDTO.getValor());
 		
@@ -47,11 +44,9 @@ public class ContaService {
 	
 	@Transactional
 	public void pagar(LancamentoDTO lancamentoDTO) {
-		Optional<Conta> optconta = repository.findById(lancamentoDTO.getContaOrigem());
-		Conta conta = optconta.get();
+		Conta conta = buscar(lancamentoDTO.getContaOrigem());
 		
-		Optional<PlanoConta> optplanoconta = planoContaService.buscar(lancamentoDTO.getPlanoConta());
-		PlanoConta planoConta = optplanoconta.get();
+		PlanoConta planoConta = planoContaService.buscar(lancamentoDTO.getPlanoConta());
 		
 		lancamentoDTO.setValor(lancamentoDTO.getValor()*(-1));
 		
@@ -65,43 +60,48 @@ public class ContaService {
 	
 	@Transactional
 	public void transferir(LancamentoDTO lancamentoDTO) {
-		Optional<Conta> optconta;
-		optconta = repository.findById(lancamentoDTO.getContaOrigem());
-		Conta origem = optconta.get();
-		optconta = repository.findById(lancamentoDTO.getContaDestino());
-		Conta destino = optconta.get();
-		
-		Optional<PlanoConta> optplanoconta = planoContaService.buscar(lancamentoDTO.getPlanoConta());
-		PlanoConta planoConta = optplanoconta.get();
+		Conta origem = buscar(lancamentoDTO.getContaOrigem());
+		Conta destino = buscar(lancamentoDTO.getContaDestino());
+
+		PlanoConta planoConta = planoContaService.buscar(lancamentoDTO.getPlanoConta());
 		
 		Lancamento lancamento;
+		// Registro da saída da conta de origem
 		destino.setSaldo(origem.getSaldo() + lancamentoDTO.getValor());
 		lancamento = new Lancamento(destino, lancamentoDTO.getValor(), origem,
 									planoConta,lancamentoDTO.getDescricao());
 		lancamentoService.realizarLancamento(lancamento);
+		
+		// Registro da entada da conta de destino
 		lancamentoDTO.setValor(lancamentoDTO.getValor()*(-1));		
 		origem.setSaldo(origem.getSaldo() + lancamentoDTO.getValor());
-		
 		lancamento = new Lancamento(origem, lancamentoDTO.getValor(), destino,
 									planoConta,lancamentoDTO.getDescricao());
 		lancamentoService.realizarLancamento(lancamento);
+		
+		// Atualização das Contas
 		repository.save(origem);
 		repository.save(destino);
 	}
-
+	
 	public ArrayList<LancamentoDTO> consultarExtratoPorPeriodo(String login, Sigla sigla, LocalDate dataInicio, LocalDate dataFim){
-		Long idConta = buscarPorLoginESigla(login, sigla).getId();
+		Long idConta = buscar(login, sigla).getId();
 
 		return lancamentoService.getLancamentosContaPeriodo(idConta, dataInicio, dataFim);
 	}
 	
 	public ArrayList<LancamentoDTO> consultarExtratoPorConta(String login, Sigla sigla){
-		Long idConta = buscarPorLoginESigla(login, sigla).getId();
+		Long idConta = buscar(login, sigla).getId();
 
 		return lancamentoService.getLancamentosContaAll(idConta);
 	}
+	
+	public Double consultarSaldo(ContaDTO contaDTO) {
+		Conta conta = buscar(contaDTO.getId());
+		return conta.getSaldo();
+	}
 
-	public ContaDTO buscarPorLoginESigla(String login, Sigla sigla) {
+	public ContaDTO buscar(String login, Sigla sigla) {
 		Conta contaBd = repository.findByTitularLoginAndSigla(login,sigla);
 		ContaDTO contaDTO = new ContaDTO(contaBd);
 		contaDTO.setId(contaBd.getId());
@@ -109,8 +109,10 @@ public class ContaService {
 		return contaDTO;
 	}
 	
-	public Double consultarSaldo(Conta conta) {
-		return conta.getSaldo();
+	public Conta buscar(Long id) {
+		Optional<Conta> optconta;
+		optconta = repository.findById(id);
+		return optconta.get();
 	}
 	
 }

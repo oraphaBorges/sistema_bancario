@@ -8,8 +8,6 @@ import sistemaBancario.dto.ContaDTO;
 import sistemaBancario.dto.LancamentoDTO;
 import sistemaBancario.dto.UsuarioDTO;
 import sistemaBancario.enums.Sigla;
-import sistemaBancario.models.Usuario;
-import sistemaBancario.models.Conta;
 import sistemaBancario.services.ContaService;
 import sistemaBancario.services.UsuarioService;
 
@@ -40,8 +38,8 @@ public class SBootApplication {
 			System.out.println(u2.getLogin());
 			
 			ContaDTO c1,c2;
-			c1 = cs.buscarPorLoginESigla(u.getLogin(),Sigla.POUPANCA);
-			c2 = cs.buscarPorLoginESigla(u2.getLogin(),Sigla.POUPANCA);
+			c1 = cs.buscar(u.getLogin(),Sigla.POUPANCA);
+			c2 = cs.buscar(u2.getLogin(),Sigla.POUPANCA);
 			
 			Long origem = c1.getId();
 			Long destino = c2.getId();
