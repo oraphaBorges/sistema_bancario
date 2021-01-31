@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import sistemaBancario.dto.UsuarioDTO;
 import sistemaBancario.enums.Sigla;
 import sistemaBancario.models.Conta;
 import sistemaBancario.models.PlanoConta;
@@ -19,7 +20,8 @@ public class UsuarioService {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
-	public void cadastrar(Usuario usuario) {
+	public void cadastrar(UsuarioDTO usuarioDTO) {
+		Usuario usuario = usuarioDTOparaUsuario(usuarioDTO);
 		String passCrip = passwordEncoder.encode(usuario.getSenha());
 		// TODO: CHECK IF EXIST
 		if (repository.existsByLogin(usuario.getLogin()))
@@ -35,8 +37,24 @@ public class UsuarioService {
 		repository.save(usuario);
 	}
 	
-	public Usuario buscar(String login) {
-		return repository.findByLogin(login);
+	public UsuarioDTO buscar(String login) {
+		Usuario ul = repository.findByLogin(login);
+		UsuarioDTO ud = new UsuarioDTO();
+		ud.setLogin(ul.getLogin());
+		ud.setCpf(ul.getCpf());
+		ud.setNome(ul.getNome());
+		
+		return ud; 
+	}
+	
+	private Usuario usuarioDTOparaUsuario(UsuarioDTO usuarioDTO) {
+		Usuario usuario = new Usuario();
+		usuario.setCpf(usuarioDTO.getCpf());
+		usuario.setLogin(usuarioDTO.getLogin());
+		usuario.setNome(usuarioDTO.getNome());
+		usuario.setSenha(usuarioDTO.getSenha());
+		
+		return usuario;
 	}
 
 }
