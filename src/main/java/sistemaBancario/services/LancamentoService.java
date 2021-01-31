@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import sistemaBancario.dto.ContaDTO;
+import sistemaBancario.dto.LancamentoDTO;
 import sistemaBancario.models.Lancamento;
 import sistemaBancario.repository.LancamentoRepository;
 
@@ -20,11 +20,33 @@ public class LancamentoService {
 		repository.save(lancamento);
 	}
 
-	public ArrayList<Lancamento> getLancamentosContaPeriodo(ContaDTO conta, LocalDate dataInicio, LocalDate dataFim) {
-		return repository.findAllByDataLancamentoBetween(conta.getId(), dataInicio, dataFim); 
+	public ArrayList<LancamentoDTO> getLancamentosContaPeriodo(Long id, LocalDate dataInicio, LocalDate dataFim) {
+		ArrayList<Lancamento> lancamentos = repository.findAllByDataLancamentoBetween(id, dataInicio, dataFim);
+		ArrayList<LancamentoDTO> lancamentosDTO = convertLancamentoToLancamentoDTO(lancamentos);
+
+		return lancamentosDTO;
 	}
-	public ArrayList<Lancamento> getLancamentosContaAll(Long contaId) {
-		return repository.findAllByContaOrigem_id(contaId); 
+	public ArrayList<LancamentoDTO> getLancamentosContaAll(Long contaId) {
+		ArrayList<Lancamento> lancamentos = repository.findAllByContaOrigem_id(contaId);
+		ArrayList<LancamentoDTO> lancamentosDTO = convertLancamentoToLancamentoDTO(lancamentos);
+
+		return lancamentosDTO;
 	}
 
+	private ArrayList<LancamentoDTO> convertLancamentoToLancamentoDTO(ArrayList<Lancamento> lancamentos){
+		ArrayList<LancamentoDTO> lancamentosDTO = new ArrayList<>();
+
+		lancamentos.forEach(lancamento -> {
+			LancamentoDTO lancamentoDTO = new LancamentoDTO();
+			lancamentoDTO.setDate(lancamento.getData().getCreatedAt().toLocalDate());
+			lancamentoDTO.setLoginOrigem(lancamento.getContaOrigem().getTitular().getLogin());
+			lancamentoDTO.setLoginDestino(lancamento.getContaOrigem().getTitular().getLogin());
+			lancamentoDTO.setPlanoContaFinalidade(lancamento.getPlanoConta().getFinalidade());
+			lancamentoDTO.setValor(lancamento.getValor());
+			lancamentoDTO.setDescricao(lancamento.getDescricao());
+			lancamentosDTO.add(lancamentoDTO);
+		});
+
+		return lancamentosDTO;
+	}
 }
