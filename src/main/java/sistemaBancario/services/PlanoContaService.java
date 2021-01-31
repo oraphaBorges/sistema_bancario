@@ -75,12 +75,9 @@ public class PlanoContaService {
 	
 	private boolean finalidadeExiste(String login, String finalidade){
 		PlanoConta plano = repository.getPlanoByFinalidadeAndUsuarioLogin(finalidade, login);
-		boolean existe = false;
-
-		if (plano != null)
-			existe = true;
-
-		return existe;
+		if (plano == null)
+			return false;
+		return true;
 	}
 
 	public PlanoConta buscar(Long id) {
@@ -88,6 +85,8 @@ public class PlanoContaService {
 		return optional.get();
 	}
 	public PlanoConta buscar(String finalidade, String login) {
+		if(!finalidadeExiste(login,finalidade))
+			cadastrar(finalidade,login);
 		return repository.getPlanoByFinalidadeAndUsuarioLogin(finalidade,login);
 
 	}

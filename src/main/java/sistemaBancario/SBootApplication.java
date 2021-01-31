@@ -41,7 +41,7 @@ public class SBootApplication {
 			ContaSimplesDTO origem = new ContaSimplesDTO(u.getLogin(),Sigla.POUPANCA);
 			ContaSimplesDTO destino = new ContaSimplesDTO(u2.getLogin(),Sigla.POUPANCA);
 			
-			System.out.println(origem + " " + destino);
+			System.out.println(origem.login + " " + destino.login);
 		
 			cs.depositar(new LancamentoDTO(origem,100,origem,"PAGAMENTO","Gardar DIMDIM"));
 			cs.pagar(new LancamentoDTO(origem,30,origem,"PAGAMENTO","Pagar Boleto"));
