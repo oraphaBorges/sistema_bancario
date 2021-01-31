@@ -89,12 +89,16 @@ public class ContaService {
 		repository.save(destino);
 	}
 
-	public ArrayList<LancamentoDTO> consultarExtratoPorPeriodo(Long id, LocalDate dataInicio, LocalDate dataFim){
-		return lancamentoService.getLancamentosContaPeriodo(id, dataInicio, dataFim);
+	public ArrayList<LancamentoDTO> consultarExtratoPorPeriodo(String login, Sigla sigla, LocalDate dataInicio, LocalDate dataFim){
+		Long idConta = buscarPorLoginESigla(login, sigla).getId();
+
+		return lancamentoService.getLancamentosContaPeriodo(idConta, dataInicio, dataFim);
 	}
 	
-	public ArrayList<LancamentoDTO> consultarExtratoPorConta(Long id){
-		return lancamentoService.getLancamentosContaAll(id);
+	public ArrayList<LancamentoDTO> consultarExtratoPorConta(String login, Sigla sigla){
+		Long idConta = buscarPorLoginESigla(login, sigla).getId();
+
+		return lancamentoService.getLancamentosContaAll(idConta);
 	}
 
 	public ContaDTO buscarPorLoginESigla(String login, Sigla sigla) {
