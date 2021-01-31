@@ -20,8 +20,14 @@ public class UsuarioResource {
 	
 	@PostMapping("/criar")
 	public ResponseEntity<String> criarUsuario(@RequestBody UsuarioDTO usuarioDTO){
-		service.cadastrar(usuarioDTO);
-		return ResponseEntity.status(HttpStatus.CREATED).body("Usuario Criado com sucesso");
+		try {
+			service.cadastrar(usuarioDTO);
+			return 	new ResponseEntity<>(String.format("Parabéns, usuario %s criado com sucesso!",usuarioDTO.getLogin()), HttpStatus.CREATED);
+		} catch (IllegalStateException e) {
+			return  new ResponseEntity<>(String.format("Usuario %s já existe no sistema e não pode ser criado, por favor tente um login diferente.",usuarioDTO.getLogin()), HttpStatus.NOT_ACCEPTABLE);			
+		} catch (Exception e) {
+			return  new ResponseEntity<>(String.format("Houve algum erro intento no cadasto e usuario não pode ser criado, por favor tente mais tarde.",usuarioDTO.getLogin()), HttpStatus.BAD_REQUEST);			
+		} 
 	}
 	
 
