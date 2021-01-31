@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import sistemaBancario.dto.ContaDTO;
 import sistemaBancario.dto.ExtratoDTO;
 import sistemaBancario.dto.LancamentoDTO;
 import sistemaBancario.enums.Sigla;
