@@ -88,22 +88,25 @@ public class ContaService {
 		repository.save(origem);
 		repository.save(destino);
 	}
-	
-	public void cadastrar(Usuario usuario, Conta conta) {
-		repository.save(conta);
-		usuario.addConta(conta);
-	}
 
-	public ArrayList<Lancamento> consultarExtrato(ContaDTO conta, LocalDate dataInicio, LocalDate dataFim){
-		return lancamentoService.getLancamentosContaPeriodo(conta, dataInicio, dataFim);
+	public ArrayList<LancamentoDTO> consultarExtratoPorPeriodo(String login, Sigla sigla, LocalDate dataInicio, LocalDate dataFim){
+		Long idConta = buscarPorLoginESigla(login, sigla).getId();
+
+		return lancamentoService.getLancamentosContaPeriodo(idConta, dataInicio, dataFim);
 	}
 	
-	public ArrayList<Lancamento> consultarExtrato(Conta conta){
-		return lancamentoService.getLancamentosContaAll(conta.getId());
+	public ArrayList<LancamentoDTO> consultarExtratoPorConta(String login, Sigla sigla){
+		Long idConta = buscarPorLoginESigla(login, sigla).getId();
+
+		return lancamentoService.getLancamentosContaAll(idConta);
 	}
 
-	public Conta buscar(Usuario usuario, Sigla sigla) {
-		return repository.findByTitularAndSigla(usuario,sigla);
+	public ContaDTO buscarPorLoginESigla(String login, Sigla sigla) {
+		Conta contaBd = repository.findByTitularLoginAndSigla(login,sigla);
+		ContaDTO contaDTO = new ContaDTO(contaBd);
+		contaDTO.setId(contaBd.getId());
+
+		return contaDTO;
 	}
 	
 	public Double consultarSaldo(Conta conta) {

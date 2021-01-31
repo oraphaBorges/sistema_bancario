@@ -5,9 +5,12 @@ import java.time.LocalDate;
 public class LancamentoDTO {
 	
 	private LocalDate date; 
-	private Long contaOrigem; 
-	private Long contaDestino; 
+	private Long contaOrigem;
+	private String loginOrigem;
+	private Long contaDestino;
+	private String loginDestino;
 	private Long planoConta;
+	private String planoContaFinalidade;
 	private double valor;
 	private String descricao;
 			
@@ -20,6 +23,8 @@ public class LancamentoDTO {
 		this.descricao = descricao;
 		this.setPlanoConta(planoConta);
 	}
+
+	public LancamentoDTO (){}
 
 
 	public LocalDate getDate() {
@@ -70,14 +75,36 @@ public class LancamentoDTO {
 		this.descricao = descricao;
 	}
 
-
 	public Long getPlanoConta() {
 		return planoConta;
 	}
 
-
 	public void setPlanoConta(Long planoConta) {
 		this.planoConta = planoConta;
-	}	
-		
+	}
+
+	public void setLoginOrigem(String loginOrigem) {
+		this.loginOrigem = loginOrigem;
+	}
+
+	public String getLoginOrigem() {
+		return loginOrigem;
+	}
+
+	public void setLoginDestino(String loginDestino) {
+		this.loginDestino = loginDestino;
+	}
+
+	public String getLoginDestino() {
+		return loginDestino;
+	}
+
+	public void setPlanoContaFinalidade(String planoContaFinalidade) {
+		this.planoContaFinalidade = planoContaFinalidade;
+	}
+
+	public String getPlanoContaFinalidade() {
+		return planoContaFinalidade;
+	}
+
 }
