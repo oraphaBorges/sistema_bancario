@@ -1,12 +1,17 @@
 package sistemaBancario;
-import java.time.LocalDate;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import sistemaBancario.repository.LancamentoRepository;
+import sistemaBancario.dto.ContaDTO;
+import sistemaBancario.dto.LancamentoDTO;
+import sistemaBancario.dto.UsuarioDTO;
+import sistemaBancario.enums.Sigla;
+import sistemaBancario.models.Usuario;
+import sistemaBancario.models.Conta;
+import sistemaBancario.services.ContaService;
+import sistemaBancario.services.UsuarioService;
 
 @SpringBootApplication
 public class SBootApplication {
@@ -19,26 +24,33 @@ public class SBootApplication {
 		
 	}
 	@Bean
-	public CommandLineRunner run(LancamentoRepository lr) throws Exception {
+	public CommandLineRunner run(UsuarioService us, ContaService cs
+			) throws Exception {
 		return args -> {
-//			Usuario u = new Usuario();
-//			u.setCpf("11111111111");
-//			u.setNome("admin");
-//			u.setLogin("admin");
-//			u.setSenha("admin");
-//			s.cadastrar(u);
+		
+			UsuarioDTO u,u2;
+			u = new UsuarioDTO("22222222222", "DTO.black", "DTO.nome", "123456");
+			us.cadastrar(u);
+			u = new UsuarioDTO("33333333333","admin","admin","1234567");
+			us.cadastrar(u);
 			
-			LocalDate date = LocalDate.of(2020, 1, 20);
-			LocalDate date2 = LocalDate.of(2022, 1, 20);
-////			
+			u = us.buscar("DTO.black");
+			System.out.println(u.getLogin());
+			u2 = us.buscar("admin");
+			System.out.println(u2.getLogin());
 			
-			try {
-				
-				System.out.println(lr.findAllByDataLancamentoBetween(2L, date, date2));
-				System.out.println(lr.findAllByContaOrigem_id(2L));
-			} catch (Exception e) {
-				System.out.println(e);
-			}
+			ContaDTO c1,c2;
+			c1 = cs.buscarPorLoginESigla(u.getLogin(),Sigla.POUPANCA);
+			c2 = cs.buscarPorLoginESigla(u2.getLogin(),Sigla.POUPANCA);
+			
+			Long origem = c1.getId();
+			Long destino = c2.getId();
+			
+			System.out.println(origem + " " + destino);
+		
+			cs.depositar(new LancamentoDTO(origem,100,origem,2L,"DEPOSITO"));
+			cs.pagar(new LancamentoDTO(origem,30,origem,1L,"PAGAMENTO"));
+			cs.transferir(new LancamentoDTO(origem,40,destino,3L,"TRANSFERENCIA"));						
 			
 		};
 	}
