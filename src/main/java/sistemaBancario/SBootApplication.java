@@ -26,10 +26,10 @@ public class SBootApplication {
 			) throws Exception {
 		return args -> {
 //
-//			UsuarioDTO u,u2;
+			UsuarioDTO u,u2;
 //			u = new UsuarioDTO("22222222222", "DTO.black", "DTO.nome", "123456");
 //			us.cadastrar(u);
-//			u = new UsuarioDTO("33333333333","admin","admin","1234567");
+			u = new UsuarioDTO("33333333333","admin","admin","1234567");
 //			us.cadastrar(u);
 //
 //			u = us.buscar("DTO.black");
