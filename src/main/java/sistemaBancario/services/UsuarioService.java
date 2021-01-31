@@ -1,7 +1,6 @@
 package sistemaBancario.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +37,7 @@ public class UsuarioService {
 
 		return usuarioParaUsuarioDTO(repository.save(usuario));
 	}
-	git
+
 	public UsuarioDTO buscar(String login) {
 		Usuario ul = repository.findByLogin(login);
 		UsuarioDTO usuarioDTO = usuarioParaUsuarioDTO(ul);
