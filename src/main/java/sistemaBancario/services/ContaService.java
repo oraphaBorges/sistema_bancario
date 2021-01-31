@@ -86,14 +86,14 @@ public class ContaService {
 	
 	public ExtratoDTO consultarExtrato(String login, Sigla sigla, LocalDate dataInicio, LocalDate dataFim){
 		Conta conta = buscar(login, sigla);
-		ArrayList<LancamentoDTO> lancamentos =  lancamentoService.getLancamentosContaPeriodo(conta.getId(), dataInicio, dataFim);
+		ArrayList<LancamentoDTO> lancamentos =  lancamentoService.getLancamentos(conta.getId(), dataInicio, dataFim);
 		
 		return new ExtratoDTO(conta.getSaldo(),lancamentos);
 	}
 	
 	public ExtratoDTO consultarExtrato(String login, Sigla sigla){
 		Conta conta = buscar(login, sigla);
-		ArrayList<LancamentoDTO> lancamentos =  lancamentoService.getLancamentosContaAll(conta.getId());
+		ArrayList<LancamentoDTO> lancamentos =  lancamentoService.getLancamentos(conta.getId());
 		
 		return new ExtratoDTO(conta.getSaldo(),lancamentos);
 	}
@@ -112,6 +112,10 @@ public class ContaService {
 		Optional<Conta> optconta;
 		optconta = repository.findById(id);
 		return optconta.get();
+	}
+
+	public ArrayList<Conta> buscar(String login) {
+		return repository.findAllByTitularLogin(login) ;
 	}
 	
 }

@@ -21,13 +21,13 @@ public class LancamentoService {
 		repository.save(lancamento);
 	}
 
-	public ArrayList<LancamentoDTO> getLancamentosContaPeriodo(Long id, LocalDate dataInicio, LocalDate dataFim) {
+	public ArrayList<LancamentoDTO> getLancamentos(Long id, LocalDate dataInicio, LocalDate dataFim) {
 		ArrayList<Lancamento> lancamentos = repository.findAllByDataLancamentoBetween(id, dataInicio, dataFim);
 		ArrayList<LancamentoDTO> lancamentosDTO = convertLancamentoToLancamentoDTO(lancamentos);
 
 		return lancamentosDTO;
 	}
-	public ArrayList<LancamentoDTO> getLancamentosContaAll(Long contaId) {
+	public ArrayList<LancamentoDTO> getLancamentos(Long contaId) {
 		ArrayList<Lancamento> lancamentos = repository.findAllByContaOrigem_id(contaId);
 		ArrayList<LancamentoDTO> lancamentosDTO = convertLancamentoToLancamentoDTO(lancamentos);
 
