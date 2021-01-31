@@ -1,15 +1,17 @@
 package sistemaBancario.repository;
 
-import sistemaBancario.generics.RepositoryGeneric;
-import sistemaBancario.models.Conta;
+import org.springframework.data.repository.CrudRepository;
 
-public class ContaRepository extends RepositoryGeneric<Conta> {
+import sistemaBancario.enums.Sigla;
+import sistemaBancario.models.Conta;
+import sistemaBancario.models.Usuario;
+
+public interface ContaRepository extends CrudRepository<Conta, Long> {
 		
-	public Conta findById(Integer id) {
-		return em.find(Conta.class, id);
-	}
-	
-	
+	Conta findByTitularLoginAndSigla(String login, Sigla sigla);
 }
+	
+	
+
 
 

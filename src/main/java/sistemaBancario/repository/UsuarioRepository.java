@@ -1,28 +1,12 @@
 package sistemaBancario.repository;
 
-import javax.persistence.Query;
+import org.springframework.data.repository.CrudRepository;
 
-import sistemaBancario.generics.RepositoryGeneric;
 import sistemaBancario.models.Usuario;
 
-public class UsuarioRepository extends RepositoryGeneric<Usuario>{
+public interface UsuarioRepository extends CrudRepository<Usuario,Long > {
 
-	public Usuario findById(Integer id) {
-		return em.find(Usuario.class, id);
-	}
-	
-	public Usuario findByLogin(String login) {
-		Query query = em.createQuery("select u from Usuario u where u.login = :login"); //JPQL
-		query.setParameter("login", login);
-		return (Usuario) query.getSingleResult();
-	}
-	
-	public boolean exists(String login) {
-		Query query = em.createQuery("select u from Usuario u where u.login = :login"); //JPQL
-		query.setParameter("login", login);
-		return query.getResultList().size()!=0;
-	}
-	
+	Usuario findByLogin(String login);
 
-	
+	boolean existsByLogin(String login);
 }
