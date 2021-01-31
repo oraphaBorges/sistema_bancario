@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import sistemaBancario.dto.ContaDTO;
+import sistemaBancario.dto.ExtratoDTO;
 import sistemaBancario.dto.LancamentoDTO;
 import sistemaBancario.enums.Sigla;
 import sistemaBancario.models.Conta;
@@ -84,20 +85,22 @@ public class ContaService {
 		repository.save(destino);
 	}
 	
-	public ArrayList<LancamentoDTO> consultarExtrato(String login, Sigla sigla, LocalDate dataInicio, LocalDate dataFim){
-		Long idConta = buscar(login, sigla).getId();
-
-		return lancamentoService.getLancamentosContaPeriodo(idConta, dataInicio, dataFim);
+	public ExtratoDTO consultarExtrato(String login, Sigla sigla, LocalDate dataInicio, LocalDate dataFim){
+		Conta conta = buscar(login, sigla);
+		ArrayList<LancamentoDTO> lancamentos =  lancamentoService.getLancamentosContaPeriodo(conta.getId(), dataInicio, dataFim);
+		
+		return new ExtratoDTO(conta.getSaldo(),lancamentos);
 	}
 	
-	public ArrayList<LancamentoDTO> consultarExtrato(String login, Sigla sigla){
-		Long idConta = buscar(login, sigla).getId();
-
-		return lancamentoService.getLancamentosContaAll(idConta);
+	public ExtratoDTO consultarExtrato(String login, Sigla sigla){
+		Conta conta = buscar(login, sigla);
+		ArrayList<LancamentoDTO> lancamentos =  lancamentoService.getLancamentosContaAll(conta.getId());
+		
+		return new ExtratoDTO(conta.getSaldo(),lancamentos);
 	}
 	
-	public Double consultarSaldo(ContaDTO contaDTO) {
-		Conta conta = buscar(contaDTO.getId());
+	public Double consultarSaldo(Long id) {
+		Conta conta = buscar(id);
 		return conta.getSaldo();
 	}
 
