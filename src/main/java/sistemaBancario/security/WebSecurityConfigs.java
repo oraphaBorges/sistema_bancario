@@ -29,7 +29,7 @@ public class WebSecurityConfigs extends WebSecurityConfigurerAdapter{
 		.authorizeRequests()
 		.antMatchers(SWAGGER_WHITELIST).permitAll()
 		.antMatchers("/login").permitAll()
-		.antMatchers("/usuario/criar").permitAll()
+		.antMatchers("/usuarios/criar").permitAll()
 		.anyRequest().authenticated()
 		.and()
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
