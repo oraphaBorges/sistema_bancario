@@ -24,7 +24,7 @@ public class LancamentoDTO {
 		this.setPlanoConta(planoConta);
 	}
 
-	public LancamentoDTO(){}
+	public LancamentoDTO (){}
 
 
 	public LocalDate getDate() {
@@ -87,11 +87,24 @@ public class LancamentoDTO {
 		this.loginOrigem = loginOrigem;
 	}
 
+	public String getLoginOrigem() {
+		return loginOrigem;
+	}
+
 	public void setLoginDestino(String loginDestino) {
 		this.loginDestino = loginDestino;
+	}
+
+	public String getLoginDestino() {
+		return loginDestino;
 	}
 
 	public void setPlanoContaFinalidade(String planoContaFinalidade) {
 		this.planoContaFinalidade = planoContaFinalidade;
 	}
+
+	public String getPlanoContaFinalidade() {
+		return planoContaFinalidade;
+	}
+
 }
