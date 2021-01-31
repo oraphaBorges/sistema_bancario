@@ -30,7 +30,7 @@ public class SBootApplication {
 //			u = new UsuarioDTO("22222222222", "DTO.black", "DTO.nome", "123456");
 //			us.cadastrar(u);
 			u = new UsuarioDTO("33333333333","admin","admin","1234567");
-//			us.cadastrar(u);
+			us.cadastrar(u);
 //
 //			u = us.buscar("DTO.black");
 //			System.out.println(u.getLogin());
