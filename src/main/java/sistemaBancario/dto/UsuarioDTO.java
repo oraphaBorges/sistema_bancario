@@ -1,9 +1,24 @@
 package sistemaBancario.dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 public class UsuarioDTO {
+
+	@NotBlank(message = "Cpf obrigatório")
+	@Size(max = 11)
 	public String cpf;
+
+	@NotBlank(message = "Login obrigatório")
+	@Size(max = 50)
 	public String login;
+
+	@NotBlank(message = "Nome obrigatório")
+	@Size(max = 50)
 	public String nome;
+
+	@NotBlank(message = "Senha obrigatória")
+	@Size(max = 20)
 	public String senha;
 	
 	public UsuarioDTO() {}
