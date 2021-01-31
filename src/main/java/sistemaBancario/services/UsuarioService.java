@@ -39,12 +39,9 @@ public class UsuarioService {
 	
 	public UsuarioDTO buscar(String login) {
 		Usuario ul = repository.findByLogin(login);
-		UsuarioDTO ud = new UsuarioDTO();
-		ud.setLogin(ul.getLogin());
-		ud.setCpf(ul.getCpf());
-		ud.setNome(ul.getNome());
-		
-		return ud; 
+		UsuarioDTO usuarioDTO = usuarioParaUsuarioDTO(ul);
+				
+		return usuarioDTO; 
 	}
 	
 	private Usuario usuarioDTOparaUsuario(UsuarioDTO usuarioDTO) {
@@ -55,6 +52,15 @@ public class UsuarioService {
 		usuario.setSenha(usuarioDTO.getSenha());
 		
 		return usuario;
+	}
+	
+	private UsuarioDTO usuarioParaUsuarioDTO(Usuario usuario) {
+		UsuarioDTO ud = new UsuarioDTO();
+		ud.setLogin(usuario.getLogin());
+		ud.setCpf(usuario.getCpf());
+		ud.setNome(usuario.getNome());
+		
+		return ud ;
 	}
 
 }
