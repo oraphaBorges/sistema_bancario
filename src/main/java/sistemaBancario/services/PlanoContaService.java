@@ -82,8 +82,9 @@ public class PlanoContaService {
 		return existe;
 	}
 
-	public Optional<PlanoConta> buscar(Long conta) {
-		return repository.findById(conta);
+	public PlanoConta buscar(Long conta) {
+		Optional<PlanoConta> optional = repository.findById(conta);
+		return optional.get();
 	}
 	
 }
