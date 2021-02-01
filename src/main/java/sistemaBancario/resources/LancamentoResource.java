@@ -1,6 +1,9 @@
 package sistemaBancario.resources;
 
 import java.util.ArrayList;
+
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +23,10 @@ import sistemaBancario.services.PlanoContaService;
 
 import javax.validation.Valid;
 
+@ApiResponses(value = {
+		@ApiResponse(code = 200, message = "Retorna login do usuário criado"),
+		@ApiResponse(code = 400, message = "Ocorreu um erro ao realizar a requisição"),
+})
 @RestController
 @RequestMapping("/lancamentos")
 @CrossOrigin("*")
