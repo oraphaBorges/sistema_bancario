@@ -1,11 +1,14 @@
 package sistemaBancario.dto;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 public class UsuarioDTO {
 
 	@NotBlank(message = "Cpf obrigatório")
+	@CPF(message = "Cpf inválido")
 	@Size(max = 11)
 	public String cpf;
 

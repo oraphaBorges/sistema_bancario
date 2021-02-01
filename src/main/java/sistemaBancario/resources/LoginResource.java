@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import sistemaBancario.dto.LoginDTO;
 import sistemaBancario.services.LoginService;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/")
 public class LoginResource {
@@ -21,7 +23,7 @@ public class LoginResource {
 
    
 	@PostMapping("/login")
-	public ResponseEntity<?> logar (@RequestBody LoginDTO loginDTO) throws Exception {
+	public ResponseEntity<?> logar (@Valid @RequestBody LoginDTO loginDTO) throws Exception {
 		try {
 			return 	new ResponseEntity<>(service.logar(loginDTO), HttpStatus.ACCEPTED);
 		} catch (RuntimeException e) {
