@@ -1,14 +1,18 @@
 package sistemaBancario.dto;
 
+import io.swagger.annotations.ApiModelProperty;
 import sistemaBancario.enums.Sigla;
 import sistemaBancario.models.Conta;
 
 public class ContaDTO {
 	private Long id;
     private String nome;
-    private Double saldo;
-    private Sigla sigla;
-    private String login;
+	@ApiModelProperty(example = "150.0")
+	private Double saldo;
+	@ApiModelProperty(example = "CORRENTE")
+	private Sigla sigla;
+	@ApiModelProperty(example = "DTO.black")
+	private String login;
 
     public ContaDTO(Conta conta) {
         this.setNome(conta.getNome());

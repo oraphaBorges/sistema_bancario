@@ -1,25 +1,35 @@
 package sistemaBancario.dto;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 public class LancamentoDTO {
-	
+
+	@ApiModelProperty(example = "2020-12-12")
 	private String date;
 
+	@ApiModelProperty(example = "DTO.black")
 	@NotBlank(message = "Obrigatório informar conta de origem")
 	@Size(max = 50)
 	private ContaSimplesDTO contaOrigem;
+
+	@ApiModelProperty(example = "DTO.white")
 	private ContaSimplesDTO contaDestino;
 
+	@ApiModelProperty(example = "DEPOSITO")
 	@NotBlank(message = "Obrigatório informar plano de conta")
 	@Size(max = 30)
 	private String planoConta;
 
+	@ApiModelProperty(example = "50.30")
 	@NotBlank(message = "Obrigatório informar o valor do lançamento")
 	@Size(max = 30)
 	private double valor;
+
+	@ApiModelProperty(example = "Compra de brinquedos")
 	private String descricao;
 			
 
