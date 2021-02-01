@@ -1,5 +1,7 @@
 package sistemaBancario.resources;
 
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,11 @@ import sistemaBancario.services.UsuarioService;
 
 import javax.validation.Valid;
 
+@ApiResponses(value = {
+		@ApiResponse(code = 201, message = "Retorna login do usuário criado"),
+		@ApiResponse(code = 406, message = "Login existe cadastrado no sistema."),
+		@ApiResponse(code = 400, message = "Ecorreu um erro desconhecido"),
+})
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioResource {
