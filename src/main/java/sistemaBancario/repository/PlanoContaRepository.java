@@ -1,23 +1,18 @@
 package sistemaBancario.repository;
 
-import javax.persistence.Query;
+import org.springframework.data.repository.CrudRepository;
 
-import sistemaBancario.generics.RepositoryGeneric;
 import sistemaBancario.models.PlanoConta;
 
-public class PlanoContaRepository extends RepositoryGeneric<PlanoConta> {
-	public PlanoConta findById(Integer id) {
-		return em.find(PlanoConta.class, id);
-	}
+import java.util.ArrayList;
+import java.util.Optional;
 
-	public PlanoConta findByFinalidade(String finalidade) {
-		return em.find(PlanoConta.class, finalidade);
-	}
+public interface PlanoContaRepository extends CrudRepository<PlanoConta, Long> {
 
-	public boolean exists(String finalidade) {
-		Query query = em.createQuery("select u from PlanoConta u where u.finalidade = :finalidade"); // JPQL
-		query.setParameter("finalidade", finalidade);
-		return query.getResultList().size() != 0;
-	}
+	PlanoConta getPlanoByFinalidadeAndUsuarioLogin(String finalidade, String login);
+  
+	ArrayList<PlanoConta> findPlanoContaByUsuarioLogin(String login);
+
+	Optional<PlanoConta> findByFinalidadeAndUsuarioLogin(String finalidade, String login);
 
 }

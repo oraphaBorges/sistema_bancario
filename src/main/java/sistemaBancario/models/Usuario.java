@@ -1,10 +1,14 @@
 package sistemaBancario.models;
 
+import org.hibernate.annotations.NaturalId;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,15 +18,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_usuario")
-public class Usuario {
+public class Usuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 
 	@Column(nullable = false)
 	private String nome;
 
+	@NaturalId
 	@Column(nullable = false, length = 20)
 	private String login;
 
@@ -34,6 +39,12 @@ public class Usuario {
 
 	@OneToMany(mappedBy = "titular", cascade = CascadeType.PERSIST)
 	private List<Conta> contas = new ArrayList<Conta>();
+
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.PERSIST)
+	private List<PlanoConta> planosContas = new ArrayList<PlanoConta>();
+	
+	@Embedded
+    private Registro data = new Registro();
 	
 	public Usuario() {}
 	public Usuario(String nome, String login,String senha, String cpf) {
@@ -43,7 +54,7 @@ public class Usuario {
 		this.cpf = cpf;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -84,10 +95,18 @@ public class Usuario {
 	}
 
 	public void addConta(Conta conta) {
-		//conta.setProprietario(this);
 		this.contas.add(conta);
+		conta.setTitular(this);
 	}
-
-	
+	public void addPlanoConta(PlanoConta planoConta) {
+		this.planosContas.add(planoConta);
+		planoConta.setUsuario(this);
+	}
+	public Registro getData() {
+		return data;
+	}
+	public void setData(Registro data) {
+		this.data = data;
+	}
 
 }

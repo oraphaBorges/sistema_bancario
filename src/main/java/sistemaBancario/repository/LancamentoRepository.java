@@ -1,39 +1,19 @@
 package sistemaBancario.repository;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
-import javax.persistence.Query;
-
-import sistemaBancario.generics.RepositoryGeneric;
-import sistemaBancario.models.Conta;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import sistemaBancario.models.Lancamento;
 
-public class LancamentoRepository extends RepositoryGeneric<Lancamento> {
 
-	public Lancamento findById(Integer id) {
-		return em.find(Lancamento.class, id);
-	}
+public interface LancamentoRepository extends CrudRepository<Lancamento,Long> {
 
-	public ArrayList<Lancamento> getLancamentosPeriodo(Conta conta, LocalDate dataInicio, LocalDate dataFim) {
-		Query query = em.createQuery("select u from Lancamento u where "
-										+ "contaOrigem_id = :conta and "
-										+ "u.dataLancamento between "
-										+ ":dataInicio "
-										+ "and "
-										+ ":dataFim"); // JPQL
-		query.setParameter("conta", conta.getId());
-		query.setParameter("dataInicio", dataInicio);
-		query.setParameter("dataFim", dataFim);
-		
-		return (ArrayList<Lancamento>) query.getResultList();
-	}
-	public ArrayList<Lancamento> getLancamentosAll(Conta conta) {
-		Query query = em.createQuery("select u from Lancamento u "
-				+ "where contaOrigem_id = :conta");// JPQL
-		query.setParameter("conta", conta.getId());
-		
-		return (ArrayList<Lancamento>) query.getResultList();
-	}
+	@Query("select u from Lancamento u where contaOrigem.id = :id and u.dataLancamento between :dataInicio and :dataFim")
+	public ArrayList<Lancamento> findAllByDataLancamentoBetween (Long id, LocalDate dataInicio, LocalDate dataFim);
+   
+
+	public ArrayList<Lancamento> findAllByContaOrigem_id (Long id);
+	
+
 }

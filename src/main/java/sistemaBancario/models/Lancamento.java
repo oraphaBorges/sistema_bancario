@@ -2,7 +2,7 @@ package sistemaBancario.models;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,48 +10,53 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tb_lancamento")
 public class Lancamento {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	
-	@Column(nullable = false)
+	@NotNull
 	private LocalDate dataLancamento;
 	
 	@OneToOne
-	@JoinColumn(referencedColumnName = "id")
+	@JoinColumn(referencedColumnName = "id", name = "conta_origem_id")
 	private Conta contaOrigem;
 	
 	@OneToOne
-	@JoinColumn(referencedColumnName = "id")
+	@JoinColumn(referencedColumnName = "id", name = "conta_destino_id")
 	private Conta contaDestino;
 	
 	@OneToOne
 	@JoinColumn(referencedColumnName = "id")
 	private PlanoConta planoConta;
 	
-	@Column(nullable = false)
+	@NotNull
 	private Double valor;
 	
-	private String descricao;
-
-	public Integer getId() {
-		return id;
-	}
+	@Embedded
+    private Registro data = new Registro();
 	
 	public Lancamento() {}
 	public Lancamento(Conta origem, Double valor, Conta destino, 
 					  PlanoConta planoConta, String descricao) {
 		this.dataLancamento = LocalDate.now();
+		this.valor = valor;
 		this.contaOrigem = origem;
 		this.contaDestino = destino;
 		this.planoConta = planoConta;
 		this.descricao = descricao;
 	}
 	
+	private String descricao;
+
+	public Long getId() {
+		return id;
+	}	
 
 	public LocalDate getDataLancamento() {
 		return dataLancamento;
@@ -99,6 +104,12 @@ public class Lancamento {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	public Registro getData() {
+		return data;
+	}
+	public void setData(Registro data) {
+		this.data = data;
 	}
 
 }
