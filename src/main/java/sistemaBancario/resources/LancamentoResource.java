@@ -18,6 +18,8 @@ import sistemaBancario.enums.TipoOperacao;
 import sistemaBancario.services.LancamentoService;
 import sistemaBancario.services.PlanoContaService;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/lancamentos")
 @CrossOrigin("*")
@@ -29,7 +31,7 @@ public class LancamentoResource {
 	private PlanoContaService planoContaService;
 	
     @PostMapping("/")
-    public ResponseEntity<?> realizarLancamento(@RequestParam TipoOperacao operacao,@RequestBody LancamentoDTO lancamento){
+    public ResponseEntity<?> realizarLancamento(@RequestParam TipoOperacao operacao, @RequestBody LancamentoDTO lancamento){
 		try {
 			return new ResponseEntity<String>(lancamentoService.realizarOperacao(lancamento,operacao),HttpStatus.OK);
 		} catch (ArithmeticException e) {

@@ -1,13 +1,24 @@
 package sistemaBancario.dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 public class LancamentoDTO {
 	
-	private String date; 
+	private String date;
+
+	@NotBlank(message = "Obrigatório informar conta de origem")
+	@Size(max = 50)
 	private ContaSimplesDTO contaOrigem;
 	private ContaSimplesDTO contaDestino;
+
+	@NotBlank(message = "Obrigatório informar plano de conta")
+	@Size(max = 30)
 	private String planoConta;
+
+	@NotBlank(message = "Obrigatório informar o valor do lançamento")
+	@Size(max = 30)
 	private double valor;
 	private String descricao;
 			
