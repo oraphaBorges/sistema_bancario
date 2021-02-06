@@ -22,14 +22,13 @@ const router = async () => {
 
     let parseURL = (request.resource ? '/' + request.resource : '/') + (request.id ? '/:id' + request.id : '') + (request.verb ? '/' + request.verb : '');
     let page = routes[parseURL] ? routes[parseURL] : error404;
-    console.log(page)
 
     root.innerHTML = await page.render();
     await page.after_render();
 }
 
 /**observa mudanças na hash*/
-window.addEventListener('hashChange', router);
+window.addEventListener('hashchange', router);
 
 /**oberva carregamento da pagina */
 window.addEventListener('load', router);
