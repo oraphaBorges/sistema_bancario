@@ -1,0 +1,28 @@
+
+//errors
+import Error404 from './errors/Error404';
+
+//Home
+import Home from './home/Home';
+
+//dashboard
+import Dashboard from './dashboard/Dashboard';
+
+//Users actions
+import Register from './user/Register';
+import Login from './user/Login';
+import Transaction from './user/Transaction';
+
+//Password related
+import ForgotPassword from './password/ForgotPassword';
+import ChangePassword from './password/ChangePassword';
+
+//exports
+export const error404 = Error404; 
+export const home = Home; 
+export const register = Register; 
+export const login = Login; 
+export const forgotPassword = ForgotPassword; 
+export const changePassword = ChangePassword; 
+export const transaction = Transaction; 
+export const dashboard = Dashboard; 

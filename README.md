@@ -1,7 +1,5 @@
 # Saturday JS :)
-Instalando webpack
-
-❯ npm install clean-webpack-plugin webpack-dev-server webpack-merge 
+Instalar webpack
 
 Criando ambientes
 ❯ touch webpack.common.js     
@@ -10,6 +8,6 @@ Criando ambientes
 
 Install:
 
- @babel/polyfill --save-dev
- babel-loader
+@babel/polyfill --save-dev
+babel-loader
 

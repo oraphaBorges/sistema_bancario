@@ -1,2 +1,35 @@
-var root = document.getElementById('root');
-root.innerHTML = `<h1>Hello young man</h1>`;
+/** Imports **/
+import Utils from '../src/service/Utils';
+
+/**Pages */
+import { error404, home, register, login, forgotPassword, changePassword, transaction, dashboard } from './views/pages/index';
+
+/** Routes **/
+let routes = {
+    '/': home,
+    '/usuarios': register,
+    '/login': login,
+    '/nova-senha': forgotPassword,
+    '/altera-senha': changePassword,
+    '/lancamentos': transaction,
+    '/dashboard': dashboard
+}
+
+const router = async () => {
+    const root = document.getElementById('root');
+
+    let request = Utils.parseRequestURL();
+
+    let parseURL = (request.resource ? '/' + request.resource : '/') + (request.id ? '/:id' + request.id : '') + (request.verb ? '/' + request.verb : '');
+    let page = routes[parseURL] ? routes[parseURL] : error404;
+    console.log(page)
+
+    root.innerHTML = await page.render();
+    await page.after_render();
+}
+
+/**observa mudanças na hash*/
+window.addEventListener('hashChange', router);
+
+/**oberva carregamento da pagina */
+window.addEventListener('load', router);
