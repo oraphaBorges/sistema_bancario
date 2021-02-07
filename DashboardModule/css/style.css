@@ -74,6 +74,12 @@ p{
     border-radius: 8px;
 }
 
+.content-card:hover{
+    transform: scale(1.05);
+    transition: 1s;
+
+}
+
 .section{
     flex-wrap: wrap;
     justify-content: space-between;
@@ -140,6 +146,13 @@ p{
     width: 80px;
 }
 
+.card-menu--item:hover{
+    cursor: pointer;
+    font-weight: bold;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
 .image-menu--item{
     height: 25px;
     width: 25px;
@@ -187,6 +200,7 @@ p{
 .text-weight--bold{
     font-weight: bold;
 }
+
 
 
 /*Smartphone*/
