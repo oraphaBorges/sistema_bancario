@@ -26,6 +26,7 @@ body, html {
   align-items: flex-start; }
 
 .btn {
+  cursor: pointer;
   border: none;
   padding: 10px 25px;
   width: fit-content;
@@ -86,7 +87,7 @@ body, html {
   .login .login-form {
     display: flex;
     flex-direction: column; }
-    .login .login-form input[type="text"] {
+    .login .login-form input[type="text"], .login .login-form input[type="email"] {
       margin: 15px;
       padding: 10px;
       outline: none !important;
@@ -94,7 +95,8 @@ body, html {
       border-left: none;
       border-right: none;
       border-bottom: 2 solid gray; }
-    .login .login-form input[type="text"]:focus, .login .login-form input[type="text"]:active {
+    .login .login-form input[type="text"]:focus, .login .login-form input[type="text"]:active,
+    .login .login-form input[type="email"]:focus, .login .login-form input[type="email"]:active {
       border-color: #6f42c1; }
     .login .login-form .btn {
       margin: 20px auto; }
