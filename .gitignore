@@ -1,0 +1,8 @@
+/target
+.settings
+.classpath
+src/main/resources/META-INF/persistence.xml
+target/classes/META-INF/maven/com.accenture.gama_academy.sistemaBancario/sistemaBancario/pom.properties
+.project
+/LoginModule/assets/css/style.css.map
+/LoginModule/assets/css/.sass-cache

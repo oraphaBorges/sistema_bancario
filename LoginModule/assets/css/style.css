@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: #6f42c1;
+  font-family: 'Roboto', sans-serif; }
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto; }
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px; } }
+@media (min-width: 992px) {
+  .container {
+    width: 970px; } }
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px; } }
+.middle {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; }
+
+.btn {
+  cursor: pointer;
+  border: none;
+  padding: 10px 25px;
+  width: fit-content;
+  text-decoration: none; }
+
+.btn-rounded {
+  border-radius: 20px; }
+
+.btn-main {
+  color: #ffffff;
+  transition: 500ms;
+  background-color: #6f42c1; }
+
+.btn-main:hover {
+  transition: 500ms;
+  background-color: #432776; }
+
+.btn-main-outline {
+  color: #6f42c1;
+  transition: 500ms;
+  border: 2px solid #6f42c1;
+  background-color: #ffffff; }
+
+.btn-main-outline:hover {
+  color: #ffffff;
+  transition: 500ms;
+  background-color: #6f42c1; }
+
+.text-center {
+  text-align: center; }
+
+.text-left {
+  text-align: left; }
+
+.text-right {
+  text-align: right; }
+
+.text-justify {
+  text-align: justify; }
+
+.nav {
+  padding: 15px; }
+  .nav .nav-logo {
+    width: 200px; }
+
+.login {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 300px;
+  margin: auto;
+  padding: 20px;
+  margin-top: 50px;
+  margin-bottom: 80px;
+  border-radius: 15px;
+  background-color: #ffffff; }
+  .login .login-form {
+    display: flex;
+    flex-direction: column; }
+    .login .login-form input {
+      margin: 15px;
+      padding: 10px;
+      outline: none !important;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-bottom: 2 solid gray; }
+    .login .login-form input:focus, .login .login-form input:active {
+      border-color: #6f42c1; }
+    .login .login-form .btn {
+      margin: 20px auto; }
+  .login a {
+    margin-top: 5px;
+    padding: 5px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #1085fa; }
+
+/*# sourceMappingURL=style.css.map */
