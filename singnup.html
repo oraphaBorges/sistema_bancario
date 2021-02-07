@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS only -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Recuperar Senha</title>
+    <title>Cadastro</title>
 </head>
 <body>
     <div id="app">
@@ -16,15 +16,17 @@
               </a>
         </nav>
         <main class="login">
-            <h2>Esqueci minha senha</h2>
-            <form class="login-form">
-                <p>Digite sua conta cadastrada</p>
-                <input type="texto" name="conta" id="field-conta" placeholder="Digite sua conta" required>
-                <small>Enviaremos o link de recuperação de senha</small>
-                <button type="submit" class="btn btn-main-outline btn-rounded">Enviar</button>
+            <h2>Faça o seu Cadastro</h2>
+            <p class="text-left">Empreencha seu dados para realizar seu cadastro</p>
+            <form class="login-form" action="/">
+                <input class="input" type="text" name="cpf" placeholder="CPF">
+                <input class="input" type="text" name="name" placeholder="Nome completo">
+                <input class="input" type="email" name="email" placeholder="Digite seu email">
+                <input class="input" type="password" name="password" placeholder="Digite sua senha">
+                <input class="input" type="password" name="confirm-password" placeholder="Confirme sua senha">
+                <button type="submit" class="btn btn-main-outline btn-rounded">Cadastrar</button>
             </form>
-            <a href="/index.html">Fazer Login</a>
-            <a href="/singnup.html">Ainda não sou cliente</a>
+            <a href="/login.html">Fazer Login</a>
         </main>
     </div>
       <!-- JavaScript Bundle with Popper -->
