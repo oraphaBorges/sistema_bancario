@@ -13,11 +13,7 @@ body{
 h1, h2, h3{
     font-family: 'Roboto', sans-serif;
     font-weight: 900;
-}
-
-h4, h5, h6{
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
+    margin: 0;
 }
 
 p{
@@ -31,12 +27,16 @@ p{
 
 .content-default{
     padding: 20px;
-    margin: 2px;
 }
 
 .content-default > img {
     border-radius: 30px;
     padding: 10px;
+}
+
+.content-intern--default{
+    padding: 10px;
+    margin: 2px;
 }
 
 .content-flex{
@@ -58,11 +58,6 @@ p{
 .content-flex--1{
     display: flex;
     flex: 1;
-}
-
-.content-flex--2{
-    display: flex;
-    flex: 2;
 }
 
 .content-menu{
@@ -107,6 +102,32 @@ p{
     flex-direction: row;
 }
 
+.border-radius--5{
+    border-radius: 5px;
+}
+
+.span-title--white{
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    margin:0;
+}
+
+.content-icon--default{
+    height: 30px;
+}
+
+.padding-right--15{
+    padding-right: 15px;
+}
+
+.margin-top--8{
+    margin-top: 8px;
+}
+
+.margin-top--5{
+    margin-top: 5px;
+}
+
 .card-menu--item{
     display: flex;
     margin: 10px;
@@ -119,15 +140,50 @@ p{
     width: 80px;
 }
 
-.border-radius--5{
-    border-radius: 5px;
-}
-
-.h3-title--white{
-    color: white;
-    margin:0;
-}
-
-.content-icon--default{
+.image-menu--item{
     height: 25px;
+    width: 25px;
+}
+
+.text-card--default{
+    color: #9B9B9B;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.text-money{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.text-color--green{
+    color: #68DE5A;
+}
+
+.text-color--grey{
+    font-family: 'Roboto', sans-serif;
+    color: #9B9B9B;
+}
+
+.text-color--black{
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+}
+
+.text-color--blue{
+    font-family: 'Roboto', sans-serif;
+    color: #1783E7;
+}
+
+.text-size--12{
+    font-size: 12px;
+}
+
+.text-size--20{
+    font-size: 20px;
+}
+
+.text-weight--bold{
+    font-weight: bold;
 }
