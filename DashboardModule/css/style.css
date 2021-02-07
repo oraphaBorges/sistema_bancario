@@ -13,11 +13,7 @@ body{
 h1, h2, h3{
     font-family: 'Roboto', sans-serif;
     font-weight: 900;
-}
-
-h4, h5, h6{
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
+    margin: 0;
 }
 
 p{
@@ -31,20 +27,20 @@ p{
 
 .content-default{
     padding: 20px;
-    width: 100%;
+}
+
+.content-default > img {
+    border-radius: 30px;
+    padding: 10px;
+}
+
+.content-intern--default{
+    padding: 10px;
+    margin: 2px;
 }
 
 .content-flex{
     display: flex;
-}
-
-.content-menu{
-    align-items: center;
-    display: flex;
-    color: white;
-    flex-direction: column;
-    font-weight: bold;
-    height: 100vh;
 }
 
 .bg-color--purple{
@@ -64,14 +60,72 @@ p{
     flex: 1;
 }
 
-.content-flex--2{
+.content-menu{
+    align-items: center;
     display: flex;
-    flex: 2;
+    color: white;
+    flex-direction: column;
+    font-weight: bold;
+    height: 100vh;
 }
 
+.content-card{
+    background-color: white;
+    border-radius: 8px;
+}
 
-.card-content{
-    padding: 20px;
+.section{
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.content-wrap--40{
+    flex-wrap: wrap;
+    margin: 5px;
+    width: 40%;
+}
+
+.align-items--center{
+    align-items: center;
+}
+
+.justify-content--between{
+    justify-content: space-between;
+}
+
+.flex-direction--column{
+    flex-direction: column;
+}
+
+.flex-direction--row{
+    flex-direction: row;
+}
+
+.border-radius--5{
+    border-radius: 5px;
+}
+
+.span-title--white{
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    margin:0;
+}
+
+.content-icon--default{
+    height: 30px;
+}
+
+.padding-right--15{
+    padding-right: 15px;
+}
+
+.margin-top--8{
+    margin-top: 8px;
+}
+
+.margin-top--5{
+    margin-top: 5px;
 }
 
 .card-menu--item{
@@ -86,10 +140,115 @@ p{
     width: 80px;
 }
 
-.border-radius--5{
-    border-radius: 5px;
+.image-menu--item{
+    height: 25px;
+    width: 25px;
 }
 
-.h3-title--white{
-    color: white;
+.text-card--default{
+    color: #9B9B9B;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.text-money{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.text-color--green{
+    color: #68DE5A;
+}
+
+.text-color--grey{
+    font-family: 'Roboto', sans-serif;
+    color: #9B9B9B;
+}
+
+.text-color--black{
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+}
+
+.text-color--blue{
+    font-family: 'Roboto', sans-serif;
+    color: #1783E7;
+}
+
+.text-size--12{
+    font-size: 12px;
+}
+
+.text-size--20{
+    font-size: 20px;
+}
+
+.text-weight--bold{
+    font-weight: bold;
+}
+
+
+/*Smartphone*/
+
+@media screen and (max-width: 767px){
+
+    .content-default{
+        padding: 3px;
+    }
+
+    .content-wrap--40{
+        min-width: 202px;
+        width: 100%;
+    }
+    
+    .content-intern--default{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .content-transaction{
+        align-items: center;
+    }
+
+    .payment-description{
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .content-card{
+        min-width: 202px;
+    }
+
+    .content-menu{
+        height: unset;
+    }    
+
+    .content-icon--default{
+        height: 18px;
+    }
+}
+
+/*tablet*/
+@media screen and (min-width: 767px) and (max-width: 1120px){
+    .container{
+        width: 100%;
+    }
+    .content-wrap--40{
+        width: 100%;
+    }
+
+    .content-menu{
+        height: unset;
+    }
+
+    .section{
+        padding: 5px;
+    }
+
+    .content-icon--default{
+        height: 25px;
+    }
 }
