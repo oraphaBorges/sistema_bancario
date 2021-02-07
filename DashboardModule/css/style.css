@@ -53,6 +53,7 @@ p{
 
 .bg-color--gama{
     background-color: #63dc3f;
+    cursor: pointer;
 }
 
 .content-flex--1{
@@ -234,10 +235,6 @@ p{
 
     .content-card{
         min-width: 202px;
-    }
-
-    .content-menu{
-        height: unset;
     }    
 
     .content-icon--default{
@@ -254,10 +251,6 @@ p{
         width: 100%;
     }
 
-    .content-menu{
-        height: unset;
-    }
-
     .section{
         padding: 5px;
     }
@@ -266,3 +259,55 @@ p{
         height: 25px;
     }
 }
+
+@media screen and (max-width:767px){
+    .content-flex {
+        display: block;
+    }
+    nav.content-menu {
+        display: flex;
+        flex-direction: row;
+        height: auto;
+    }
+    nav.content-menu div.content-default {
+        display: inherit;
+    }
+    .dashboard {
+        height: 100vh;
+        padding: 2em;
+    }
+    .dashboard--account-list {
+        margin: 0 auto;
+    }
+    .dashboard--account-welcome {
+        display: flex;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .dashboard--last-releases {
+        margin: 10px auto;
+        width: 100%;
+    }
+  }
+
+  @media screen and (max-width:615px){
+    nav.content-menu {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+  }
+
+  @media screen and (max-width:491px){
+    nav div.content-default {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .dashboard--account-list > div {
+        min-width: 100%;
+    }
+    .dashboard {
+        padding: 1em;
+    }
+  }
