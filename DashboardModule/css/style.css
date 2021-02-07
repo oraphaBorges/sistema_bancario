@@ -53,6 +53,7 @@ p{
 
 .bg-color--gama{
     background-color: #63dc3f;
+    cursor: pointer;
 }
 
 .content-flex--1{
@@ -204,23 +205,13 @@ p{
 
 
 /*Smartphone*/
-
 @media screen and (max-width: 767px){
-
     .content-default{
         padding: 3px;
     }
 
     .content-wrap--40{
-        min-width: 202px;
         width: 100%;
-    }
-    
-    .content-intern--default{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
     }
 
     .content-transaction{
@@ -228,20 +219,98 @@ p{
     }
 
     .payment-description{
+        display: flex;
         align-items: center;
         flex-direction: column;
-    }
-
-    .content-card{
-        min-width: 202px;
-    }
-
-    .content-menu{
-        height: unset;
-    }    
+    }  
 
     .content-icon--default{
         height: 18px;
+    }
+
+    .content-card{
+        margin: 20px auto;
+    }
+
+    .content-flex {
+        display: block;
+    }
+
+    .content-intern--default{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    nav.content-menu {
+        display: flex;
+        flex-direction: row;
+        height: auto;
+    }
+
+    nav.content-menu div.content-default {
+        display: inherit;
+    }
+
+    .dashboard--account-list {
+        margin: 0 auto;
+    }
+
+    .dashboard--account-welcome {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    .dashboard--last-releases {
+        margin: 10px auto;
+    }
+
+    .dashboard{
+        height: 100%;
+    }   
+}
+
+@media screen and (max-width:615px){
+    nav.content-menu {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .content-intern--default{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .dashboard{
+        height: 100%;
+    }
+}
+
+@media screen and (max-width:491px){
+    nav div.content-default {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .dashboard {
+        padding: 1em;
+    }
+
+    .content-intern--default{
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .dashboard{
+        height: 100%;
     }
 }
 
