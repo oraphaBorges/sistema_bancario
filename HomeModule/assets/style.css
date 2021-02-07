@@ -47,10 +47,6 @@ button {
 .logo {
   padding: 2em;
   display: inline-block;
-  width: 100%;
-  background: #8c52e5;
-  position: fixed;
-  z-index: 1;
 }
 
 .content-section, .content-box {
