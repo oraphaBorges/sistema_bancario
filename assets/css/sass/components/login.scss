@@ -1,0 +1,50 @@
+
+.login{
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    justify-content: center;
+
+    text-align: center;
+
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    margin-top: 50px;
+    margin-bottom: 80px;
+
+    border-radius: 15px;
+    background-color: $white;
+
+    .login-form{
+        display: flex;
+        flex-direction: column;
+
+        input{
+            margin: 15px;
+            padding: 10px;
+            
+            outline: none !important;
+            
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 2 solid gray;
+        }
+        input:focus,input:active{
+            border-color: $main;
+        }
+        .btn{
+            margin: 20px auto;
+        }
+
+    }
+    a{
+        margin-top: 5px;
+        padding: 5px;
+        font-weight: 700;
+        text-decoration: none;
+        color: $link;
+    }
+    
+}
