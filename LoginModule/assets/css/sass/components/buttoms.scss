@@ -1,0 +1,29 @@
+.btn{
+    border: none;
+    padding: 10px 25px;
+    width: fit-content;
+    text-decoration: none;
+}
+.btn-rounded{
+    border-radius: 20px;
+}
+.btn-main{
+    color: $white;
+    transition: 500ms;
+    background-color: $main;
+}
+.btn-main:hover{
+    transition: 500ms;
+    background-color: darken($main,20%);
+}
+.btn-main-outline{
+    color: $main;
+    transition: 500ms;
+    border: 2px solid $main;
+    background-color: $white;
+}
+.btn-main-outline:hover{
+    color: $white;
+    transition: 500ms;
+    background-color: $main;
+}

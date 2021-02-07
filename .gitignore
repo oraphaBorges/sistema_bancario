@@ -5,3 +5,5 @@ src/main/resources/META-INF/persistence.xml
 target/classes/META-INF/maven/com.accenture.gama_academy.sistemaBancario/sistemaBancario/pom.properties
 .project
 src/main/resources/application.properties
+.sass-cache
+LoginModule/assets/css/style.css.map
