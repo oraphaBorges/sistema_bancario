@@ -1,34 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/hand.svg" type="image/x-icon">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Gama bank</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="assets/img/favicon.png">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">      
+  <link rel="stylesheet" href="assets/css/home.css">
+  <title>Document</title>
 </head>
 <body>
-    <nav class="content-default content-flex">
-        <div class="content-default content-align--center content-justify--center">
-            <div class="content-nav">
-                <h1>Primeiro item</h1>
+  <section class="content-section content-bg--purple content-bg--parallax content-bg--img-1">
+    <div class="content-section content-bg--home">
+      <a class="logo" href="#/">
+        <img class="img-fluid" src="assets/img/logo.png" alt="">
+      </a>
+      <div class="content-section-grid">
+        <div class="content-box">
+          <div class="d-flex justify-content-center align-items-center">
+            <div>
+              <h2 class="text-color--white fs-2 text-uppercase">
+                Gama Bank <span class="text-color--white fs-4 text-lowercase text-normal">é um projeto de nossos alunos.</span>
+              </h2>
+              <div class="d-md-flex mt-4">
+                <div class="flex-md-grow-2 me-4">
+                  <p class="text-color--green fs-2 fw-bolder">Faça seu login</p>
+                </div>
+                <div class="flex-md-grow-1">
+                  <form action="/login.html">
+                    <button id="login-account" class="text-color--purple content-bg--white mt-1 flex-grow-1" type="submit">
+                      Acessar
+                      <span class="btn-label"><i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                    </button>
+                  </form>
+                </div>
+              </div>
             </div>
-
+          </div>
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="content-box-card">
+              <div class="mb-4 mt-4 text-center">
+                  <h3>Não tem conta? Entre para <br/> <span class="text-color--purple">Gama Bank</span></h3>
+              </div>
+              <form id="register-account" action="/login.html" >
+                <div class="form-content mb-4">
+                  <input class="input cpf" type="text" name="cpf" placeholder="CPF">
+                  <span class="border"></span>
+                </div>
+                <div class="form-content mb-4">
+                  <input class="input" type="text" name="name" placeholder="Nome completo">
+                  <span class="border"></span>
+                </div>
+                <div class="form-content mb-4">
+                  <input class="input" type="email" name="email" placeholder="Digite seu email">
+                  <span class="border"></span>
+                </div>
+                <div class="form-content mb-4">
+                  <input class="input" type="password" name="password" placeholder="Digite sua senha">
+                  <span class="border"></span>
+                </div>
+                <div class="form-content mb-4">
+                  <input class="input" type="password" name="confirm-password" placeholder="Confirme sua senha">
+                  <span class="border"></span>
+                </div>
+                <div class="mt-4 mb-3">
+                    <button class="content-bg--purple text-color--white" type="submit" id="register-new-account">
+                        Continuar
+                        <span class="btn-label"><i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                    </button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-    </nav>
-    <nav id="ideia">
-        <img src="assets/logo.png" alt="">
-        <ul>
-            <li>
-                <a href="">Primeiro item</a>
-            </li>
-            <li>
-                <a href="">Primeiro item</a>
-            </li>
-            <li>
-                <a href="">Primeiro item</a>
-            </li>
-        </ul>
-    </nav>
+      </div>
+    </div>
+  </section>
+  <section id="section-2" class="content-bg--white">
+    <div class="content-section-grid">
+      <div>
+        <div class="content-bg--black py-5">
+          <div class="d-flex justify-content-left align-items-center">
+            <div>
+              <h2 class="text-color--green ps-5 pb-5">Conta digital</h2>
+              <img class="img-fluid" src="assets/img/cell-black-bg.png" alt="">
+              <div class="content-text--local mx-auto">
+                <p class="text-color--green">GamaAcademy Bank Line S.A. - CNPJ 00.000.000/0000-00
+                  Rua Fictícia, 999 - 00000-000 - São Paulo, SP
+                  Este é um projeto de avaliação | GamaAcademy | Accenture | 2021</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-bg--white py-5">
+          <div class="d-flex justify-content-left align-items-center">
+            <div>
+              <h2 class="ps-5 pb-5 text-color--purple">Cartão de Crédito</h2>
+              <img class="img-fluid" src="assets/img/cell-black-bg.png" alt="">
+              <div class="content-text--local mx-auto">
+                <p>GamaAcademy Bank Line S.A. - CNPJ 00.000.000/0000-00
+                  Rua Fictícia, 999 - 00000-000 - São Paulo, SP
+                  Este é um projeto de avaliação | GamaAcademy | Accenture | 2021</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="content-section content-bg--purple">
+    <div class="content-section-grid">
+      <div class="content-box">
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="ms-md-5">
+            <h2 class="text-color--white">Zero anuidade</h2>
+            <div>
+              <p class="text-color--white fs-5">Burocracia custa caro. Somos eficientes
+                para você não ter que pagar tarifas.</p>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+          <div>
+            <p class="text-color--green text-size-large fw-bold">0,00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="content-section content-bg--parallax content-bg--img-2">
+    <div class="content-box">
+      <div class="d-flex justify-content-center align-items-center">
+        <div>
+          <h2 class="text-color--white fs-1 fw-bold text-center">O fim da complexidade</h2>
+          <div>
+            <p class="text-color--white fs-4">Para quem sabe que tecnologia e
+              design são melhores do que agências e papelada.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="content-section content-bg--white">
+    <div class="content-section-grid">
+      <div class="content-box">
+        <div class="d-flex justify-content-center align-items-center">
+          <div>
+            <h2 class="fs-1 mb-4 text-color--purple">
+              Simplifique a sua vida. <br/>
+              Abra sua conta.
+            </h2>
+            <div class="content-text--local">
+              <p>GamaAcademy Bank Line S.A. - CNPJ 00.000.000/0000-00
+                Rua Fictícia, 999 - 00000-000 - São Paulo, SP
+                Este é um projeto de avaliação | GamaAcademy | Accenture | 2021</p>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+          <div>
+            <img class="img-fluid" src="assets/img/footer-right.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
 </body>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>  
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>   
+  <script src="https://kit.fontawesome.com/8ac0ce319f.js" crossorigin="anonymous"></script> 
+  <script src="assets/js/jquery.mask.min.js"></script>
+  <script src="assets/js/script.js"></script>
 </html>
