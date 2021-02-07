@@ -45,8 +45,12 @@ button {
 }
 
 .logo {
-  padding: 2em;
+  padding: 1em 2em;
   display: inline-block;
+  background: #8c52e5;
+  position: fixed;
+  z-index: 1;
+  border-radius: 0 0 20px 0;
 }
 
 .content-section, .content-box {
