@@ -82,12 +82,13 @@ body, html {
   margin: auto;
   padding: 20px;
   margin-top: 50px;
+  margin-bottom: 80px;
   border-radius: 15px;
   background-color: #ffffff; }
   .login .login-form {
     display: flex;
     flex-direction: column; }
-    .login .login-form input[type="text"], .login .login-form input[type="email"] {
+    .login .login-form input {
       margin: 15px;
       padding: 10px;
       outline: none !important;
@@ -95,8 +96,7 @@ body, html {
       border-left: none;
       border-right: none;
       border-bottom: 2 solid gray; }
-    .login .login-form input[type="text"]:focus, .login .login-form input[type="text"]:active,
-    .login .login-form input[type="email"]:focus, .login .login-form input[type="email"]:active {
+    .login .login-form input:focus, .login .login-form input:active {
       border-color: #6f42c1; }
     .login .login-form .btn {
       margin: 20px auto; }
