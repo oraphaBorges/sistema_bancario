@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/ transactions.css">
+    <link rel="shortcut icon" href="assets/hand.svg" type="image/x-icon">
+    <title>Dashboard - Transferência</title>
+  </head>
+  <body>
+    <div class="container content-flex">
+      <nav class="content-menu bg-color--gama">
+          <img src="./assets/hand.svg" alt="Gama hand">
+          <div class="content-default">
+            <div class="card-menu--item bg-color--purple border-radius--5">
+              <img src="./assets/menu-item.svg" alt="Menu item" class="image-menu--item">
+              <p>Depósitos</p>
+            </div>
+            <div class="card-menu--item bg-color--purple border-radius--5">
+              <img src="./assets/menu-item.svg" alt="Menu item" class="image-menu--item">
+              <p>Planos</p>
+            </div>
+            <div class="card-menu--item bg-color--purple border-radius--5">
+              <img src="./assets/menu-item.svg" alt="Menu item" class="image-menu--item">
+              <p>Pagamentos</p>
+            </div>
+            <div class="card-menu--item bg-color--purple border-radius--5">
+              <img src="./assets/menu-item.svg" alt="Menu item" class="image-menu--item">
+              <p>Transações</p>
+            </div>
+          </div>
+      </nav>
+      <div class="dashboard bg-color--purple content-flex--1">
+        <div class="content-default content-flex flex-direction--column align-items--center content-flex--1">
+          <div class="section content-default content-flex flex-direction--row align-items--center dashboard--account-welcome" >
+            <span class="content-default h3-title--white span-title--white">
+              Olá <strong>Desbugado</strong>, seja bem vindo!
+            </span>
+            <div class="content-default">
+              <img src="./assets/eye-block.svg"  class="content-icon--default bg-color--gama" alt="Eye block">
+              <a href="/">sair</a>
+            </div>
+          </div>
+          <div class="section content-default content-flex dashboard--account-list">
+            <div class="content-default content-card content-wrap--40">
+              <div class="content-intern--default content-flex align-items--center">
+                <img src="./assets/dollar.svg"  class="content-icon--default padding-right--15" alt="">
+                <span class="text-card--default">Conta</span>
+              </div>
+              <div class="content-intern--default">
+                <span class="text-card--default">Saldo disponível</span>
+                <h2 class="text-money margin-top--8">R$: 2.354,00</h2>
+              </div>
+              <div class="content-intern--default content-flex align-items--center">
+                <span class="text-card--default content-flex--1">Transações</span>
+                <h2 class="text-money text-color--green">R$: 2.354,00</h2>
+              </div>
+            </div>
+            <div class="content-default content-card content-wrap--40">
+              <div class="content-intern--default content-flex align-items--center">
+                <img src="./assets/card.svg"  class="content-icon--default padding-right--15" alt="">
+                <span class="text-card--default">Conta crédito</span>
+              </div>
+              <div class="content-intern--default">
+                <span class="text-card--default">Fatura atual</span>
+                <h2 class="text-money margin-top--8 text-color--blue">R$: 522,12</h2>
+              </div>
+              <div class="content-intern--default content-flex align-items--center">
+                <span class="text-card--default content-flex--1">Limite disponível</span>
+                <h2 class="text-money text-color--green">R$: 9.120,88</h2>
+              </div>
+            </div>
+          </div>
+          <div class="content--actions-bank">
+            <div>
+              <div class="content-intern--default content-flex align-items--center">
+                <img src="./assets/dollar.svg"  class="content-icon--default padding-right--15" alt="">
+                <span class="text-card--default">Pagamento</span>
+              </div>
+              <div class="account-transfer cards-transactions">
+                <div class="group-option">
+                  <select id="select-account">
+                    <option selected disabled>Escolha uma conta</option>
+                    <option value="conta">Conta</option>
+                    <option value="credito">Conta crédito</option>
+                  </select>
+                </div>
+                <div>
+                  <div class="group-option">
+                    <label for="">Plano de conta</label>
+                    <select name="" id="">
+                      <option value="">Crédito</option>
+                      <option value="">Débito</option>
+                    </select>
+                  </div>
+                  <div class="group-option">
+                    <label for="">Código de barra</label>
+                    <input type="text" placeholder="000.0000.000">
+                  </div>
+                  <div class="group-option">
+                    <label for="">Valor</label>
+                    <input type="text" placeholder="R$">
+                  </div>
+                </div>
+                <button>Realizar o pagamento</button>
+              </div>
+            </div>
+            <div>
+              <div class="content-intern--default content-flex align-items--center">
+                <img src="./assets/dollar.svg"  class="content-icon--default padding-right--15" alt="">
+                <span class="text-card--default">Depósito</span>
+              </div>
+              <div class="account-transfer cards-transactions">
+                <div class="group-option">
+                  <select id="select-account">
+                    <option selected disabled>Escolha uma conta</option>
+                    <option value="conta">Conta</option>
+                    <option value="credito">Conta crédito</option>
+                  </select>
+                </div>
+                <div>
+                  <div class="group-option">
+                    <label for="">Plano de conta</label>
+                    <select name="" id="">
+                      <option value="">Crédito</option>
+                      <option value="">Débito</option>
+                    </select>
+                  </div>
+                  <div class="group-option">
+                    <label for="">Valor</label>
+                    <input type="text" placeholder="R$">
+                  </div>
+                </div>
+
+                <button>Realizar o depósito</button>
+
+
+
+              </div>
+            </div>
+            <div>
+              <div class="content-intern--default content-flex align-items--center">
+                <img src="./assets/dollar.svg"  class="content-icon--default padding-right--15" alt="">
+                <span class="text-card--default">Transferência</span>
+              </div>
+              <div class="account-transfer cards-transactions">
+                <div class="group-option">
+                  <select id="select-account">
+                    <option selected disabled>Escolha uma conta</option>
+                    <option value="conta">Conta</option>
+                    <option value="credito">Conta crédito</option>
+                  </select>
+                </div>
+                <div>
+                  <div class="group-option">
+                    <label for="">Plano de conta</label>
+                    <select name="" id="">
+                      <option value="">Crédito</option>
+                      <option value="">Débito</option>
+                    </select>
+                  </div>
+                  <div class="group-option">
+                    <label for="">Conta de destino</label>
+                    <input type="text" placeholder="000.0000.000">
+                  </div>
+                  <div class="group-option">
+                    <label for="">Valor</label>
+                    <input type="text" placeholder="R$">
+                  </div>
+                </div>
+
+                <button>Realizar a Transferência</button>
+
+
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
