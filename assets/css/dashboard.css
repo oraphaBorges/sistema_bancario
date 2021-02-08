@@ -154,6 +154,15 @@ p{
     transition: 0.5s;
 }
 
+.arrow-menu--item{
+    display: flex;
+    margin: 10px;
+    font-weight: 500;
+    justify-content: center;
+    padding: 10px;
+    height: 30px;
+}
+
 .image-menu--item{
     height: 25px;
     width: 25px;
