@@ -188,9 +188,9 @@ input{
     color: #000000;
 }
 
-.text-color--blue{
+.text-color--red{
     font-family: 'Roboto', sans-serif;
-    color: #1783E7;
+    color: red;
 }
 
 .text-size--12{
@@ -210,7 +210,7 @@ input{
 /*Smartphone*/
 @media screen and (max-width: 767px){
     .content-default{
-        padding: 3px;
+        padding: 10px;
     }
 
     .content-wrap--40{
@@ -255,23 +255,6 @@ input{
     nav.content-menu div.content-default {
         display: inherit;
     }
-
-    .dashboard--account-list {
-        margin: 0 auto;
-    }
-
-    .dashboard--account-welcome {
-        display: flex;
-        margin-bottom: 20px;
-    }
-
-    .dashboard--last-releases {
-        margin: 10px auto;
-    }
-
-    .dashboard{
-        height: 100%;
-    }   
 }
 
 @media screen and (max-width:615px){
