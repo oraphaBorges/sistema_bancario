@@ -75,18 +75,6 @@ p{
     border-radius: 8px;
 }
 
-.content-card:hover{
-    transform: scale(1.05);
-    transition: 1s;
-
-}
-
-.section{
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 80%;
-}
-
 .content-wrap--40{
     flex-wrap: wrap;
     margin: 5px;
@@ -100,6 +88,11 @@ p{
 .justify-content--between{
     justify-content: space-between;
 }
+
+.justify-content--around{
+    justify-content: space-around;
+}
+
 
 .flex-direction--column{
     flex-direction: column;
@@ -129,6 +122,10 @@ p{
 
 .margin-top--8{
     margin-top: 8px;
+}
+
+.margin-top--12{
+    margin-top: 12px;
 }
 
 .margin-top--5{
