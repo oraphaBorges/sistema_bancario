@@ -21,6 +21,12 @@ p{
     margin: 0;
 }
 
+input{
+    border: none;
+    color: #9B9B9B;
+    padding: 5px;
+}
+
 .container{
     width: 100% auto;
 }
@@ -318,10 +324,6 @@ p{
     }
     .content-wrap--40{
         width: 100%;
-    }
-
-    .content-menu{
-        height: unset;
     }
 
     .section{
