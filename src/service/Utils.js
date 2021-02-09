@@ -14,8 +14,10 @@ const Utils = {
 
         return request;
     },
+    
+    redirect_to: (next) => location.replace(`#/${next}`),
 
-    sleep: (ms) => new Promise(resolve => setTimeout(resolve, ms)),
+    sleep: (ms) => new Promise(resolve => setTimeout(resolve, ms))
     
 }
 

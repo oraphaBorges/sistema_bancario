@@ -1,4 +1,4 @@
-const headersDefault = (tokenSection) => {
+export const headersDefault = (tokenSection) => {
     let headersApp = {
         headers: {
             'Content-Type': 'application/json',
@@ -9,4 +9,8 @@ const headersDefault = (tokenSection) => {
     return headersApp;
 } 
 
-export default headersDefault;
+export const headersDefaultNoAuth = {
+    headers: {
+        'Content-Type': 'application/json'
+    }
+}
