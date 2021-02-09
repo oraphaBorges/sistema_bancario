@@ -4,6 +4,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import sistemaBancario.dto.ContaSimplesDTO;
 import sistemaBancario.dto.LancamentoDTO;
@@ -19,10 +21,15 @@ public class SBootApplication {
 		SpringApplication.run(SBootApplication.class, args);
 	}
 
-	static void setB(byte b) {
-
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**").allowedOrigins("*");
+			}
+		};
 	}
-
 	@Bean
 	public CommandLineRunner run(UsuarioService us, ContaService cs) throws Exception {
 		return args -> {
