@@ -75,11 +75,11 @@ button {
 }
 
 .content-bg--img-1 {
-  background-image: url(img/happy-bg.png);
+  background-image: url(../img/happy-bg.png);
   background-size: 50%;
 }
 .content-bg--img-2 {
-  background-image: url(img/bg-paralax-green.png);
+  background-image: url(../img/bg-paralax-green.png);
   background-size: cover;
 }
 

@@ -21,9 +21,10 @@ p{
     margin: 0;
 }
 
-a{
-    text-decoration: none;
-    color: inherit;
+input{
+    border: none;
+    color: #9B9B9B;
+    padding: 5px;
 }
 
 .container{
@@ -80,18 +81,6 @@ a{
     border-radius: 8px;
 }
 
-.content-card:hover{
-    transform: scale(1.05);
-    transition: 1s;
-
-}
-
-.section{
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 80%;
-}
-
 .content-wrap--40{
     flex-wrap: wrap;
     margin: 5px;
@@ -105,6 +94,11 @@ a{
 .justify-content--between{
     justify-content: space-between;
 }
+
+.justify-content--around{
+    justify-content: space-around;
+}
+
 
 .flex-direction--column{
     flex-direction: column;
@@ -136,6 +130,10 @@ a{
     margin-top: 8px;
 }
 
+.margin-top--12{
+    margin-top: 12px;
+}
+
 .margin-top--5{
     margin-top: 5px;
 }
@@ -159,15 +157,6 @@ a{
     transition: 0.5s;
 }
 
-.arrow-menu--item{
-    display: flex;
-    margin: 10px;
-    font-weight: 500;
-    justify-content: center;
-    padding: 10px;
-    height: 30px;
-}
-
 .image-menu--item{
     height: 25px;
     width: 25px;
@@ -178,16 +167,6 @@ a{
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 400;
-}
-
-.text-card--ancor{
-    color: #1783E7;
-    cursor: pointer;
-    text-decoration: none;
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    padding: 15px;
 }
 
 .text-money{
@@ -209,9 +188,9 @@ a{
     color: #000000;
 }
 
-.text-color--blue{
+.text-color--red{
     font-family: 'Roboto', sans-serif;
-    color: #1783E7;
+    color: red;
 }
 
 .text-size--12{
@@ -231,7 +210,7 @@ a{
 /*Smartphone*/
 @media screen and (max-width: 767px){
     .content-default{
-        padding: 3px;
+        padding: 10px;
     }
 
     .content-wrap--40{
@@ -276,23 +255,6 @@ a{
     nav.content-menu div.content-default {
         display: inherit;
     }
-
-    .dashboard--account-list {
-        margin: 0 auto;
-    }
-
-    .dashboard--account-welcome {
-        display: flex;
-        margin-bottom: 20px;
-    }
-
-    .dashboard--last-releases {
-        margin: 10px auto;
-    }
-
-    .dashboard{
-        height: 100%;
-    }   
 }
 
 @media screen and (max-width:615px){
@@ -345,10 +307,6 @@ a{
     }
     .content-wrap--40{
         width: 100%;
-    }
-
-    .content-menu{
-        height: unset;
     }
 
     .section{
