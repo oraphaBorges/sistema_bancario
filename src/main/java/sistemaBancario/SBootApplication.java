@@ -29,7 +29,13 @@ public class SBootApplication {
 
 			UsuarioDTO u, u2;
 			try {
-				u = new UsuarioDTO("22222222222", "DTO.black", "DTO.nome", "123456");
+				u = new UsuarioDTO("30987646001", "jisoo", "Kim Ji-soo", "pretorosa");
+				us.cadastrar(u);
+				u = new UsuarioDTO("30987646001", "rose", "Park (Rosé) Chae Young ", "pretorosa");
+				us.cadastrar(u);
+				u = new UsuarioDTO("30987646001", "lisa", "Lalisa Manoban", "pretorosa");
+				us.cadastrar(u);
+				u = new UsuarioDTO("30987646001", "Jennie", "Kim Jennie", "pretorosa");
 				us.cadastrar(u);
 				u = new UsuarioDTO("33333333333", "admin", "admin", "1234567");
 				us.cadastrar(u);
@@ -37,7 +43,7 @@ public class SBootApplication {
 
 			}
 
-			u = us.buscar("DTO.black");
+			u = us.buscar("jisoo");
 			System.out.println(u.getLogin());
 			u2 = us.buscar("admin");
 			System.out.println(u2.getLogin());
@@ -47,9 +53,9 @@ public class SBootApplication {
 
 			System.out.println(origem.login + " " + destino.login);
 
-			cs.depositar(new LancamentoDTO(origem, 100, origem, "PAGAMENTO", "Gardar DIMDIM"));
-			cs.pagar(new LancamentoDTO(origem, 30, origem, "PAGAMENTO", "Pagar Boleto"));
-			cs.transferir(new LancamentoDTO(origem, 40, destino, "TRANSFERENCIA", "Pagar Agiota"));
+//			cs.depositar(new LancamentoDTO(origem, 100, origem, "PAGAMENTO", "Gardar DIMDIM"));
+//			cs.pagar(new LancamentoDTO(origem, 30, origem, "PAGAMENTO", "Pagar Boleto"));
+//			cs.transferir(new LancamentoDTO(origem, 40, destino, "TRANSFERENCIA", "Pagar Agiota"));
 
 		};
 	}

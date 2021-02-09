@@ -37,6 +37,13 @@ public class Conta implements Serializable {
 		this.titular = titular;
 	}
 	
+	public Conta(String nome, Sigla sigla,Usuario titular,Double saldo ) {
+		this.nome = nome;
+		this.sigla = sigla;
+		this.titular = titular;
+		this.saldo = saldo;
+	}
+	
 	public String getNome() {
 		return nome;
 	}

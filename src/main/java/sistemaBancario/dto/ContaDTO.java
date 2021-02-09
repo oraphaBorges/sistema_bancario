@@ -11,7 +11,7 @@ public class ContaDTO {
 	private Double saldo;
 	@ApiModelProperty(example = "CORRENTE")
 	private Sigla sigla;
-	@ApiModelProperty(example = "DTO.black")
+	@ApiModelProperty(example = "jisoo")
 	private String login;
 
     public ContaDTO(Conta conta) {

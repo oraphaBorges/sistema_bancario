@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 
 import sistemaBancario.dto.DashboardDTO;
 import sistemaBancario.models.Conta;
-import sistemaBancario.services.ContaService;
-import sistemaBancario.services.LancamentoService;
 
 @Service
 public class DashboardService {

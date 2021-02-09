@@ -10,13 +10,13 @@ public class LancamentoDTO {
 
 	@ApiModelProperty(example = "2020-12-12")
 	private String date;
-
-	@ApiModelProperty(example = "DTO.black")
+	
+	@ApiModelProperty(example = "jisoo")
 	@NotBlank(message = "Obrigatório informar conta de origem")
 	@Size(max = 50)
 	private ContaSimplesDTO contaOrigem;
 
-	@ApiModelProperty(example = "DTO.white")
+	@ApiModelProperty(example = "liza")
 	private ContaSimplesDTO contaDestino;
 
 	@ApiModelProperty(example = "DEPOSITO")
@@ -29,12 +29,12 @@ public class LancamentoDTO {
 	@Size(max = 30)
 	private double valor;
 
-	@ApiModelProperty(example = "Compra de brinquedos")
+	@ApiModelProperty(example = "Compra de Ice Cream")
 	private String descricao;
 			
 
 	public LancamentoDTO(ContaSimplesDTO origem, double valor, ContaSimplesDTO destino,String planoConta, String descricao) {
-		this.setDate(LocalDate.now().toString());
+		this.date = LocalDate.now().toString();
 		this.setContaOrigem(origem); 
 		this.setContaDestino(destino);
 		this.valor = valor;
@@ -88,9 +88,7 @@ public class LancamentoDTO {
 		return date;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setDate(String string) {
+		this.date = string;
 	}
-
-
 }
