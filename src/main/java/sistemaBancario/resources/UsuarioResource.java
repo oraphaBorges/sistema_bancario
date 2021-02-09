@@ -27,7 +27,7 @@ public class UsuarioResource {
 	@Autowired
 	private UsuarioService service; 
 	
-	@PostMapping("/criar")
+	@PostMapping("")
 	public ResponseEntity<String> criarUsuario(@Valid @RequestBody UsuarioDTO usuarioDTO){
 		try {
 			service.cadastrar(usuarioDTO);

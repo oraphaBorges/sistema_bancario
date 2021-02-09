@@ -84,7 +84,6 @@ public class PlanoContaService {
 		PlanoContaDTO planoContaDTO;
 		for(PlanoConta pl:planosConta) {
 			planoContaDTO = new PlanoContaDTO();
-			planoContaDTO.id =pl.getId();
 			planoContaDTO.finalidade = pl.getFinalidade(); 
 			planoContaDTO.login = login;
 			planosContaDTO.add(planoContaDTO);
