@@ -13,11 +13,10 @@ const UserService = {
 
     do_login: async(data) => {
         await api.post('/login', data, headersDefaultNoAuth).then(response =>{
-            let { token, usuario, conta, contaCredito } = response.data
+            let { token, ...userData } = response.data;
             localStorage.setItem('token', JSON.stringify(token));
-            localStorage.setItem('usuario', JSON.stringify(usuario));
-            localStorage.setItem('conta', JSON.stringify(conta));
-            localStorage.setItem('contaCredito', JSON.stringify(contaCredito));
+            localStorage.setItem('userData', JSON.stringify(userData));
+
             Utils.redirect_to('dashboard');
 
         }).catch(response => {
@@ -25,12 +24,10 @@ const UserService = {
         });
     },
 
-    do_logout: async(data) => {
-        await api.post('/VERIFICAR', data, headersDefault(data)).then(response =>{
+    do_logout: () => {
             localStorage.clear();
-            Utils.redirect_to('/');
 
-        }).catch(response => console.error(response));
+            Utils.redirect_to('/');
     }
     
 }

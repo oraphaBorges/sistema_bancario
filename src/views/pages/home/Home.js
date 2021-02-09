@@ -44,7 +44,7 @@ let Home = {
 
         }
 
-        const response = await UserService.register(data);
+        await UserService.register(data);
       });
     }
 }
