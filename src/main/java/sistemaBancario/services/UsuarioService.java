@@ -32,7 +32,7 @@ public class UsuarioService {
 		usuario.setSenha(passCrip);
 		
 		usuario.addConta(new Conta("POUPANÇA", Sigla.POUPANCA, usuario));
-		usuario.addConta(new Conta("CREDITO", Sigla.CREDITO, usuario));
+		usuario.addConta(new Conta("CREDITO", Sigla.CREDITO, usuario, 1500D));
 		usuario.addConta(new Conta("CORRENTE", Sigla.CORRENTE, usuario));
 		
 		usuario.addPlanoConta(new PlanoConta("PAGAMENTO"));

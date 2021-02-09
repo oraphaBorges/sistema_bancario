@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import sistemaBancario.services.DashboardService;
 
 @ApiResponses(value = {
@@ -25,7 +26,7 @@ public class DashboardResource {
 	private DashboardService dashboardService;
 	
     @GetMapping
-    public ResponseEntity<?>  getMovimentacao(@RequestParam String inicio, String fim, String login){
+    public ResponseEntity<?>  getMovimentacao(@RequestParam String login, String inicio, String fim){
 		try {
 			return new ResponseEntity<>(dashboardService.build(login, LocalDate.parse(inicio),LocalDate.parse(fim)),HttpStatus.OK);
 		} catch (IllegalStateException e) {

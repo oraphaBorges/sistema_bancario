@@ -2,11 +2,9 @@ package sistemaBancario.dto;
 
 import io.swagger.annotations.ApiModelProperty;
 
-public class PlanoContaDTO {
-	
-	@ApiModelProperty(example = "DEPOSITO")
-	public String finalidade;
-
+public class NovaSenhaDTO {
+	@ApiModelProperty(example = "jisoo.pretorosa@yg.kr")
+	public String email;
 	@ApiModelProperty(example = "jisoo")
 	public String login;
 }

@@ -6,13 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import sistemaBancario.dto.LoginDTO;
+import sistemaBancario.dto.NovaSenhaDTO;
 import sistemaBancario.services.LoginService;
 
 import javax.validation.Valid;
@@ -37,8 +36,8 @@ public class LoginResource {
 		}
 	}
 	
-	@PutMapping("/altera-senha/{senhaTemporaria}")
-	public ResponseEntity<?> alteraSenha(@RequestParam String senhaTemporaria) {
+	@PostMapping("/altera-senha")
+	public ResponseEntity<?> alteraSenha(@Valid @RequestBody LoginDTO usuario) {
 		try {
 			return 	new ResponseEntity<>("Ainda não estamos alterando a senha", HttpStatus.ACCEPTED);
 		} catch (RuntimeException e) {
@@ -47,7 +46,7 @@ public class LoginResource {
 	}
 	
 	@PostMapping("/nova-senha")
-	public ResponseEntity<?> novaSenha(@RequestParam String novasenha) {
+	public ResponseEntity<?> novaSenha(@RequestBody NovaSenhaDTO novaSenha) {
 		try {
 			return 	new ResponseEntity<>("Ainda não estamos alterando a senha", HttpStatus.ACCEPTED);
 		} catch (RuntimeException e) {

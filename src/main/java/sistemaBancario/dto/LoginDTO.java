@@ -7,12 +7,12 @@ import javax.validation.constraints.Size;
 
 public class LoginDTO {
 
-	@ApiModelProperty(example = "DTO.black")
+	@ApiModelProperty(example = "jisoo")
 	@NotBlank(message = "Obrigatório informar usuário")
 	@Size(max = 50)
 	public String usuario;
 
-	@ApiModelProperty(example = "senha")
+	@ApiModelProperty(example = "pretorosa")
 	@NotBlank(message = "Obrigatório informar senha")
 	@Size(max = 50)
 	public String senha;

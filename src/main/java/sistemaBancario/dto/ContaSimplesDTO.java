@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 import sistemaBancario.enums.Sigla;
 
 public class ContaSimplesDTO {
-	@ApiModelProperty(example = "DTO.black")
+	@ApiModelProperty(example = "jisoo")
 	public String login;
 	@ApiModelProperty(example = "POUPANCA")
 	public Sigla sigla;

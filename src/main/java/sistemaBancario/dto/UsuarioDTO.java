@@ -14,17 +14,17 @@ public class UsuarioDTO {
 	@Size(max = 11)
 	public String cpf;
 
-	@ApiModelProperty(example = "DTO.red")
+	@ApiModelProperty(example = "jisoo")
 	@NotBlank(message = "Login obrigatório")
 	@Size(max = 50)
 	public String login;
 
-	@ApiModelProperty(example = "Emerson Vitorio")
+	@ApiModelProperty(example = "Kim Ji-soo")
 	@NotBlank(message = "Nome obrigatório")
 	@Size(max = 50)
 	public String nome;
 
-	@ApiModelProperty(example = "senha")
+	@ApiModelProperty(example = "pretorosa")
 	@NotBlank(message = "Senha obrigatória")
 	@Size(max = 20)
 	public String senha;
