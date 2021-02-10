@@ -8,9 +8,9 @@ import { error404, home, login, forgotPassword, changePassword, transaction, das
 let routes = {
     '/': home,
     '/login': login,
-    '/nova-senha': forgotPassword,
-    '/altera-senha': changePassword,
-    '/lancamentos': transaction,
+    '/new-password': forgotPassword,
+    '/change-password': changePassword,
+    '/transactions': transaction,
     '/dashboard': dashboard
 }
 
