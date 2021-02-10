@@ -1,5 +1,5 @@
 {
-  "name": "saturdayjs",
+  "name": "desbugados",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "build": "webpack --config webpack.prod.js"
   },
   "keywords": [],
-  "author": "Emerson Vitorio",
+  "author": "Desbugados",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
