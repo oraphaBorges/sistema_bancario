@@ -1,0 +1,34 @@
+.card {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    margin-top: 50px;
+    margin-bottom: 80px;
+    border-radius: 15px;
+    background-color: $invert-color; }
+    .card .card-form {
+      display: flex;
+      flex-direction: column; }
+      .card .card-form input {
+        margin: 15px;
+        padding: 10px;
+        outline: none !important;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 2 solid gray; }
+      .card .card-form input:focus, .card .card-form input:active {
+        border-color: $main; }
+      .card .card-form .btn {
+        margin: 20px auto; }
+    .card a {
+      margin-top: 5px;
+      padding: 5px;
+      font-weight: 700;
+      text-decoration: none;
+      color: $link; }
