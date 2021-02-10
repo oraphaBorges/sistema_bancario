@@ -35,6 +35,19 @@ const UserService = {
         Utils.redirect_to('/');
     },
 
+    isUserLogged: () => {
+        let response = true;
+        
+        const token = JSON.parse(localStorage.getItem('token'));
+
+        if (!token){
+            Utils.redirect_to('login');
+            response = false;
+        }
+
+        return response;
+    },
+
     setDataInLocalStorage: (data) => {
         let { token, usuario: { login }} = data;
         
