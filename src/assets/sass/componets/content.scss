@@ -1,0 +1,39 @@
+
+.content-default{
+    padding: 20px;
+}
+
+.content-justify{
+    justify-content: center;
+}
+
+.content-justify--between{
+    justify-content: space-between;
+}
+
+.content-align--center{
+    align-items: center;
+}
+
+.content-flex{
+    display: flex;
+}
+
+.flex-wrap{
+    flex: 1;
+    justify-content: center;
+    width: 50%;
+}
+
+.container-paralax{
+    display: flex;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.content-paralax--data{
+    display: flex;
+}

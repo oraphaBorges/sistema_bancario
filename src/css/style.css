@@ -1,82 +1,168 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+body, html {
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  background-color: #6f42c1;
+  font-family: 'Roboto', sans-serif; }
 
-html{
-    scroll-behavior: smooth;
-}
+h1, h2, h3 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900; }
 
-body{
-    margin: 0;
-    outline: 0;
-    padding: 0;
-}
+#root {
+  height: 100vh; }
 
-#root{
-    height: 100vh;
-}
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto; }
 
-h1, h2, h3{
-    font-family: 'Roboto', sans-serif;
-    font-weight: 900;
-}
+@media (min-width: 768px) {
+  .container {
+    width: 750px; } }
+@media (min-width: 992px) {
+  .container {
+    width: 970px; } }
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px; } }
+.container-width--full {
+  width: 100%;
+  margin: 0 auto; }
 
-.container-width--full{
-    width: 100%;
-    margin: 0 auto;
-}
+.container-height--full {
+  height: 100%;
+  margin: 0 auto; }
 
-.container-height--full{
-    height: 100%;
-    margin: 0 auto;
-}
+.bg-color--purple {
+  background-color: #6f42c1; }
 
-.bg-color--purple{
-    background-color: #8C52E5;
-}
+.bg-color--grey {
+  background-color: #EAEAEA; }
 
-.bg-color--grey{
-    background-color: #EAEAEA;
-}
+.bg-color--green {
+  background-color: #cfffcf; }
 
-.bg-color--green{
-    background-color: rgb(207, 255, 207);
+.m-auto {
+  margin: auto; }
 
-}
+.text-center {
+  text-align: center; }
 
-.content-default{
-    padding: 20px;
-}
+.text-left {
+  text-align: left; }
 
-.content-justify{
-    justify-content: center;
-}
+.text-right {
+  text-align: right; }
 
-.content-justify--between{
-    justify-content: space-between;
-}
+.text-justify {
+  text-align: justify; }
 
-.content-align--center{
-    align-items: center;
-}
+.btn {
+  cursor: pointer;
+  border: none;
+  padding: 10px 25px;
+  width: fit-content;
+  text-decoration: none; }
 
-.content-flex{
-    display: flex;
-}
+.btn-rounded {
+  border-radius: 20px; }
 
-.flex-wrap{
-    flex: 1;
-    justify-content: center;
-    width: 50%;
-}
+.btn-main {
+  color: #fff;
+  transition: 500ms;
+  background-color: #6f42c1; }
+  .btn-main:hover {
+    transition: 500ms;
+    background-color: #432776; }
 
-.container-paralax{
-    display: flex;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
-}
+.btn-main-outline {
+  color: #6f42c1;
+  transition: 500ms;
+  border: 2px solid #6f42c1;
+  background-color: #fff; }
+  .btn-main-outline:hover {
+    color: #fff;
+    transition: 500ms;
+    background-color: #6f42c1; }
 
-.content-paralax--data{
-    display: flex;
-}
+.card {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 300px;
+  margin: auto;
+  padding: 20px;
+  margin-top: 50px;
+  margin-bottom: 80px;
+  border-radius: 15px;
+  background-color: #fff; }
+
+.card .card-form {
+  display: flex;
+  flex-direction: column; }
+
+.card .card-form input {
+  margin: 15px;
+  padding: 10px;
+  outline: none !important;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2 solid gray; }
+
+.card .card-form input:focus, .card .card-form input:active {
+  border-color: #6f42c1; }
+
+.card .card-form .btn {
+  margin: 20px auto; }
+
+.card a {
+  margin-top: 5px;
+  padding: 5px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #1085fa; }
+
+.nav {
+  padding: 15px; }
+  .nav .nav-logo {
+    width: 200px; }
+
+.content-default {
+  padding: 20px; }
+
+.content-justify {
+  justify-content: center; }
+
+.content-justify--between {
+  justify-content: space-between; }
+
+.content-align--center {
+  align-items: center; }
+
+.content-flex {
+  display: flex; }
+
+.flex-wrap {
+  flex: 1;
+  justify-content: center;
+  width: 50%; }
+
+.container-paralax {
+  display: flex;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh; }
+
+.content-paralax--data {
+  display: flex; }
+
+/*# sourceMappingURL=style.css.map */
