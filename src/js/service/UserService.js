@@ -32,9 +32,9 @@ export const UserService = {
 
     }).catch(error => console.error(error)),
 
-    do_login: async ( {usuario, login} ) => await fetch(`${BASE_URL}login`, {
+    do_login: async ({ usuario, senha }) => await fetch(`${BASE_URL}login`, {
         method: METHODS.POST,
-        body: JSON.stringify({ usuario, login }),
+        body: JSON.stringify({ usuario, senha }),
         headers: {
             'Accept': 'application/json',
             'Content-Type': CONTENT_TYPE
@@ -50,8 +50,11 @@ export const UserService = {
             location.replace('dashboard.html');
         }
 
-        if(response.status === 400)
-            return 'Usuário ou senha inválida';
+        if(response.status === 400){
+            alert('Usuário ou senha inválida');
+
+            return location.reload();
+        }
 
         return 'Ocorreu um erro. Tente novamente mais tarde';
 

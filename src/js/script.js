@@ -1,12 +1,12 @@
-import { UserService } from './service/UserService.js'
-
-$(document).ready(function(){
-  $('.cpf').mask('000.000.000-00', {reverse: true});
-});
+import { UserService } from './service/UserService.js';
 
 const register_form = document.getElementById('register-account');
 
 if(register_form){
+  $(document).ready(function(){
+    $('.cpf').mask('000.000.000-00', {reverse: true});
+  });
+  
   register_form.addEventListener('submit', e => {
     e.preventDefault();
   
@@ -42,10 +42,41 @@ if(register_form){
 
 }
 
+const login_form = document.getElementById('login-form');
 
-let data_login = {
-  usuario: 'emersombra',
-  senha: '123123'
-};
+if(login_form){
+  login_form.addEventListener('submit', e => {
+    e.preventDefault();
+  
+    const button = document.getElementById('button_submit');
+    button.innerHTML = 'Carregando...';
+    button.disabled = true;
+  
+    let data = { usuario: '', senha: '' };
+  
+    for(let i = 0; i < login_form.elements.length; i++) {
+      const element = login_form.elements[i];
+  
+      if(!element.value && element.id !== 'button_submit'){
+        alert(`Por gentileza, preencha o seguinte campo: ${element.getAttribute("description")}`);
+        button.innerHTML = 'Entrar';
+        button.disabled = false;
+  
+        return;
+      }
+  
+      if(element.id !== 'button_submit')
+        data[element.id] = element.value;
+  
+    }
 
-// UserService.do_login(data_login);
+    setTimeout(async () => {
+      await UserService.do_login(data);
+
+      button.innerHTML = 'Entrar';
+      button.disabled = false;
+
+    }, 1000);
+  })
+
+}
