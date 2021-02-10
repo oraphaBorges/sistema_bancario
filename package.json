@@ -1,0 +1,27 @@
+{
+  "name": "saturdayjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "keywords": [],
+  "author": "Emerson Vitorio",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "webpack": "^5.21.1",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/polyfill": "^7.12.1",
+    "babel-loader": "^8.2.2",
+    "webpack-cli": "^4.5.0"
+  }
+}
