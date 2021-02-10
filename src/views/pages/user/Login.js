@@ -1,6 +1,4 @@
-import { footer as Footer } from '../../components/index';
-
-import logo from '../../../img/gama-academy-logo-horizontal-verde-branco.svg';
+import { nav as Nav } from '../../components/index';
 
 import UserService from '../../../service/UserService';
 
@@ -9,8 +7,8 @@ let Login = {
 
     render: async () => {
         let view = `
+            ${await Nav}
             ${html}
-            ${await Footer}
         `;
 
         return view
@@ -46,20 +44,16 @@ let Login = {
 }
 
 let html = `
-<div class="">
-  <div class="content-default">
-    <img src="${logo}">
-  </div>
-  <div class="content-flex content-default content-justify">
-      <div class="content-default content-flex">
-        <form id="login_form">
-          <input type="text" id="usuario" placeholder="Login de acesso" description="login">
-          <input type="password" id="senha" placeholder="Digite sua senha" description="senha">
-          <button id="button_submit" type="submit">Continuar</button>
-        </form>
-      </div>  
-  </div>
-</div>
+<main class="card">
+<h2>Faça o seu Login</h2>
+<form id="login_form" class="card-form">
+    <input type="text" id="login" placeholder="Digite seu usuário">
+    <input type="password" id="password" placeholder="Digite sua senha">
+    <button id="button_submit" type="submit" class="btn btn-main-outline btn-rounded">Entrar</button>
+</form>
+<a href="#/forgotpass">Esqueci minha senha</a>
+<a href="#/signup.html">Ainda não sou cliente</a>
+</main>
 `
 
 export default Login;
