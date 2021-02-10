@@ -17,13 +17,6 @@ const DashboardService = {
             .catch(response => console.error(response));
     },
 
-    isUserLogged: () => {
-        const token = JSON.parse(localStorage.getItem('token'));
-        if (!token){
-            Utils.redirect_to('login');
-        }
-    },
-
     setDataInLocalStorage: (data) => {
         let { contaBanco, contaCredito } = data;
 

@@ -1,7 +1,10 @@
 /** Imports **/
 import Utils from '../src/service/Utils';
 
-/**Pages */
+/** User service**/
+import UserService from './service/UserService';
+
+/** Pages **/
 import { error404, home, login, forgotPassword, changePassword, transaction, dashboard } from './views/pages/index';
 
 /** Routes **/
@@ -21,6 +24,9 @@ const router = async () => {
 
     let parseURL = (request.resource ? '/' + request.resource : '/') + (request.id ? '/:id' + request.id : '') + (request.verb ? '/' + request.verb : '');
     let page = routes[parseURL] ? routes[parseURL] : error404;
+
+    if(page.is_private === true && !UserService.isUserLogged())
+        return;
 
     root.innerHTML = await page.render();
     await page.after_render();

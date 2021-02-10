@@ -1,6 +1,8 @@
 import { footer as Footer } from '../../components/index';
 
 let Transaction = {
+    is_private: true,
+    
     render: async () => {
         let view = `
             <h1>Here is Transaction page :)</h1>

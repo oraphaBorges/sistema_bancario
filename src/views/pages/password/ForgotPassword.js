@@ -1,6 +1,8 @@
 import { footer as Footer } from '../../components/index';
 
 let ForgotPassword = {
+    is_private: false,
+
     render: async () => {
         let view = `
             <h1>Here is ForgotPassword page :)</h1>

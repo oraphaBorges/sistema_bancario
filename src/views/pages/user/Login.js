@@ -5,6 +5,8 @@ import logo from '../../../img/gama-academy-logo-horizontal-verde-branco.svg';
 import UserService from '../../../service/UserService';
 
 let Login = {
+    is_private: false,
+
     render: async () => {
         let view = `
             ${html}

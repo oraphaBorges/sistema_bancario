@@ -2,10 +2,10 @@ import { footer as Footer } from '../../components/index';
 import DashboardService from '../../../service/DashboardService';
 
 
-let Dashboard = {
+const Dashboard = {
+    is_private: true,
+    
     render: async () => {
-        DashboardService.isUserLogged();
-
         let view = `
             ${html}
             ${await Footer}
