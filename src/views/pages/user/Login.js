@@ -15,28 +15,31 @@ let Login = {
     },
 
     after_render: async () => {
-        const register_form = document.getElementById('login_form');
+      Login.bindEvents();
+    },
 
-        register_form.addEventListener('submit', async (e) => {
-            e.preventDefault();
+    bindEvents: async () => {
+      const register_form = document.getElementById('login_form');
+      register_form.addEventListener('submit', async (e) => {
+          e.preventDefault();
 
-            let data = { usuario: '', senha: '' };
+          let data = { usuario: '', senha: '' };
 
-            for(let i = 0; i < register_form.elements.length; i++){
-                const element = register_form.elements[i];
-                
-                if(!element.value && element.id !== 'button_submit'){
-                    alert(`Por gentileza, preencha o seguinte campo: ${element.getAttribute("description")}`);
+          for(let i = 0; i < register_form.elements.length; i++){
+              const element = register_form.elements[i];
+              
+              if(!element.value && element.id !== 'button_submit'){
+                  alert(`Por gentileza, preencha o seguinte campo: ${element.getAttribute("description")}`);
 
-                    return;
-                }
+                  return;
+              }
 
-                if(element.id !== 'button_submit')
-                    data[element.id] = element.value;
-            }
+              if(element.id !== 'button_submit')
+                  data[element.id] = element.value;
+          }
 
-            UserService.do_login(data);
-        });
+          UserService.doLogin(data);
+      });
     }
 }
 

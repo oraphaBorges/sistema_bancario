@@ -1,35 +1,46 @@
 import { api } from './api';
-import { headersDefaultNoAuth, headersDefault } from './headersDefault';
+import { HeadersDefaultNoAuth } from './HeadersDefault';
 
 import Utils from '../service/Utils';
 
 const UserService = {
     register: async (data) => {
-        await api.post('/usuarios', data, headersDefaultNoAuth).then(response =>{
+        await api.post('/usuarios', data, HeadersDefaultNoAuth).then(response =>{
+            UserService.setDataInLocalStorage(response.data);
             Utils.redirect_to('dashboard');
 
-        }).catch(response => console.error(response));
+        }).catch(error => console.error(error));
     },
 
-    do_login: async(data) => {
-        await api.post('/login', data, headersDefaultNoAuth).then(response =>{
-            let { token, ...userData } = response.data;
-            localStorage.setItem('token', JSON.stringify(token));
-            localStorage.setItem('userData', JSON.stringify(userData));
-
+    doLogin: async(data) => {
+        await api.post('/login', data, HeadersDefaultNoAuth).then(response =>{
+            UserService.setDataInLocalStorage(response.data);
             Utils.redirect_to('dashboard');
+            console.log('teste')
 
-        }).catch(response => {
-            console.error(response);
+        })
+        .catch(({ response }) => {
+            let { codigo, status, error } = response.data;
+
+            if(codigo === "999" && status === 409){
+                alert(error);
+                location.reload();
+            }
         });
     },
 
-    do_logout: () => {
-            localStorage.clear();
+    doLogout: () => {
+        localStorage.clear();
 
-            Utils.redirect_to('/');
+        Utils.redirect_to('/');
+    },
+
+    setDataInLocalStorage: (data) => {
+        let { token, usuario: { login }} = data;
+        
+        localStorage.setItem('token', JSON.stringify(token));
+        localStorage.setItem('login', JSON.stringify(login));
     }
-    
 }
 
 export default UserService;

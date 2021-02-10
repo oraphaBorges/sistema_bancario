@@ -2,12 +2,11 @@
 import Utils from '../src/service/Utils';
 
 /**Pages */
-import { error404, home, register, login, forgotPassword, changePassword, transaction, dashboard } from './views/pages/index';
+import { error404, home, login, forgotPassword, changePassword, transaction, dashboard } from './views/pages/index';
 
 /** Routes **/
 let routes = {
     '/': home,
-    '/usuarios': register,
     '/login': login,
     '/nova-senha': forgotPassword,
     '/altera-senha': changePassword,

@@ -1,13 +1,9 @@
-# Saturday JS :)
-Instalar webpack
+# Gama Bank :)
 
-Criando ambientes
-❯ touch webpack.common.js     
-❯ touch webpack.dev.js
-❯ touch webpack.prod.js
+Webpack
 
-Install:
+Axios
 
-@babel/polyfill --save-dev
-babel-loader
+Babel
 
+Sass

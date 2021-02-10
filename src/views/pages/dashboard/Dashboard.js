@@ -1,9 +1,13 @@
 import { footer as Footer } from '../../components/index';
+import DashboardService from '../../../service/DashboardService';
+
 
 let Dashboard = {
     render: async () => {
+        DashboardService.isUserLogged();
+
         let view = `
-            <h1>Here is Dashboard page :)</h1>
+            ${html}
             ${await Footer}
         `;
 
@@ -11,8 +15,20 @@ let Dashboard = {
     },
 
     after_render: async () => {
-
+        DashboardService.getAccountData();
     }
 }
+
+let html = 
+`
+    <h1>Here is Dashboard page :)</h1>
+    <h2>only view propose<h2>
+
+    ${JSON.parse(localStorage.getItem('contaBanco'))}
+    ${JSON.parse(localStorage.getItem('contaCredito'))}
+    ${localStorage.getItem('contaBanco')}
+    ${localStorage.getItem('contaCredito')}
+
+`
 
 export default Dashboard;

@@ -9,7 +9,6 @@ import Home from './home/Home';
 import Dashboard from './dashboard/Dashboard';
 
 //Users actions
-import Register from './user/Register';
 import Login from './user/Login';
 import Transaction from './user/Transaction';
 
@@ -20,7 +19,6 @@ import ChangePassword from './password/ChangePassword';
 //exports
 export const error404 = Error404; 
 export const home = Home; 
-export const register = Register; 
 export const login = Login; 
 export const forgotPassword = ForgotPassword; 
 export const changePassword = ChangePassword; 
