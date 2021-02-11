@@ -118,3 +118,5 @@ dist
 
 .sass-cache
 src/css/style.css.map
+src/css/style.css
+src/assets/css/*
