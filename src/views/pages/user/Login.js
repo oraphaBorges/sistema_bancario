@@ -43,6 +43,7 @@ let Login = {
     }
 }
 
+
 let html = `
 <main class="card">
 <h2>Faça o seu Login</h2>
@@ -52,7 +53,7 @@ let html = `
     <button id="button_submit" type="submit" class="btn btn-main-outline btn-rounded">Entrar</button>
 </form>
 <a href="#/forgotpass">Esqueci minha senha</a>
-<a href="#/signup.html">Ainda não sou cliente</a>
+<a href="#/">Ainda não sou cliente</a>
 </main>
 `
 
