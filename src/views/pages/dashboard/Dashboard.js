@@ -1,11 +1,9 @@
 import { footer as Footer, dashboardMenu as DashboardMenu } from '../../components/index';
-import DashboardService from '../../../service/DashboardService';
-
 
 const Dashboard = {
     is_private: true,
     
-    render: async (content) => {
+    render: async () => {
         let view = `
             <div class="content-flex">
                 ${ DashboardMenu }
@@ -31,7 +29,7 @@ const Dashboard = {
     },
 
     bindEvents: () => {
-        const menu_options = document.querySelectorAll('a');
+        const menu_options = document.querySelectorAll('a.menu-item');
         menu_options.forEach(menuItem => {
             menuItem.addEventListener('click', () => Dashboard.insertDashboardContent(menuItem.id))
         });
