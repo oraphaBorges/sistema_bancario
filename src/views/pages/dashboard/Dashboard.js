@@ -1,35 +1,48 @@
 import { footer as Footer, dashboardMenu as DashboardMenu } from '../../components/index';
 import DashboardService from '../../../service/DashboardService';
-import UserService  from '../../../service/UserService';
 
 
 const Dashboard = {
     is_private: true,
     
-    render: async () => {
+    render: async (content) => {
         let view = `
-            ${html}
-            ${await Footer}
+            <div class="content-flex">
+                ${ DashboardMenu }
+                ${ html }
+            </div>
         `;
 
         return view
     },
 
     after_render: async () => {
-        DashboardService.getAccountData();
+        Dashboard.bindEvents();
+        Dashboard.insertDashboardContent('home');
+        // DashboardService.getAccountData();
+    },
+
+    insertDashboardContent: (idContent) => {
+        //buscar conteúdo de acordo com o id passado para essa função.
+        //inserir funcionalidade que muda o conteúdo sem mexer na barra lateral
+        const dashboard_content = document.getElementById('dashboard_content');
+
+        dashboard_content.innerHTML = `<h2>Novo conteúdo</h2> + ${idContent}`;
+    },
+
+    bindEvents: () => {
+        const menu_options = document.querySelectorAll('a');
+        menu_options.forEach(menuItem => {
+            menuItem.addEventListener('click', () => Dashboard.insertDashboardContent(menuItem.id))
+        });
     }
 }
 
 let html = 
 `
-    <h1>Here is Dashboard page :)</h1>
-    <h2>only view propose<h2>
-
-    ${JSON.parse(localStorage.getItem('contaBanco'))}
-    ${JSON.parse(localStorage.getItem('contaCredito'))}
-    ${localStorage.getItem('contaBanco')}
-    ${localStorage.getItem('contaCredito')}
-
+<div id="dashboard_content">
+    <h1>hehehe</h1>
+</div>
 `
 
 export default Dashboard;

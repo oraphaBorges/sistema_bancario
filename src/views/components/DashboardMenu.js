@@ -1,35 +1,44 @@
+import gamaHand from '../../assets/img/svg/gamahand.svg';
+import iconHome from '../../assets/img/svg/home.svg';
+import iconTransactions from '../../assets/img/svg/transactions.svg';
+import iconBankstatement from '../../assets/img/svg/bankstatement.svg';
+import iconAccountPlan from '../../assets/img/svg/accountplan.svg';
+
 const DashboardMenu = {
-    render: async () => {
+    render: () => {
         let menu = [];
 
-        options.forEach(item => {
-            let new_menu = getMenuItem(item.id, item.group);
+        menuOptions.forEach(option => {
+            let new_menu = getMenuItem(option);
             menu.push(new_menu);
         })
 
         let view = `
-            ${ menu.join('') }
+            <nav class="content-flex--column container-paralax content-align--center bg-gama">
+                <img src="${gamaHand}" alt="Gama hand">
+                <div class="content-default">
+                    ${ menu.join('') }
+                </div>
+        </nav>
         `;
 
         return view
     },
 
-    after_render: async () => {
-
-    }
+    after_render: () => { },
 }
 
-const options = [
-    { id: 'home', group: 'Home' }, 
-    { id: 'transactions', group: 'Transações', }, 
-    { id: 'bankstatement', group: 'Extrato' }, 
-    { id: 'accountplan', group: 'Planos de Conta' }
+const menuOptions = [
+    { id: 'home', group: 'Home', icon: iconHome, selected: false }, 
+    { id: 'transactions', group: 'Transações', icon: iconTransactions, selected: false }, 
+    { id: 'bankstatement', group: 'Extrato', icon: iconBankstatement, selected: false }, 
+    { id: 'accountplan', group: 'Planos de Conta', icon: iconAccountPlan, selected: false }
 ]
 
-const getMenuItem = (id, group) => `
-    <a href="${id}" id="${id}">
-        <div class="card-menu--item bg-color--purple border-radius--5">
-            <img src="./assets/img/svg/menu-item.svg" class="image-menu--item">
+const getMenuItem = ({ id, group, icon, selected }) => `
+    <a id="${id}" class="menu-item">
+        <div class="content-flex--column content-justify--between bg-color--purple card-menu--item ${ selected ? 'selected' : '' }">
+            <img src="${icon}" class="icon-menu--default">
             <p>${group}</p>
         </div>
     </a>
