@@ -1,4 +1,4 @@
-import { footer as Footer } from '../../components/index';
+import { footer as Footer, menuAccount as MenuAccount } from '../../components/index';
 import DashboardService from '../../../service/DashboardService';
 import UserService  from '../../../service/UserService';
 
@@ -10,8 +10,6 @@ const Dashboard = {
         let view = `
             ${html}
             ${await Footer}
-            ${UserService.updatePassword()}
-
         `;
 
         return view
