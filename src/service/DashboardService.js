@@ -38,6 +38,19 @@ const DashboardService = {
         await api.post(`/lancamentos`, transaction, HeadersDefault(token)).then(response =>{
            console.log(response)
         }).catch(error => console.error(error));  
+    },
+    setTransactionAccount: async() => {
+        const token = JSON.parse(localStorage.getItem('token'));
+        let transactionAccount = {
+            "descricao": "string",
+            "id": 0,
+            "login": "string",
+            "padrao": true,
+            "tipoMovimento": "R"
+        }
+        await api.post(`/lancamentos/planos-conta`, transactionAccount, HeadersDefault(token)).then(response =>{
+           console.log(response)
+        }).catch(error => console.error(error));  
     }
 }
 
