@@ -1,4 +1,4 @@
-let Footer = {
+let FormSignup = {
     render: async () => {
         let view = `
         <div class="card">
@@ -24,4 +24,4 @@ let Footer = {
     }
 }
 
-export default Footer;
+export default FormSignup;
