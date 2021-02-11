@@ -14,12 +14,12 @@ const DashboardMenu = {
         })
 
         let view = `
-            <nav class="content-flex--column container-paralax content-align--center bg-gama">
+            <nav class="dashboard-menu content-flex--column container-paralax content-align--center bg-gama">
                 <img src="${gamaHand}" alt="Gama hand">
                 <div class="content-default">
                     ${ menu.join('') }
                 </div>
-        </nav>
+            </nav>
         `;
 
         return view
@@ -37,7 +37,7 @@ const menuOptions = [
 
 const getMenuItem = ({ id, group, icon, selected }) => `
     <a id="${id}" class="menu-item">
-        <div class="content-flex--column content-justify--between bg-color--purple card-menu--item ${ selected ? 'selected' : '' }">
+        <div class="content-flex--column content-justify--between bg-purple card-menu--item ${ selected ? 'selected' : '' }">
             <img src="${icon}" class="icon-menu--default">
             <p>${group}</p>
         </div>
