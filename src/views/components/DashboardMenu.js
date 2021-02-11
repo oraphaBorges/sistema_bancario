@@ -1,4 +1,4 @@
-const MenuAccount = {
+const DashboardMenu = {
     render: async () => {
         let menu = [];
 
@@ -35,4 +35,4 @@ const getMenuItem = (id, group) => `
     </a>
 `
 
-export default MenuAccount;
+export default DashboardMenu;

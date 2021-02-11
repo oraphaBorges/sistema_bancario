@@ -1,4 +1,4 @@
-import { footer as Footer, menuAccount as MenuAccount } from '../../components/index';
+import { footer as Footer, dashboardMenu as DashboardMenu } from '../../components/index';
 import DashboardService from '../../../service/DashboardService';
 import UserService  from '../../../service/UserService';
 
