@@ -4,10 +4,18 @@
     padding: 10px 25px;
     width: fit-content;
     text-decoration: none; 
+    font-weight: 800;
     a{
       text-decoration: none; 
 
     }
+  }
+
+  .btn-lg{
+    width: auto;
+  }
+  .btn-md{
+    width: 60%;
   }
   
   .btn-rounded {
@@ -34,4 +42,17 @@
       transition: 500ms;
       background-color: $main;
     }
-}
+  }
+
+  .btn-gama {
+    color: $main;
+    transition: 500ms;
+    border: 2px solid $main;
+    background-color: $invert-color; 
+    
+    &:hover {
+      color: $main;
+      transition: 500ms;
+      background-color: $verde-gama;
+    }
+  }

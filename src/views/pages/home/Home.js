@@ -57,7 +57,7 @@ let blocoLogin = `
       <h2>Gama Bank</h2>
       <p>é um projeto de nossos alunos.</p>
       <p>Já tem conta</p>
-      <buttom>Acessar</buttom>
+      <button class="btn btn-md btn-rounded btn-gama">Acessar</button>
   </div>
 `
 
