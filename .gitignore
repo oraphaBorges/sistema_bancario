@@ -117,4 +117,4 @@ dist
 .pnp.*
 
 .sass-cache
-src/assets/css/style.css.map
+src/css/style.css.map
