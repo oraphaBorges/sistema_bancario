@@ -1,12 +1,12 @@
-import { footer as Footer } from '../../components/index';
+import { nav as Nav } from '../../components/index';
 
 let ChangePassword = {
     is_private: true,
 
     render: async () => {
         let view = `
-            <h1>Here is ChangePassword page :)</h1>
-            ${await Footer}
+            ${await Nav}
+            ${html}
         `;
 
         return view
@@ -16,5 +16,16 @@ let ChangePassword = {
 
     }
 }
+
+let html = `
+<main class="card">
+    <h2>Alteração de senha</h2>
+    <form class="card-form">
+        <input type="password" name="old_password" id="old_password" placeholder="Senha atual" required>
+        <input type="password" name="new_password" id="new_password" placeholder="Nova senha" required>
+        <button type="submit" class="btn btn-main-outline btn-rounded">Alterar</button>
+    </form>
+</main>
+`
 
 export default ChangePassword;
