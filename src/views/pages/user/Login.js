@@ -47,8 +47,8 @@ let html = `
 <main class="card">
 <h2>Faça o seu Login</h2>
 <form id="login_form" class="card-form">
-    <input type="text" id="login" placeholder="Digite seu usuário">
-    <input type="password" id="password" placeholder="Digite sua senha">
+    <input type="text" id="usuario" placeholder="Digite seu usuário">
+    <input type="password" id="senha" placeholder="Digite sua senha">
     <button id="button_submit" type="submit" class="btn btn-main-outline btn-rounded">Entrar</button>
 </form>
 <a href="#/forgotpass">Esqueci minha senha</a>
