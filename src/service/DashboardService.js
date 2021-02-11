@@ -51,6 +51,14 @@ const DashboardService = {
         await api.post(`/lancamentos/planos-conta`, transactionAccount, HeadersDefault(token)).then(response =>{
            console.log(response)
         }).catch(error => console.error(error));  
+    },
+    getPlanAccount: async()=> {
+        const login = JSON.parse(localStorage.getItem('login'));
+        const token = JSON.parse(localStorage.getItem('token'));
+
+        await api.get(`/lancamentos/planos-conta?&login=${login}`, HeadersDefault(token)).then(response => {
+            console.log(response)
+        })
     }
 }
 
