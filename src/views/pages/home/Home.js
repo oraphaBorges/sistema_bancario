@@ -1,6 +1,6 @@
 import { footer as Footer } from '../../components/index';
-
-import logo from '../../../img/gama-academy-logo-horizontal-verde-branco.svg';
+import { formsignup as Form } from '../../components/index';
+import { nav as Nav } from '../../components/index';
 
 import UserService from '../../../service/UserService';
 
@@ -8,8 +8,15 @@ let Home = {
   is_private: false,
 
   render: async () => {
-      let view = `${html}
-          ${await Footer}
+      let view = `
+        ${await Nav}
+        <div class="container-width--full container-height--full bg-color--purple">  
+          <div class="content-flex content-default content-justify">
+          ${await Form}
+          </div>
+          ${html}
+        </div>
+        ${await Footer}
       `;
 
       return view
@@ -47,25 +54,7 @@ let Home = {
 }
 
 let html =
-`
-  <div class="container-width--full container-height--full bg-color--purple">
-    <div class="content-default">
-      <img src="${logo}">
-    </div>
-    <div class="content-flex content-default content-justify">
-        <div class="content-default content-flex">
-          <form id="register_form">
-            <input type="text" id="cpf" placeholder="CPF" description="CPF">
-            <input type="text" id="nome" placeholder="Nome Completo" description="nome completo">
-            <input type="text" id="login" placeholder="Login de acesso" description="login de acesso">
-            <input type="password" id="senha" placeholder="Digite sua senha" description="senha">
-            <input type="password" id="confirmar_senha" placeholder="Confirme sua senha" description="confirmar senha">
-            <button id="button_submit" type="submit">Continuar</button>
-          </form>
-        </div>  
-    </div>
-    </div>
-    <div class="container-width--full container-height--full bg-color--grey">
+`    <div class="container-width--full container-height--full bg-color--grey">
       <div class="content-default content-flex">
         <div class="flex-wrap container-height--full container-width--full">img 1</div>
         <div class="flex-wrap container-height--full container-width--full">img 2</div>
@@ -87,7 +76,7 @@ let html =
       <div class="flex-wrap">Div1</div>
       <div class="flex-wrap">Dvi2</div>
     </div>
-  </div>
+
 `
 
 export default Home;
