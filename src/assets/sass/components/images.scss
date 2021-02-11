@@ -1,0 +1,12 @@
+.img-full{
+    height: 500px;
+}
+.blocks{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: stretch;
+    align-items: stretch;
+    
+}
