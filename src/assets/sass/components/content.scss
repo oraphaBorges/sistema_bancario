@@ -19,6 +19,11 @@
     display: flex;
 }
 
+.content-flex--column{
+    display: flex;
+    flex-direction: column;
+}
+
 .flex-wrap{
     flex: 1;
     justify-content: center;
