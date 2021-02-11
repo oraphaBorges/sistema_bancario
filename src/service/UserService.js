@@ -16,8 +16,7 @@ const UserService = {
         await api.post('/login', data, HeadersDefaultNoAuth).then(response =>{
             UserService.setDataInLocalStorage(response.data);
             Utils.redirect_to('dashboard');
-            console.log('teste')
-
+           
         })
         .catch(({ response }) => {
             let { codigo, status, error } = response.data;
@@ -28,6 +27,21 @@ const UserService = {
             }
         });
     },
+
+    updatePassword: async () => {
+       let postSenha = {
+            email: "teste@teste.com",
+            login: "emerson2"
+        }
+        await api.post('/nova-senha', postSenha, HeadersDefaultNoAuth).then(response => {
+            console.log(response);
+
+        }).catch(({error}) =>{
+            console.log(error)
+        })
+
+    },
+
 
     doLogout: () => {
         localStorage.clear();
@@ -53,7 +67,8 @@ const UserService = {
         
         localStorage.setItem('token', JSON.stringify(token));
         localStorage.setItem('login', JSON.stringify(login));
-    }
+    },   
+
 }
 
 export default UserService;
