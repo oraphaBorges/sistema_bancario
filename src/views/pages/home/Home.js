@@ -10,7 +10,7 @@ let Home = {
   render: async () => {
       let view = `
         ${await Nav}
-          <div class="container bloco">
+          <div id="bloco-cadastro-login" class="container bloco">
           ${blocoLogin}
           ${await Form}
           </div>
