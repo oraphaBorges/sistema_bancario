@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --open --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "start": "sass --watch src/assets/sass/style.scss:src/css/style.css & webpack serve --open --config webpack.dev.js",
+    "build": "node-sass src/assets/sass/style.scss > src/css/style.css && webpack --config webpack.prod.js"
   },
   "keywords": [],
   "author": "Desbugados",
@@ -14,6 +14,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "clean-webpack-plugin": "^3.0.0",
+    "node-sass": "^5.0.0",
     "webpack": "^5.21.1",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.7.3"
