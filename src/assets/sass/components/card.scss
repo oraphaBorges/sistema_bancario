@@ -1,0 +1,40 @@
+.card {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: fit-content;
+    margin: auto;
+    padding: 20px;
+    margin-top: 50px;
+    margin-bottom: 80px;
+    border-radius: 15px;
+    background-color: $invert-color; 
+    .card-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  
+      input {
+        width: 250px;
+        margin: 15px;
+        padding: 10px;
+        outline: none !important;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 2 solid gray; 
+        &:focus, &:active {
+          border-color: $main;
+        }
+      }
+      .btn {
+        margin: 20px auto; 
+      }
+  }
+  a{
+    margin-top: 5px;
+    padding: 5px;
+  }
+}
