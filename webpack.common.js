@@ -3,7 +3,7 @@ const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const pathMainJs = require.resolve("./src/app.js");
-const pathIndexCss = require.resolve("./src/css/style.css");
+const pathIndexCss = require.resolve("./src/assets/css/style.css");
 const pathIndexHtml = require.resolve("./src/index.html");
 const pathIndexFavicon = require.resolve("./src/img/favicon.ico");
 
