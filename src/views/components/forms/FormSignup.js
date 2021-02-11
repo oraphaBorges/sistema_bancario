@@ -1,7 +1,7 @@
 let FormSignup = {
     render: async () => {
         let view = `
-        <div class="card">
+        <div class="card bloco-item">
             <h2>Faça o seu Cadastro</h2>
             <p class="text-left">Preencha seus dados para realizar seu cadastro</p>
             <form id="register_form" class="card-form">

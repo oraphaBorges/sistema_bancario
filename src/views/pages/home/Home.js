@@ -10,12 +10,11 @@ let Home = {
   render: async () => {
       let view = `
         ${await Nav}
-        <div class="container-width--full container-height--full bg-color--purple">  
-          <div class="content-flex content-default content-justify">
+          <div class="container bloco">
+          ${blocoLogin}
           ${await Form}
           </div>
           ${html}
-        </div>
         ${await Footer}
       `;
 
@@ -53,25 +52,34 @@ let Home = {
   }
 }
 
+let blocoLogin = `
+  <div class="bloco-item bloco-content-login">
+      <h2>Gama Bank</h2>
+      <p>é um projeto de nossos alunos.</p>
+      <p>Já tem conta</p>
+      <button class="btn btn-md btn-rounded btn-gama">Acessar</button>
+  </div>
+`
+
 let html =
-`    <div class="container-width--full container-height--full bg-color--grey">
+`    <div class="container-width--full container-height--full bg-grey">
       <div class="content-default content-flex">
         <div class="flex-wrap container-height--full container-width--full">img 1</div>
         <div class="flex-wrap container-height--full container-width--full">img 2</div>
       </div>
     </div>
-    <div class="container-width--full container-height--full bg-color--purple">
+    <div class="container-width--full container-height--full bg-purple">
       <div class="content-flex container-height--full container-width--full">
         <div class="flex-wrap">Div1</div>
         <div class="flex-wrap">Dvi2</div>
       </div>
     </div>
-    <div class="container-width--full container-height--full bg-color--green">
+    <div class="container-width--full container-height--full bg-green">
       <div class="content-default content-flex">
         <p>text 1</p>
       </div>
     </div>
-    <div class="container-width--full container-height--full bg-color--grey">
+    <div class="container-width--full container-height--full bg-grey">
     <div class="content-flex container-height--full container-width--full">
       <div class="flex-wrap">Div1</div>
       <div class="flex-wrap">Dvi2</div>
