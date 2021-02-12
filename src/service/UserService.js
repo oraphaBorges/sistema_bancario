@@ -1,5 +1,5 @@
 import { api } from './api';
-import { HeadersDefaultNoAuth } from './HeadersDefault';
+import { HeadersDefaultNoAuth , HeadersDefault} from './HeadersDefault';
 
 import Utils from '../service/Utils';
 
@@ -27,7 +27,7 @@ const UserService = {
         });
     },
 
-    updatePassword: async () => {
+    newPassword: async () => {
        let postSenha = {
             email: "teste@teste.com",
             login: "emerson2"
@@ -39,6 +39,22 @@ const UserService = {
             console.log(error)
         })
 
+    },
+    // Esta dando erro 500
+    updatePassword: async () => {         
+        let postAlterarSenha = {
+            senha: "123456",
+            usuario: "rafael10"
+        }
+        const token = JSON.parse(localStorage.getItem('token'));
+        const parametroTeste = "12#fort";
+        await api.post(`/altera-senha?senhaTemporaria=${parametroTeste}`, postAlterarSenha, HeadersDefault(token)).then(response => {
+            console.log(response);
+
+        }).catch(error => {
+            console.log(error)
+        })
+        
     },
 
 

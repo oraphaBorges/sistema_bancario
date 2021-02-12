@@ -2,9 +2,9 @@ import Nav from './Nav';
 import Footer from './Footer';
 import DashboardMenu from './DashboardMenu';
 import HeaderDash from './dashboard/HeaderDash';
+import PlanCount from './dashboard/PlanCount';
 import Main from './dashboard/Main';
 import Card from './Card';
-
 
 // Formulários
 import FormSignup from './forms/FormSignup';
@@ -19,3 +19,4 @@ export const dashboardMenu = DashboardMenu.render();
 export const card = Card;
 export const dashboardHeader = HeaderDash;
 export const main = Main;
+export const planCount = PlanCount;

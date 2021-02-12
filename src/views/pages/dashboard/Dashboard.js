@@ -1,4 +1,4 @@
-import { dashboardMenu as Menu, main as Main } from '../../components/index';
+import { dashboardMenu as Menu, main as Main, planCount as PlanCount } from '../../components/index';
 
 const Dashboard = {
     is_private: true,
@@ -6,7 +6,7 @@ const Dashboard = {
         { id: 'main', component: Main },
         { id: 'transactions', component: 'implementar' },
         { id: 'bankstatement', component: 'OtherImplement' },
-        { id: 'accountplan', component: 'nextImplement' }
+        { id: 'accountplan', component: PlanCount }
     ],
     
     render: async () => {
