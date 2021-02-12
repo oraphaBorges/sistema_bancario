@@ -35,6 +35,12 @@
     width: 50%;
 }
 
+.flex-wrap--40{
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 40%;
+}
+
 .container-paralax{
     display: flex;
     background-attachment: fixed;
