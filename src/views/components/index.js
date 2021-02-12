@@ -1,7 +1,9 @@
 import Nav from './Nav';
 import Footer from './Footer';
 import DashboardMenu from './DashboardMenu';
-import HeaderDash from './HeaderDash';
+import HeaderDash from './dashboard/HeaderDash';
+import Main from './dashboard/Main';
+
 
 // Formulários
 import FormSignup from './forms/FormSignup';
@@ -14,3 +16,4 @@ export const dashboardMenu = DashboardMenu.render();
 
 //dashboard components
 export const dashboardHeader = HeaderDash;
+export const main = Main;
