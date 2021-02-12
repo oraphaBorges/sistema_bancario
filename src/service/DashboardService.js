@@ -1,13 +1,11 @@
 import { api } from './api';
 import { HeadersDefault } from './HeadersDefault';
 
-import Utils from '../service/Utils';
-
 const DashboardService = {
 
     getAccountData: async () => {
-        let dataInicio = '2021-01-31';
-        let dataFim = '2021-01-31';
+        let dataInicio = '2020-01-31';
+        let dataFim = '2022-01-31';
 
         const login = JSON.parse(localStorage.getItem('login'));
         const token = JSON.parse(localStorage.getItem('token'));
@@ -39,6 +37,7 @@ const DashboardService = {
            console.log(response)
         }).catch(error => console.error(error));  
     },
+
     setTransactionAccount: async() => {
         const token = JSON.parse(localStorage.getItem('token'));
         let transactionAccount = {

@@ -1,3 +1,5 @@
+import DashboardService from '../../../service/DashboardService';
+
 import { dashboardMenu as Menu, main as Main, planCount as PlanCount } from '../../components/index';
 
 const Dashboard = {
@@ -22,8 +24,8 @@ const Dashboard = {
 
     after_render: async () => {
         Dashboard.bindEvents();
+        DashboardService.getAccountData();
         Dashboard.insertDashboardContent('main');
-        // DashboardService.getAccountData();
     },
 
     insertDashboardContent: (idContent) => {
