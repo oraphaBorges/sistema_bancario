@@ -2,9 +2,7 @@ let Card = {
   render: (info) => {
     let view = `
     <div class="card-dashboard--default">
-      <div>
-        ${info}
-      </div> 
+      ${info}
     </div>`;
     return view
   }
