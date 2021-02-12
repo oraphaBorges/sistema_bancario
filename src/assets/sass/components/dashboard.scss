@@ -143,6 +143,7 @@
 
   .content-icon--default{
       height: 25px;
+      width: 25px;
   }
 }
 
@@ -189,6 +190,8 @@
 
   .content-icon--default{
       height: 18px;
+      transition: 1s;
+      width: 18px;
   }
 
   .content-intern--default{
