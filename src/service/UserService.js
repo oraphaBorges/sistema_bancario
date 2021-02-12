@@ -25,7 +25,7 @@ const UserService = {
         }
         await api.post('/login', temporary, HeadersDefaultNoAuth).then(response =>{
             console.log(response.data)
-            // UserService.setDataInLocalStorage(response.data);
+            UserService.setDataIntoLocalStorage(response.data);
             Utils.redirect_to('dashboard');
            
         })
@@ -89,10 +89,11 @@ const UserService = {
         return response;
     },
 
-    //verificar como faremos com os dados recebidos
-    setDataInLocalStorage: (data) => {
-        let { token, usuario: { login }} = data;
-        
+    setDataIntoLocalStorage: (data) => {
+        let { token, login, dataInicio, dataFim } = data;
+
+        localStorage.setItem('dataInicio', JSON.stringify(dataInicio));
+        localStorage.setItem('dataFim', JSON.stringify(dataFim));
         localStorage.setItem('token', JSON.stringify(token));
         localStorage.setItem('login', JSON.stringify(login));
     },   
