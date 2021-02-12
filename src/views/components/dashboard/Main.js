@@ -1,4 +1,7 @@
 import { dashboardHeader as Header, card as Card} from '../index';
+import dollarIcon from '../../../assets/img/svg/dollar.svg'
+import cardIcon from '../../../assets/img/svg/card.svg'
+import cardOpenedIcon from '../../../assets/img/svg/opencard.svg'
 
 const Main = {
     render: () => {
@@ -35,7 +38,7 @@ export default Main;
 let section1 = `
     <div class="card-dashboard--default m-1 flex-wrap--40">
         <div class="content-intern--default content-flex content-align--center">
-            <img src="./assets/img/svg/dollar.svg"  class="content-icon--default padding-right--15" alt="">
+            <img src="${ dollarIcon }"  class="content-icon--default" alt="">
             <span class="text-card--default">Conta</span>
         </div>
         <div class="content-intern--default">
@@ -49,7 +52,7 @@ let section1 = `
     </div>
     <div class="card-dashboard--default m-1 flex-wrap--40">
         <div class="content-intern--default content-flex content-align--center">
-            <img src="./assets/img/svg/card.svg"  class="content-icon--default padding-right--15" alt="">
+            <img src="${ cardIcon }"  class="content-icon--default" alt="">
             <span class="text-card--default">Conta crédito</span>
         </div>
         <div class="content-intern--default">
@@ -64,21 +67,21 @@ let section1 = `
 `
 let latestTransactions = `
     <div class="content-intern--default content-flex" id="transaction">
-        <img src="./assets/img/svg/opencard.svg" class="content-icon--default padding-right--15" alt="">
+        <img src="${ cardOpenedIcon }" class="content-icon--default" alt="">
         <div class="content-transaction content-flex--1 content-flex--column">
             <div class="payment-description content-flex content-flex--1 content-justify--between content-align--center">
                 <span class="text-color--black"><strong>Compra no débito</strong></span>
                 <span class="text-color--grey text-size--12">24 de jan.</span>
             </div>
-            <span class="text-card--default content-padding--default margin-top--5">Gama Academy</span>
-            <span class="text-color--black margin-top--8 text-weight--bold text-size--20">R$ 178,10</span>
+            <span class="text-card--default content-padding--default">Gama Academy</span>
+            <span class="text-color--black text-weight--bold text-size--20">R$ 178,10</span>
         </div>
     </div>
 `
 let section2 = `
     <div class="card-dashboard--default m-1">
         <div class="content-intern--default content-flex content-align--center">
-            <img src="./assets/img/svg/dollar.svg" class="content-icon--default padding-right--15" alt="">
+            <img src="${ dollarIcon }" class="content-icon--default" alt="">
             <span class="text-card--default">Últimos lançamentos</span>
             <a id="see_more" class="text-card--ancor">Ver extrato completo</a>
         </div>
