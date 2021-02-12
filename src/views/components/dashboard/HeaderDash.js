@@ -1,5 +1,5 @@
-import logoutIcon from '../../assets/img/svg/logout.svg';
-import updateIcon from '../../assets/img/svg/update.svg';
+import logoutIcon from '../../../assets/img/svg/logout.svg';
+import updateIcon from '../../../assets/img/svg/update.svg';
 
 const HeaderDash = {
     render: (message = 'Mensagem do componente :)') => {

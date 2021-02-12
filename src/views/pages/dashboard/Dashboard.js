@@ -1,12 +1,18 @@
-import { dashboardMenu as DashboardMenu, dashboardHeader as HeaderDash } from '../../components/index';
+import { dashboardMenu as Menu, main as Main } from '../../components/index';
 
 const Dashboard = {
     is_private: true,
+    components: [
+        { id: 'main', component: Main },
+        { id: 'transactions', component: 'implementar' },
+        { id: 'bankstatement', component: 'OtherImplement' },
+        { id: 'accountplan', component: 'nextImplement' }
+    ],
     
     render: async () => {
         let view = `
             <div class="content-flex">
-                ${ DashboardMenu }
+                ${ Menu }
                 ${ html }
             </div>
         `;
@@ -16,16 +22,16 @@ const Dashboard = {
 
     after_render: async () => {
         Dashboard.bindEvents();
-        Dashboard.insertDashboardContent('home');
+        Dashboard.insertDashboardContent('main');
         // DashboardService.getAccountData();
     },
 
     insertDashboardContent: (idContent) => {
-        //buscar conteúdo de acordo com o id passado para essa função.
-        //inserir funcionalidade que muda o conteúdo sem mexer na barra lateral
+        const { component } = Dashboard.components.find(component => component.id === idContent);
         const dashboard_content = document.getElementById('content-dashboard');
-
-        dashboard_content.innerHTML = `<h2>Novo conteúdo</h2> + ${idContent}`;
+        
+        dashboard_content.innerHTML = `${ component.render() }`;
+        component.after_render();
     },
 
     bindEvents: () => {

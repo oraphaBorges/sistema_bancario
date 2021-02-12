@@ -29,7 +29,7 @@ const DashboardMenu = {
 }
 
 const menuOptions = [
-    { id: 'home', group: 'Home', icon: iconHome, selected: false }, 
+    { id: 'main', group: 'Home', icon: iconHome, selected: false }, 
     { id: 'transactions', group: 'Transações', icon: iconTransactions, selected: false }, 
     { id: 'bankstatement', group: 'Extrato', icon: iconBankstatement, selected: false }, 
     { id: 'accountplan', group: 'Planos de Conta', icon: iconAccountPlan, selected: false }
