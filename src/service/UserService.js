@@ -5,9 +5,8 @@ import Utils from '../service/Utils';
 
 const UserService = {
     register: async (data) => {
-        await api.post('/usuarios', data, HeadersDefaultNoAuth).then(response =>{
-            UserService.setDataInLocalStorage(response.data);
-            Utils.redirect_to('dashboard');
+        await api.post('/usuarios', data, HeadersDefaultNoAuth).then(r =>{
+            Utils.redirect_to('login');
 
         }).catch(error => console.error(error));
     },
