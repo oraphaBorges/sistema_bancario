@@ -1,4 +1,4 @@
-import { footer as Footer, dashboardMenu as DashboardMenu } from '../../components/index';
+import { dashboardMenu as DashboardMenu, dashboardHeader as HeaderDash } from '../../components/index';
 
 const Dashboard = {
     is_private: true,
@@ -23,7 +23,7 @@ const Dashboard = {
     insertDashboardContent: (idContent) => {
         //buscar conteúdo de acordo com o id passado para essa função.
         //inserir funcionalidade que muda o conteúdo sem mexer na barra lateral
-        const dashboard_content = document.getElementById('dashboard_content');
+        const dashboard_content = document.getElementById('content-dashboard');
 
         dashboard_content.innerHTML = `<h2>Novo conteúdo</h2> + ${idContent}`;
     },
@@ -38,8 +38,7 @@ const Dashboard = {
 
 let html = 
 `
-<div id="dashboard_content">
-    <h1>hehehe</h1>
+<div id="content-dashboard" class="content-dashboard">
 </div>
 `
 
