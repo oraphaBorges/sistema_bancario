@@ -583,12 +583,6 @@ a {
   width: 50%;
 }
 
-.flex-wrap--40 {
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 40%;
-}
-
 .container-paralax {
   display: flex;
   background-attachment: fixed;
@@ -611,6 +605,9 @@ a {
 .content-dashboard ul, .content-dashboard li {
   list-style: none;
   padding: 0;
+}
+.content-dashboard .accounts {
+  flex-wrap: wrap;
 }
 .content-dashboard .section {
   flex-wrap: wrap;
@@ -635,7 +632,7 @@ a {
 }
 .content-dashboard .text-money {
   font-weight: bold;
-  font-size: 30px;
+  font-size: 27px;
   margin: 0;
 }
 .content-dashboard .text-color--blue {
@@ -651,7 +648,7 @@ a {
   font-family: "Roboto", sans-serif;
   font-size: 15px;
   font-weight: 600;
-  padding: 15px;
+  padding: 2px;
 }
 .content-dashboard .text-color--grey {
   font-family: "Roboto", sans-serif;
@@ -738,6 +735,11 @@ a {
   }
 }
 @media (max-width: 767px) {
+  .accounts {
+    display: block;
+    margin: 5px;
+  }
+
   .content-dashboard .card-dashboard--default {
     padding: 15px;
   }
@@ -822,6 +824,11 @@ a {
   }
 }
 @media screen and (max-width: 615px) {
+  .accounts {
+    display: block;
+    margin: 1px;
+  }
+
   .content-dashboard .card-dashboard--default {
     padding: 5px;
   }
