@@ -2,6 +2,7 @@ import { dashboardHeader as Header } from '../index';
 import dollarIcon from '../../../assets/img/svg/dollar.svg'
 import cardIcon from '../../../assets/img/svg/card.svg'
 import cardOpenedIcon from '../../../assets/img/svg/opencard.svg'
+import DashboardService from '../../../service/DashboardService';
 
 const Main = {
     render: () => {
@@ -32,7 +33,15 @@ const Main = {
     },
 
     after_render: () => {
-        
+        const see_more = document.querySelectorAll('a.see_more');
+        see_more.forEach(item => {
+            item.addEventListener('click', async () => {              
+                const clickValue = item.getAttribute('value');
+                await DashboardService.getStatementByAccount({ sigla: clickValue })
+
+                //criar restante da lógica para redirecionar para extrato, assim que pronta
+            })
+        })
     },
 }
 
@@ -53,7 +62,7 @@ const accountCard = ({ type, saldo, lancamentos, icon, colorValue, tipo }) => `
         <div id="latest_transactions">
             <div class="content-intern--default content-flex content-justify--between">
                 <span class="text-card--default">Últimos lançamentos</span>
-                <a id="see_more" class="text-card--ancor ml-1" value="${tipo}">Ver extrato completo</a>
+                <a class="see_more text-card--ancor ml-1" value="${tipo}">Ver extrato completo</a>
             </div>
             ${ buildTransactions(lancamentos) }
         </div>

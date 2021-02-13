@@ -75,14 +75,11 @@ const DashboardService = {
     },
 
     //retorna props: saldo e lancamentos[]
-    getStatementByAccount: async () => {
-        let temporaryLogin = 'emersonteste';
-        let temporarySigla = 'CORRENTE';
-
+    getStatementByAccount: async ({ sigla }) => {
         const login = JSON.parse(localStorage.getItem('login'));
         const token = JSON.parse(localStorage.getItem('token'));
 
-        await api.get(`/conta/extrato?login=${temporaryLogin}&sigla=${temporarySigla}`, HeadersDefault(token))
+        await api.get(`/conta/extrato?login=${login}&sigla=${sigla}`, HeadersDefault(token))
             .then(response => console.log(response.data))
             .catch(response => console.error(response));
     },
