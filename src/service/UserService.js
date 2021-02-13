@@ -19,21 +19,19 @@ const UserService = {
     },
 
     doLogin: async({ usuario, senha }) => {
-        let temporary = {
-            usuario: "emersonteste",
-            senha: "emersonteste"
-        }
-        await api.post('/login', temporary, HeadersDefaultNoAuth).then(response =>{
-            console.log(response.data)
+        const data = { usuario, senha };
+
+        await api.post('/login', data, HeadersDefaultNoAuth).then(response =>{
             UserService.setDataIntoLocalStorage(response.data);
             Utils.redirect_to('dashboard');
            
         })
         .catch(({ response }) => {
-            let { codigo, status, error } = response.data;
+            let { data, status } = response;
+            console.log(data, status)
 
-            if(codigo === "999" && status === 409){
-                alert(error);
+            if(data === 'Usuário ou senha Inválida' && status === 400){
+                alert(data);
                 location.reload();
             }
         });
