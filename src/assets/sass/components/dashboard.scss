@@ -129,6 +129,14 @@
     }
 }
 
+.card-list--none{
+  list-style: none;
+}
+
+.padding--dault{
+  padding: 0;
+}
+
 
 /*tablet*/
 @media screen and (min-width: 767px) and (max-width: 1160px){
