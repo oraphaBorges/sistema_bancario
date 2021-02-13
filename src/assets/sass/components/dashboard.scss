@@ -4,6 +4,11 @@
 .content-dashboard{
   width: 100%;
 
+  ul, li{
+    list-style: none;
+    padding: 0;
+  }
+
   /*main*/
   .section {
     flex-wrap: wrap;

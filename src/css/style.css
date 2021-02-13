@@ -608,6 +608,10 @@ a {
   /*main*/
   /*card*/
 }
+.content-dashboard ul, .content-dashboard li {
+  list-style: none;
+  padding: 0;
+}
 .content-dashboard .section {
   flex-wrap: wrap;
   justify-content: space-between;
