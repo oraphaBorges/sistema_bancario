@@ -1,4 +1,4 @@
-import { dashboardHeader as Header, card as Card} from '../index';
+import { dashboardHeader as Header } from '../index';
 import dollarIcon from '../../../assets/img/svg/dollar.svg'
 import cardIcon from '../../../assets/img/svg/card.svg'
 import cardOpenedIcon from '../../../assets/img/svg/opencard.svg'
