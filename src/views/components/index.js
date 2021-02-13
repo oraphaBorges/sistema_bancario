@@ -1,5 +1,6 @@
 import Nav from './Nav';
 import Footer from './Footer';
+import Loader from './Loader';
 import DashboardMenu from './DashboardMenu';
 import HeaderDash from './dashboard/HeaderDash';
 import PlanCount from './dashboard/PlanCount';
@@ -11,6 +12,7 @@ import FormSignup from './forms/FormSignup';
 
 export const nav = Nav.render();
 export const footer = Footer.render();
+export const loader = Loader.render();
 
 export const formsignup = FormSignup.render();
 export const dashboardMenu = DashboardMenu.render();
