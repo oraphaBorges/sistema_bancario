@@ -1,12 +1,12 @@
 import DashboardService from '../../../service/DashboardService';
 
-import { dashboardMenu as Menu, main as Main, planCount as PlanCount } from '../../components/index';
+import { dashboardMenu as Menu, main as Main, planCount as PlanCount, transaction as Transaction } from '../../components/index';
 
 const Dashboard = {
     is_private: true,
     components: [
         { id: 'main', component: Main },
-        { id: 'transactions', component: 'implementar' },
+        { id: 'transactions', component: Transaction },
         { id: 'bankstatement', component: 'OtherImplement' },
         { id: 'accountplan', component: PlanCount }
     ],
