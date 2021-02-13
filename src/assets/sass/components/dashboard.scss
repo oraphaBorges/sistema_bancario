@@ -9,6 +9,10 @@
     padding: 0;
   }
 
+  .accounts{
+    flex-wrap: wrap;
+  }
+
   /*main*/
   .section {
     flex-wrap: wrap;
@@ -38,16 +42,20 @@
 
   .text-money {
     font-weight: bold;
-    font-size: 30px;
+    font-size: 27px;
     margin: 0;
   }
 
   .text-color--blue{
     color: #1783E7;
   }
-  .text-color--green {
+  .text-color--green{
     color: #68DE5A;
   }
+  .text-color--red{
+    color: $red;
+  }
+
   .text-card--ancor {
     color: #1783E7;
     cursor: pointer;
@@ -55,7 +63,7 @@
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
     font-weight: 600;
-    padding: 15px;
+    padding: 2px;
   }
 
   .text-color--grey {
@@ -157,6 +165,12 @@
 }
 
 @media (max-width: 767px) {
+
+  .accounts{
+    display: block;
+    margin: 5px;
+  }
+  
   .content-dashboard .card-dashboard--default {
     padding: 15px;
   }
@@ -248,6 +262,11 @@
 }
 
 @media screen and (max-width:615px){
+  .accounts{
+    display: block;
+    margin: 1px;
+  }
+
   .content-dashboard .card-dashboard--default {
     padding: 5px;
   }
