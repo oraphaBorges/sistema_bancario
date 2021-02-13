@@ -10,7 +10,6 @@ import Dashboard from './dashboard/Dashboard';
 
 //Users actions
 import Login from './user/Login';
-import Transaction from './user/Transaction';
 
 //Password related
 import ForgotPassword from './password/ForgotPassword';
@@ -22,5 +21,4 @@ export const home = Home;
 export const login = Login; 
 export const forgotPassword = ForgotPassword; 
 export const changePassword = ChangePassword; 
-export const transaction = Transaction; 
 export const dashboard = Dashboard; 

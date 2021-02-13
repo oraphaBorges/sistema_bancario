@@ -1,6 +1,6 @@
 import Logo from '../../assets/img/logo-gama.svg';
 let Nav = {
-    render: async () => {
+    render: () => {
         let view = `
         <nav class="nav container">
             <a class="logo" href="#">

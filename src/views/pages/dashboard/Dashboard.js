@@ -1,12 +1,20 @@
-import { footer as Footer, dashboardMenu as DashboardMenu } from '../../components/index';
+import DashboardService from '../../../service/DashboardService';
+
+import { dashboardMenu as Menu, main as Main, accountPlan as AccountPlan, transaction as Transaction } from '../../components/index';
 
 const Dashboard = {
     is_private: true,
+    components: [
+        { id: 'main', component: Main },
+        { id: 'transactions', component: Transaction },
+        { id: 'bankstatement', component: 'OtherImplement' },
+        { id: 'accountplan', component: AccountPlan }
+    ],
     
     render: async () => {
         let view = `
             <div class="content-flex">
-                ${ DashboardMenu }
+                ${ Menu }
                 ${ html }
             </div>
         `;
@@ -16,16 +24,17 @@ const Dashboard = {
 
     after_render: async () => {
         Dashboard.bindEvents();
-        Dashboard.insertDashboardContent('home');
-        // DashboardService.getAccountData();
+        await DashboardService.getAccountData();
+        await DashboardService.getAccountPlan();
+        Dashboard.insertDashboardContent('main');
     },
 
     insertDashboardContent: (idContent) => {
-        //buscar conteúdo de acordo com o id passado para essa função.
-        //inserir funcionalidade que muda o conteúdo sem mexer na barra lateral
-        const dashboard_content = document.getElementById('dashboard_content');
-
-        dashboard_content.innerHTML = `<h2>Novo conteúdo</h2> + ${idContent}`;
+        const { component } = Dashboard.components.find(component => component.id === idContent);
+        const dashboard_content = document.getElementById('content-dashboard');
+        
+        dashboard_content.innerHTML = `${ component.render() }`;
+        component.after_render();
     },
 
     bindEvents: () => {
@@ -38,8 +47,7 @@ const Dashboard = {
 
 let html = 
 `
-<div id="dashboard_content">
-    <h1>hehehe</h1>
+<div id="content-dashboard" class="content-dashboard">
 </div>
 `
 
