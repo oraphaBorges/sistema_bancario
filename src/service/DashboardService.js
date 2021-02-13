@@ -86,6 +86,21 @@ const DashboardService = {
             .then(response => console.log(response.data))
             .catch(response => console.error(response));
     },
+    
+    //retorna props: saldo e lancamentos[]
+    getStatementByPeriod: async () => {
+        let dataInicio = '2020-01-31';
+        let dataFim = '2022-01-31';
+        let temporaryLogin = 'emersonteste';
+        let temporarySigla = 'CORRENTE';
+
+        const login = JSON.parse(localStorage.getItem('login'));
+        const token = JSON.parse(localStorage.getItem('token'));
+
+        await api.get(`/conta/extrato-periodo?dataFim=${dataFim}&dataInicio=${dataInicio}&login=${temporaryLogin}&sigla=${temporarySigla}`, HeadersDefault(token))
+            .then(response => console.log(response.data))
+            .catch(response => console.error(response));
+    },
 }
 
 export default DashboardService;
