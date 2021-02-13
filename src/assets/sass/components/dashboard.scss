@@ -49,9 +49,13 @@
   .text-color--blue{
     color: #1783E7;
   }
-  .text-color--green {
+  .text-color--green{
     color: #68DE5A;
   }
+  .text-color--red{
+    color: $red;
+  }
+
   .text-card--ancor {
     color: #1783E7;
     cursor: pointer;

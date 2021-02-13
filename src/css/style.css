@@ -641,6 +641,9 @@ a {
 .content-dashboard .text-color--green {
   color: #68DE5A;
 }
+.content-dashboard .text-color--red {
+  color: red;
+}
 .content-dashboard .text-card--ancor {
   color: #1783E7;
   cursor: pointer;

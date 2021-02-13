@@ -5,6 +5,14 @@ import cardOpenedIcon from '../../../assets/img/svg/opencard.svg'
 
 const Main = {
     render: () => {
+        const CONTA_CREDITO = JSON.parse(localStorage.getItem('CONTA_CREDITO'));
+        const CONTA_POUPANCA = JSON.parse(localStorage.getItem('CONTA_POUPANCA'));
+        const CONTA_CORRENTE = JSON.parse(localStorage.getItem('CONTA_CORRENTE'));
+
+        translateObj['CREDITO'] = { ...CONTA_CREDITO, ...translateObj['CREDITO']};
+        translateObj['POUPANCA'] = { ...CONTA_POUPANCA, ...translateObj['POUPANCA']};
+        translateObj['CORRENTE'] = { ...CONTA_CORRENTE, ...translateObj['CORRENTE']};
+
         let view = `
         <div class="content-default">
             <div class="content-default content-flex content-justify">
@@ -13,9 +21,9 @@ const Main = {
                 </div>
             </div>
             <div class="accounts content-default content-flex content-justify">
-                ${ accountCard }
-                ${ accountCard }
-                ${ accountCard }
+                ${accountCard(translateObj['CORRENTE'])}
+                ${accountCard(translateObj['POUPANCA'])}
+                ${accountCard(translateObj['CREDITO'])}
             </div>
         </div>
         `;
@@ -23,45 +31,85 @@ const Main = {
         return view
     },
 
-    after_render: () => { 
+    after_render: () => {
         
     },
 }
 
 export default Main;
 
-let accountCard = `
+const accountCard = ({ type, saldo, lancamentos, icon, colorValue, tipo }) => `
     <div class="card-dashboard--default m-1">
         <div class="content-intern--default content-flex content-align--center">
-            <img src="${ cardIcon }"  class="content-icon--default" alt="">
-            <span class="text-card--default">Conta crédito</span>
+            <img src="${ icon }"  class="content-icon--default" alt="">
+            <span class="text-card--default">${ type }</span>
         </div>
         <div class="content-intern--default content-flex content-justify--between">
             <div class="content-intern--default">
-                <span class="text-card--default">Fatura atual</span>
-                <h2 class="text-money text-color--blue">R$: 522,12</h2>
-            </div>
-            <div class="content-intern--default">
-                <span class="text-card--default">Limite disponível</span>
-                <h2 class="text-money text-color--green">R$: 9.120,88</h2>
+                <span class="text-card--default">Saldo atual</span>
+                <h2 class="text-money text-color--${ colorValue }">R$: ${ saldo }</h2>
             </div>
         </div>
         <div id="latest_transactions">
             <div class="content-intern--default content-flex content-justify--between">
                 <span class="text-card--default">Últimos lançamentos</span>
-                <a id="see_more" class="text-card--ancor">Ver extrato completo</a>
+                <a id="see_more" class="text-card--ancor ml-1" value="${tipo}">Ver extrato completo</a>
             </div>
+            ${ buildTransactions(lancamentos) }
+        </div>
+    </div>
+`
+
+const buildTransactions = (lancamentos) => {
+    if(!lancamentos.length){
+        return `
+        <div class="content-intern--default content-flex content-justify" id="transaction">
+            <span class="text-color--grey text-size--12">Sem lançamentos para essa conta</span>
+        </div>
+
+        `
+    }
+
+    let html = [];
+
+    lancamentos.forEach(({ date, descricao, valor }) => {
+        let newLancamento =
+            `    
             <div class="content-intern--default content-flex" id="transaction">
                 <img src="${ cardOpenedIcon }" class="content-icon--default" alt="">
                 <div class="content-transaction content-flex--1 content-flex--column">
                     <div class="payment-description content-flex content-flex--1 content-justify--between content-align--center">
                         <span class="text-color--black"><strong>Compra no débito</strong></span>
-                        <span class="text-color--grey text-size--12">24 de jan.</span>
+                        <span class="text-color--grey text-size--12">${ date }</span>
                     </div>
-                    <span class="text-card--default content-padding--default">Gama Academy</span>
-                    <span class="text-color--black text-weight--bold text-size--20">R$ 178,10</span>
+                    <span class="text-card--default content-padding--default">${ descricao }</span>
+                    <span class="text-color--black text-color--red text-size--20">R$ ${ valor }</span>
                 </div>
             </div>
-        </div>
-    </div>
-`
+        `
+        html.push(newLancamento);
+    })
+
+    return html.join('');
+}
+
+
+let translateObj = {
+    CORRENTE: {
+        type: 'Conta Corrente',
+        icon: dollarIcon,
+        colorValue: 'green'
+    },
+
+    POUPANCA: { 
+        type: 'Conta Poupanca',
+        icon: dollarIcon,
+        colorValue: 'blue'
+    },
+
+    CREDITO: { 
+        type: 'Conta de Crédito',
+        icon: cardIcon,
+        colorValue: 'red'
+    }
+}
