@@ -3,7 +3,7 @@ import Footer from './Footer';
 import Loader from './Loader';
 import DashboardMenu from './DashboardMenu';
 import HeaderDash from './dashboard/HeaderDash';
-import PlanCount from './dashboard/PlanCount';
+import AccountPlan from './dashboard/AccountPlan';
 import Transaction from './dashboard/Transaction';
 import Main from './dashboard/Main';
 
@@ -20,5 +20,5 @@ export const dashboardMenu = DashboardMenu.render();
 //dashboard components
 export const dashboardHeader = HeaderDash;
 export const main = Main;
-export const planCount = PlanCount;
+export const accountPlan = AccountPlan;
 export const transaction = Transaction;

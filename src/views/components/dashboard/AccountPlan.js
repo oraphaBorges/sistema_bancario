@@ -1,6 +1,6 @@
 import { dashboardHeader as Header } from '../index';
 
-const PlanCount = {
+const AccountPlan = {
   
     render:  () => {
         let view = `
@@ -9,7 +9,7 @@ const PlanCount = {
             ${ Header.render('Olá, <strong>Pessoa lendo</strong>, seja bem-vin!') }
             </div>
          </div>
-         ${newAcountPlan}           
+         ${newAccountPlan}           
         `;
 
         return view
@@ -22,7 +22,7 @@ const PlanCount = {
 
 }
 
-let newAcountPlan = 
+let newAccountPlan = 
 `
 <div class="content content-default content-flex content-justify">
     <div class="card ">
@@ -48,4 +48,4 @@ let newAcountPlan =
 `
 
 
-export default PlanCount;
+export default AccountPlan;
