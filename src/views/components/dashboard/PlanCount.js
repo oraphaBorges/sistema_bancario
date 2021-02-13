@@ -1,4 +1,4 @@
-import { dashboardHeader as Header, card as Card} from '../index';
+import { dashboardHeader as Header } from '../index';
 
 const PlanCount = {
   

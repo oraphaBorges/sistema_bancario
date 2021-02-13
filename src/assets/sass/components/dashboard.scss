@@ -67,6 +67,11 @@
   }
 }
 
+.content-icon--default{
+  height: 25px;
+  margin-right: 5px;
+  width: 25px;
+}
 
 /*header*/
 .header-dash {
@@ -129,15 +134,6 @@
     }
 }
 
-.card-list--none{
-  list-style: none;
-}
-
-.padding--dault{
-  padding: 0;
-}
-
-
 /*tablet*/
 @media screen and (min-width: 767px) and (max-width: 1160px){
 
@@ -151,6 +147,7 @@
 
   .content-icon--default{
       height: 25px;
+      width: 25px;
   }
 }
 
@@ -197,6 +194,9 @@
 
   .content-icon--default{
       height: 18px;
+      margin-right: 2px;
+      transition: 1s;
+      width: 18px;
   }
 
   .content-intern--default{
