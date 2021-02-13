@@ -1,7 +1,7 @@
 let Card = {
   render: (info) => {
     let view = `
-    <div class="card-dashboard--default">
+    <div class="card">
       ${info}
     </div>`;
     return view
