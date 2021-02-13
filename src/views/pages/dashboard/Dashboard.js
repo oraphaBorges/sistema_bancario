@@ -25,6 +25,7 @@ const Dashboard = {
     after_render: async () => {
         Dashboard.bindEvents();
         DashboardService.getAccountData();
+        DashboardService.getStatementByPeriod();
         Dashboard.insertDashboardContent('main');
     },
 
