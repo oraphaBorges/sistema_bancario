@@ -34,6 +34,10 @@ const UserService = {
                 alert(data);
                 location.reload();
             }
+
+            if(status === 403){
+                Utils.redirect_to('login');
+            }
         });
     },
 
