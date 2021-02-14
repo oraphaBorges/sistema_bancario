@@ -8,12 +8,12 @@ const Transaction = {
     render: () => {
         const PLANOS_CONTA = JSON.parse(localStorage.getItem('PLANOS_CONTA'));  
         const plans = PLANOS_CONTA.map(plan => `<option value="${plan}">${plan}</option>`).join('');
-
+        const NOME_USUARIO = 'nome usuario';
         let view = `
         <div class="content-default">
-            <div class="content-default content-flex content-justify">
+            <div class="dash-header">
                 <div class="section">
-                ${ Header.render('Olá, <strong>Pessoa lendo</strong>, seja bem-vin!', 'transactions') }
+                    ${ Header.render(`Olá, <strong id="user-name">${NOME_USUARIO}</strong>, seja bem-vind!`, 'transactions') }
                 </div>
             </div>
             <div class="content-default content-flex content-justify">
@@ -94,7 +94,7 @@ let transfer_div = `
 `
 
 let transaction = (plans) => `
-    <div class="transaction flex-wrap--30 card-dashboard--default section m-1">
+    <div class="card transaction p-5">
         <form id="transaction_form">
             <div class="p-1 content-flex content-justify">
                 <img src="${ transactionIcon }" class="content-icon--big" alt="">

@@ -1,5 +1,5 @@
 .page-content--error h1 {
-    // text-shadow: 2px 2px 3px rgb(255 255 255/10%);
+    text-shadow: 2px 2px 3px #000;
     background: #713fbd;
     -webkit-background-clip: text;
     color: transparent;
@@ -9,8 +9,8 @@
     font-size: 25px;
   }
   .page-content--error {
-    width: 60%;
-    margin: 0 auto;
+    margin: 50px auto ;
+    width: 60vh;
   }
   .page-content--error .papers {
     background: #fff;

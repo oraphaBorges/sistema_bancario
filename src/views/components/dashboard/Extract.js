@@ -2,11 +2,14 @@ import DashboardService from '../../../service/DashboardService';
 import { dashboardHeader as Header } from '../index';
 
 const Extract = {
-    lancamentos: [],
-
-    render: () => {
+    render:  () => {
+        const NOME_USUARIO = 'nome usuario';
         let view = `
-            ${Header.render('Olá, <strong>Pessoa lendo</strong>, seja bem-vindo!', 'bankstatement') }
+            <div class="dash-header">
+                <div class="section">
+                    ${ Header.render(`Olá, <strong id="user-name">${NOME_USUARIO}</strong>, seja bem-vind!`, ) }
+                </div>
+            </div>
             <div class="content-default">
                 ${extract}
             </div>

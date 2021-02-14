@@ -93,9 +93,16 @@ const DashboardService = {
         const login = JSON.parse(localStorage.getItem('login'));
         const token = JSON.parse(localStorage.getItem('token'));
 
-        const response = await api.get(`/conta/extrato-periodo?dataFim=${dataFim}&dataInicio=${dataInicio}&login=${login}&sigla=${sigla}`, HeadersDefault(token))
-            .then(response => { return response.data})
-            .catch(response => console.error(response));
+        const response = await api.get(`/conta/extrato-periodo?dataFim=${dataFim}&dataInicio=${dataInicio}&login=${temporaryLogin}&sigla=${temporarySigla}`, HeadersDefault(token))
+            .then(response => console.log(response.data))
+            .catch(error => Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Verifique os dados e tente novamente',
+                footer: error
+            }).then(()=>{
+                location.reload();
+            }))
         
         return response;
     },

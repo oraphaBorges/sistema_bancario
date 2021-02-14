@@ -7,8 +7,8 @@ import updateIcon from '../../../assets/img/svg/update.svg';
 const HeaderDash = {
     render: (message = 'Mensagem do componente :)', id = 'main') => {
         let view = `   
-            <div class="header-dash content-default content-flex content-align--center">
-                <div class="content-flex content-flex--1 content-justify--between">
+            <div class="header-dash">
+                <div id="text-wellcome">
                     <span class="text-white m-1 p-1">
                         ${message}
                     </span>
@@ -16,8 +16,8 @@ const HeaderDash = {
                         25 de janeiro de 2020
                     </span>
                 </div>
-                <img src="${updateIcon}" class="icon p-1 update" id="icon_update" value="${id}">
-                <img src="${logoutIcon}" class="icon p-1" id="icon_logout">
+                <img src="${updateIcon}" class="icon update" id="icon_update" value="${id}">
+                <img src="${logoutIcon}" class="icon" id="icon_logout">
             </div>
         `;
 
