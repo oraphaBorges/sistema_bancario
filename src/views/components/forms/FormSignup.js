@@ -1,5 +1,5 @@
 let FormSignup = {
-    render: async () => {
+    render: () => {
         let view = `
         <div class="card bloco-item">
             <h2>Faça o seu Cadastro</h2>
@@ -18,7 +18,7 @@ let FormSignup = {
         return view
     },
 
-    after_render: async () => {
+    after_render: () => {
 
     }
 }
