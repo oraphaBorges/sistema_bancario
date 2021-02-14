@@ -26,6 +26,7 @@ const Transaction = {
     },
 
     after_render: () => {
+        Header.after_render();
         Transaction.bindEvents();
     },
 

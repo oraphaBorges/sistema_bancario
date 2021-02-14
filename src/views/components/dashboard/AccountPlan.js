@@ -16,8 +16,8 @@ const AccountPlan = {
         return view
     },
 
-    after_render:  () => {
-
+    after_render: () => {
+        Header.after_render();
     }
 
 
