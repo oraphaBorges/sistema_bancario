@@ -26,29 +26,34 @@ const DashboardService = {
         localStorage.setItem('CONTA_CREDITO', JSON.stringify(CONTA_CREDITO));
     },
 
-    setTransaction: async () => {
+    setTransaction: async ({ operacao, planoConta, valor, origem_sigla, descricao, destino_sigla, destino_login } ) => {
         const token = JSON.parse(localStorage.getItem('token'));
-        let temporary = {
+        const login = JSON.parse(localStorage.getItem('login'));
+        let response = false;
+
+        let obj = {
             contaDestino: {
-              login: "emersonteste",
-              sigla: "POUPANCA"
+              login: destino_login ? destino_login: login,
+              sigla: destino_sigla ? destino_sigla: origem_sigla
             },
             contaOrigem: {
-              login: "emersonteste",
-              sigla: "POUPANCA"
+              login: login,
+              sigla: origem_sigla
             },
 
             date: "2020-12-12",
-            descricao: "Compra de fruta",
-            planoConta: "DEPOSITO",
-            valor: 107.3
+            descricao: descricao,
+            planoConta: planoConta,
+            valor: Number(valor)
         }
 
-        let temporaryOperation = 'DEPOSITO';
+        await api.post(`/lancamentos/?operacao=${operacao}`, obj, HeadersDefault(token)).then(response =>{
+            response = true;
+        }).catch(error => { 
+            response = false;
+        });  
 
-        await api.post(`/lancamentos/?operacao=${temporaryOperation}`, temporary, HeadersDefault(token)).then(response =>{
-           console.log(response)
-        }).catch(error => console.error(error));  
+        return true;
     },
 
     setAccountPlan: async () => {
