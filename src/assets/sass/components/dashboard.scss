@@ -337,6 +337,11 @@
       height: 70px;
       width: 90px;
     }
+    .card-menu--item:hover {
+      cursor: pointer;;
+      transform: none;
+      transition: 0.5s;
+    }
   }
   
   .dashboard-menu > img {
