@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;900&display=swap');
-
  ::-webkit-scrollbar {
    width: 0px;
 }
@@ -42,24 +40,45 @@
   h2{
     margin: 0;
   }
-
+  .dash-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 30px;
+    .header-dash{
+      display: flex;
+      flex-direction: row;
+      
+      #text-wellcome{
+        padding: 10px;
+        font-weight: 500;
+        #user-name{  
+          transition: 2.5s;
+          &:hover{
+            transition: 1s;
+            color: $verde-gama;
+          }
+        }
+      }
+      img{
+        padding: 10px;
+      }
+    }
+  }
+ 
   .accounts{
+    display: flex;
     flex-wrap: wrap;
-  }
-
-  /*main*/
-  .section {
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 80%;
-  }
-
-  /*card*/
-  .card-dashboard--default {
-    border-radius: 8px;
-    background-color: $white;
-    padding: 20px;
-    transition: 1.5s;
+    justify-content: center;
+    /*card*/
+    .card-dashboard{
+      width: 25%;
+      margin: 5px;
+      padding: 20px;
+      transition: 1.5s;
+      border-radius: 8px;
+      background-color: $white;
+    }
   }
 
   .content-intern--default {
@@ -69,57 +88,10 @@
 
   .text-card--default {
     color: #9B9B9B;
-    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 400;
   }
 
-  .text-money {
-    font-weight: bold;
-    font-size: 27px;
-    margin: 0;
-  }
-
-  .text-color--blue{
-    color: #1783E7;
-  }
-  .text-color--green{
-    color: #68DE5A;
-  }
-  .text-color--red{
-    color: $red;
-  }
-
-  .text-card--ancor {
-    color: #1783E7;
-    cursor: pointer;
-    text-decoration: none;
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    padding: 2px;
-  }
-
-  .text-color--grey {
-    font-family: 'Roboto', sans-serif;
-    color: #9B9B9B;
-  }
-
-  .text-size--12 {
-    font-size: 12px;
-  }
-
-  .text-size--20 {
-    font-size: 20px;
-  }
-
-  .flex-wrap--30{
-    width: 38%;
-  }
-
-  .align-last--center{
-    text-align-last: center;
-  }
 }
 
 .content-icon--big{
@@ -136,8 +108,8 @@
 /*header*/
 .header-dash {
     .icon{
-      border-radius: 10px;
       cursor: pointer;
+      border-radius: 10px;
       height: 25px;
       transition: 0.5s;
       width: 25px;
@@ -230,23 +202,13 @@
 }
 
 /*tablet*/
-@media screen and (min-width: 767px) and (max-width: 1160px){
-
-  .flex-wrap--40{
-      width: 100%;
-  }
-
-  .content-dashboard .flex-wrap--30{
-    width: 60%;
-  }
-
-  .section{
-      padding: 5px;
-  }
-
-  .content-icon--default{
-      height: 25px;
-      width: 25px;
+@media (min-width: 767px) and (max-width: 1080px){
+  .content-dashboard{
+    .accounts{
+      .card-dashboard{
+        width: 50%;
+      }
+    }
   }
 }
 
@@ -266,6 +228,14 @@
 
 }
 @media (max-width: 767px){
+  .content-dashboard{
+    .accounts{
+      .card-dashboard{
+        width: 80%;
+      }
+    }
+  }
+
   .content-dashboard{
     margin-bottom: 100px;
   }

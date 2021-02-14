@@ -4,11 +4,14 @@ const AccountPlan = {
     render: () => {
         const PLANOS_CONTA = JSON.parse(localStorage.getItem('PLANOS_CONTA'));  
         const plans = PLANOS_CONTA.map(plan => `<li class="m-1">${ plan }</li>`).join('');
+        const NOME_USUARIO = 'nome usuario';
         let view = `
         <div class="content-default content-flex content-justify">
+        <div class="dash-header">
             <div class="section">
-            ${ Header.render('Olá, <strong>Pessoa lendo</strong>, seja bem-vin!') }
+                ${ Header.render(`Olá, <strong id="user-name">${NOME_USUARIO}</strong>, seja bem-vind!`) }
             </div>
+        </div>
          </div>
          ${ newAccountPlan(plans) }           
         `;
