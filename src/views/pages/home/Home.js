@@ -20,6 +20,9 @@ let Home = {
           <div id="bloco-celulares" class="bloco">
             ${blocoCelulares}
           </div>
+          <div id="bloco-anuidade" class="bloco">
+            ${blocoAnuidade}
+          </div>
         ${await Footer}
       `;
 
@@ -51,7 +54,7 @@ let Home = {
 }
 
 let blocoLogin = `
-  <div class="bloco-item bloco-content-login">
+  <div class="bloco-content-login">
     <h2>Gama Bank</h2>
     <p>é um projeto de nossos alunos.</p>
     <p>Já tem conta?</p>
@@ -60,7 +63,7 @@ let blocoLogin = `
 `
 
 let blocoCelulares=`
-  <div class="bloco-item bloco-content-celular  bg-dark">
+  <div class="bloco-content-celular  bg-dark">
     <h1 class="text-gama text-center">CONTA DIGITAL</h1>
     <img src="${celularWhite}" alt="celular branco">
     <p class="text-gama">
@@ -69,7 +72,7 @@ let blocoCelulares=`
       Este é um projeto de avaliação | GamaAcademy | Accenture | 2021
     </p>
   </div>
-  <div class="bloco-item bloco-content-celular  bg-light">
+  <div class="bloco-content-celular  bg-light">
     <h1 class="text-purple text-center">CARTÃO DE CRÉDITO</h1>
     <img src="${celularBlack}" alt="celular preto">
     <p>
@@ -81,15 +84,15 @@ let blocoCelulares=`
 `
 
 let blocoAnuidade=`
-  <div class="bloco-item bloco-content-anuidade">
+  <div class="bloco-content-anuidade">
     <h2 class="text-light">Zero anuidade</h2>
     <p class="text-light">
       Burocracia custa caro. Somos eficientes<br>
       para você não ter que pagar tarifas.
     </p>
   </div>
-  <div class="bloco-item bloco-content-anuidade text-center">
-    <h1 class="text-gama">0,0</h2>
+  <div class="bloco-content-anuidade">
+    <h1 class="text-gama">0,00</h2>
   </div>
 `
 

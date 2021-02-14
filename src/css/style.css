@@ -332,6 +332,33 @@ a {
     padding: 30px;
     font-weight: 900; }
 
+#bloco-anuidade .bloco-content-anuidade {
+  margin: auto; }
+#bloco-anuidade h1 {
+  font-size: 8em;
+  font-weight: 900;
+  transition: 1s; }
+  #bloco-anuidade h1:hover {
+    font-size: 10em;
+    color: #EAEAEA;
+    transition: 1s; }
+#bloco-anuidade h2 {
+  font-size: 3.5em;
+  margin-bottom: 0px;
+  transition: 1s; }
+  #bloco-anuidade h2:hover {
+    font-size: 3.8em;
+    color: #63dc3e;
+    transition: 1s; }
+#bloco-anuidade p {
+  font-size: 1.3em;
+  font-weight: 900;
+  transition: 1s; }
+  #bloco-anuidade p:hover {
+    font-size: 1.5em;
+    color: #63dc3e;
+    transition: 1s; }
+
 @media (max-width: 768px) {
   #bloco-cadastro-login {
     background-image: none; }
@@ -341,6 +368,8 @@ a {
     align-items: center;
     transition: 1s;
     height: auto; }
+    .bloco .btn {
+      width: auto; }
     .bloco .bloco-content-login {
       transition: 1s;
       margin: 20px auto; }
@@ -352,8 +381,13 @@ a {
       .bloco .bloco-content-celular img {
         transition: 1s;
         height: 60vh; }
-    .bloco .btn {
-      width: auto; } }
+    .bloco #bloco-anuidade .bloco-content-anuidade h1 {
+      font-size: 5em; }
+    .bloco #bloco-anuidade .bloco-content-anuidade h2 {
+      font-size: 2.5em; }
+    .bloco #bloco-anuidade .bloco-content-anuidade p {
+      font-size: 1.3em;
+      font-weight: 900; } }
 .btn {
   cursor: pointer;
   border: none;
