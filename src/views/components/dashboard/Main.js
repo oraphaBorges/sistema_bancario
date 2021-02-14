@@ -81,6 +81,9 @@ const buildTransactions = (lancamentos) => {
 
     let html = [];
 
+    //ordernar lançamentos pelos últimos antes de fazer a limitação abaixo;
+    lancamentos.length = 3;
+
     lancamentos.forEach(({ date, descricao, valor }) => {
         let newLancamento =
             `    
@@ -97,7 +100,7 @@ const buildTransactions = (lancamentos) => {
             </div>
         `
         html.push(newLancamento);
-    })
+    });
 
     return html.join('');
 }
