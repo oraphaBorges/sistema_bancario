@@ -11,7 +11,7 @@ import { error404, home, login, forgotPassword, changePassword, dashboard } from
 let routes = {
     '/': home,
     '/login': login,
-    '/new-password': forgotPassword,
+    '/forgot-password': forgotPassword,
     '/change-password': changePassword,
     '/dashboard': dashboard
 }

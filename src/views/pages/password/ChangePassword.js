@@ -5,8 +5,8 @@ let ChangePassword = {
 
     render: async () => {
         let view = `
-            ${await Nav}
-            ${html}
+            ${ Nav }
+            ${ html }
         `;
 
         return view
