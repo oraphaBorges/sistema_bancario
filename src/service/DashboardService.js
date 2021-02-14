@@ -93,7 +93,7 @@ const DashboardService = {
         const token = JSON.parse(localStorage.getItem('token'));
 
         const response = await api.get(`/conta/extrato-periodo?dataFim=${dataFim}&dataInicio=${dataInicio}&login=${login}&sigla=${sigla}`, HeadersDefault(token))
-            .then(response => console.log(response.data))
+            .then(response => { return response.data })
             .catch(error => Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
