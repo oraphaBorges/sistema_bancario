@@ -2,6 +2,7 @@ import { formsignup as Form } from '../../components/index';
 import { nav as Nav } from '../../components/index';
 
 import UserService from '../../../service/UserService';
+import Swal from 'sweetalert2';
 
 import bgParalaxGirl from '../../../img/happy-bg.png';
 import celularWhite from '../../../img/cell-white-bg.png';
@@ -50,9 +51,15 @@ let Home = {
 
         if(element.id === 'cpf'){
           if(!Utils.isCpfValid(element.value)){
-            alert('CPF inválido!')
-            
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'CPF Inválido'
+            }).then(()=>{
+                
+            })
             return;
+            
           }
 
           element.value = element.value.replace(/[^\d]+/g,'');	

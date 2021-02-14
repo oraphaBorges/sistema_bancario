@@ -9,7 +9,14 @@ const UserService = {
         let data = { cpf, login, nome, senha }
 
         await api.post('/usuarios', data, HeadersDefaultNoAuth).then(r =>{
-            console.log(r)
+            Swal.fire({
+                icon: 'success',
+                title: 'Yes!...',
+                text: 'Concluído',
+                footer: r.data
+            }).then(()=>{
+                location.reload();
+            })
             Utils.redirect_to('login');
 
         }).catch(error => Swal.fire({
