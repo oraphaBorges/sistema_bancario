@@ -69,9 +69,8 @@ const DashboardService = {
     getAccountPlan: async () => {
         const login = JSON.parse(localStorage.getItem('login'));
         const token = JSON.parse(localStorage.getItem('token'));
-        let temporary = "emersonteste"
 
-        await api.get(`/lancamentos/planos-conta/?login=${temporary}`, HeadersDefault(token)).then(response => {
+        await api.get(`/lancamentos/planos-conta/?login=${login}`, HeadersDefault(token)).then(response => {
             let PLANOS_CONTA = response.data.map(item => item.finalidade);
             localStorage.setItem('PLANOS_CONTA', JSON.stringify(PLANOS_CONTA));
         })
@@ -93,7 +92,7 @@ const DashboardService = {
         const login = JSON.parse(localStorage.getItem('login'));
         const token = JSON.parse(localStorage.getItem('token'));
 
-        const response = await api.get(`/conta/extrato-periodo?dataFim=${dataFim}&dataInicio=${dataInicio}&login=${temporaryLogin}&sigla=${temporarySigla}`, HeadersDefault(token))
+        const response = await api.get(`/conta/extrato-periodo?dataFim=${dataFim}&dataInicio=${dataInicio}&login=${login}&sigla=${sigla}`, HeadersDefault(token))
             .then(response => console.log(response.data))
             .catch(error => Swal.fire({
                 icon: 'error',
