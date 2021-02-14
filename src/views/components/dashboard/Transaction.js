@@ -6,18 +6,33 @@ import DashboardService from '../../../service/DashboardService';
 const Transaction = {
   
     render: () => {
+        const PLANOS_CONTA = JSON.parse(localStorage.getItem('PLANOS_CONTA'));  
+        const plans = PLANOS_CONTA.map(plan => `<option value="${plan}">${plan}</option>`).join('');
+
         let view = `
-            ${Header.render('Olá, <strong>Pessoa lendo</strong>, seja bem-vindo!') }
-            <div class="content content-default content-flex content-justify">
-                ${ transaction } 
-            </div> 
+        <div class="content-default">
+            <div class="content-default content-flex content-justify">
+                <div class="section">
+                ${ Header.render('Olá, <strong>Pessoa lendo</strong>, seja bem-vin!') }
+                </div>
+            </div>
+            <div class="content-default content-flex content-justify">
+                ${ transaction(plans) } 
+            </div>
+        </div>
         `;
 
         return view
     },
 
     after_render: () => {
+        Transaction.bindEvents();
+    },
+
+    bindEvents: () => {
         const transferDiv = document.getElementById('transfer_div');
+
+        //Manipulando conteúdo exibido somente para transferências
         const operacao = document.getElementById('operacao');
         operacao.addEventListener('click', e => {
             const valueSelected = e.target.value;
@@ -40,12 +55,13 @@ const Transaction = {
 
             transaction_form.innerHTML = Loader;
             const result = await DashboardService.setTransaction(data);
+
             if(result){
                 setTimeout(() => {
                     transaction_form.innerHTML = `
                         <p class="text-center">hm... parece que tudo deu certo :)</p>
                         <p class="text-center">
-                            <a href="#/dashboard">Clique aqui</a> para voltar ao dashboard 
+                            <a id="do-reload">Clique em Home</a> para voltar ao dashboard 
                         </p>
                     ` 
                 }, 1500)
@@ -53,16 +69,16 @@ const Transaction = {
                 transaction_form.innerHTML = `
                     <p class="text-center">hm... algo deu errado :(</p>
                     <p class="text-center">
-                        <a href="">Clique aqui</a> para voltar ao dashboard e tentar novamente mais tarde
+                        <a id="do-reload">Clique em Home</a> para voltar ao dashboard e tentar novamente mais tarde
                     </p>
-                ` 
-            }         
-        })
-    }
+                `
+            }
+        }) 
+    },
 }
 
 let transfer_div = `
-    <div class="content-justify content-flex--column m-1">
+    <div class="content-justify content-flex--column m-1 content-flex--1">
         <label for="destino_sigla" class="text-center">Conta de destino</label>
         <select name="destino_sigla" class="align-last--center" id="destino_sigla" required>
             <option value="POUPANCA">Conta Poupança</option>
@@ -70,13 +86,13 @@ let transfer_div = `
             <option value="CREDITO">Conta de Crédito</option>
         </select>
     </div>
-    <div class="content-justify content-flex--column m-1">
+    <div class="content-justify content-flex--column m-1 content-flex--1">
         <label for="destino_login" class="text-center">Login de destino</label>
         <input type="text" id="destino_login" placeholder="Ex: emerson" required/>
     </div>
 `
 
-let transaction = `
+let transaction = (plans) => `
     <div class="transaction flex-wrap--30 card-dashboard--default section m-1">
         <form id="transaction_form">
             <div class="p-1 content-flex content-justify">
@@ -110,8 +126,7 @@ let transaction = `
             <div class="p-1 content-flex--column content-justify">
                 <label for="planoConta" class="text-center">Plano de conta</label>
                 <select name="planoConta" class="align-last--center" id="planoConta" required>
-                    <option value="POUPANCA">Conta Poupança</option>
-                    <option value="CORRENTE">Conta Corrente</option>
+                    ${ plans }
                 </select>
             </div>
             <div class="p-1 content-flex--column content-justify">
