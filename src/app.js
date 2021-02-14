@@ -5,7 +5,7 @@ import Utils from '../src/service/Utils';
 import UserService from './service/UserService';
 
 /** Pages **/
-import { error404, home, login, forgotPassword, changePassword, transaction, dashboard } from './views/pages/index';
+import { error404, home, login, forgotPassword, changePassword, dashboard } from './views/pages/index';
 
 /** Routes **/
 let routes = {
@@ -13,7 +13,6 @@ let routes = {
     '/login': login,
     '/new-password': forgotPassword,
     '/change-password': changePassword,
-    '/transactions': transaction,
     '/dashboard': dashboard
 }
 
