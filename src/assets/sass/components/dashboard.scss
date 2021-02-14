@@ -4,9 +4,21 @@
 .content-dashboard{
   width: 100%;
 
+  ::-webkit-input-placeholder {
+    text-align: center;
+  }
+
+  label{
+    margin-bottom: 2px;
+  }
+
   ul, li{
     list-style: none;
     padding: 0;
+  }
+
+  h2{
+    margin: 0;
   }
 
   .accounts{
@@ -78,6 +90,19 @@
   .text-size--20 {
     font-size: 20px;
   }
+
+  .flex-wrap--30{
+    width: 38%;
+  }
+
+  .align-last--center{
+    text-align-last: center;
+  }
+}
+
+.content-icon--big{
+  height: 40px;
+  width: 40px;
 }
 
 .content-icon--default{
@@ -147,11 +172,49 @@
     }
 }
 
+.transaction{
+  input, select {
+    background-color: #f7f7f7;
+    border: solid 1px $purple;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  input, select:focus {
+    text-align: center;
+  }
+
+  input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+  }
+
+  button {
+    border-radius: 10px;
+    background-color: $white;
+    border: solid 1px $purple;
+    cursor: pointer;
+    color: $purple;
+    font-weight: bold;
+    font-size: 18px;
+    height: 45px;
+    transition: 0.7s;
+  }
+
+  button:hover{
+    background-color: $purple;
+    color: white;
+  }
+}
+
 /*tablet*/
 @media screen and (min-width: 767px) and (max-width: 1160px){
 
   .flex-wrap--40{
       width: 100%;
+  }
+
+  .content-dashboard .flex-wrap--30{
+    width: 60%;
   }
 
   .section{
@@ -165,6 +228,10 @@
 }
 
 @media (max-width: 767px) {
+
+  .content-dashboard .flex-wrap--30{
+    width: 70%;
+  }
 
   .accounts{
     display: block;
@@ -262,6 +329,11 @@
 }
 
 @media screen and (max-width:615px){
+
+  .content-dashboard .flex-wrap--30{
+    width: 90%;
+  }
+
   .accounts{
     display: block;
     margin: 1px;
@@ -280,6 +352,14 @@
 }
 
 @media screen and (max-width:491px){
+  .content-dashboard .flex-wrap--30{
+    width: 99%;
+  }
+
+  .transfer-div{
+    display: block;
+  }
+
   .content-dashboard .card-dashboard--default {
       padding: 5px;
   }

@@ -26,7 +26,7 @@ const Dashboard = {
         Dashboard.bindEvents();
         await DashboardService.getAccountData();
         await DashboardService.getAccountPlan();
-        Dashboard.insertDashboardContent('main');
+        Dashboard.insertDashboardContent('transactions');
     },
 
     insertDashboardContent: (idContent) => {
