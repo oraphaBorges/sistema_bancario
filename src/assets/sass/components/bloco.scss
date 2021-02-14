@@ -3,7 +3,7 @@
     background-position: bottom;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size:555px
+    background-size:35%;
 }
 
 .bloco{
@@ -11,6 +11,8 @@
     flex-direction: row;
     justify-content: space-between;
     transition: 1s;
+
+    height: 100vh;
 
 }
 

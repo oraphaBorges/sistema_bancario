@@ -12,7 +12,6 @@ let FormSignup = {
                 <input id="confirmar_senha" class="input" type="password" placeholder="Confirme sua senha">
                 <button id="button_submit" type="submit" class="btn btn-main-outline btn-rounded">Continuar</button>
             </form>
-            <a href="#/login">Fazer Login</a>
         </div>
         `;
 

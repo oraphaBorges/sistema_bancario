@@ -284,13 +284,14 @@ a {
   background-position: bottom;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-size: 555px; }
+  background-size: 35%; }
 
 .bloco {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  transition: 1s; }
+  transition: 1s;
+  height: 100vh; }
 
 .bloco-content-login {
   display: flex;
@@ -388,6 +389,7 @@ a {
   justify-content: center;
   text-align: center;
   width: fit-content;
+  height: fit-content;
   margin: auto;
   padding: 20px;
   margin-top: 50px;
