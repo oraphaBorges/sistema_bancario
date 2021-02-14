@@ -5,6 +5,7 @@ import DashboardMenu from './DashboardMenu';
 import HeaderDash from './dashboard/HeaderDash';
 import AccountPlan from './dashboard/AccountPlan';
 import Transaction from './dashboard/Transaction';
+import Extract from './dashboard/Extract';
 import Main from './dashboard/Main';
 
 // Formulários
@@ -22,3 +23,4 @@ export const dashboardHeader = HeaderDash;
 export const main = Main;
 export const accountPlan = AccountPlan;
 export const transaction = Transaction;
+export const extract = Extract;
