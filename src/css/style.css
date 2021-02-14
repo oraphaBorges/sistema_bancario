@@ -420,6 +420,110 @@ a {
   margin-top: 10px;
 }
 
+#bloco-celulares {
+  height: fit-content; }
+
+.bloco-content-celular {
+  width: 100vw;
+  transition: 1s; }
+  .bloco-content-celular img {
+    height: 75vh;
+    transition: 1s; }
+  .bloco-content-celular p {
+    padding: 30px;
+    font-weight: 900; }
+
+#bloco-anuidade .bloco-content-anuidade {
+  margin: auto; }
+#bloco-anuidade h1 {
+  font-size: 8em;
+  font-weight: 900;
+  transition: 1s; }
+  #bloco-anuidade h1:hover {
+    color: #EAEAEA;
+    transition: 1s; }
+#bloco-anuidade h2 {
+  font-size: 3.5em;
+  margin-bottom: 0px;
+  transition: 1s; }
+  #bloco-anuidade h2:hover {
+    color: #63dc3e;
+    transition: 1s; }
+#bloco-anuidade p {
+  font-size: 1.3em;
+  font-weight: 900;
+  transition: 1s; }
+  #bloco-anuidade p:hover {
+    color: #63dc3e;
+    transition: 1s; }
+
+#bloco-fim-complexidade {
+  background-color: #63dc3e;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 100vh; }
+  #bloco-fim-complexidade .bloco-content-anuidade {
+    margin: auto; }
+  #bloco-fim-complexidade h1 {
+    font-size: 8em;
+    font-weight: 900;
+    transition: 1s; }
+    #bloco-fim-complexidade h1:hover {
+      color: #EAEAEA;
+      transition: 1s; }
+  #bloco-fim-complexidade h2 {
+    font-size: 3.5em;
+    margin-bottom: 0px;
+    transition: 1s; }
+    #bloco-fim-complexidade h2:hover {
+      color: #6f42c1;
+      transition: 1s; }
+  #bloco-fim-complexidade p {
+    font-size: 1.3em;
+    font-weight: 900;
+    transition: 1s; }
+    #bloco-fim-complexidade p:hover {
+      color: #6f42c1;
+      transition: 1s; }
+
+#bloco-footer {
+  background-color: #EAEAEA;
+  height: auto; }
+  #bloco-footer .bloco-content-footer {
+    margin: auto; }
+    #bloco-footer .bloco-content-footer img {
+      height: 500px;
+      padding: 50px; }
+      #bloco-footer .bloco-content-footer img:hover {
+        animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        transform: translate3d(0, 0, 0); }
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0); }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0); }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0); } }
+    #bloco-footer .bloco-content-footer h2 {
+      font-size: 3.5em;
+      margin-bottom: 0px;
+      transition: 1s;
+      color: #1a1a1a; }
+      #bloco-footer .bloco-content-footer h2:hover {
+        color: #6f42c1;
+        transition: 1s; }
+    #bloco-footer .bloco-content-footer p {
+      font-size: 1.3em;
+      font-weight: 900;
+      transition: 1s;
+      color: #1a1a1a; }
+      #bloco-footer .bloco-content-footer p:hover {
+        color: #6f42c1;
+        transition: 1s; }
+
 @media (max-width: 768px) {
   #bloco-cadastro-login {
     background-image: none;
@@ -507,6 +611,7 @@ a {
   justify-content: center;
   text-align: center;
   width: fit-content;
+  height: fit-content;
   margin: auto;
   padding: 20px;
   margin-top: 50px;
