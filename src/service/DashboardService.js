@@ -56,15 +56,15 @@ const DashboardService = {
         return true;
     },
 
-    setAccountPlan: async () => {
+    setAccountPlan: async ({ finalidade }) => {
+        const login = JSON.parse(localStorage.getItem('login'));
         const token = JSON.parse(localStorage.getItem('token'));
-        let temporary = {
-            finalidade: "NOVADENOVO",
-            login: "emersonteste"
-        }
 
-        await api.post(`/lancamentos/planos-conta`, temporary, HeadersDefault(token)).then(response =>{
-           console.log(response)
+        const data = { finalidade: finalidade, login: login }
+
+        await api.post(`/lancamentos/planos-conta`, data, HeadersDefault(token)).then(response =>{
+           console.log(response);
+           location.reload();
         }).catch(error => console.error(error));  
     },
 
