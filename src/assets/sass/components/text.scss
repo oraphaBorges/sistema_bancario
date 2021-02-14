@@ -29,6 +29,15 @@ a {
 .text-gama{
     color: $verde-gama;
 }
+.text-green{
+    color: $verde-gama;
+}
+.text-blue{
+    color: $blue;
+}
+.text-red{
+    color: $red;
+}
 .text-dark{
     color: $dark;
 }
@@ -44,3 +53,29 @@ a {
 .text-weight--bold {
     font-weight: bold;
 }
+
+
+.text-card--ancor {
+    color: #1783E7;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 2px;
+  }
+
+  .text-size--12 {
+    font-size: 12px;
+  }
+
+  .text-size--20 {
+    font-size: 20px;
+  }
+
+  .flex-wrap--30{
+    width: 38%;
+  }
+
+  .align-last--center{
+    text-align-last: center;
+  }
