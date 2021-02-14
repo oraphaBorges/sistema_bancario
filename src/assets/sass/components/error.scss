@@ -1,0 +1,89 @@
+.page-content--error h1 {
+    text-shadow: 2px 2px 3px rgb(255 255 255 / 10%);
+    background: #713fbd;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+    margin: 20px 10px;
+    text-transform: uppercase;
+    font-size: 25px;
+  }
+  .page-content--error {
+    width: 60%;
+    margin: 0 auto;
+  }
+  .page-content--error .papers {
+    background: #fff;
+    padding: 30px;
+    position: relative;
+  }
+  .page-content--error .papers,
+  .page-content--error .papers::before,
+  .page-content--error .papers::after {
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.25);
+    border: 1px solid #bbb;
+  }
+  
+  .page-content--error p {
+    color: #636363;
+    font-size: 16px;
+    padding: 20px;
+    background: #f2f2f2;
+  }
+  
+  .page-content--error button {
+    color: #8C52E5;
+    transition: 500ms;
+    border: 2px solid #8C52E5;
+    background-color: #fff;
+    cursor: pointer;
+    padding: 10px 25px;
+    text-decoration: none;
+    font-weight: 800;
+    border-radius: 20px;
+    margin: 0 auto;
+    text-align: center;
+    display: inherit;
+  }
+  
+  .page-content--error .papers::before,
+  .page-content--error .papers::after {
+    content: "";
+    position: absolute;
+    height: 95%;
+    width: 99%;
+    background-color: #eee;
+  }
+  
+  .page-content--error .papers::before {
+    right: 15px;
+    top: 0;
+    transform: rotate(-1deg);
+    z-index: -1;
+  }
+  
+  .page-content--error .papers::after {
+    top: 5px;
+    right: -5px;
+    transform: rotate(1deg);
+    z-index: -2;
+  }
+  
+  .page-content--error .papers-svg > svg {
+    width: 100%;
+    height: auto;
+  }
+  
+  .page-content--error h2, 
+  .page-content--error p {
+    text-align: center;
+    margin-top: 0;
+  }
+  
+  @media screen and (max-width: 491px){
+    .page-content--error h2, 
+    .page-content--error p {
+      word-break: break-all;
+    }
+  }
+  
