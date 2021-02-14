@@ -34,10 +34,6 @@ const UserService = {
                 alert(data);
                 location.reload();
             }
-
-            if(status === 403){
-                Utils.redirect_to('login');
-            }
         });
     },
 
@@ -88,6 +84,23 @@ const UserService = {
             response = false;
         }
 
+        return response;
+    },
+
+    isTokenExpired: () => {
+        let response = false;
+
+        const dataFim = JSON.parse(localStorage.getItem('dataFim'));
+
+        const tokenDate = new Date(dataFim);
+        const now = new Date();
+
+        if(now > tokenDate){
+            response = true;
+
+            Utils.redirect_to('login');
+        }
+        
         return response;
     },
 
