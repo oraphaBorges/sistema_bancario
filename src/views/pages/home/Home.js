@@ -1,11 +1,13 @@
-import { footer as Footer } from '../../components/index';
 import { formsignup as Form } from '../../components/index';
 import { nav as Nav } from '../../components/index';
 
 import UserService from '../../../service/UserService';
 
+import bgParalaxGirl from '../../../img/happy-bg.png';
 import celularWhite from '../../../img/cell-white-bg.png';
 import celularBlack from '../../../img/cell-black-bg.png';
+import celularFooter from '../../../img/footer-right.png';
+import bgParalax from '../../../img/bg-paralax-green.png';
 
 let Home = {
   is_private: false,
@@ -13,7 +15,7 @@ let Home = {
   render: async () => {
       let view = `
         ${await Nav}
-          <div id="bloco-cadastro-login" class="container bloco">
+          <div id="bloco-cadastro-login" class="container bloco" style="background-image: url('${bgParalaxGirl}');">
             ${blocoLogin}
             ${await Form}
           </div>
@@ -23,7 +25,12 @@ let Home = {
           <div id="bloco-anuidade" class="bloco">
             ${blocoAnuidade}
           </div>
-        ${await Footer}
+          <div id="bloco-fim-complexidade" class="bloco" style="background-image: url('${bgParalax}');">
+            ${blocoFimComplexidade}
+          </div>
+          <div id="bloco-footer" class="bloco">
+            ${footerHome}
+          </div>
       `;
 
       return view
@@ -93,6 +100,29 @@ let blocoAnuidade=`
   </div>
   <div class="bloco-content-anuidade">
     <h1 class="text-gama">0,00</h2>
+  </div>
+`
+let blocoFimComplexidade=`
+  <div class="bloco-content-anuidade">
+    <h2 class="text-light">O fim da <br> complexidade</h2>
+    <p class="text-light">
+      Para quem sabe que tecnologia e <br>
+      design são melhores do que agências e papelada.
+    </p>
+  </div>
+  <div class="bloco-content-anuidade">
+  </div>
+`
+let footerHome=`
+  <div class="bloco-content-footer">
+    <h2 class="text-light">O fim da <br> complexidade</h2>
+    <p class="text-light">
+      Para quem sabe que tecnologia e <br>
+      design são melhores do que agências e papelada.
+    </p>
+  </div>
+  <div class="bloco-content-footer">
+    <img src="${celularFooter}" alt="celular preto">
   </div>
 `
 

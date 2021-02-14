@@ -9,7 +9,6 @@
 }
 
 #bloco-cadastro-login{
-    background-image: url('https://desbugados-gama.netlify.app/assets/img/happy-bg.png');
     background-position: bottom;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -75,7 +74,6 @@
         font-weight: 900;
         transition: 1s;
         &:hover{
-            font-size: 10em;
             color: $light;
             transition: 1s;
         }
@@ -85,7 +83,6 @@
         margin-bottom: 0px;
         transition: 1s;
         &:hover{
-            font-size: 3.8em;
             color: $verde-gama;
             transition: 1s;
         }
@@ -95,11 +92,104 @@
         font-weight: 900;
         transition: 1s;
         &:hover{
-            font-size: 1.5em;
             color: $verde-gama;
             transition: 1s;
         }
     }
+}
+
+#bloco-fim-complexidade{
+    background-color: $verde-gama;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    height: 100vh;
+
+    .bloco-content-anuidade{
+        margin: auto;
+    }
+    h1{
+        font-size: 8em;
+        font-weight: 900;
+        transition: 1s;
+        &:hover{
+            color: $light;
+            transition: 1s;
+        }
+    }
+    h2{
+        font-size: 3.5em;
+        margin-bottom: 0px;
+        transition: 1s;
+        &:hover{
+            color: $main;
+            transition: 1s;
+        }
+    }
+    p{
+        font-size: 1.3em;
+        font-weight: 900;
+        transition: 1s;
+        &:hover{
+            color: $main;
+            transition: 1s;
+        }
+    }
+}
+
+#bloco-footer{
+    background-color: $light;
+    height: auto;
+    .bloco-content-footer{
+        margin: auto;
+        img{
+            height: 500px;
+            padding: 50px;
+            &:hover{
+                animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+                transform: translate3d(0, 0, 0);
+            }
+            @keyframes shake {
+                10%, 90% {
+                  transform: translate3d(-1px, 0, 0);
+                }
+                
+                20%, 80% {
+                  transform: translate3d(2px, 0, 0);
+                }
+              
+                30%, 50%, 70% {
+                  transform: translate3d(-4px, 0, 0);
+                }
+              
+                40%, 60% {
+                  transform: translate3d(4px, 0, 0);
+                }
+              }
+        }
+        h2{
+            font-size: 3.5em;
+            margin-bottom: 0px;
+            transition: 1s;
+            color: $dark;
+            &:hover{
+                color: $main;
+                transition: 1s;
+            }
+        }
+        p{
+            font-size: 1.3em;
+            font-weight: 900;
+            transition: 1s;
+            color: $dark;
+            &:hover{
+                color: $main;
+                transition: 1s;
+            }
+        }
+    }
+
 }
 
 
