@@ -1,3 +1,13 @@
+.bloco{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    transition: 1s;
+    
+    height: 100vh;
+    
+}
+
 #bloco-cadastro-login{
     background-image: url('https://desbugados-gama.netlify.app/assets/img/happy-bg.png');
     background-position: bottom;
@@ -5,17 +15,6 @@
     background-repeat: no-repeat;
     background-size:35%;
 }
-
-.bloco{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    transition: 1s;
-
-    height: 100vh;
-
-}
-
 .bloco-content-login{
     display: flex;
     flex-direction: column;
@@ -47,7 +46,26 @@
     .btn{
         margin-top: 10px;
     }
+    
 }
+
+#bloco-celulares{
+    height: fit-content;
+}
+.bloco-content-celular{
+    width: 100vw;
+    transition: 1s;
+    img{
+        height: 75vh;
+        transition: 1s;
+    }
+    p{
+        padding: 30px;
+        font-weight: 900;
+
+    }
+}
+
 
 @media (max-width: 768px) {
     #bloco-cadastro-login{
@@ -58,12 +76,21 @@
         flex-direction:column;
         align-items: center;
         transition: 1s;
+        
+        height:auto;
         .bloco-content-login{
             transition: 1s;
             margin: 20px auto;
             p{
                 margin: 0px;
                 margin-bottom: 15px;
+            }
+        }
+        .bloco-content-celular{
+            transition: 1s;
+            img{
+                transition: 1s;
+                height: 60vh;
             }
         }
         .btn{

@@ -253,7 +253,7 @@ a {
 .text-grey {
   color: gray; }
 
-.text-green {
+.text-gama {
   color: #63dc3e; }
 
 .text-dark {
@@ -279,19 +279,19 @@ a {
   align-content: stretch;
   align-items: stretch; }
 
-#bloco-cadastro-login {
-  background-image: url("https://desbugados-gama.netlify.app/assets/img/happy-bg.png");
-  background-position: bottom;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: 35%; }
-
 .bloco {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   transition: 1s;
   height: 100vh; }
+
+#bloco-cadastro-login {
+  background-image: url("https://desbugados-gama.netlify.app/assets/img/happy-bg.png");
+  background-position: bottom;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 35%; }
 
 .bloco-content-login {
   display: flex;
@@ -319,6 +319,19 @@ a {
   .bloco-content-login .btn {
     margin-top: 10px; }
 
+#bloco-celulares {
+  height: fit-content; }
+
+.bloco-content-celular {
+  width: 100vw;
+  transition: 1s; }
+  .bloco-content-celular img {
+    height: 75vh;
+    transition: 1s; }
+  .bloco-content-celular p {
+    padding: 30px;
+    font-weight: 900; }
+
 @media (max-width: 768px) {
   #bloco-cadastro-login {
     background-image: none; }
@@ -326,13 +339,19 @@ a {
   .bloco {
     flex-direction: column;
     align-items: center;
-    transition: 1s; }
+    transition: 1s;
+    height: auto; }
     .bloco .bloco-content-login {
       transition: 1s;
       margin: 20px auto; }
       .bloco .bloco-content-login p {
         margin: 0px;
         margin-bottom: 15px; }
+    .bloco .bloco-content-celular {
+      transition: 1s; }
+      .bloco .bloco-content-celular img {
+        transition: 1s;
+        height: 60vh; }
     .bloco .btn {
       width: auto; } }
 .btn {
