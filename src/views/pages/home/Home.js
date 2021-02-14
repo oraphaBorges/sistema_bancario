@@ -8,16 +8,17 @@ import celularWhite from '../../../img/cell-white-bg.png';
 import celularBlack from '../../../img/cell-black-bg.png';
 import celularFooter from '../../../img/footer-right.png';
 import bgParalax from '../../../img/bg-paralax-green.png';
+import Utils from '../../../service/Utils';
 
 let Home = {
   is_private: false,
 
   render: async () => {
       let view = `
-        ${await Nav}
+        ${ Nav }
           <div id="bloco-cadastro-login" class="container bloco" style="background-image: url('${bgParalaxGirl}');">
             ${blocoLogin}
-            ${await Form}
+            ${ Form }
           </div>
           <div id="bloco-celulares" class="bloco">
             ${blocoCelulares}
@@ -48,14 +49,21 @@ let Home = {
         const element = register_form.elements[i];
 
         if(element.id === 'cpf'){
-          //criar função util de validar CPF;
+          if(!Utils.isCpfValid(element.value)){
+            alert('CPF inválido!')
+            
+            return;
+          }
+
+          element.value = element.value.replace(/[^\d]+/g,'');	
         }
 
-        if(element.id !== 'confirmar_senha' && element.id !== 'button_submit')
-          data[element.id] = element.value;
+        data[element.id] = element.value;
 
       }
+
       await UserService.register(data);
+
     });
   }
 }

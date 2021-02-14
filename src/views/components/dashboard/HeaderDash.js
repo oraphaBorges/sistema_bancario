@@ -1,10 +1,11 @@
 import UserService from '../../../service/UserService';
+import { dashboard as Dashboard } from '../../pages/index';
 
 import logoutIcon from '../../../assets/img/svg/logout.svg';
 import updateIcon from '../../../assets/img/svg/update.svg';
 
 const HeaderDash = {
-    render: (message = 'Mensagem do componente :)') => {
+    render: (message = 'Mensagem do componente :)', id = 'main') => {
         let view = `   
             <div class="header-dash">
                 <div id="text-wellcome">
@@ -15,7 +16,7 @@ const HeaderDash = {
                         25 de janeiro de 2020
                     </span>
                 </div>
-                <img src="${updateIcon}" class="icon update" id="icon_update">
+                <img src="${updateIcon}" class="icon update" id="icon_update" value="${id}">
                 <img src="${logoutIcon}" class="icon" id="icon_logout">
             </div>
         `;
@@ -27,6 +28,13 @@ const HeaderDash = {
         const logout = document.getElementById('icon_logout');
         logout.addEventListener('click', () => {
             UserService.doLogout();
+        });
+
+        const update = document.getElementById('icon_update');
+        
+        update.addEventListener('click', () => {
+            const nextContent = update.getAttribute('value');
+            Dashboard.after_render(nextContent);
         });
     }
 }

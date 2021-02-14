@@ -22,11 +22,11 @@ const Dashboard = {
         return view
     },
 
-    after_render: async () => {
+    after_render: async (nextContent = 'main') => {
         Dashboard.bindEvents();
         await DashboardService.getAccountData();
         await DashboardService.getAccountPlan();
-        Dashboard.insertDashboardContent('main');
+        Dashboard.insertDashboardContent(nextContent);
     },
 
     insertDashboardContent: (idContent) => {

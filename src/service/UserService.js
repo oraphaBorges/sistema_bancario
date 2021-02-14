@@ -6,13 +6,9 @@ import Swal from 'sweetalert2';
 
 const UserService = {
     register: async ({ cpf, login, nome, senha }) => {
-        let temporary = {
-            cpf: 85511573027,
-            login: "emersonteste",
-            nome: "Emerson Teste",
-            senha: "emersonteste"
-        }
-        await api.post('/usuarios', temporary, HeadersDefaultNoAuth).then(r =>{
+        let data = { cpf, login, nome, senha }
+
+        await api.post('/usuarios', data, HeadersDefaultNoAuth).then(r =>{
             console.log(r)
             Utils.redirect_to('login');
 

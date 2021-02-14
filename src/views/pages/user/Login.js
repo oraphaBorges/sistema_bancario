@@ -47,7 +47,7 @@ let html = `
         <input type="password" id="senha" placeholder="Digite sua senha" required>
         <button id="button_submit" type="submit" class="btn btn-main-outline btn-rounded">Entrar</button>
     </form>
-    <a href="#/forgotpass">Esqueci minha senha</a>
+    <a href="#/forgot-password">Esqueci minha senha</a>
     <a href="#/">Ainda não sou cliente</a>
 </main>
 `
