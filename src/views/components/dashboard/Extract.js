@@ -10,6 +10,10 @@ const Extract = {
         `;
 
         return view
+    },
+
+    after_render: () => {
+        Header.after_render();
     }
 }
 

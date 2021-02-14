@@ -1,3 +1,5 @@
+import UserService from '../../../service/UserService';
+
 import logoutIcon from '../../../assets/img/svg/logout.svg';
 import updateIcon from '../../../assets/img/svg/update.svg';
 
@@ -20,6 +22,13 @@ const HeaderDash = {
 
         return view
     },
+
+    after_render: () => {
+        const logout = document.getElementById('icon_logout');
+        logout.addEventListener('click', () => {
+            UserService.doLogout();
+        });
+    }
 }
 
 export default HeaderDash;
