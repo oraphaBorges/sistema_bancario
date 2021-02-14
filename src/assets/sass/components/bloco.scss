@@ -4,7 +4,9 @@
     justify-content: space-between;
     transition: 1s;
     
+    // height: fit-content;
     height: 100vh;
+    
     
 }
 
@@ -103,6 +105,7 @@
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    background-size: 100%;
 
     height: 100vh;
 
@@ -141,10 +144,11 @@
 #bloco-footer{
     background-color: $light;
     height: auto;
+    height: 100vh;
     .bloco-content-footer{
         margin: auto;
         img{
-            height: 500px;
+            width: 250px;
             padding: 50px;
             &:hover{
                 animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
@@ -192,12 +196,14 @@
 
 }
 
+@media (max-height: 538px) {
+    .bloco{
+        height: fit-content;
+    }
+
+}
 
 @media (max-width: 768px) {
-    #bloco-cadastro-login{
-        background-image: none;
-    }
-    
     .bloco {
         flex-direction:column;
         align-items: center;
@@ -207,10 +213,19 @@
         .btn{
             width: auto;
         }
-        .bloco-content-login{
-            transition: 1s;
-            margin: 20px auto;
-            p{
+        #bloco-cadastro-login{
+            background-image: none !important;
+        }
+        
+    } 
+    .bloco-content-login{
+        transition: 1s;
+        margin: 20px auto;
+        h2{
+            font-size: 1.5em;
+        }
+        p{
+                font-size: 0.8em;
                 margin: 0px;
                 margin-bottom: 15px;
             }
@@ -219,21 +234,54 @@
             transition: 1s;
             img{
                 transition: 1s;
-                height: 60vh;
+                height: 75vw;
+            }
+            p{
+                font-size: 12px;
             }
         }
         #bloco-anuidade{
+            height: 100vh;
+            padding: 30px;
             .bloco-content-anuidade{
                 h1{
-                    font-size: 5em;
+                    font-size: 3em;
                 }
                 h2{
-                    font-size: 2.5em;
+                    font-size: 1.5em;
                 }
                 p{
-                    font-size: 1.3em;
+                    font-size: 1em;
                 }
             }
         }
-    } 
+        #bloco-fim-complexidade{
+            height: 100vh;
+            padding: 30px;
+            .bloco-content-anuidade{
+                h2{
+                    font-size:2em;
+                }
+                p{
+                    font-size: 1em;
+                }
+            }
+        }
+    #bloco-footer{
+        .bloco-content-footer{
+            img{
+                width: 50%;
+                &:hover{
+                    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+                    transform: translate3d(0, 0, 0);
+                }
+            }
+            h2{
+                font-size: 2em;
+            }
+            p{
+                font-size: 1em;
+            }
+        }
+    }
 }
