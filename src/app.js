@@ -24,7 +24,7 @@ const router = async () => {
     let parseURL = (request.resource ? '/' + request.resource : '/') + (request.id ? '/:id' + request.id : '') + (request.verb ? '/' + request.verb : '');
     let page = routes[parseURL] ? routes[parseURL] : error404;
 
-    if(page.is_private === true && !UserService.isUserLogged())
+    if(page.is_private === true && (!UserService.isUserLogged() || UserService.isTokenExpired()))
         return;
 
     root.innerHTML = await page.render();
