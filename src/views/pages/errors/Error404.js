@@ -3,6 +3,10 @@ let Error404 = {
     render: async () => {
         let view = `${error}`
         return view
+    },
+
+    after_render: () => {
+        console.log('Try another one... :)')
     }
 }
 let error = `

@@ -6,13 +6,9 @@ import Swal from 'sweetalert2';
 
 const UserService = {
     register: async ({ cpf, login, nome, senha }) => {
-        let temporary = {
-            cpf: 85511573027,
-            login: "emersonteste",
-            nome: "Emerson Teste",
-            senha: "emersonteste"
-        }
-        await api.post('/usuarios', temporary, HeadersDefaultNoAuth).then(r =>{
+        let data = { cpf, login, nome, senha }
+
+        await api.post('/usuarios', data, HeadersDefaultNoAuth).then(r =>{
             console.log(r)
             Utils.redirect_to('login');
 
@@ -49,13 +45,10 @@ const UserService = {
         });
     },
 
-    newPassword: async ({ login, email }) => {
-       let temporary = {
-            email: "teste@teste.com",
-            login: "emerson2"
-        }
-        await api.post('/nova-senha', temporary, HeadersDefaultNoAuth).then(response => {
-            console.log(response);
+    newPassword: async ({ login }) => {
+       let data = { email: "not-implemented@desbugados.com", login: login }
+        await api.post('/nova-senha', data, HeadersDefaultNoAuth).then(response => {
+            Utils.redirect_to('login');
 
         }).catch(error => Swal.fire({
             icon: 'error',
@@ -68,15 +61,14 @@ const UserService = {
 
     },
 
-    updatePassword: async ({ usuario, senha }) => {         
-        let temporary = {
-            senha: "emersonteste",
-            usuario: "emersonteste"
-        }
-        
+    updatePassword: async ({ senha }) => {         
         const token = JSON.parse(localStorage.getItem('token'));
-        await api.post('/altera-senha', temporary, HeadersDefault(token)).then(response => {
-            console.log(response);
+        const login = JSON.parse(localStorage.getItem('login'));
+
+        let data = { senha: senha, usuario: login }
+
+        await api.post('/altera-senha', data, HeadersDefault(token)).then(response => {
+           Utils.redirect_to('dashboard');
 
         }).catch(error => Swal.fire({
             icon: 'error',

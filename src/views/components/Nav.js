@@ -12,7 +12,7 @@ let Nav = {
         return view
     },
 
-    after_render: async () => {
+    after_render: () => {
 
     }
 }

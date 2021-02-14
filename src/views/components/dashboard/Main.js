@@ -1,8 +1,13 @@
-import { dashboardHeader as Header } from '../index';
+import DashboardService from '../../../service/DashboardService';
+
+import { dashboardHeader as Header, extract as Extract } from '../index';
+import { dashboard as Dashboard } from './../../pages/index';
+
 import dollarIcon from '../../../assets/img/svg/dollar.svg'
 import cardIcon from '../../../assets/img/svg/card.svg'
 import cardOpenedIcon from '../../../assets/img/svg/opencard.svg'
-import DashboardService from '../../../service/DashboardService';
+
+
 
 const Main = {
     render: () => {
@@ -19,7 +24,7 @@ const Main = {
         <div class="container">
             <div class="dash-header">
                 <div class="section">
-                    ${ Header.render(`Olá, <strong id="user-name">${NOME_USUARIO}</strong>, seja bem-vind!`) }
+                    ${ Header.render(`Olá, <strong id="user-name">${NOME_USUARIO}</strong>, seja bem-vind!`, 'main') }
                 </div>
             </div>
             <div class="accounts">
@@ -38,10 +43,11 @@ const Main = {
         const see_more = document.querySelectorAll('a.see_more');
         see_more.forEach(item => {
             item.addEventListener('click', async () => {              
-                const clickValue = item.getAttribute('value');
-                await DashboardService.getStatementByAccount({ sigla: clickValue })
+                const sigla = item.getAttribute('value');
+                const lancamentos = await DashboardService.getStatementByAccount({ sigla: sigla });
 
-                //criar restante da lógica para redirecionar para extrato, assim que pronta
+                Dashboard.insertDashboardContent('bankstatement');
+                Extract.updateTransactionsList(lancamentos, sigla);
             })
         })
     },

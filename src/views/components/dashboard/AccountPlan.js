@@ -1,3 +1,4 @@
+import DashboardService from '../../../service/DashboardService';
 import { dashboardHeader as Header } from '../index';
 
 const AccountPlan = {
@@ -7,11 +8,11 @@ const AccountPlan = {
         const NOME_USUARIO = 'nome usuario';
         let view = `
         <div class="content-default content-flex content-justify">
-        <div class="dash-header">
-            <div class="section">
-                ${ Header.render(`Olá, <strong id="user-name">${NOME_USUARIO}</strong>, seja bem-vind!`) }
-            </div>
-        </div>
+          <div class="dash-header">
+              <div class="section">
+                ${ Header.render(`Olá, <strong id="user-name">${NOME_USUARIO}</strong>, seja bem-vind!`, 'accountplan') }
+              </div>
+          </div>
          </div>
          ${ newAccountPlan(plans) }           
         `;
@@ -21,9 +22,16 @@ const AccountPlan = {
 
     after_render: () => {
         Header.after_render();
+        const account_form = document.getElementById('login_form');
+        account_form.addEventListener('submit', async e => {
+            e.preventDefault();
+            
+            const finalidade = document.getElementById('finalidade').value;
+            const data = { finalidade: finalidade }
+
+            await DashboardService.setAccountPlan(data);           
+        })
     }
-
-
 }
 
 let newAccountPlan = (plans) =>
@@ -32,7 +40,7 @@ let newAccountPlan = (plans) =>
     <div class="card ">
         <h2>Cadastre um novo plano</h2>
         <form id="login_form" class="card-form">
-            <input type="text" placeholder="Digite novo plano">            
+            <input id="finalidade" type="text" placeholder="Digite novo plano" required>            
             <button id="button_submit" type="submit" class="btn btn-main-outline btn-rounded">Cadastrar</button>
         </form>   
         <div>

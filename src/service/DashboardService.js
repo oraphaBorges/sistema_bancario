@@ -4,14 +4,13 @@ import { HeadersDefault } from './HeadersDefault';
 const DashboardService = {
 
     getAccountData: async () => {
-        let dataInicio = '2020-01-31';
-        let dataFim = '2022-01-31';
-        let temporaryLogin = 'emersonteste';
+        let dataInicio = '2020-01-30';
+        let dataFim = '2030-01-30';
 
         const login = JSON.parse(localStorage.getItem('login'));
         const token = JSON.parse(localStorage.getItem('token'));
 
-        await api.get(`/dashboard?fim=${dataFim}&inicio=${dataInicio}&login=${temporaryLogin}`, HeadersDefault(token))
+        await api.get(`/dashboard?fim=${dataFim}&inicio=${dataInicio}&login=${login}`, HeadersDefault(token))
             .then(response => DashboardService.setAccountDataIntoLocalStorage(response.data))
             .catch(response => console.error(response));
     },
@@ -31,7 +30,7 @@ const DashboardService = {
         const login = JSON.parse(localStorage.getItem('login'));
         let response = false;
 
-        let obj = {
+        let data = {
             contaDestino: {
               login: destino_login ? destino_login: login,
               sigla: destino_sigla ? destino_sigla: origem_sigla
@@ -41,13 +40,13 @@ const DashboardService = {
               sigla: origem_sigla
             },
 
-            date: "2020-12-12",
+            date: new Date(),
             descricao: descricao,
             planoConta: planoConta,
             valor: Number(valor)
         }
 
-        await api.post(`/lancamentos/?operacao=${operacao}`, obj, HeadersDefault(token)).then(response =>{
+        await api.post(`/lancamentos/?operacao=${operacao}`, data, HeadersDefault(token)).then(response =>{
             response = true;
         }).catch(error => { 
             response = false;
@@ -56,51 +55,44 @@ const DashboardService = {
         return true;
     },
 
-    setAccountPlan: async () => {
+    setAccountPlan: async ({ finalidade }) => {
+        const login = JSON.parse(localStorage.getItem('login'));
         const token = JSON.parse(localStorage.getItem('token'));
-        let temporary = {
-            finalidade: "NOVADENOVO",
-            login: "emersonteste"
-        }
 
-        await api.post(`/lancamentos/planos-conta`, temporary, HeadersDefault(token)).then(response =>{
-           console.log(response)
+        const data = { finalidade: finalidade, login: login }
+
+        await api.post(`/lancamentos/planos-conta`, data, HeadersDefault(token)).then(response =>{
+           console.log(response);
         }).catch(error => console.error(error));  
     },
 
     getAccountPlan: async () => {
         const login = JSON.parse(localStorage.getItem('login'));
         const token = JSON.parse(localStorage.getItem('token'));
-        let temporary = "emersonteste"
 
-        await api.get(`/lancamentos/planos-conta/?login=${temporary}`, HeadersDefault(token)).then(response => {
+        await api.get(`/lancamentos/planos-conta/?login=${login}`, HeadersDefault(token)).then(response => {
             let PLANOS_CONTA = response.data.map(item => item.finalidade);
             localStorage.setItem('PLANOS_CONTA', JSON.stringify(PLANOS_CONTA));
         })
     },
 
-    //retorna props: saldo e lancamentos[]
     getStatementByAccount: async ({ sigla }) => {
         const login = JSON.parse(localStorage.getItem('login'));
         const token = JSON.parse(localStorage.getItem('token'));
 
-        await api.get(`/conta/extrato?login=${login}&sigla=${sigla}`, HeadersDefault(token))
-            .then(response => console.log(response.data))
+        const response = await api.get(`/conta/extrato?login=${login}&sigla=${sigla}`, HeadersDefault(token))
+            .then(response => { return response.data })
             .catch(response => console.error(response));
+        
+        return response;
     },
     
-    //retorna props: saldo e lancamentos[]
-    getStatementByPeriod: async () => {
-        let dataInicio = '2020-01-31';
-        let dataFim = '2022-01-31';
-        let temporaryLogin = 'emersonteste';
-        let temporarySigla = 'CORRENTE';
-
+    getStatementByPeriod: async ({ sigla, dataInicio = '2020-01-30', dataFim = '2030-01-30' }) => {
         const login = JSON.parse(localStorage.getItem('login'));
         const token = JSON.parse(localStorage.getItem('token'));
 
-        await api.get(`/conta/extrato-periodo?dataFim=${dataFim}&dataInicio=${dataInicio}&login=${temporaryLogin}&sigla=${temporarySigla}`, HeadersDefault(token))
-            .then(response => console.log(response.data))
+        const response = await api.get(`/conta/extrato-periodo?dataFim=${dataFim}&dataInicio=${dataInicio}&login=${login}&sigla=${sigla}`, HeadersDefault(token))
+            .then(response => { return response.data })
             .catch(error => Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -109,6 +101,8 @@ const DashboardService = {
             }).then(()=>{
                 location.reload();
             }))
+        
+        return response;
     },
 }
 
