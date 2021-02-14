@@ -790,6 +790,10 @@ a {
   }
 }
 @media (max-width: 767px) {
+  .content-dashboard {
+    padding-bottom: 90px;
+  }
+
   .content-dashboard .flex-wrap--30 {
     width: 70%;
   }
@@ -883,6 +887,10 @@ a {
   }
 }
 @media screen and (max-width: 615px) {
+  .content-dashboard {
+    padding-bottom: 90px;
+  }
+
   .content-dashboard .flex-wrap--30 {
     width: 90%;
   }
@@ -904,16 +912,20 @@ a {
   }
 }
 @media screen and (max-width: 491px) {
+  .content-dashboard {
+    padding-bottom: 180px;
+  }
+
   .content-dashboard .flex-wrap--30 {
     width: 99%;
   }
 
-  .transfer-div {
-    display: block;
-  }
-
   .content-dashboard .card-dashboard--default {
     padding: 5px;
+  }
+
+  .transfer-div {
+    display: block;
   }
 
   .content-intern--default {
