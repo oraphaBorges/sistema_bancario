@@ -33,6 +33,7 @@ const Main = {
     },
 
     after_render: () => {
+        Header.after_render();
         const see_more = document.querySelectorAll('a.see_more');
         see_more.forEach(item => {
             item.addEventListener('click', async () => {              
