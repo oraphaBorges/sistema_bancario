@@ -13,7 +13,7 @@ const Transaction = {
         <div class="content-default">
             <div class="content-default content-flex content-justify">
                 <div class="section">
-                ${ Header.render('Olá, <strong>Pessoa lendo</strong>, seja bem-vin!') }
+                ${ Header.render('Olá, <strong>Pessoa lendo</strong>, seja bem-vin!', 'transactions') }
                 </div>
             </div>
             <div class="content-default content-flex content-justify">

@@ -6,7 +6,7 @@ const Extract = {
 
     render: () => {
         let view = `
-            ${Header.render('Olá, <strong>Pessoa lendo</strong>, seja bem-vindo!') }
+            ${Header.render('Olá, <strong>Pessoa lendo</strong>, seja bem-vindo!', 'bankstatement') }
             <div class="content-default">
                 ${extract}
             </div>

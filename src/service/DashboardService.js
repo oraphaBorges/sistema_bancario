@@ -63,7 +63,6 @@ const DashboardService = {
 
         await api.post(`/lancamentos/planos-conta`, data, HeadersDefault(token)).then(response =>{
            console.log(response);
-           location.reload();
         }).catch(error => console.error(error));  
     },
 

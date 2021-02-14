@@ -8,7 +8,7 @@ const AccountPlan = {
         let view = `
         <div class="content-default content-flex content-justify">
             <div class="section">
-            ${ Header.render('Olá, <strong>Pessoa lendo</strong>, seja bem-vin!') }
+            ${ Header.render('Olá, <strong>Pessoa lendo</strong>, seja bem-vin!', 'accountplan') }
             </div>
          </div>
          ${ newAccountPlan(plans) }           
