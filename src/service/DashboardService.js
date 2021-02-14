@@ -4,14 +4,13 @@ import { HeadersDefault } from './HeadersDefault';
 const DashboardService = {
 
     getAccountData: async () => {
-        let dataInicio = '2020-01-31';
-        let dataFim = '2022-01-31';
-        let temporaryLogin = 'emersonteste';
+        let dataInicio = '2020-01-30';
+        let dataFim = '2030-01-30';
 
         const login = JSON.parse(localStorage.getItem('login'));
         const token = JSON.parse(localStorage.getItem('token'));
 
-        await api.get(`/dashboard?fim=${dataFim}&inicio=${dataInicio}&login=${temporaryLogin}`, HeadersDefault(token))
+        await api.get(`/dashboard?fim=${dataFim}&inicio=${dataInicio}&login=${login}`, HeadersDefault(token))
             .then(response => DashboardService.setAccountDataIntoLocalStorage(response.data))
             .catch(response => console.error(response));
     },
@@ -41,7 +40,7 @@ const DashboardService = {
               sigla: origem_sigla
             },
 
-            date: "2020-12-12",
+            date: new Date(),
             descricao: descricao,
             planoConta: planoConta,
             valor: Number(valor)
@@ -85,13 +84,12 @@ const DashboardService = {
         const token = JSON.parse(localStorage.getItem('token'));
 
         const response = await api.get(`/conta/extrato?login=${login}&sigla=${sigla}`, HeadersDefault(token))
-            .then(response => console.log(response.data))
+            .then(response => { return response.data })
             .catch(response => console.error(response));
         
         return response;
     },
     
-    //retorna props: saldo e lancamentos[]
     getStatementByPeriod: async ( { sigla, dataInicio = '2020-01-30', dataFim = '2030-01-30' }) => {
         const login = JSON.parse(localStorage.getItem('login'));
         const token = JSON.parse(localStorage.getItem('token'));
