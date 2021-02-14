@@ -87,6 +87,23 @@ const UserService = {
         return response;
     },
 
+    isTokenExpired: () => {
+        let response = false;
+
+        const dataFim = JSON.parse(localStorage.getItem('dataFim'));
+
+        const tokenDate = new Date(dataFim);
+        const now = new Date();
+
+        if(now > tokenDate){
+            response = true;
+
+            Utils.redirect_to('login');
+        }
+        
+        return response;
+    },
+
     setDataIntoLocalStorage: (data) => {
         let { token, login, dataInicio, dataFim } = data;
 

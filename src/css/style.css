@@ -746,7 +746,6 @@ a {
 @media (max-width: 767px) {
   .content-dashboard {
     margin-bottom: 100px; }
-
   .content-dashboard .flex-wrap--30 {
     width: 70%; }
 
@@ -816,6 +815,10 @@ a {
   .dashboard-menu > img {
     display: none; } }
 @media screen and (max-width: 615px) {
+  .content-dashboard {
+    padding-bottom: 90px;
+  }
+
   .content-dashboard .flex-wrap--30 {
     width: 90%; }
 
@@ -832,6 +835,7 @@ a {
     justify-content: center;
     flex-direction: column; } }
 @media screen and (max-width: 491px) {
+
   .content-dashboard .flex-wrap--30 {
     width: 99%; }
 
@@ -840,6 +844,10 @@ a {
 
   .content-dashboard .card-dashboard--default {
     padding: 5px; }
+
+  .transfer-div {
+    display: block;
+  }
 
   .content-intern--default {
     align-items: center;

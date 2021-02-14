@@ -33,6 +33,7 @@ const Main = {
     },
 
     after_render: () => {
+        Header.after_render();
         const see_more = document.querySelectorAll('a.see_more');
         see_more.forEach(item => {
             item.addEventListener('click', async () => {              
@@ -81,6 +82,9 @@ const buildTransactions = (lancamentos) => {
 
     let html = [];
 
+    //ordernar lançamentos pelos últimos antes de fazer a limitação abaixo;
+    lancamentos.length = 3;
+
     lancamentos.forEach(({ date, descricao, valor }) => {
         let newLancamento =
             `    
@@ -97,7 +101,7 @@ const buildTransactions = (lancamentos) => {
             </div>
         `
         html.push(newLancamento);
-    })
+    });
 
     return html.join('');
 }
