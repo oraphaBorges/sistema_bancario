@@ -101,7 +101,14 @@ const DashboardService = {
 
         await api.get(`/conta/extrato-periodo?dataFim=${dataFim}&dataInicio=${dataInicio}&login=${temporaryLogin}&sigla=${temporarySigla}`, HeadersDefault(token))
             .then(response => console.log(response.data))
-            .catch(response => console.error(response));
+            .catch(error => Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Verifique os dados e tente novamente',
+                footer: error
+            }).then(()=>{
+                location.reload();
+            }))
     },
 }
 
