@@ -129,7 +129,10 @@
 
 /*menu*/
 .dashboard-menu{
-    height: 100vh;
+    height: auto;
+    background-color: $verde-gama;
+    text-align: center;
+
   
     a{
       color: inherit;
@@ -227,7 +230,25 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (min-width: 451px) and (max-width: 767px) {
+  .dashboard-menu{
+    bottom: 0;
+    width: 100vw;
+    position: fixed;
+    
+    .content-default{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      
+    }
+  }
+
+}
+@media (max-width: 767px){
+  .content-dashboard{
+    margin-bottom: 100px;
+  }
 
   .content-dashboard .flex-wrap--30{
     width: 70%;
@@ -298,19 +319,14 @@
 
   .dashboard-menu{
     bottom: 0;
-    flex-direction: row;
-    height: unset;
-    justify-content: center;
+    width: 100vw;
     position: fixed;
-    left: 0;
-    right: 0;
-
+    
     .content-default{
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin: 2px;
-      padding: 0;
+      flex-direction: row;
+      overflow: scroll;
+      
     }
 
     .card-menu--item{

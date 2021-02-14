@@ -14,7 +14,7 @@ const DashboardMenu = {
         })
 
         let view = `
-            <nav class="dashboard-menu content-flex--column content-align--center bg-gama">
+            <nav class="dashboard-menu">
                 <img src="${gamaHand}" alt="Gama hand">
                 <div class="content-default">
                     ${ menu.join('') }
