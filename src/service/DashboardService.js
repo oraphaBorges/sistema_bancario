@@ -30,7 +30,7 @@ const DashboardService = {
         const login = JSON.parse(localStorage.getItem('login'));
         let response = false;
 
-        let obj = {
+        let data = {
             contaDestino: {
               login: destino_login ? destino_login: login,
               sigla: destino_sigla ? destino_sigla: origem_sigla
@@ -46,7 +46,7 @@ const DashboardService = {
             valor: Number(valor)
         }
 
-        await api.post(`/lancamentos/?operacao=${operacao}`, obj, HeadersDefault(token)).then(response =>{
+        await api.post(`/lancamentos/?operacao=${operacao}`, data, HeadersDefault(token)).then(response =>{
             response = true;
         }).catch(error => { 
             response = false;
@@ -76,7 +76,6 @@ const DashboardService = {
         })
     },
 
-    //retorna props: saldo e lancamentos[]
     getStatementByAccount: async ({ sigla }) => {
         const login = JSON.parse(localStorage.getItem('login'));
         const token = JSON.parse(localStorage.getItem('token'));
@@ -88,7 +87,7 @@ const DashboardService = {
         return response;
     },
     
-    getStatementByPeriod: async ( { sigla, dataInicio = '2020-01-30', dataFim = '2030-01-30' }) => {
+    getStatementByPeriod: async ({ sigla, dataInicio = '2020-01-30', dataFim = '2030-01-30' }) => {
         const login = JSON.parse(localStorage.getItem('login'));
         const token = JSON.parse(localStorage.getItem('token'));
 

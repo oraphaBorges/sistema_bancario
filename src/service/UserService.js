@@ -45,8 +45,8 @@ const UserService = {
         });
     },
 
-    newPassword: async ({ login, email }) => {
-       let data = { email: "no-implements@desbugados.com", login: login }
+    newPassword: async ({ login }) => {
+       let data = { email: "not-implemented@desbugados.com", login: login }
         await api.post('/nova-senha', data, HeadersDefaultNoAuth).then(response => {
             Utils.redirect_to('login');
 
