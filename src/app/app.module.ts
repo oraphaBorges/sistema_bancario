@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { ForgotpassComponent } from './forgotpass/forgotpass.component';
 import { ChangepassComponent } from './changepass/changepass.component';
 import { Error404Component } from './error404/error404.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { Error404Component } from './error404/error404.component';
     LoginComponent,
     ForgotpassComponent,
     ChangepassComponent,
-    Error404Component
+    Error404Component,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
