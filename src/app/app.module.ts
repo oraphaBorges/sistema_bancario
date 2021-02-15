@@ -12,6 +12,7 @@ import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './auth/dashboard/dashboard.component';
 import { ExtratoComponent } from './auth/extrato/extrato.component';
 import { TransactionComponent } from './auth/transaction/transaction.component';
+import { AccountPlanComponent } from './auth/account-plan/account-plan.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TransactionComponent } from './auth/transaction/transaction.component';
     AuthComponent,
     DashboardComponent,
     ExtratoComponent,
-    TransactionComponent
+    TransactionComponent,
+    AccountPlanComponent
   ],
   imports: [
     BrowserModule,
