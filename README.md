@@ -1,95 +1,27 @@
-# Sistema Bancario
-**Sistema realizado em paralelo à realização da academia da Gama Academy**
-## Sobre
-O projeto consiste em uma `API REST` que realiza operações bancárias a partir de `requisições HTTP` de um cliente.
-_Entenda-se cliente qualquer um que consiga realizar requisições HTTP_.
+# BankDesbugados
 
-## Tecnologias principais
-- Spring Boot
-- Spring Data
-- Spring Web
-- Spring Security
-- Swagger
-- JWT
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
 
-## Swagger
-[Aqui](https://gama-bankline-desbugados.herokuapp.com/swagger-ui.html#/) você pode realizar a consulta da documentação do projeto, bem como realizar requisições por meio de nossos endpoints.
+## Development server
 
-## Funcionalidades
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-### Para usuários
-- Criação de novos usuários
-- Realização de login
-- Controle de sessão
-- Alteração de senha (em desenvolvimento)
+## Code scaffolding
 
-> - Ao criar um novo usuário, três contas são associadas a ele: Corrente, Poupança e de Crédito.
-> - Também são associados três tipos de planos de conta: Pagamento, Depósito e Transferência
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-### Para contas
-- Consultar extrato por período
-- Consultar extrato completo
-- Realizar depósitos
-- Realizar pagamentos
-- Realizar transferências
+## Build
 
-## Utilização
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-**Para executar o projeto, você precisará:**
-- Ter instalado em sua maquina o Java 8 ou superior.
-- Um banco de dados, seja MySql ou PostgreSQL (oficialmente testados)
+## Running unit tests
 
-**Passo a passo**
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-1. Realize o clone desse repositório
-2. Configure o arquivo `application.properties`, que fica dentro da pasta resources. [Exemplo aqui](https://www.baeldung.com/properties-with-spring). Ou utilizando classes caso tenha experiência configurando.
-3. Realize o download das dependências que estão no `pom.xml`
-4. Execute a classe `SbootApplication`.
+## Running end-to-end tests
 
-> O projeto, por padrão, irá executar no {host}:8080/. (ex.: http://localhost:8080)
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Sobre a estrutura e inteligência do projeto
+## Further help
 
-### Design e código fonte
-O projeto segue um padrão de atribuição de responsabilidades às classes seguindo as boas práticas. Todo o código fonte está disponível dentro da pasta `src`.
-
-### Estrutura de pastas e suas responsabilidades
-
-#### Models
-Como o nome já diz, são as classes modelo. Elas que definem o domínio de nossa aplicação, além da relação entre as entidades.
-
-#### Resources
-Concentramos aqui todos os endpoints relacionados ao projeto. A responsabilidade se limita a receber a requisição e dar o retorno de forma devida ao cliente.
-
-#### Services
-Os services são chamados para processar toda a lógica do negócio. Aqui é decidido se devemos persistir ou não os dados, ou se devemos devolver a resposta solicitada pelo cliente - claro, tudo por meio de bastante lógica e abuso de estrutura de dados e suas funcionalidades. Além da análise e permissão do que pode ser devolvido ao solicitante.
-
-#### Repositories
-Trata-se da camada de persistência dos dados. As lógicas se limitam às próprias necessidades. Aqui os dados são recebidos, persistidos ou retornados.
-
-#### security
-Literalmente a configuração de segurança do projeto. (endpoints públicos, privados, etc.)
-
-#### dto
-Abstrações menores das classes modelos, classes utilitárias para transferência dos dados entre o cliente e nossa aplicação. 
-
-Os demais pacotes são autodescritivos.
-
-## Validações e segurança
-
-_Esse tópico poderia ser bem longo, mas será resumido da seguinte forma:_
-
-**Todos os enpoints possuem validações de diversos tipos, tais como:**
-
-- Verificação se todos os dados da requisição foram informados corretamente
-- Verificação se as informações do cliente batem com as informações enviadas 
-- Controle de rotas autenticadas e públicas
-- ... Muitas outras que você poderá ver em `services`.
-
-#### Encriptação da senha e login
-
-Se você pensou nisso... Sim! As senhas estão sendo gravadas encriptadas! Logo o login também está bem seguro :).
-
-## Participantes
-
-Você pode ver os contribuidores **[clicando aqui.](https://github.com/RafaelMarangoni/sistema_bancario/graphs/contributors)**
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
