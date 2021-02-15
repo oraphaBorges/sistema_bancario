@@ -11,6 +11,7 @@ import { Error404Component } from './error404/error404.component';
 import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './auth/dashboard/dashboard.component';
 import { ExtratoComponent } from './auth/extrato/extrato.component';
+import { TransactionComponent } from './auth/transaction/transaction.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ExtratoComponent } from './auth/extrato/extrato.component';
     Error404Component,
     AuthComponent,
     DashboardComponent,
-    ExtratoComponent
+    ExtratoComponent,
+    TransactionComponent
   ],
   imports: [
     BrowserModule,
