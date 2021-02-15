@@ -1,50 +1,27 @@
-# Sistema Bancario
+# BankDesbugados
 
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
 
-## Configuração
-No  diretório `target/classes/META-INF` há um arquivo chamado `persistence.example.xml` que deve ser usado de modelo para criar o `persistence.xml` e subistiuíndo para as cofigurações locais do nome do banco de dado e usuário e senha de acesso ao banco de dados, que no projeto é utilizado o MySQL, por isso o arquivo já está pré-configurado com o Drive do MySQL.
+## Development server
 
-## CASE PROJETO 
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-**SISTEMA BANCARIO**
+## Code scaffolding
 
-* Intenção do projeto é ao fim dele termos uma API rest de um basico sistema bancário, onde conseguiremos emitir um extrato de todos lançamentos, com a data do efetivo. 
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## CLASSES SERVICES 
+## Build
 
-**CONTA SERVICE**
-* responsavel pela regra de negocio da conta para transafarencias, depositos, pagamentos, assossiacao do usuario a conta
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-**USUARIO SERVICE**
-* responsavel pelo crud do usuario. 
+## Running unit tests
 
-**LANCAMENTO SERVICE**
-* responsavel por associar a conta do usuario, e fazer um log de todas as atividades da conta, desde depositos, pagamentos e transferencias 
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-**PLANO DE CONTA**
-* contem o cadastro do tipo da conta
+## Running end-to-end tests
 
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-### Repository
+## Further help
 
-**GENERICS**
-temos um repositorio generico contendo todo crud, onde não precisamos reescrever essa lógica, apenas herdala nos proximos repository
-
-**REPOSITORY**
-* Os demais repositorios temos em cada um deles os metodos necessarios para cada afinidade da conta
-
-
-### MODELS
-* Tendo as nossas entidades, relacionamentos: 
-
-#### MODEL CONTA
-* Modelo de entidade, onde fica os dados da conta
-
-#### MODEL USUARIO
-* Modelo de entidade, Dados do usuario 
-
-#### MODEL LANCAMENTO
-* Tendo uma forengkey das tabelas conta e Plano conta, recebe em log, toda movimentação da conta
-
-#### PLANO CONTA
-* Recebe a finalidade da conta  
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
