@@ -10,6 +10,7 @@ import { ChangepassComponent } from './changepass/changepass.component';
 import { Error404Component } from './error404/error404.component';
 import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './auth/dashboard/dashboard.component';
+import { ExtratoComponent } from './auth/extrato/extrato.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DashboardComponent } from './auth/dashboard/dashboard.component';
     ChangepassComponent,
     Error404Component,
     AuthComponent,
-    DashboardComponent
+    DashboardComponent,
+    ExtratoComponent
   ],
   imports: [
     BrowserModule,
