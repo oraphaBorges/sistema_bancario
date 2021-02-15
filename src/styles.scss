@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./assets/sass/commons/variables.scss";
+@import "./assets/sass/commons/margin.scss";
+@import "./assets/sass/commons/padding.scss";
+@import "./assets/sass/commons/container.scss";
+@import "./assets/sass/components/base.scss";
+@import "./assets/sass/components/background.scss";
+@import "./assets/sass/components/spacing.scss";
+@import "./assets/sass/components/text.scss";
+@import "./assets/sass/components/images.scss";
+@import "./assets/sass/components/bloco.scss";
+@import "./assets/sass/components/buttom.scss";
+@import "./assets/sass/components/card.scss";
+@import "./assets/sass/components/nav.scss";
+@import "./assets/sass/components/content.scss";
+@import "./assets/sass/components/dashboard.scss";
+@import "./assets/sass/components/loader.scss";
+@import "./assets/sass/components/error.scss";

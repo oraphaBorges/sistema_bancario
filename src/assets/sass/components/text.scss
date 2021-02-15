@@ -1,0 +1,81 @@
+a {
+    font-weight: 700;
+    text-decoration: none;
+    color: $link; 
+  }
+
+.text-center {
+    text-align: center; 
+}
+  
+.text-left {
+    text-align: left; 
+}
+
+.text-right {
+    text-align: right; 
+}
+
+.text-justify {
+    text-align: justify; 
+}
+
+.text-purple{
+    color: $main;
+}
+.text-grey{
+    color: $gray;
+}
+.text-gama{
+    color: $verde-gama;
+}
+.text-green{
+    color: $verde-gama;
+}
+.text-blue{
+    color: $blue;
+}
+.text-red{
+    color: $red;
+}
+.text-dark{
+    color: $dark;
+}
+.text-black{
+    color: $black;
+}
+.text-light{
+    color: $light;
+}
+.text-white{
+    color: $white;
+}
+.text-weight--bold {
+    font-weight: bold;
+}
+
+
+.text-card--ancor {
+    color: #1783E7;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 2px;
+  }
+
+  .text-size--12 {
+    font-size: 12px;
+  }
+
+  .text-size--20 {
+    font-size: 20px;
+  }
+
+  .flex-wrap--30{
+    width: 38%;
+  }
+
+  .align-last--center{
+    text-align-last: center;
+  }
