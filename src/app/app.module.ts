@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ForgotpassComponent } from './forgotpass/forgotpass.component';
 import { ChangepassComponent } from './changepass/changepass.component';
+import { Error404Component } from './error404/error404.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ChangepassComponent } from './changepass/changepass.component';
     HomeComponent,
     LoginComponent,
     ForgotpassComponent,
-    ChangepassComponent
+    ChangepassComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,
