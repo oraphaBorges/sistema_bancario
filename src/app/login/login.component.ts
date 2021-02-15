@@ -13,7 +13,14 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  doLogin(){
+  //capturar dados para realizar login
+  private doLogin(){
+    let data = {
+      usuario: 'emersonteste',
+      senha: 'emersonteste'
+    }
+
+    this.userService.doLogin(data);
   }
 
 }
