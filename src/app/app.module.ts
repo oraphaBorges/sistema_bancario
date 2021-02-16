@@ -36,6 +36,7 @@ import { BlocoFooterComponent } from './home/bloco-footer/bloco-footer.component
 import { BlocoFimComplexidadeComponent } from './home/bloco-fim-complexidade/bloco-fim-complexidade.component';
 import { NavComponent } from './shared/components/nav/nav.component';
 import { NavDashboardComponent} from './shared/components/navdashboard/navdashboard.component';
+import { HeaderDashComponent } from './shared/components/headerdash/headerdash.component';
 
 registerLocaleData(localePtBr, 'pt-br')
 
@@ -60,7 +61,8 @@ registerLocaleData(localePtBr, 'pt-br')
     FormCadastroComponent,
     BlocoFooterComponent,
     NavComponent,
-    NavDashboardComponent
+    NavDashboardComponent,
+    HeaderDashComponent
   ],
   imports: [
     BrowserModule,
