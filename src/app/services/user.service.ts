@@ -7,7 +7,6 @@ import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
 
 import { IRegister } from '../shared/interfaces/user.interface';
-import { ISession } from '../shared/interfaces/session.interface'
 
 //falta inserir os modais para caso de erros, etc
 @Injectable()
