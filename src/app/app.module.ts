@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import localePtBr from '@angular/common/locales/pt';
+import { NgxMaskModule} from 'ngx-mask';
 
 //services
 import { DashboardService } from './services/dashboard.service';
@@ -67,6 +68,7 @@ registerLocaleData(localePtBr, 'pt-br')
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [
     DashboardService,
