@@ -1,10 +1,11 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Config } from 'src/config';
 
 import { Observable } from 'rxjs';
 import { of } from 'rxjs/internal/observable/of';
 
-import { Config } from 'src/config';
+import { ITransaction, IStatementByPeriod } from '../shared/interfaces/dashboard.interface';
 
 @Injectable()
 export class DashboardService extends Config {
@@ -93,26 +94,4 @@ export class DashboardService extends Config {
           return of(result as T);
         };
     }
-}
-
-interface ITransaction{
-    contaDestino: {
-      login: string
-      sigla: string
-    },
-    contaOrigem: {
-      login: string
-      sigla: string
-    },
-
-    date: Date,
-    descricao: string,
-    planoConta: string,
-    valor: number
-}
-
-interface IStatementByPeriod{
-    sigla: string,
-    dataInicio: Date,
-    dataFim: Date
 }
