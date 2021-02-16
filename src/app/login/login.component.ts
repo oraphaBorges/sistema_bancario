@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.doLogin();
   }
 
   //capturar dados para realizar login

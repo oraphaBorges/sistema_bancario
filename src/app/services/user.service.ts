@@ -7,6 +7,8 @@ import { of } from 'rxjs/internal/observable/of';
 
 import { Config } from 'src/config';
 
+//falta inserir os modais para caso de erros, etc
+
 @Injectable()
 export class UserService extends Config {
 
@@ -20,13 +22,11 @@ export class UserService extends Config {
 
     public doLogin(data: ILogin) {
         this.http.post<IResponseLogin>(`${this.baseURL}login`, data, this.httpOptions)
-          .pipe()
           .subscribe(data => this.setDataIntoLocalStorage(data));
     }
 
     public register(data: IRegister) {
         this.http.post(`${this.baseURL}nova-senha`, data, this.httpOptions)
-          .pipe(catchError(this.handleError('register', 'Erro ao realizar registro')))
           .subscribe(data => data);
     }
 
@@ -38,14 +38,14 @@ export class UserService extends Config {
           .subscribe(data => data);
     }
 
-    //inserir header com autenticação
     public updatePassword(senha: string) {
         const login = JSON.parse(localStorage.getItem('login')!);
+        const token = JSON.parse(localStorage.getItem('token')!);
+        this.httpOptions.headers.set('Authorization', token);
 
         const data = { senha: senha, usuario: login }
 
         this.http.post(`${this.baseURL}altera-senha`, data, this.httpOptions)
-          .pipe(catchError(this.handleError('register', 'Erro ao atualizar a senha')))
           .subscribe(data => data);
     }
 
@@ -68,6 +68,7 @@ export class UserService extends Config {
     }
 }
 
+//verificar se vamos alterar o local das interfaces ou deixaremos aqui mesmo
 interface ILogin{
   usuario: string,
   senha: string

@@ -6,7 +6,7 @@ import { registerLocaleData } from '@angular/common';
 import localePtBr from '@angular/common/locales/pt';
 
 //services
-import { AuthGuard } from './services/guards/auth.guard';
+import { AuthGuard } from './shared/services/guards/auth.guard';
 import { DashboardService } from './services/dashboard.service';
 import { UserService } from './services/user.service';
 
