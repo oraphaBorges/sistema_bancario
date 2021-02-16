@@ -16,6 +16,8 @@ export class TransactionComponent implements OnInit {
     this.doTransaction();
   }
 
+  public message: string = 'Olá, Usuár, seja bem vind! :)'
+
   doTransaction(){
     const transaction: ITransaction = {
         contaDestino: {
