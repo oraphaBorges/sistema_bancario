@@ -1,1 +1,11 @@
-<p>login works!</p>
+<app-nav></app-nav>
+<main class="card" id="card_container">
+    <h2>Faça o seu Login</h2>
+    <form id="login_form" class="card-form">
+        <input type="text" id="usuario" placeholder="Digite seu usuário" required>
+        <input type="password" id="senha" placeholder="Digite sua senha" required>
+        <button id="button_submit" type="submit" class="btn btn-main-outline btn-rounded">Entrar</button>
+    </form>
+    <a  [routerLink]="['/forgotpass']">Esqueci minha senha</a>
+    <a  [routerLink]="['/']">Ainda não sou cliente</a>
+</main>
