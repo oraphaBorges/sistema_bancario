@@ -9,6 +9,7 @@ import localePtBr from '@angular/common/locales/pt';
 import { AuthGuard } from './shared/services/guards/auth.guard';
 import { DashboardService } from './services/dashboard.service';
 import { UserService } from './services/user.service';
+import { AuthService } from './shared/services/auth/auth.service';
 
 //modules
 import { AppRoutingModule } from './app-routing.module';
@@ -25,7 +26,14 @@ import { DashboardComponent } from './auth/dashboard/dashboard.component';
 import { ExtratoComponent } from './auth/extrato/extrato.component';
 import { TransactionComponent } from './auth/transaction/transaction.component';
 import { AccountPlanComponent } from './auth/account-plan/account-plan.component';
-import { AuthService } from './shared/services/auth/auth.service';
+import { BlocoCelularesComponent } from './home/bloco-celulares/bloco-celulares.component';
+import { BlocoAnuidadeComponent } from './home/bloco-anuidade/bloco-anuidade.component';
+import { BlocoCadastroLoginComponent } from './home/bloco-cadastro-login/bloco-cadastro-login.component';
+import { FormCadastroComponent } from './home/bloco-cadastro-login/form-cadastro/form-cadastro.component';
+import { BlocoLoginComponent } from './home/bloco-cadastro-login/bloco-login/bloco-login.component';
+import { BlocoFooterComponent } from './home/bloco-footer/bloco-footer.component';
+import { BlocoFimComplexidadeComponent } from './home/bloco-fim-complexidade/bloco-fim-complexidade.component';
+import { NavComponent } from './shared/components/nav/nav.component';
 
 registerLocaleData(localePtBr, 'pt-br')
 
@@ -41,7 +49,15 @@ registerLocaleData(localePtBr, 'pt-br')
     DashboardComponent,
     ExtratoComponent,
     TransactionComponent,
-    AccountPlanComponent
+    AccountPlanComponent,
+    BlocoLoginComponent,
+    BlocoCelularesComponent,
+    BlocoAnuidadeComponent,
+    BlocoFimComplexidadeComponent,
+    BlocoCadastroLoginComponent,
+    FormCadastroComponent,
+    BlocoFooterComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
