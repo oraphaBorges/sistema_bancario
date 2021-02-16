@@ -3,9 +3,9 @@
     <h2>Faça o seu Login</h2>
     <form id="login_form" class="card-form" #form="ngForm" (submit)="onSubmit(form)">
         <input type="text" id="usuario" placeholder="Digite seu usuário" required
-                [(ngModel)]="usuario" name="usuario">
+                [(ngModel)]="usuario" name="usuario" #usuarioInput>
         <input type="password" id="senha" placeholder="Digite sua senha" required
-               [(ngModel)]="senha" name="senha">
+               [(ngModel)]="senha" name="senha" #senhaInput>
         <div class="invalid-feedback" *ngIf="errorLoging">
             {{msgError}}<br><small>por favor tente novamente</small>
         </div>

@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { finalize, take } from 'rxjs/operators';
 import { ILoginCredencials, ILoginResponse } from './login.interface';
@@ -12,6 +12,8 @@ import { LoginService } from './login.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  @ViewChild('usuarioInput') UsuarioInput:ElementRef|undefined
+  @ViewChild('senhaInput') SenhaInput:ElementRef|undefined
 
   usuario = ""
   senha = ""
@@ -29,6 +31,18 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form:NgForm){
+    if(!form.valid){
+      form.controls['usuario'].markAsTouched;
+      form.controls['senha'].markAsTouched;
+      if(!form.controls.usuario.valid){
+        this.UsuarioInput?.nativeElement.focus()
+        return;
+      }
+      if(!form.controls.senha.valid){
+        this.SenhaInput?.nativeElement.focus()
+        return;
+      }
+    }  
     this.doLogin()
   }
 
