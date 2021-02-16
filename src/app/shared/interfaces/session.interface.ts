@@ -3,4 +3,4 @@ export interface ISession{
     dataFim: Date,
     token: string,
     login: string
-  }
+}
