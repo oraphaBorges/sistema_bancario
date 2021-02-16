@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 //Guards
-
+import { AuthGuard } from './shared/guards/auth/auth.guard';
 import { NotAuthGuard } from './shared/guards/not-auth/not-auth.guard';
 
 //components
@@ -16,16 +16,15 @@ import { Error404Component } from './error404/error404.component';
 import { ForgotpassComponent } from './forgotpass/forgotpass.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './shared/services/guards/auth.guard';
 
 const routes: Routes = [
   {
     path:'dashboard',
     component:AuthComponent,
-    canActivateChild:[AuthGuard],
+    canActivate:[AuthGuard],
     children: [
       {
-        path:'main',
+        path:'',
         component:DashboardComponent,
       },{
         path:'extract',
@@ -40,20 +39,20 @@ const routes: Routes = [
     },{
     path:'',
     component:HomeComponent,
-    canActivateChild:[NotAuthGuard],
+    canActivate:[NotAuthGuard],
     pathMatch:'full'
   },{
     path:'login',
     component:LoginComponent,
-    canActivateChild:[NotAuthGuard],
+    canActivate:[NotAuthGuard],
   },{
     path:'forgotpass',
     component:ForgotpassComponent,
-    canActivateChild:[NotAuthGuard],
+    canActivate:[NotAuthGuard],
   },{
     path:'changepass',
     component:ChangepassComponent,
-    canActivateChild:[NotAuthGuard],
+    canActivate:[NotAuthGuard],
   },{
     path:'**',
     component:Error404Component
