@@ -1,14 +1,11 @@
 <nav class="dashboard-menu">
     <img src="{{logoUrl}}" alt="Gama hand">
-    <div class="content-default">  
-               
-        <a *ngFor='let menu of menuOptions' id="{{menu.id}}" class="menu-item" [routerLink]=menu.route >            
-
-                <div class="content-flex--column content-justify--between bg-purple card-menu--item">
-                    <img src="{{menu.icon}}" class="icon-menu--default">
-                    <p>{{menu.group}}</p>             
-                </div>
-            
-        </a>      
+    <div class="content-default">
+        <a *ngFor='let menu of menuOptions' id="{{menu.id}}" class="menu-item" [routerLink]=menu.route >
+              <div class="content-flex--column content-justify--between bg-purple card-menu--item">
+                  <img src="{{menu.icon}}" class="icon-menu--default">
+                  <p>{{menu.group}}</p>
+              </div>
+        </a>
     </div>
 </nav>

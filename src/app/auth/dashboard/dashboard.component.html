@@ -1,1 +1,43 @@
-
+<div class="container">
+  <div class="dash-header">
+      <div class="section">
+        <app-headerdash [message]="message" ></app-headerdash>
+      </div>
+  </div>
+  <div class="accounts">
+    <div *ngFor="let account of accounts | keyvalue" class="card-dashboard">
+          <div class="content-align--center">
+              <img [src]="account.value.icon"  class="content-icon--default" alt="">
+              <span class="text-card--default">{{ account.value.type }}</span>
+          </div>
+          <div class="content-justify--between">
+              <div class="content-intern--default">
+                  <span class="text-card--default">Saldo atual</span>
+                  <h2 class="text-money text-{{account.value.colorValue}}">R$: {{ account.value.saldo }}</h2>
+              </div>
+          </div>
+          <div id="latest_transactions">
+              <div class="content-intern--default content-flex content-justify--between">
+                  <span class="text-card--default">Últimos lançamentos</span>
+                  <a class="see_more text-card--ancor ml-1" id="{{account.key}}">Ver extrato completo</a>
+              </div>
+              <div *ngIf="!account.value.lancamentos.length; else lancamento" class="content-intern--default content-flex content-justify" id="transaction">
+                  <span class="text-grey text-size--12">Sem lançamentos para essa conta</span>
+              </div>
+              <ng-template #lancamento>
+                <div *ngFor="let lancamento of account.value.lancamentos" class="content-intern--default content-flex" id="lancamento">
+                    <img src="../../../../assets/img/svg/opencard.svg" class="content-icon--default" alt="">
+                    <div class="content-transaction content-flex--1 content-flex--column">
+                        <div class="payment-description content-flex content-flex--1 content-justify--between content-align--center">
+                            <span class="text-black"><strong>Compra no débito</strong></span>
+                            <span class="text-grey text-size--12">{{ lancamento.date | date: 'd MMM YY' }}</span>
+                        </div>
+                        <span class="text-card--default content-padding--default">{{lancamento.descricao}}</span>
+                        <span class="text-red text-size--20">R$ {{ lancamento.valor }}</span>
+                    </div>
+                </div>
+              </ng-template>
+          </div>
+      </div>
+  </div>
+</div>
