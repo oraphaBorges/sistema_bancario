@@ -1,35 +1,20 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivateChild, Router, RouterStateSnapshot } from "@angular/router";
+import { CanActivateChild, Router } from "@angular/router";
+import { AuthService } from "../auth/auth.service";
 
 @Injectable()
 export class AuthGuard implements CanActivateChild {
 
-    constructor(private router: Router) { }
+    constructor(private router: Router, private authService: AuthService) { }
 
     canActivateChild(): boolean{
-        let token = localStorage.getItem('token');
-        let dataFim = localStorage.getItem('dataFim');
+        const isLogged = this.authService.isLoggedIn();
 
-        //DESCOMENTAR ESSE CÓDIGO QUANDO APLICARMOS A LÓGICA DE LOGIN
-        //JÁ FOI TESTADO E VALIDADO
-        // if(!token || !dataFim){
-        //     this.router.navigate(['login']);
+        if(isLogged)
+            return true
 
-        //     return false;
-        // }
+        this.router.navigate(['login']);
 
-        // token = JSON.parse(token);
-        // dataFim = JSON.parse(dataFim);
-
-        // const tokenFinalDate = new Date(dataFim!);
-        // const now = new Date();
-
-        // if(now < tokenFinalDate){
-        //     this.router.navigate(['login']);
-
-        //     return false;
-        // }
-
-        return true;
+        return false;
     }
 }
