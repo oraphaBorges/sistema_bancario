@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { finalize, take } from 'rxjs/operators';
 import { ILoginCredencials, ILoginResponse } from './login.interface';
 
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit {
   errorLoging:boolean = false
 
   constructor(
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -57,14 +59,14 @@ export class LoginComponent implements OnInit {
         finalize(()=>this.loading=false)
       )
       .subscribe(
-        response => this.onSuccess(response),
+        response => this.onSuccess(),
         error => this.onError(error)
         
       )
   }
 
-  private onSuccess(response:ILoginResponse){
-    console.log(response);
+  private onSuccess(){
+    this.router.navigate(['dashboard'])
     
   }
   private onError(error:HttpErrorResponse){
