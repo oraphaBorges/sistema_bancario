@@ -13,7 +13,7 @@ export class TransactionComponent implements OnInit {
   constructor(private service: TransactionService) { }
 
   ngOnInit(): void {
-    this.doTransaction();
+
   }
 
   doTransaction(){
