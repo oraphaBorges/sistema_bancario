@@ -9,6 +9,7 @@ import localePtBr from '@angular/common/locales/pt';
 import { AuthGuard } from './shared/services/guards/auth.guard';
 import { DashboardService } from './services/dashboard.service';
 import { UserService } from './services/user.service';
+import { AuthService } from './shared/services/auth/auth.service';
 
 //modules
 import { AppRoutingModule } from './app-routing.module';
@@ -67,6 +68,7 @@ registerLocaleData(localePtBr, 'pt-br')
     AuthGuard,
     DashboardService,
     UserService,
+    AuthService,
     {
       provide:LOCALE_ID,
       useValue:'pt-br'
