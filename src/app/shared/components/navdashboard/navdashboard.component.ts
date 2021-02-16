@@ -13,7 +13,7 @@ export class NavDashboardComponent implements OnInit {
     iconAccountPlan = '../../../../assets/img/svg/accountplan.svg';
 
     menuOptions = [
-        { id: 'main', group: 'Home', icon: this.iconHome, route: 'main' },
+        { id: 'main', group: 'Home', icon: this.iconHome, route: '/' },
         { id: 'transactions', group: 'Transações', icon: this.iconTransactions, route: 'transaction' },
         { id: 'bankstatement', group: 'Extrato', icon: this.iconBankstatement , route: 'extract' },
         { id: 'accountplan', group: 'Planos de Conta', icon: this.iconAccountPlan, route: 'accountplan' }

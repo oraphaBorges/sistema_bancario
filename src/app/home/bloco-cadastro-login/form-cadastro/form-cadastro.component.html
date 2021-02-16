@@ -1,12 +1,27 @@
 <div class="card bloco-item">
     <h2>Faça o seu Cadastro</h2>
     <p class="text-left">Preencha seus dados para realizar seu cadastro</p>
-    <form id="register_form" class="card-form">
-        <input id="cpf"   class="input" type="text" placeholder="CPF" required>
-        <input id="nome"  class="input" type="text" placeholder="Nome completo" required>
-        <input id="login" class="input" type="text" placeholder="Login de acesso" required>
-        <input id="senha" class="input" type="password" placeholder="Digite sua senha" required>
-        <input id="confirmar_senha" class="input" type="password" placeholder="Confirme sua senha" required>
-        <button id="button_submit" type="submit" class="btn btn-main-outline btn-rounded">Continuar</button>
+    <form id="register_form" class="card-form" #form="ngForm" (submit)="onSubmit(form)">
+        <input id="cpf"   class="input" type="text" placeholder="CPF" required
+                [(ngModel)]="cpf" name="cpf" #cpfInput>
+        <input id="nome"  class="input" type="text" placeholder="Nome completo" required
+                [(ngModel)]="nome" name="nome" #nomeInput>
+        <input id="login" class="input" type="text" placeholder="Login de acesso" required
+                [(ngModel)]="login" name="login" #loginInput>
+        <input id="senha" class="input" type="password" placeholder="Digite sua senha" required
+                [(ngModel)]="senha" name="senha" #senhaInput>
+        <input id="confirmar_senha" class="input" type="password" placeholder="Confirme sua senha" required
+                [(ngModel)]="senha_confirmada" name="senhaConfirmada" #senhaConfirmadaInput>
+                
+        <div class="invalid-feedback" *ngIf="errorLoging" [ngStyle]="{'max-width':'250px'}">
+            {{msgError}}<br><small>por favor tente novamente</small>
+        </div>
+        <button class="btn btn-primary mt-3" type="button" disabled *ngIf="loading;else spinner">
+            <span class="sr-only">Loading...</span>
+        </button> 
+        <ng-template #spinner>
+            <button id="button_submit" type="submit" class="btn btn-main-outline btn-rounded">Continar</button>
+        </ng-template>
+        
     </form>
 </div>
