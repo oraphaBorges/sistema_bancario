@@ -1,14 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Config } from 'src/config';
 
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
 
-import { Config } from 'src/config';
+import { ILogin, IRegister, ISession } from '../shared/interfaces/user.interface';
 
 //falta inserir os modais para caso de erros, etc
-
 @Injectable()
 export class UserService extends Config {
 
@@ -21,7 +21,7 @@ export class UserService extends Config {
     }
 
     public doLogin(data: ILogin) {
-        this.http.post<IResponseLogin>(`${this.baseURL}login`, data, this.httpOptions)
+        this.http.post<ISession>(`${this.baseURL}login`, data, this.httpOptions)
           .subscribe(data => this.setDataIntoLocalStorage(data));
     }
 
@@ -58,7 +58,7 @@ export class UserService extends Config {
         };
     }
 
-    private setDataIntoLocalStorage (data: IResponseLogin) {
+    private setDataIntoLocalStorage (data: ISession) {
         let { token, login, dataInicio, dataFim } = data;
 
         localStorage.setItem('dataInicio', JSON.stringify(dataInicio));
@@ -66,24 +66,4 @@ export class UserService extends Config {
         localStorage.setItem('token', JSON.stringify(token));
         localStorage.setItem('login', JSON.stringify(login));
     }
-}
-
-//verificar se vamos alterar o local das interfaces ou deixaremos aqui mesmo
-interface ILogin{
-  usuario: string,
-  senha: string
-}
-
-interface IRegister{
-  cpf: string,
-  login: string,
-  nome: string,
-  senha: string
-}
-
-interface IResponseLogin{
-  dataInicio: string,
-  dataFim: string,
-  token: string,
-  login: string
 }
