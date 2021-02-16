@@ -25,8 +25,6 @@ export class DashboardService extends Config {
         super();
     }
 
-    //funcionando
-    //inserir dados no local storage
     public getAccountData() {
         const dataInicio = '2020-01-30';
         const dataFim = '2030-01-30';
@@ -37,15 +35,9 @@ export class DashboardService extends Config {
           .set('login', this.login)
 
         this.http.get(`${this.baseURL}dashboard?${params}`, this.httpOptions)
-          .subscribe(data => data);
-    }
+          .pipe(
 
-    public doTransaction(data: ITransaction, operacao: string){
-      const params = new HttpParams()
-        .set('operacao', operacao)
-
-      this.http.post<ITransaction>(`${this.baseURL}/lancamentos/`, data, this.httpOptions)
-        .subscribe(data => data);
+          );
     }
 
     public createAccountPlan(finalidade: string){
