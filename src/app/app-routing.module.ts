@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 //services
-import { AuthGuard } from './services/guards/auth.guard';
+import { AuthGuard } from './shared/services/guards/auth.guard';
 
 //components
 import { AccountPlanComponent } from './auth/account-plan/account-plan.component';

@@ -1,12 +1,16 @@
+//angular
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localePtBr from '@angular/common/locales/pt';
 
 //services
-import { AuthGuard } from './services/guards/auth.guard';
+import { AuthGuard } from './shared/services/guards/auth.guard';
+import { DashboardService } from './services/dashboard.service';
+import { UserService } from './services/user.service';
 
 //modules
-import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
 //components
@@ -40,10 +44,13 @@ registerLocaleData(localePtBr, 'pt-br')
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [
     AuthGuard,
+    DashboardService,
+    UserService,
     {
       provide:LOCALE_ID,
       useValue:'pt-br'
