@@ -34,6 +34,11 @@ import { BlocoLoginComponent } from './home/bloco-cadastro-login/bloco-login/blo
 import { BlocoFooterComponent } from './home/bloco-footer/bloco-footer.component';
 import { BlocoFimComplexidadeComponent } from './home/bloco-fim-complexidade/bloco-fim-complexidade.component';
 import { NavComponent } from './shared/components/nav/nav.component';
+<<<<<<< HEAD
+import { NavDashboardComponent} from './shared/components/navdashboard/navdashboard.component';
+=======
+import { FormsModule } from '@angular/forms';
+>>>>>>> 6392f37c131cb57a891b3c85b031d596b8a69685
 
 registerLocaleData(localePtBr, 'pt-br')
 
@@ -57,12 +62,14 @@ registerLocaleData(localePtBr, 'pt-br')
     BlocoCadastroLoginComponent,
     FormCadastroComponent,
     BlocoFooterComponent,
-    NavComponent
+    NavComponent,
+    NavDashboardComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [
     AuthGuard,
