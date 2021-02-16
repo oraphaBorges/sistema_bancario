@@ -22,7 +22,6 @@ export class UserService extends Config {
 
     public register(data: IRegister) {
         this.http.post(`${this.baseURL}nova-senha`, data, this.httpOptions)
-          .subscribe(data => data);
     }
 
     public createNewPassword(login: string) {
@@ -30,7 +29,6 @@ export class UserService extends Config {
 
         this.http.post(`${this.baseURL}usuarios`, data, this.httpOptions)
           .pipe(catchError(this.handleError('register', 'Erro ao realizar cadastro de nova senha')))
-          .subscribe(data => data);
     }
 
     public updatePassword(senha: string) {
@@ -41,7 +39,6 @@ export class UserService extends Config {
         const data = { senha: senha, usuario: login }
 
         this.http.post(`${this.baseURL}altera-senha`, data, this.httpOptions)
-          .subscribe(data => data);
     }
 
     private handleError<T> (operation = 'operation', result?: T) {
