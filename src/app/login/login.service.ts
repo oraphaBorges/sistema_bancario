@@ -5,7 +5,7 @@ import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ISession } from '../shared/interfaces/session.interface';
 import { AuthService } from '../shared/services/auth/auth.service';
-import { ILoginCredencials, ILoginResponse } from './login.interface';
+import { ILoginCredencials } from './login.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class LoginService {
   doLogin(credencials:ILoginCredencials):Observable<ISession>{
     return this.http.post<ISession>(`${this.API_URL}login`,credencials)
       .pipe(
-        tap(response=>{this.authService.setSession(response)    
+        tap(response=>{this.authService.setSession(response)  
         })
       )
   }
