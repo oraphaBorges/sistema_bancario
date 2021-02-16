@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { take } from 'rxjs/operators';
+import { finalize, take } from 'rxjs/operators';
 import { ILoginCredencials, ILoginResponse } from './login.interface';
 
 import { LoginService } from './login.service';
@@ -16,6 +16,11 @@ export class LoginComponent implements OnInit {
   usuario = ""
   senha = ""
 
+  msgError=""
+
+  loading:boolean = false
+  errorLoging:boolean = false
+
   constructor(
     private loginService: LoginService
   ) { }
@@ -29,10 +34,13 @@ export class LoginComponent implements OnInit {
 
   //capturar dados para realizar login
   doLogin(){
+    this.errorLoging = false
+    this.loading = true
     const credencials:ILoginCredencials = {usuario:this.usuario, senha:this.senha,}
     this.loginService.doLogin(credencials)
       .pipe(
-        take(1)
+        take(1),
+        finalize(()=>this.loading=false)
       )
       .subscribe(
         response => this.onSuccess(response),
@@ -46,7 +54,9 @@ export class LoginComponent implements OnInit {
     
   }
   private onError(error:HttpErrorResponse){
-    console.log(error);
+    this.errorLoging = true
+    this.loading = false
+    this.msgError = error.error
     
   }
 }

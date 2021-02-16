@@ -6,7 +6,15 @@
                 [(ngModel)]="usuario" name="usuario">
         <input type="password" id="senha" placeholder="Digite sua senha" required
                [(ngModel)]="senha" name="senha">
-        <button id="button_submit" type="submit" class="btn btn-main-outline btn-rounded">Entrar</button>
+        <div class="invalid-feedback" *ngIf="errorLoging">
+            {{msgError}}<br><small>por favor tente novamente</small>
+        </div>
+        <button class="btn btn-primary mt-3" type="button" disabled *ngIf="loading;else spinner">
+            <span class="sr-only">Loading...</span>
+        </button> 
+        <ng-template #spinner>
+            <button id="button_submit" type="submit" class="btn btn-main-outline btn-rounded">Entrar</button>
+        </ng-template>
     </form>
     <a  [routerLink]="['/forgotpass']">Esqueci minha senha</a>
     <a  [routerLink]="['/']">Ainda não sou cliente</a>
