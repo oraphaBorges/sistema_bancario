@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
 
-import { ILogin, IRegister, ISession } from '../shared/interfaces/user.interface';
+import { IRegister } from '../shared/interfaces/user.interface';
+import { ISession } from '../shared/interfaces/session.interface'
 
 //falta inserir os modais para caso de erros, etc
 @Injectable()
@@ -18,11 +19,6 @@ export class UserService extends Config {
 
     constructor(private http: HttpClient) {
         super();
-    }
-
-    public doLogin(data: ILogin) {
-        this.http.post<ISession>(`${this.baseURL}login`, data, this.httpOptions)
-          .subscribe(data => this.setDataIntoLocalStorage(data));
     }
 
     public register(data: IRegister) {
@@ -56,14 +52,5 @@ export class UserService extends Config {
 
           return of(result as T);
         };
-    }
-
-    private setDataIntoLocalStorage (data: ISession) {
-        let { token, login, dataInicio, dataFim } = data;
-
-        localStorage.setItem('dataInicio', JSON.stringify(dataInicio));
-        localStorage.setItem('dataFim', JSON.stringify(dataFim));
-        localStorage.setItem('token', JSON.stringify(token));
-        localStorage.setItem('login', JSON.stringify(login));
     }
 }

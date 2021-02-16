@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { ISession } from '../../interfaces/session.interface';
+
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
