@@ -22,8 +22,10 @@ const routes: Routes = [
   {
     path:'dashboard',
     component:AuthComponent,
-    children: [{
-        path:'',
+    canActivateChild:[AuthGuard],
+    children: [
+      {
+        path:'main',
         component:DashboardComponent,
       },{
         path:'extract',
