@@ -10,6 +10,7 @@ import localePtBr from '@angular/common/locales/pt';
 import { DashboardService } from './services/dashboard.service';
 import { UserService } from './services/user.service';
 import { AuthService } from './shared/services/auth/auth.service';
+import { TransactionService } from './auth/transaction/transaction.service';
 
 //modules
 import { AppRoutingModule } from './app-routing.module';
@@ -71,6 +72,7 @@ registerLocaleData(localePtBr, 'pt-br')
     DashboardService,
     UserService,
     AuthService,
+    TransactionService,
     {
       provide:LOCALE_ID,
       useValue:'pt-br'

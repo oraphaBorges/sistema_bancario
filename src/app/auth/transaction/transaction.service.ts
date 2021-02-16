@@ -18,6 +18,7 @@ export class TransactionService {
     private authService: AuthService
   ) { }
 
+  //incluir responseType para o erro no console não ocorrer
   public doTransaction(data: ITransaction, operacao: string): Observable<string>{
     const params = new HttpParams()
       .set('operacao', operacao)
