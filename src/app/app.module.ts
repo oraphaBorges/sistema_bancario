@@ -25,6 +25,7 @@ import { DashboardComponent } from './auth/dashboard/dashboard.component';
 import { ExtratoComponent } from './auth/extrato/extrato.component';
 import { TransactionComponent } from './auth/transaction/transaction.component';
 import { AccountPlanComponent } from './auth/account-plan/account-plan.component';
+import { AuthService } from './shared/services/auth/auth.service';
 
 registerLocaleData(localePtBr, 'pt-br')
 
@@ -51,6 +52,7 @@ registerLocaleData(localePtBr, 'pt-br')
     AuthGuard,
     DashboardService,
     UserService,
+    AuthService,
     {
       provide:LOCALE_ID,
       useValue:'pt-br'
