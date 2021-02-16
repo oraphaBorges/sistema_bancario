@@ -8,13 +8,12 @@ export class AuthGuard implements CanActivateChild {
     constructor(private router: Router, private authService: AuthService) { }
 
     canActivateChild(): boolean{
-        const isLogged = this.authService.isLogged();
+        const isLogged = this.authService.isLoggedIn();
 
-        if(isLogged)
+        if(!isLogged)
             return true
 
-        this.router.navigate(['login']);
-
+        this.router.navigate(['dashboard']);
         return false;
     }
 }

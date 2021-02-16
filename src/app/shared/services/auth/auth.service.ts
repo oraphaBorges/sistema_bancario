@@ -29,9 +29,9 @@ export class AuthService {
 
     if(!this.session){
       const token = localStorage.getItem('token');
-      const login = localStorage.getItem('token');
-      const dataInicio = localStorage.getItem('token');
-      const dataFim = localStorage.getItem('token');
+      const login = localStorage.getItem('login');
+      const dataInicio = localStorage.getItem('dataInicio');
+      const dataFim = localStorage.getItem('dataFim');
 
       if(token && login && dataInicio && dataFim){
         const storedSession: ISession = {
@@ -56,7 +56,7 @@ export class AuthService {
     return this.getSession()!.login;
   }
 
-  isLoggedIn(): boolean {
+  isLogged(): boolean {
     const session = this.getSession();
 
     if(!session){

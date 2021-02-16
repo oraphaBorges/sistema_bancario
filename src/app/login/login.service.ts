@@ -5,7 +5,7 @@ import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ISession } from '../shared/interfaces/session.interface';
 import { AuthService } from '../shared/services/auth/auth.service';
-import { ILoginCredencials, ILoginResponse } from './login.interface';
+import { ILoginCredencials } from './login.interface';
 
 @Injectable({
   providedIn: 'root'
