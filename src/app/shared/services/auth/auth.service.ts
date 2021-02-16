@@ -49,11 +49,11 @@ export class AuthService {
   }
 
   getToken(){
-    return this.session!.token;
+    return this.getSession()!.token;
   }
 
   getLogin(){
-    return this.session!.login;
+    return this.getSession()!.login;
   }
 
   isLogged(): boolean {

@@ -5,7 +5,7 @@ import { Config } from 'src/config';
 import { Observable } from 'rxjs';
 import { of } from 'rxjs/internal/observable/of';
 
-import { ITransaction, IStatementByPeriod } from '../shared/interfaces/dashboard.interface';
+import { IStatementByPeriod } from '../shared/interfaces/dashboard.interface';
 
 @Injectable()
 export class DashboardService extends Config {
@@ -25,8 +25,6 @@ export class DashboardService extends Config {
         super();
     }
 
-    //funcionando
-    //inserir dados no local storage
     public getAccountData() {
         const dataInicio = '2020-01-30';
         const dataFim = '2030-01-30';
@@ -37,22 +35,12 @@ export class DashboardService extends Config {
           .set('login', this.login)
 
         this.http.get(`${this.baseURL}dashboard?${params}`, this.httpOptions)
-          .subscribe(data => data);
-    }
-
-    public doTransaction(data: ITransaction, operacao: string){
-      const params = new HttpParams()
-        .set('operacao', operacao)
-
-      this.http.post<ITransaction>(`${this.baseURL}/lancamentos/`, data, this.httpOptions)
-        .subscribe(data => data);
     }
 
     public createAccountPlan(finalidade: string){
       const data = { finalidade: finalidade, login: this.login }
 
       this.http.post<any>(`${this.baseURL}/lancamentos/planos-conta`, data, this.httpOptions)
-        .subscribe(data => data);
     }
 
     //setar retorno em local storage
@@ -61,7 +49,6 @@ export class DashboardService extends Config {
         .set('login', this.login);
 
         this.http.post<any>(`${this.baseURL}/lancamentos/planos-conta/`, this.httpOptions)
-          .subscribe(data => data);
     }
 
     public getStatementByAccount(sigla: string){
@@ -71,7 +58,6 @@ export class DashboardService extends Config {
 
 
       this.http.post<any>(`${this.baseURL}/conta/extrato`, this.httpOptions)
-          .subscribe(data => data);
     }
 
     public getStatementByPeriod(data: IStatementByPeriod){
@@ -82,7 +68,6 @@ export class DashboardService extends Config {
         .set('sigla', data.sigla)
 
       this.http.post<any>(`${this.baseURL}/conta/extrato-periodo`, this.httpOptions)
-          .subscribe(data => data);
     }
 
     //implementar essa
