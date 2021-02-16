@@ -1,5 +1,10 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { NgForm } from '@angular/forms';
+import { take } from 'rxjs/operators';
+import { ILoginCredencials, ILoginResponse } from './login.interface';
+
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -8,20 +13,40 @@ import { UserService } from '../services/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  usuario = ""
+  senha = ""
+
+  constructor(
+    private loginService: LoginService
+  ) { }
 
   ngOnInit(): void {
-    this.doLogin();
+  }
+
+  onSubmit(form:NgForm){
+    this.doLogin()
   }
 
   //capturar dados para realizar login
-  private doLogin(){
-    let data = {
-      usuario: 'emersonteste',
-      senha: 'emersonteste'
-    }
-
-    this.userService.doLogin(data);
+  doLogin(){
+    const credencials:ILoginCredencials = {usuario:this.usuario, senha:this.senha,}
+    this.loginService.doLogin(credencials)
+      .pipe(
+        take(1)
+      )
+      .subscribe(
+        response => this.onSuccess(response),
+        error => this.onError(error)
+        
+      )
   }
 
+  private onSuccess(response:ILoginResponse){
+    console.log(response);
+    
+  }
+  private onError(error:HttpErrorResponse){
+    console.log(error);
+    
+  }
 }
