@@ -13,13 +13,13 @@
           <div class="content-justify--between">
               <div class="content-intern--default">
                   <span class="text-card--default">Saldo atual</span>
-                  <h2 class="text-money text-{{account.value.colorValue}}">R$: {{ account.value.saldo }}</h2>
+                  <h2 class="text-money text-{{account.value.colorValue}}">{{ account.value.saldo | currency }}</h2>
               </div>
           </div>
           <div id="latest_transactions">
               <div class="content-intern--default content-flex content-justify--between">
                   <span class="text-card--default">Últimos lançamentos</span>
-                  <a class="see_more text-card--ancor ml-1" id="{{account.key}}">Ver extrato completo</a>
+                  <a class="see_more text-card--ancor ml-1" id="{{account.key}}" (click)="seeAll(account.key)" >Ver extrato completo</a>
               </div>
               <div *ngIf="!account.value.lancamentos.length; else lancamento" class="content-intern--default content-flex content-justify" id="transaction">
                   <span class="text-grey text-size--12">Sem lançamentos para essa conta</span>
@@ -33,7 +33,7 @@
                             <span class="text-grey text-size--12">{{ lancamento.date | date: 'd MMM YY' }}</span>
                         </div>
                         <span class="text-card--default content-padding--default">{{lancamento.descricao}}</span>
-                        <span class="text-red text-size--20">R$ {{ lancamento.valor }}</span>
+                        <span class="text-red text-size--20">{{ lancamento.valor | currency }}</span>
                     </div>
                 </div>
               </ng-template>

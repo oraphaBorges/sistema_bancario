@@ -47,4 +47,8 @@ export class DashboardComponent implements OnInit {
       }
       this.accounts.CORRENTE.lancamentos.push(objTest);
   }
+
+  seeAll(value: string){
+    //redirecionar para extrato com esse value, buscando automaticamente o extrato correto para o tipo de conta
+  }
 }
