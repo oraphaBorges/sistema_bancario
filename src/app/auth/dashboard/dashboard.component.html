@@ -13,7 +13,9 @@
           <div class="content-justify--between">
               <div class="content-intern--default">
                   <span class="text-card--default">Saldo atual</span>
-                  <h2 class="text-money text-{{account.value.colorValue}}">{{ account.value.saldo | currency }}</h2>
+                  <h2 class="text-money text-{{account.value.colorValue}}">
+                    {{loading ? 'Carregando...' : account.value.saldo | currency }}
+                  </h2>
               </div>
           </div>
           <div id="latest_transactions">
