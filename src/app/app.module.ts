@@ -34,6 +34,7 @@ import { BlocoLoginComponent } from './home/bloco-cadastro-login/bloco-login/blo
 import { BlocoFooterComponent } from './home/bloco-footer/bloco-footer.component';
 import { BlocoFimComplexidadeComponent } from './home/bloco-fim-complexidade/bloco-fim-complexidade.component';
 import { NavComponent } from './shared/components/nav/nav.component';
+import { NavDashboardComponent} from './shared/components/navdashboard/navdashboard.component';
 
 registerLocaleData(localePtBr, 'pt-br')
 
@@ -57,7 +58,8 @@ registerLocaleData(localePtBr, 'pt-br')
     BlocoCadastroLoginComponent,
     FormCadastroComponent,
     BlocoFooterComponent,
-    NavComponent
+    NavComponent,
+    NavDashboardComponent
   ],
   imports: [
     BrowserModule,
