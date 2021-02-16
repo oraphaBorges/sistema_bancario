@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { ISession } from '../../interfaces/session.interface';
+import { ISession } from '../../interfaces/user.interface';
+
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
@@ -28,9 +29,9 @@ export class AuthService {
 
     if(!this.session){
       const token = localStorage.getItem('token');
-      const login = localStorage.getItem('token');
-      const dataInicio = localStorage.getItem('token');
-      const dataFim = localStorage.getItem('token');
+      const login = localStorage.getItem('login');
+      const dataInicio = localStorage.getItem('dataInicio');
+      const dataFim = localStorage.getItem('dataFim');
 
       if(token && login && dataInicio && dataFim){
         const storedSession: ISession = {
@@ -55,7 +56,7 @@ export class AuthService {
     return this.session!.login;
   }
 
-  isLoggedIn(): boolean {
+  isLogged(): boolean {
     const session = this.getSession();
 
     if(!session){

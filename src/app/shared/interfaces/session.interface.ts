@@ -1,6 +1,6 @@
 export interface ISession{
-    dataInicio: Date,
-    dataFim: Date,
+    dataInicio: string,
+    dataFim: string,
     token: string,
     login: string
   }

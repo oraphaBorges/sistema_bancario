@@ -6,7 +6,6 @@ import { registerLocaleData } from '@angular/common';
 import localePtBr from '@angular/common/locales/pt';
 
 //services
-import { AuthGuard } from './shared/services/guards/auth.guard';
 import { DashboardService } from './services/dashboard.service';
 import { UserService } from './services/user.service';
 import { AuthService } from './shared/services/auth/auth.service';
@@ -67,7 +66,6 @@ registerLocaleData(localePtBr, 'pt-br')
     FormsModule,
   ],
   providers: [
-    AuthGuard,
     DashboardService,
     UserService,
     AuthService,
