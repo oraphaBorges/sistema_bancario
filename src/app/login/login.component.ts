@@ -3,7 +3,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { finalize, take } from 'rxjs/operators';
-import { ILoginCredencials, ILoginResponse } from './login.interface';
+import { ILoginCredencials } from './login.interface';
 
 import { LoginService } from './login.service';
 
