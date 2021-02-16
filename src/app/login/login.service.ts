@@ -22,8 +22,7 @@ export class LoginService {
   doLogin(credencials:ILoginCredencials):Observable<ISession>{
     return this.http.post<ISession>(`${this.API_URL}login`,credencials)
       .pipe(
-        tap(response=>{this.authService.setSession(response)    
-        })
+        tap(response => this.authService.setSession(response))
       )
   }
 }
