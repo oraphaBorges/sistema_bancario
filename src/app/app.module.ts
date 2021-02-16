@@ -36,7 +36,7 @@ import { BlocoFooterComponent } from './home/bloco-footer/bloco-footer.component
 import { BlocoFimComplexidadeComponent } from './home/bloco-fim-complexidade/bloco-fim-complexidade.component';
 import { NavComponent } from './shared/components/nav/nav.component';
 import { NavDashboardComponent} from './shared/components/navdashboard/navdashboard.component';
-import { HeaderDashComponent} from './shared/headerDash/headerDash.component'; 
+import { HeaderDashComponent } from './shared/components/headerdash/headerdash.component';
 
 registerLocaleData(localePtBr, 'pt-br')
 
