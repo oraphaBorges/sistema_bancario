@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { finalize, take } from 'rxjs/operators';
-import { IAccountPlan } from 'src/app/shared/interfaces/account-plan.interface';
+import { IAccountPlan } from 'src/app/shared/interfaces/dashboard.interface';
 import { AccountPlanService } from 'src/app/shared/services/account-plan/account-plan.service';
 
 @Component({

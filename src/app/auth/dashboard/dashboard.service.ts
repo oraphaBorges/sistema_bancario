@@ -1,10 +1,10 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IAccountResponse } from 'src/app/shared/interfaces/dashboard.interface';
 
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { environment } from 'src/environments/environment';
-import { IAccountResponse } from './dashboard.interface';
 
 @Injectable({
   providedIn: 'root'

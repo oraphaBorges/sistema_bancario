@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
-import { IAccountPlan } from '../../interfaces/account-plan.interface';
+import { IAccountPlan } from '../../interfaces/dashboard.interface';
 
 @Injectable({
   providedIn: 'root'

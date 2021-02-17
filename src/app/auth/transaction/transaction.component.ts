@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { TransactionService } from './transaction.service';
 
-import { IAccountPlan } from 'src/app/shared/interfaces/account-plan.interface';
 import { ITransaction } from './transaction.interface';
 import { AccountPlanService } from 'src/app/shared/services/account-plan/account-plan.service';
 import { finalize, take, tap } from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
+import { IAccountPlan } from 'src/app/shared/interfaces/dashboard.interface';
 
 @Component({
   selector: 'app-transaction',

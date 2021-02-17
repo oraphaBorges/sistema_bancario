@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { finalize, take } from 'rxjs/operators';
+import { IAccount, IAccountResponse, ILancamento } from 'src/app/shared/interfaces/dashboard.interface';
 
-import { IAccount, IAccountResponse, ILancamento } from './dashboard.interface';
 import { DashboardService } from './dashboard.service';
 
 @Component({
