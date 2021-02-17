@@ -1,0 +1,48 @@
+.msg{
+    color: #383d41;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    
+    border: 1px solid lighten($dark, 24%);
+    border-radius: 5px;
+    background-color: #e2e3e5;
+    
+    width: fit-content;
+    max-width: 450px;
+    
+    margin: 10px auto ;
+    padding: 0px 10px;
+    
+    
+}
+.msg-danger{
+color: #721c24;
+background-color: #f8d7da;
+border-color: #f5c6cb;
+}
+.msg-success{
+color: #155724;
+background-color: #d4edda;
+border-color: #c3e6cb;
+}
+.msg-warning{
+color: #856404;
+background-color: #fff3cd;
+border-color: #ffeeba;
+}
+.msg-info{
+color: #0c5460;
+background-color: #d1ecf1;
+border-color: #bee5eb;
+}
+.msg-purple{
+color: $main;
+background-color: #e5d1f1;
+border-color: #bee5eb;
+}
+.msg-gama{
+color: darken($verde-gama,20%);
+background-color: #ceebd2;
+border-color: #bee5eb;
+}
