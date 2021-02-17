@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { NgForm } from '@angular/forms';
+import { finalize, take, tap } from 'rxjs/operators';
+
 import { TransactionService } from './transaction.service';
+import { AccountPlanService } from 'src/app/shared/services/account-plan/account-plan.service';
 
 import { ITransaction } from './transaction.interface';
-import { AccountPlanService } from 'src/app/shared/services/account-plan/account-plan.service';
-import { finalize, take, tap } from 'rxjs/operators';
-import { NgForm } from '@angular/forms';
 import { IAccountPlan } from 'src/app/shared/interfaces/dashboard.interface';
 
 @Component({
@@ -16,6 +18,7 @@ export class TransactionComponent {
   constructor(private service: TransactionService, private accountPlanService: AccountPlanService) { }
 
   account_plans: IAccountPlan[] = [];
+  msgError = '';
 
   public loading:boolean = false;
   public message: string = 'Olá, Usuár, seja bem vind! :)'
@@ -26,7 +29,6 @@ export class TransactionComponent {
     this.getAccountPlans();
   }
 
-  //arrumar retorno p não dar erro e o formulário ser resetado no tap
   doTransaction(transaction: ITransaction, operacao: string, form: NgForm){
     this.loading = true;
     this.service.doTransaction(transaction, operacao).pipe(
@@ -34,13 +36,18 @@ export class TransactionComponent {
       tap(() => form.resetForm()),
       finalize(() => this.loading = false)
     ).subscribe(
-      error => alert(error)
+      response => console.log(response),
+      error => this.onError(error, 'Ocorreu um erro ao realizar a transação')
     );
   }
 
   onSubmit(form: NgForm){
     if(form.invalid){
-      alert('por favor, preencha todos os campos');
+
+      this.msgError = 'Por favor, preencha todos os campos';
+      setTimeout(() => {
+        this.msgError = '';
+      }, 4000)
 
       return;
     }
@@ -83,11 +90,21 @@ export class TransactionComponent {
         finalize(() => this.loading = false)
       ).subscribe(
         response => this.account_plans = response,
-        error => alert(`Erro ao carregar planos de conta: ${error}`, )
+        error => this.onError(error, `Erro ao carregar planos de conta`, )
       )
   }
 
   isTranfer(){
     (this.operacao === "TRANSFERENCIA") ? this.transferencia = true : this.transferencia = false;
+  }
+
+  private onError(errorComplete: HttpErrorResponse, msg: string){
+    let { error:{ error } } = errorComplete;
+    this.loading = false
+    this.msgError = msg + error;
+
+    setTimeout(() => {
+      this.msgError = '';
+    }, 3000)
   }
 }
