@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ITransaction } from 'src/app/shared/interfaces/dashboard.interface';
-
+import { Component } from '@angular/core';
 import { TransactionService } from './transaction.service';
+
+import { IAccountPlan } from 'src/app/shared/interfaces/account-plan.interface';
+import { ITransaction } from './transaction.interface';
+import { AccountPlanService } from 'src/app/shared/services/account-plan/account-plan.service';
+import { finalize, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-transaction',
@@ -9,14 +12,21 @@ import { TransactionService } from './transaction.service';
 })
 export class TransactionComponent {
 
-  constructor(private service: TransactionService) { }
+  constructor(private service: TransactionService, private accountPlanService: AccountPlanService) { }
 
+  account_plans: IAccountPlan[] = [];
+
+  public loading:boolean = false;
   public message: string = 'Olá, Usuár, seja bem vind! :)'
   public transferencia: boolean = false
-  public selected: string = ''
+  public operacao: string = '';
+
+  ngOnInit(){
+    this.getAccountPlans();
+  }
 
   isTranfer(){
-    (this.selected === "TRANSFERENCIA") ? this.transferencia = true : this.transferencia = false;
+    (this.operacao === "TRANSFERENCIA") ? this.transferencia = true : this.transferencia = false;
   }
 
   doTransaction(){
@@ -38,6 +48,18 @@ export class TransactionComponent {
     const operacao = 'DEPOSITO';
 
     this.service.doTransaction(transaction, operacao).subscribe();
+  }
+
+  getAccountPlans(){
+      this.loading = true;
+      this.accountPlanService.getAccountPlans()
+      .pipe(
+        take(1),
+        finalize(() => this.loading = false)
+      ).subscribe(
+        response => this.account_plans = response,
+        error => alert(`Erro ao carregar planos de conta: ${error}`, )
+      )
   }
 
 }

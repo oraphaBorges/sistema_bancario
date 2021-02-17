@@ -2,9 +2,10 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { ITransaction } from 'src/app/shared/interfaces/dashboard.interface';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { environment } from 'src/environments/environment';
+
+import { ITransaction } from './transaction.interface';
 
 @Injectable({
   providedIn: 'root'

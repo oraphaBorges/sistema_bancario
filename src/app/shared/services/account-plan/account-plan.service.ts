@@ -1,10 +1,10 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
-import { environment } from 'src/environments/environment';
-import { IResponseAccountPlan } from './account-plan.interface';
+import { IAccountPlan } from '../../interfaces/account-plan.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -34,10 +34,10 @@ export class AccountPlanService {
     return this.http.post<string>(`${this.API_URL}lancamentos/planos-conta`, data, this.httpOptions)
   }
 
-  public getAccountPlans(): Observable<IResponseAccountPlan[]>{
+  public getAccountPlans(): Observable<IAccountPlan[]>{
     const params = new HttpParams()
       .set('login', this.authService.getLogin());
 
-      return this.http.get<IResponseAccountPlan[]>(`${this.API_URL}lancamentos/planos-conta/?${params}`, this.httpOptions)
+      return this.http.get<IAccountPlan[]>(`${this.API_URL}lancamentos/planos-conta/?${params}`, this.httpOptions)
   }
 }
