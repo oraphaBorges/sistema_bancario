@@ -7,26 +7,16 @@ import { TransactionService } from './transaction.service';
   selector: 'app-transaction',
   templateUrl: './transaction.component.html'
 })
-export class TransactionComponent implements OnInit {
+export class TransactionComponent {
 
   constructor(private service: TransactionService) { }
 
-  ngOnInit(): void {
-
-  }
-
   public message: string = 'Olá, Usuár, seja bem vind! :)'
-
   public transferencia: boolean = false
-
   public selected: string = ''
 
   isTranfer(){
-    if(!(this.selected === "TRANSFERENCIA")){
-      this.transferencia = false;
-      return;
-    }
-    this.transferencia = true;
+    (this.selected === "TRANSFERENCIA") ? this.transferencia = true : this.transferencia = false;
   }
 
   doTransaction(){
