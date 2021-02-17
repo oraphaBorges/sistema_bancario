@@ -1,7 +1,7 @@
 <div class="container">
   <div class="dash-header">
       <div class="section">
-        <app-headerdash [message]="message" ></app-headerdash>
+        <app-headerdash [message]="message" [reloadFn]="getAccountData.bind(this)"></app-headerdash>
       </div>
   </div>
   <div class="accounts">

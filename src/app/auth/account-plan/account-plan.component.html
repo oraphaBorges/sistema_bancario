@@ -1,7 +1,7 @@
 <div class="content-default content-flex content-justify">
     <div class="dash-header">
         <div class="section">
-            <app-headerdash [message]="message"></app-headerdash>
+            <app-headerdash [message]="message" [reloadFn]="ngOnInit.bind(this)"></app-headerdash>
         </div>
     </div>
 </div>
