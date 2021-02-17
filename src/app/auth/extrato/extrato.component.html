@@ -1,6 +1,6 @@
 <div class="dash-header">
   <div class="section">
-    <app-headerdash [message]="message" ></app-headerdash>
+    <app-headerdash [message]="message" [reloadFn]="ngOnInit.bind(this)"></app-headerdash>
   </div>
 </div>
 <div class="content-default m-1">
