@@ -54,6 +54,15 @@ a {
     font-weight: bold;
 }
 
+.text-positivo{
+    color: $verde-gama;
+    font-weight: 700;
+}
+
+.text-negativo{
+    color: $red;
+    font-weight: 600;
+}
 
 .text-card--ancor {
     color: #1783E7;
