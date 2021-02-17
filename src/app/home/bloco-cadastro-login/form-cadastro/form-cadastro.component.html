@@ -3,7 +3,7 @@
     <p class="text-left">Preencha seus dados para realizar seu cadastro</p>
     <form id="register_form" class="card-form" #form="ngForm" (submit)="onSubmit(form)">
         <input id="cpf"   class="input" type="text" placeholder="CPF" required
-                [(ngModel)]="cpf" name="cpf" #cpfInput>
+                [(ngModel)]="cpf" name="cpf" #cpfInput mask="000.000.000-00">
         <input id="nome"  class="input" type="text" placeholder="Nome completo" required
                 [(ngModel)]="nome" name="nome" #nomeInput>
         <input id="login" class="input" type="text" placeholder="Login de acesso" required
