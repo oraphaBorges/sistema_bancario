@@ -9,17 +9,19 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class HeaderDashComponent implements OnInit {
 
-    @Input()
-    message = "Implemente pls"
-
-    now = new Date();
-
-    updateIcon = '../../../../assets/img/svg/update.svg';
-    logoutIcon = '../../../../assets/img/svg/logout.svg';
 
     constructor(private router: Router, private authService: AuthService) { }
+  
+    now = new Date();
 
+    @Input() message = ""
+    nome:string=""
+    updateIcon = '../../../../assets/img/svg/update.svg'
+    logoutIcon = '../../../../assets/img/svg/logout.svg'
+        
     ngOnInit(): void {
+      this.nome = localStorage.getItem('nome')!
+      this.message = `Olá ${this.nome}, seja bem vind! ;)`
     }
 
     doLogout(){
@@ -28,7 +30,6 @@ export class HeaderDashComponent implements OnInit {
     }
 
     reload(){
-      console.log('teste')
       location.reload();
     }
 }
