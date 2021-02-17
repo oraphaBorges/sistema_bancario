@@ -1,7 +1,7 @@
 <div class="content-default content-flex content-justify">
     <div class="dash-header">
         <div class="section">
-            <app-headerdash></app-headerdash>
+            <app-headerdash [message]="message"></app-headerdash>
         </div>
     </div>
 </div>
@@ -9,8 +9,8 @@
     <div class="card ">
       <h2>Cadastre um novo plano</h2>
       <form id="login_form" class="card-form">
-          <input id="finalidade" type="text" placeholder="Digite novo plano" required>
-          <button id="button_submit" type="submit" class="btn btn-main-outline btn-rounded">Cadastrar</button>
+          <input id="finalidade" type="text" [(ngModel)]="finalidade" placeholder="Digite novo plano" name="finalidade" required>
+          <button id="button_submit" type="submit" (click)="createAccountPlan()" class="btn btn-main-outline btn-rounded">{{loading ? 'Carregando...' :  'Cadastrar'}}</button>
       </form>
       <div>
           <div class="content-align--center">

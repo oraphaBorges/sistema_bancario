@@ -31,7 +31,7 @@ export class AccountPlanService {
   public createAccountPlan(finalidade: string){
     const data = { finalidade: finalidade, login: this.authService.getLogin() }
 
-    this.http.post<string>(`${this.API_URL}lancamentos/planos-conta`, data, this.httpOptions)
+    return this.http.post<string>(`${this.API_URL}lancamentos/planos-conta`, data, this.httpOptions)
   }
 
   public getAccountPlans(): Observable<IResponseAccountPlan[]>{
