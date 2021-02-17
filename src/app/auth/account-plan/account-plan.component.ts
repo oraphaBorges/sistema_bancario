@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { finalize, take } from 'rxjs/operators';
-import { IResponseAccountPlan } from './account-plan.interface';
-import { AccountPlanService } from './account-plan.service';
+import { IAccountPlan } from 'src/app/shared/interfaces/account-plan.interface';
+import { AccountPlanService } from 'src/app/shared/services/account-plan/account-plan.service';
 
 @Component({
   selector: 'app-account-plan',
@@ -12,7 +12,7 @@ export class AccountPlanComponent implements OnInit {
   constructor(private service: AccountPlanService) { }
 
   message = "Liste e cadastre seus planos de conta aqui :)"
-  account_plans: IResponseAccountPlan[] = [];
+  account_plans: IAccountPlan[] = [];
   loading: boolean = false;
   finalidade: string = '';
 

@@ -20,10 +20,6 @@ export class UserService extends Config {
         super();
     }
 
-    public register(data: IRegister) {
-        this.http.post(`${this.baseURL}nova-senha`, data, this.httpOptions)
-    }
-
     public createNewPassword(login: string) {
         const data = { login: login, email: "not-implemented@desbugados.com" }
 

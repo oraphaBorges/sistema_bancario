@@ -7,7 +7,7 @@
  </div>
  <div class="content content-default content-flex content-justify">
   <div class="card transaction p-5">
-    <form id="transaction_form">
+    <form id="transaction_form" #transactionForm="ngForm" (ngSubmit)="onSubmit(transactionForm)">
         <div class="p-1 content-flex content-justify">
             <img src="../../../../assets/img/svg/transaction.svg" class="content-icon--big" alt="">
         </div>
@@ -16,7 +16,7 @@
         </div>
         <div class="p-1 content-flex--column content-justify">
             <label for="operacao" class="text-center">Escolha um tipo de transação:</label>
-            <select [(ngModel)]="selected" (ngModelChange)="isTranfer()" name="operacao" class="align-last--center" id="operacao" required>
+            <select [(ngModel)]="operacao" (ngModelChange)="isTranfer()" name="operacao" class="align-last--center" id="operacao" required>
                 <option value="DEPOSITO">Depósito</option>
                 <option value="PAGAMENTO">Pagamento</option>
                 <option value="TRANSFERENCIA">Transferência</option>
@@ -24,7 +24,7 @@
         </div>
         <div class="p-1 content-flex--column content-justify">
             <label for="origem_sigla" class="text-center">Qual é a sua conta?</label>
-            <select name="origem_sigla" class="align-last--center" id="origem_sigla" required>
+            <select ngModel name="origem_sigla" class="align-last--center" id="origem_sigla" required>
                 <option value="POUPANCA">Conta Poupança</option>
                 <option value="CORRENTE">Conta Corrente</option>
                 <option value="CREDITO">Conta de Crédito</option>
@@ -33,7 +33,7 @@
         <div *ngIf="transferencia" class="transfer-div content-justify--between content-flex" id="transfer_div">
           <div class="content-justify content-flex--column m-1 content-flex--1">
             <label for="destino_sigla" class="text-center">Conta de destino</label>
-            <select name="destino_sigla" class="align-last--center" id="destino_sigla" required>
+            <select ngModel name="destino_sigla" class="align-last--center" id="destino_sigla" required>
                 <option value="POUPANCA">Conta Poupança</option>
                 <option value="CORRENTE">Conta Corrente</option>
                 <option value="CREDITO">Conta de Crédito</option>
@@ -41,22 +41,31 @@
         </div>
         <div class="content-justify content-flex--column m-1 content-flex--1">
             <label for="destino_login" class="text-center">Login de destino</label>
-            <input type="text" id="destino_login" placeholder="Ex: emerson" required/>
+            <input ngModel name="destino_login" type="text" id="destino_login" placeholder="Ex: emerson" required/>
           </div>
         </div>
         <div class="p-1 content-flex--column content-justify">
             <label for="descricao" class="text-center">Descrição</label>
-            <input type="text" id="descricao" placeholder="Ex: mercado" required/>
+            <input ngModel name="descricao" type="text" id="descricao" placeholder="Ex: mercado" required/>
         </div>
         <div class="p-1 content-flex--column content-justify">
             <label for="planoConta" class="text-center">Plano de conta</label>
-            <select name="planoConta" class="align-last--center" id="planoConta" required>
-                <option value="">Opção 1</option>
-            </select>
+            <div *ngIf="!account_plans.length; else accPlans">
+              <div class="content-align--center">
+                  <span class="text-size--12 text-grey">{{loading ? 'Carregando...' : 'Não há planos cadastrados' }}</span>
+              </div>
+            </div>
+            <ng-template #accPlans>
+              <select ngModel name="planoConta" class="align-last--center" id="planoConta" required>
+                  <option *ngFor="let plan of account_plans" value="{{plan.finalidade}}">
+                    {{plan.finalidade}}
+                  </option>
+              </select>
+            </ng-template>
         </div>
         <div class="p-1 content-flex--column content-justify">
             <label for="valor" class="text-center">Valor</label>
-            <input id="valor" type="number" placeholder="ex: 250.00" required/>
+            <input ngModel name="valor" id="valor" type="number" placeholder="ex: 250.00" required/>
         </div>
         <div class="p-1 content-flex--column content-justify">
             <button id="button_submit">Enviar</button>
