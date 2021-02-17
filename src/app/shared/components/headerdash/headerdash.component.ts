@@ -9,18 +9,16 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class HeaderDashComponent implements OnInit {
 
-
     constructor(private router: Router, private authService: AuthService) { }
 
-    now = new Date();
-
     @Input() message = ""
+    @Input()
+    reloadFn = function(){}
+
+    now = new Date();
     nome:string=""
     updateIcon = '../../../../assets/img/svg/update.svg'
     logoutIcon = '../../../../assets/img/svg/logout.svg'
-
-    @Input()
-    reloadFn = function(){}
 
     ngOnInit(): void {
       this.nome = localStorage.getItem('nome')!
