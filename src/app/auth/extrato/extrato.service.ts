@@ -36,13 +36,10 @@ export class ExtratoService {
   }
 
   public getStatementByPeriod(data: IStatementByPeriod): Observable<IResponseStatement>{
-    let dataInicioFormatted = data.dataInicio.toISOString().substring(0, 10);
-    let dataFimFormatted = data.dataInicio.toISOString().substring(0, 10);
-
     const params = new HttpParams()
       .set('login', this.authService.getLogin())
-      .set('dataInicio', dataInicioFormatted)
-      .set('dataFim', dataFimFormatted)
+      .set('dataInicio', data.dataInicio)
+      .set('dataFim', data.dataFim)
       .set('sigla', data.sigla)
 
     return this.http.get<IResponseStatement>(`${this.API_URL}conta/extrato-periodo?${params}`, this.httpOptions)
