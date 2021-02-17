@@ -1,63 +1,48 @@
 package sistemaBancario.dto;
 
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 public class LancamentoDTO {
+
+	@ApiModelProperty(example = "2020-12-12")
+	private String date;
 	
-	private LocalDate date; 
-	private Long contaOrigem;
-	private String loginOrigem;
-	private Long contaDestino;
-	private String loginDestino;
-	private Long planoConta;
-	private String planoContaFinalidade;
+	@ApiModelProperty(example = "jisoo")
+	@NotBlank(message = "Obrigatório informar conta de origem")
+	@Size(max = 50)
+	private ContaSimplesDTO contaOrigem;
+
+	@ApiModelProperty(example = "liza")
+	private ContaSimplesDTO contaDestino;
+
+	@ApiModelProperty(example = "DEPOSITO")
+	@NotBlank(message = "Obrigatório informar plano de conta")
+	@Size(max = 30)
+	private String planoConta;
+
+	@ApiModelProperty(example = "50.30")
+	@NotBlank(message = "Obrigatório informar o valor do lançamento")
+	@Size(max = 30)
 	private double valor;
+
+	@ApiModelProperty(example = "Compra de Ice Cream")
 	private String descricao;
 			
 
-	public LancamentoDTO(Long origem, double valor, Long destino,Long planoConta, String descricao) {
-		this.date = LocalDate.now();
-		this.contaOrigem = origem; 
-		this.contaDestino = destino;
+	public LancamentoDTO(ContaSimplesDTO origem, double valor, ContaSimplesDTO destino,String planoConta, String descricao) {
+		this.date = LocalDate.now().toString();
+		this.setContaOrigem(origem); 
+		this.setContaDestino(destino);
 		this.valor = valor;
 		this.descricao = descricao;
-		this.setPlanoConta(planoConta);
+		this.planoConta = planoConta;
 	}
 
 	public LancamentoDTO (){}
-
-
-	public LocalDate getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
-
-	public Long getContaOrigem() {
-		return contaOrigem;
-	}
-
-	public void setContaOrigem(Long contaOrigem) {
-		this.contaOrigem = contaOrigem;
-	}
-
-	public Long getContaDestino() {
-		return contaDestino;
-	}
-
-	public void setContaDestino(Long contaDestino) {
-		this.contaDestino = contaDestino;
-	}
-
-	public Long getPlanoDeConta() {
-		return getPlanoConta();
-	}
-
-	public void setPlanoDeConta(Long planoConta) {
-		this.setPlanoConta(planoConta);
-	}
 
 	public double getValor() {
 		return valor;
@@ -75,36 +60,35 @@ public class LancamentoDTO {
 		this.descricao = descricao;
 	}
 
-	public Long getPlanoConta() {
+	public String getPlanoConta() {
 		return planoConta;
 	}
 
-	public void setPlanoConta(Long planoConta) {
+	public void setPlanoConta(String planoConta) {
 		this.planoConta = planoConta;
 	}
 
-	public void setLoginOrigem(String loginOrigem) {
-		this.loginOrigem = loginOrigem;
+	public ContaSimplesDTO getContaOrigem() {
+		return contaOrigem;
 	}
 
-	public String getLoginOrigem() {
-		return loginOrigem;
+	public void setContaOrigem(ContaSimplesDTO contaOrigem) {
+		this.contaOrigem = contaOrigem;
 	}
 
-	public void setLoginDestino(String loginDestino) {
-		this.loginDestino = loginDestino;
+	public ContaSimplesDTO getContaDestino() {
+		return contaDestino;
 	}
 
-	public String getLoginDestino() {
-		return loginDestino;
+	public void setContaDestino(ContaSimplesDTO contaDestino) {
+		this.contaDestino = contaDestino;
 	}
 
-	public void setPlanoContaFinalidade(String planoContaFinalidade) {
-		this.planoContaFinalidade = planoContaFinalidade;
+	public String getDate() {
+		return date;
 	}
 
-	public String getPlanoContaFinalidade() {
-		return planoContaFinalidade;
+	public void setDate(String string) {
+		this.date = string;
 	}
-
 }

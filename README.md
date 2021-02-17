@@ -1,50 +1,95 @@
 # Sistema Bancario
+**Sistema realizado em paralelo à realização da academia da Gama Academy**
+## Sobre
+O projeto consiste em uma `API REST` que realiza operações bancárias a partir de `requisições HTTP` de um cliente.
+_Entenda-se cliente qualquer um que consiga realizar requisições HTTP_.
 
+## Tecnologias principais
+- Spring Boot
+- Spring Data
+- Spring Web
+- Spring Security
+- Swagger
+- JWT
 
-## Configuração
-No  diretório `target/classes/META-INF` há um arquivo chamado `persistence.example.xml` que deve ser usado de modelo para criar o `persistence.xml` e subistiuíndo para as cofigurações locais do nome do banco de dado e usuário e senha de acesso ao banco de dados, que no projeto é utilizado o MySQL, por isso o arquivo já está pré-configurado com o Drive do MySQL.
+## Swagger
+[Aqui](https://gama-bankline-desbugados.herokuapp.com/swagger-ui.html#/) você pode realizar a consulta da documentação do projeto, bem como realizar requisições por meio de nossos endpoints.
 
-## CASE PROJETO 
+## Funcionalidades
 
-**SISTEMA BANCARIO**
+### Para usuários
+- Criação de novos usuários
+- Realização de login
+- Controle de sessão
+- Alteração de senha (em desenvolvimento)
 
-* Intenção do projeto é ao fim dele termos uma API rest de um basico sistema bancário, onde conseguiremos emitir um extrato de todos lançamentos, com a data do efetivo. 
+> - Ao criar um novo usuário, três contas são associadas a ele: Corrente, Poupança e de Crédito.
+> - Também são associados três tipos de planos de conta: Pagamento, Depósito e Transferência
 
-## CLASSES SERVICES 
+### Para contas
+- Consultar extrato por período
+- Consultar extrato completo
+- Realizar depósitos
+- Realizar pagamentos
+- Realizar transferências
 
-**CONTA SERVICE**
-* responsavel pela regra de negocio da conta para transafarencias, depositos, pagamentos, assossiacao do usuario a conta
+## Utilização
 
-**USUARIO SERVICE**
-* responsavel pelo crud do usuario. 
+**Para executar o projeto, você precisará:**
+- Ter instalado em sua maquina o Java 8 ou superior.
+- Um banco de dados, seja MySql ou PostgreSQL (oficialmente testados)
 
-**LANCAMENTO SERVICE**
-* responsavel por associar a conta do usuario, e fazer um log de todas as atividades da conta, desde depositos, pagamentos e transferencias 
+**Passo a passo**
 
-**PLANO DE CONTA**
-* contem o cadastro do tipo da conta
+1. Realize o clone desse repositório
+2. Configure o arquivo `application.properties`, que fica dentro da pasta resources. [Exemplo aqui](https://www.baeldung.com/properties-with-spring). Ou utilizando classes caso tenha experiência configurando.
+3. Realize o download das dependências que estão no `pom.xml`
+4. Execute a classe `SbootApplication`.
 
+> O projeto, por padrão, irá executar no {host}:8080/. (ex.: http://localhost:8080)
 
-### Repository
+## Sobre a estrutura e inteligência do projeto
 
-**GENERICS**
-temos um repositorio generico contendo todo crud, onde não precisamos reescrever essa lógica, apenas herdala nos proximos repository
+### Design e código fonte
+O projeto segue um padrão de atribuição de responsabilidades às classes seguindo as boas práticas. Todo o código fonte está disponível dentro da pasta `src`.
 
-**REPOSITORY**
-* Os demais repositorios temos em cada um deles os metodos necessarios para cada afinidade da conta
+### Estrutura de pastas e suas responsabilidades
 
+#### Models
+Como o nome já diz, são as classes modelo. Elas que definem o domínio de nossa aplicação, além da relação entre as entidades.
 
-### MODELS
-* Tendo as nossas entidades, relacionamentos: 
+#### Resources
+Concentramos aqui todos os endpoints relacionados ao projeto. A responsabilidade se limita a receber a requisição e dar o retorno de forma devida ao cliente.
 
-#### MODEL CONTA
-* Modelo de entidade, onde fica os dados da conta
+#### Services
+Os services são chamados para processar toda a lógica do negócio. Aqui é decidido se devemos persistir ou não os dados, ou se devemos devolver a resposta solicitada pelo cliente - claro, tudo por meio de bastante lógica e abuso de estrutura de dados e suas funcionalidades. Além da análise e permissão do que pode ser devolvido ao solicitante.
 
-#### MODEL USUARIO
-* Modelo de entidade, Dados do usuario 
+#### Repositories
+Trata-se da camada de persistência dos dados. As lógicas se limitam às próprias necessidades. Aqui os dados são recebidos, persistidos ou retornados.
 
-#### MODEL LANCAMENTO
-* Tendo uma forengkey das tabelas conta e Plano conta, recebe em log, toda movimentação da conta
+#### security
+Literalmente a configuração de segurança do projeto. (endpoints públicos, privados, etc.)
 
-#### PLANO CONTA
-* Recebe a finalidade da conta  
+#### dto
+Abstrações menores das classes modelos, classes utilitárias para transferência dos dados entre o cliente e nossa aplicação. 
+
+Os demais pacotes são autodescritivos.
+
+## Validações e segurança
+
+_Esse tópico poderia ser bem longo, mas será resumido da seguinte forma:_
+
+**Todos os enpoints possuem validações de diversos tipos, tais como:**
+
+- Verificação se todos os dados da requisição foram informados corretamente
+- Verificação se as informações do cliente batem com as informações enviadas 
+- Controle de rotas autenticadas e públicas
+- ... Muitas outras que você poderá ver em `services`.
+
+#### Encriptação da senha e login
+
+Se você pensou nisso... Sim! As senhas estão sendo gravadas encriptadas! Logo o login também está bem seguro :).
+
+## Participantes
+
+Você pode ver os contribuidores **[clicando aqui.](https://github.com/RafaelMarangoni/sistema_bancario/graphs/contributors)**

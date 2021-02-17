@@ -5,8 +5,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tb_plano_contas")
 public class PlanoConta {
-	
-	@Id 
+
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(nullable = false)
@@ -17,14 +17,15 @@ public class PlanoConta {
 	private Usuario usuario;
 
 	@Embedded
-  private Registro data = new Registro();
-	
+	private Registro data = new Registro();
+
 	public PlanoConta(Usuario usuario, String finalidade) {
 		this.usuario = usuario;
 		this.finalidade = finalidade;
 	}
 
-	public PlanoConta() {}
+	public PlanoConta() {
+	}
 
 	public PlanoConta(String finalidade) {
 		this.finalidade = finalidade;
@@ -33,15 +34,19 @@ public class PlanoConta {
 	public Long getId() {
 		return id;
 	}
+
 	public String getFinalidade() {
 		return finalidade;
 	}
+
 	public void setFinalidade(String finalidade) {
 		this.finalidade = finalidade;
 	}
+
 	public Registro getData() {
 		return data;
 	}
+
 	public void setData(Registro data) {
 		this.data = data;
 	}

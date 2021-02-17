@@ -5,8 +5,6 @@ import javax.persistence.*;
 import sistemaBancario.enums.Sigla;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "tb_conta")
@@ -37,6 +35,13 @@ public class Conta implements Serializable {
 		this.nome = nome;
 		this.sigla = sigla;
 		this.titular = titular;
+	}
+	
+	public Conta(String nome, Sigla sigla,Usuario titular,Double saldo ) {
+		this.nome = nome;
+		this.sigla = sigla;
+		this.titular = titular;
+		this.saldo = saldo;
 	}
 	
 	public String getNome() {

@@ -3,6 +3,7 @@ package sistemaBancario.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import sistemaBancario.dto.UsuarioDTO;
 import sistemaBancario.enums.Sigla;
@@ -20,32 +21,35 @@ public class UsuarioService {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
-	public UsuarioDTO cadastrar(UsuarioDTO usuarioDTO) {
-		Usuario usuario = usuarioDTOparaUsuario(usuarioDTO);
-		String passCrip = passwordEncoder.encode(usuario.getSenha());
-		// TODO: CHECK IF EXIST
+	@Transactional
+	public void cadastrar(UsuarioDTO usuarioDTO) throws Exception {
+		Usuario usuario = converterDTO(usuarioDTO);
+
 		if (repository.existsByLogin(usuario.getLogin()))
-			throw new IllegalStateException("JÃ¡ existe um usuario com o login " + usuario.getLogin());
+			throw new IllegalStateException();
+		
+		String passCrip = passwordEncoder.encode(usuario.getSenha());
 		usuario.setSenha(passCrip);
+		
 		usuario.addConta(new Conta("POUPANÇA", Sigla.POUPANCA, usuario));
-		usuario.addConta(new Conta("CREDITO", Sigla.CREDITO, usuario));
+		usuario.addConta(new Conta("CREDITO", Sigla.CREDITO, usuario, 1500D));
 		usuario.addConta(new Conta("CORRENTE", Sigla.CORRENTE, usuario));
 		
 		usuario.addPlanoConta(new PlanoConta("PAGAMENTO"));
 		usuario.addPlanoConta(new PlanoConta("DEPOSITO"));
 		usuario.addPlanoConta(new PlanoConta("TRANSFERENCIA"));
-
-		return usuarioParaUsuarioDTO(repository.save(usuario));
+		
+		repository.save(usuario);
 	}
-
+	
 	public UsuarioDTO buscar(String login) {
-		Usuario ul = repository.findByLogin(login);
-		UsuarioDTO usuarioDTO = usuarioParaUsuarioDTO(ul);
+		Usuario usuario = repository.findByLogin(login);
+		UsuarioDTO usuarioDTO = convertEntity(usuario);
 				
 		return usuarioDTO; 
 	}
 	
-	private Usuario usuarioDTOparaUsuario(UsuarioDTO usuarioDTO) {
+	private Usuario converterDTO(UsuarioDTO usuarioDTO) {
 		Usuario usuario = new Usuario();
 		usuario.setCpf(usuarioDTO.getCpf());
 		usuario.setLogin(usuarioDTO.getLogin());
@@ -55,13 +59,13 @@ public class UsuarioService {
 		return usuario;
 	}
 	
-	private UsuarioDTO usuarioParaUsuarioDTO(Usuario usuario) {
-		UsuarioDTO ud = new UsuarioDTO();
-		ud.setLogin(usuario.getLogin());
-		ud.setCpf(usuario.getCpf());
-		ud.setNome(usuario.getNome());
+	private UsuarioDTO convertEntity(Usuario usuario) {
+		UsuarioDTO usuarioDTO = new UsuarioDTO();
+		usuarioDTO.setLogin(usuario.getLogin());
+		usuarioDTO.setCpf(usuario.getCpf());
+		usuarioDTO.setNome(usuario.getNome());
 		
-		return ud ;
+		return usuarioDTO ;
 	}
 
 }

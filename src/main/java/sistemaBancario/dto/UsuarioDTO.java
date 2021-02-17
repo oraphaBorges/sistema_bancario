@@ -1,22 +1,30 @@
 package sistemaBancario.dto;
 
+import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.validator.constraints.br.CPF;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 public class UsuarioDTO {
 
+	@ApiModelProperty(example = "30987646001")
 	@NotBlank(message = "Cpf obrigatório")
+	@CPF(message = "Cpf inválido")
 	@Size(max = 11)
 	public String cpf;
 
+	@ApiModelProperty(example = "jisoo")
 	@NotBlank(message = "Login obrigatório")
 	@Size(max = 50)
 	public String login;
 
+	@ApiModelProperty(example = "Kim Ji-soo")
 	@NotBlank(message = "Nome obrigatório")
 	@Size(max = 50)
 	public String nome;
 
+	@ApiModelProperty(example = "pretorosa")
 	@NotBlank(message = "Senha obrigatória")
 	@Size(max = 20)
 	public String senha;
@@ -24,7 +32,6 @@ public class UsuarioDTO {
 	public UsuarioDTO() {}
 	
 	public UsuarioDTO(String cpf, String login, String nome, String senha) {
-		super();
 		this.cpf = cpf;
 		this.login = login;
 		this.nome = nome;
