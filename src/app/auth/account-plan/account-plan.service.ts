@@ -4,26 +4,21 @@ import { Observable } from 'rxjs';
 
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { environment } from 'src/environments/environment';
-import { IAccountResponse } from './dashboard.interface';
+import { IResponseAccountPlan } from './account-plan.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DashboardService {
+export class AccountPlanService {
 
   API_URL = environment.API_URL
+  httpOptions = {};
 
   constructor(
     private http:HttpClient,
     private authService: AuthService
-  ) { }
-
-
-  public getAccountData(): Observable<IAccountResponse[]>{
-    const dataInicio = '2020-01-30';
-    const dataFim = '2030-01-30';
-
-    const httpOptions = {
+  ) {
+    this.httpOptions =  {
       headers: new HttpHeaders(
         {
           'Content-Type': 'application/json',
@@ -31,12 +26,18 @@ export class DashboardService {
         }
       ),
     };
+  }
 
+  public createAccountPlan(finalidade: string){
+    const data = { finalidade: finalidade, login: this.authService.getLogin() }
+
+    this.http.post<string>(`${this.API_URL}lancamentos/planos-conta`, data, this.httpOptions)
+  }
+
+  public getAccountPlans(): Observable<IResponseAccountPlan[]>{
     const params = new HttpParams()
-      .set('inicio', dataInicio)
-      .set('fim', dataFim)
-      .set('login', this.authService.getLogin())
+      .set('login', this.authService.getLogin());
 
-    return this.http.get<IAccountResponse[]>(`${this.API_URL}dashboard?${params}`, httpOptions)
+      return this.http.get<IResponseAccountPlan[]>(`${this.API_URL}lancamentos/planos-conta/?${params}`, this.httpOptions)
   }
 }

@@ -4,23 +4,30 @@
             <app-headerdash></app-headerdash>
         </div>
     </div>
-   </div>
-   <div class="content content-default content-flex content-justify">
+</div>
+<div class="content content-default content-flex content-justify">
     <div class="card ">
-        <h2>Cadastre um novo plano</h2>
-        <form id="login_form" class="card-form">
-            <input id="finalidade" type="text" placeholder="Digite novo plano" required>
-            <button id="button_submit" type="submit" class="btn btn-main-outline btn-rounded">Cadastrar</button>
-        </form>
-        <div>
+      <h2>Cadastre um novo plano</h2>
+      <form id="login_form" class="card-form">
+          <input id="finalidade" type="text" placeholder="Digite novo plano" required>
+          <button id="button_submit" type="submit" class="btn btn-main-outline btn-rounded">Cadastrar</button>
+      </form>
+      <div>
+          <div class="content-align--center">
+              <span class="text-size--20 text-weight--bold text-grey">Planos cadastrados</span>
+          </div>
+          <div *ngIf="!account_plans.length; else accPlans">
             <div class="content-align--center">
-                <span class="text-size--20 text-weight--bold text-grey">Planos cadastrados</span>
+                <span class="text-size--12 text-grey">{{loading ? 'Carregando...' : 'Não há planos cadastrados' }}</span>
             </div>
-            <div>
-                <ul class="text-card--default">
-
-                </ul>
-            </div>
-        </div>
+          </div>
+          <ng-template #accPlans>
+            <ul class="text-card--default">
+              <li *ngFor="let plan of account_plans" class="m-1">
+                {{ plan.finalidade }}
+              </li>
+            </ul>
+          </ng-template>
+      </div>
     </div>
 </div>

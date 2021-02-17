@@ -25,20 +25,6 @@ export class DashboardServiceOld extends Config {
         super();
     }
 
-    public createAccountPlan(finalidade: string){
-      const data = { finalidade: finalidade, login: this.login }
-
-      this.http.post<any>(`${this.baseURL}/lancamentos/planos-conta`, data, this.httpOptions)
-    }
-
-    //setar retorno em local storage
-    public getAccountPlans(){
-      const params = new HttpParams()
-        .set('login', this.login);
-
-        this.http.post<any>(`${this.baseURL}/lancamentos/planos-conta/`, this.httpOptions)
-    }
-
     public getStatementByAccount(sigla: string){
       const params = new HttpParams()
         .set('login', this.login)
