@@ -1,4 +1,7 @@
 <app-nav></app-nav>
+<div *ngIf="msgError.length" class="msg msg-warning">
+  {{ msgError }}
+</div>
 <main class="card">
     <h2>Alteração de senha</h2>
     <form class="card-form" id="">

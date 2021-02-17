@@ -40,13 +40,18 @@ export class ForgotpassComponent implements OnInit {
         finalize(() => this.loading = false)
       )
       .subscribe(
-        response => alert ('E-mail enviado com sucesso!'),
+        response => console.log(response),
         error => this.onError(error)
       )
   }
 
-  private onError(error:HttpErrorResponse){
+  private onError(errorComplete :HttpErrorResponse){
+    let { error:{ error } } = errorComplete;
     this.loading = false
-    this.msgError = error.error
+    this.msgError = `Implementação da API em andamento, ${error}`;
+
+    setTimeout(() => {
+      this.msgError = '';
+    }, 3000)
   }
 }
