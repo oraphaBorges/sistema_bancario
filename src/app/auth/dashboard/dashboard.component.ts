@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardService } from 'src/app/services/dashboard.service';
-import { ILancamento } from './dashboard.interface';
+import { finalize, take } from 'rxjs/operators';
+
+import { IAccount, IAccountResponse, ILancamento } from './dashboard.interface';
+import { DashboardService } from './dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,10 +11,13 @@ import { ILancamento } from './dashboard.interface';
 
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: DashboardService) { }
 
-  public accounts = {
+  loading: boolean = false;
+
+  public accounts: IAccount = {
     CORRENTE: {
+        id: 0,
         type: 'Conta Corrente',
         icon: '../../../../assets/img/svg/dollar.svg',
         colorValue: 'green',
@@ -21,6 +26,7 @@ export class DashboardComponent implements OnInit {
     },
 
     POUPANCA: {
+        id: 0,
         type: 'Conta Poupanca',
         icon: '../../../../assets/img/svg/dollar.svg',
         colorValue: 'blue',
@@ -29,6 +35,7 @@ export class DashboardComponent implements OnInit {
     },
 
     CREDITO: {
+        id: 0,
         type: 'Conta de Crédito',
         icon: '../../../../assets/img/svg/card.svg',
         colorValue: 'red',
@@ -40,12 +47,46 @@ export class DashboardComponent implements OnInit {
   public message: string = 'Olá, Usuár, seja bem vind! :)'
 
   ngOnInit(): void {
-      let objTest: ILancamento = {
-        date: new Date(),
-        descricao: 'Descrição teste',
-        valor: 26
-      }
-      this.accounts.CORRENTE.lancamentos.push(objTest);
+      this.loading = true;
+      this.getAccountData();
+  }
+
+  getAccountData(){
+    this.service.getAccountData().pipe(
+      take(1),
+      finalize(() => this.loading = false)
+
+    ).subscribe(response => this.fillData(response));
+  }
+
+  fillData(data: IAccountResponse[]){
+    data.forEach(item => {
+        let _type = item.tipo as keyof IAccount;
+
+        this.accounts[_type].id = item.id;
+        this.accounts[_type].saldo = item.saldo;
+        this.accounts[_type].lancamentos = this.limitData(item.lancamentos);
+    })
+  }
+
+  limitData(lancamentos: ILancamento[]): ILancamento[]{
+    const limit = 3;
+
+    lancamentos = lancamentos.sort(function (a, b) {
+        if (a.date < b.date) {
+          return 1;
+        }
+        if (a.date > b.date) {
+          return -1;
+        }
+        return 0;
+    });
+
+    if(lancamentos.length > 3){
+        lancamentos.length = limit;
+    }
+
+    return lancamentos;
   }
 
   seeAll(value: string){

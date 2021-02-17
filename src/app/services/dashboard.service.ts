@@ -8,7 +8,7 @@ import { of } from 'rxjs/internal/observable/of';
 import { IStatementByPeriod } from '../shared/interfaces/dashboard.interface';
 
 @Injectable()
-export class DashboardService extends Config {
+export class DashboardServiceOld extends Config {
     private token = JSON.parse(localStorage.getItem('token')!);
     private login = JSON.parse(localStorage.getItem('login')!);
 
@@ -23,18 +23,6 @@ export class DashboardService extends Config {
 
     constructor(private http: HttpClient) {
         super();
-    }
-
-    public getAccountData() {
-        const dataInicio = '2020-01-30';
-        const dataFim = '2030-01-30';
-
-        const params = new HttpParams()
-          .set('inicio', dataInicio)
-          .set('fim', dataFim)
-          .set('login', this.login)
-
-        this.http.get(`${this.baseURL}dashboard?${params}`, this.httpOptions)
     }
 
     public createAccountPlan(finalidade: string){

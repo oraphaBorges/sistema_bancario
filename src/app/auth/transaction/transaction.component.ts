@@ -5,15 +5,14 @@ import { TransactionService } from './transaction.service';
 
 @Component({
   selector: 'app-transaction',
-  templateUrl: './transaction.component.html',
-  styleUrls: ['./transaction.component.scss']
+  templateUrl: './transaction.component.html'
 })
 export class TransactionComponent implements OnInit {
 
   constructor(private service: TransactionService) { }
 
   ngOnInit(): void {
-    this.doTransaction();
+
   }
 
   public message: string = 'Olá, Usuár, seja bem vind! :)'

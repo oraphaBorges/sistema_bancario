@@ -8,10 +8,11 @@ import localePtBr from '@angular/common/locales/pt';
 import { NgxMaskModule} from 'ngx-mask';
 
 //services
-import { DashboardService } from './services/dashboard.service';
+import { DashboardServiceOld } from './services/dashboard.service';
 import { UserService } from './services/user.service';
 import { AuthService } from './shared/services/auth/auth.service';
 import { TransactionService } from './auth/transaction/transaction.service';
+import { DashboardService } from './auth/dashboard/dashboard.service';
 
 //modules
 import { AppRoutingModule } from './app-routing.module';
@@ -73,10 +74,11 @@ registerLocaleData(localePtBr, 'pt-br')
     NgxMaskModule.forRoot(),
   ],
   providers: [
-    DashboardService,
+    DashboardServiceOld,
     UserService,
     AuthService,
     TransactionService,
+    DashboardService,
     {
       provide:LOCALE_ID,
       useValue:'pt-br'
