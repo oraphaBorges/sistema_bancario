@@ -2,8 +2,8 @@
 <main class="card">
     <h2>Alteração de senha</h2>
     <form class="card-form" id="">
-        <input type="password" name="old_password" id="old_password" placeholder="Senha atual" required>
-        <input type="password" name="new_password" id="new_password" placeholder="Nova senha" required>
+        <input type="password" name="old_password" id="old_password" placeholder="Senha atual"  ngModel name="senhaantiga" #senhaInput required>
+        <input type="password" name="new_password" id="new_password" placeholder="Nova senha" [(ngModel)]="senha" name="senhanova" #novaSenhaInput required>
         <button type="submit" class="btn btn-main-outline btn-rounded">Alterar</button>
     </form>
 </main>
