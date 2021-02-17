@@ -11,14 +11,17 @@ export class HeaderDashComponent implements OnInit {
 
 
     constructor(private router: Router, private authService: AuthService) { }
-  
+
     now = new Date();
 
     @Input() message = ""
     nome:string=""
     updateIcon = '../../../../assets/img/svg/update.svg'
     logoutIcon = '../../../../assets/img/svg/logout.svg'
-        
+
+    @Input()
+    reloadFn = function(){}
+
     ngOnInit(): void {
       this.nome = localStorage.getItem('nome')!
       this.message = `Olá ${this.nome}, seja bem vind! ;)`
@@ -30,6 +33,6 @@ export class HeaderDashComponent implements OnInit {
     }
 
     reload(){
-      location.reload();
+      this.reloadFn();
     }
 }
