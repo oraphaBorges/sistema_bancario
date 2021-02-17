@@ -17,6 +17,18 @@ export class TransactionComponent implements OnInit {
 
   public message: string = 'Olá, Usuár, seja bem vind! :)'
 
+  public transferencia: boolean = false
+
+  public selected: string = ''
+
+  isTranfer(){
+    if(!(this.selected === "TRANSFERENCIA")){
+      this.transferencia = false;
+      return;
+    }
+    this.transferencia = true;
+  }
+
   doTransaction(){
     const transaction: ITransaction = {
         contaDestino: {

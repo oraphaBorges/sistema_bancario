@@ -16,7 +16,7 @@
         </div>
         <div class="p-1 content-flex--column content-justify">
             <label for="operacao" class="text-center">Escolha um tipo de transação:</label>
-            <select name="operacao" class="align-last--center" id="operacao" required>
+            <select [(ngModel)]="selected" (ngModelChange)="isTranfer()" name="operacao" class="align-last--center" id="operacao" required>
                 <option value="DEPOSITO">Depósito</option>
                 <option value="PAGAMENTO">Pagamento</option>
                 <option value="TRANSFERENCIA">Transferência</option>
@@ -30,7 +30,19 @@
                 <option value="CREDITO">Conta de Crédito</option>
             </select>
         </div>
-        <div class="transfer-div content-justify--between content-flex" id="transfer_div">
+        <div *ngIf="transferencia" class="transfer-div content-justify--between content-flex" id="transfer_div">
+          <div class="content-justify content-flex--column m-1 content-flex--1">
+            <label for="destino_sigla" class="text-center">Conta de destino</label>
+            <select name="destino_sigla" class="align-last--center" id="destino_sigla" required>
+                <option value="POUPANCA">Conta Poupança</option>
+                <option value="CORRENTE">Conta Corrente</option>
+                <option value="CREDITO">Conta de Crédito</option>
+            </select>
+        </div>
+        <div class="content-justify content-flex--column m-1 content-flex--1">
+            <label for="destino_login" class="text-center">Login de destino</label>
+            <input type="text" id="destino_login" placeholder="Ex: emerson" required/>
+          </div>
         </div>
         <div class="p-1 content-flex--column content-justify">
             <label for="descricao" class="text-center">Descrição</label>
@@ -51,4 +63,5 @@
         </div>
     </form>
 </div>
+
 </div>
