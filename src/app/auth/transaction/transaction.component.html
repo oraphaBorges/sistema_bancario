@@ -7,6 +7,9 @@
  </div>
  <div class="content content-default content-flex content-justify">
   <div class="card transaction p-5">
+    <div *ngIf="msgError.length" class="msg msg-warning content-default p-3">
+      {{ msgError }}
+    </div>
     <form id="transaction_form" #transactionForm="ngForm" (ngSubmit)="onSubmit(transactionForm)">
         <div class="p-1 content-flex content-justify">
             <img src="../../../../assets/img/svg/transaction.svg" class="content-icon--big" alt="">
