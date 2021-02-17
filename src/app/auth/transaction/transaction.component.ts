@@ -21,9 +21,9 @@ export class TransactionComponent {
   msgError = '';
 
   public loading:boolean = false;
-  public message: string = 'Olá, Usuár, seja bem vind! :)'
+  public message: string = ''
   public transferencia: boolean = false
-  public operacao: string = '';
+  public operacao: string = 'DEPOSITO';
 
   ngOnInit(){
     this.getAccountPlans();
