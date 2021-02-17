@@ -36,7 +36,11 @@
       <li *ngFor="let lancamento of accountData.lancamentos">
       </li>
     </ul>
+
+  <hr>
+
     <table class="tg">
+      <caption class="p-1">Peírodo de <b>{{dataInicio|date:'dd/MM/YYYY'}}</b> à <b>{{dataFim|date:'dd/MM/YYYY'}}</b></caption>
       <thead>
         <tr>
           <th class="tg-0lax">Data</th>

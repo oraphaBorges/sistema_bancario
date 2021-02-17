@@ -20,7 +20,9 @@ input {
   border-left: none;
   border-right: none;
   border-bottom: 2 solid gray; 
-  &:focus, &:active {
+  transition: 1s;
+  &:focus, &:active, &:hover {
+    transition: 1s;
     border-color: $main;
   }
 }
@@ -35,11 +37,29 @@ select {
   border-right: none;
   border-bottom: 2 solid gray; 
   background-color: $white;
-  &:focus, &:active {
+  transition: 1s;
+  &:focus, &:active, &:hover {
+    transition: 1s;
     border-color: $main;
   }
 }
 
+hr{
+  border-width: 1px;
+  border-color: rgba(179, 178, 178, 0.597);
+  width: 100%;
+  padding: 0px;
+  margin: 10px;
+  transition: 1s;
+  &:hover{
+    transition: 1s;
+    border-color: $main;
+  }
+}
+
+tr:hover{
+  background-color: rgba(214, 214, 214, 0.618);
+}
 #root{
   height: 100vh;
 }
