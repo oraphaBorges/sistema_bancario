@@ -4,6 +4,7 @@ package sistemaBancario.dto;
 import java.util.Date;
 
 public class SessaoDTO {
+	private String nome;
 	private String login;
 	private String token;
 	private Date dataInicio;
@@ -31,6 +32,12 @@ public class SessaoDTO {
 	}
 	public void setDataFim(Date dataFim) {
 		this.dataFim = dataFim;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 }
