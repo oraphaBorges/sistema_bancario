@@ -6,8 +6,6 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
 
-import { IRegister } from '../shared/interfaces/user.interface';
-
 //falta inserir os modais para caso de erros, etc
 @Injectable()
 export class UserService extends Config {
