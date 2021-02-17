@@ -7,11 +7,11 @@
   <div class="card">
     <form id="form_period">
         <div style="flex-wrap: wrap" class="content-flex">
-            <div class="content-flex mr-2">
+            <div class="content-flex m-auto">
                 <label class="mr-1">Início</label>
                 <input type="date" [(ngModel)]="dataInicio" (ngModelChange)="filter()" name="dataInicio" id="dataInicio">
             </div>
-            <div class="content-flex">
+            <div class="content-flex  m-auto">
                 <label class="mr-1">Até</label>
                 <input type="date" [(ngModel)]="dataFim" (ngModelChange)="filter()" name="dataFim" id="dataFim">
             </div>
@@ -36,7 +36,11 @@
       <li *ngFor="let lancamento of accountData.lancamentos">
       </li>
     </ul>
+
+  <hr>
+
     <table class="tg">
+      <caption class="p-1">Peírodo de <b>{{dataInicio|date:'dd/MM/YYYY'}}</b> à <b>{{dataFim|date:'dd/MM/YYYY'}}</b></caption>
       <thead>
         <tr>
           <th class="tg-0lax">Data</th>

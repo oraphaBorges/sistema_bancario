@@ -71,25 +71,18 @@ export class DashboardComponent implements OnInit {
 
   limitData(lancamentos: ILancamento[]): ILancamento[]{
     const limit = 3;
-
-    lancamentos = lancamentos.sort(function (a, b) {
-        if (a.date < b.date) {
-          return 1;
-        }
-        if (a.date > b.date) {
-          return -1;
-        }
-        return 0;
-    });
-
-    if(lancamentos.length > 3){
-        lancamentos.length = limit;
-    }
-
-    return lancamentos;
+    return lancamentos.reverse().slice(0,limit);
   }
 
   seeAll(value: string){
     //redirecionar para extrato com esse value, buscando automaticamente o extrato correto para o tipo de conta
+  }
+
+  txtValor(valor:number ){
+    return {
+      'text-positivo':valor>0,
+      'text-negativo':valor<0,
+      'text-neutro':valor==0,
+    }
   }
 }

@@ -22,7 +22,10 @@ export class ExtratoComponent implements OnInit {
   dataFim: string = '';
 
   ngOnInit(): void {
-    this.getStatementByAccount('POUPANCA');
+    const data = new Date(Date.now()).toISOString().slice(0,10)
+    this.dataInicio = data.slice(0,8)+'01'
+    this.dataFim = data
+    this.getStatementByPeriod(this.sigla,this.dataInicio, this.dataFim)
   }
 
   filter(){
@@ -44,10 +47,10 @@ export class ExtratoComponent implements OnInit {
 
   getStatementByPeriod(sigla: string, dataInicio: string, dataFim: string){
     this.loading = true;
-    if(!dataInicio)
-      dataInicio = '2020-12-20';
-    if(!dataFim)
-      dataFim = '2030-12-30';
+      if(!dataInicio)
+        dataInicio = this.dataInicio
+      if(!dataFim)
+        dataFim = this.dataFim
 
     this.service.getStatementByPeriod({ dataFim, dataInicio, sigla }).
     pipe(
@@ -61,8 +64,9 @@ export class ExtratoComponent implements OnInit {
   }
   txtValor(valor:number ){
     return {
-      'text-positivo':valor>=0,
-      'text-negativo':valor<0
+      'text-positivo':valor>0,
+      'text-negativo':valor<0,
+      'text-neutro':valor==0,
     }
   }
 }

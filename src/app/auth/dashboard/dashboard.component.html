@@ -13,8 +13,8 @@
           <div class="content-justify--between">
               <div class="content-intern--default">
                   <span class="text-card--default">Saldo atual</span>
-                  <h2 class="text-money text-{{account.value.colorValue}}">
-                    {{loading ? 'Carregando...' : account.value.saldo | currency }}
+                  <h2 [ngClass]="txtValor(account.value.saldo)">
+                   {{loading ? 'Carregando...' : account.value.saldo| currency }} 
                   </h2>
               </div>
           </div>
@@ -31,11 +31,14 @@
                     <img src="../../../../assets/img/svg/opencard.svg" class="content-icon--default" alt="">
                     <div class="content-transaction content-flex--1 content-flex--column">
                         <div class="payment-description content-flex content-flex--1 content-justify--between content-align--center">
-                            <span class="text-black"><strong>Compra no débito</strong></span>
+                            <span class="text-black" *ngIf="lancamento.valor < 0; else deposito"><strong>Compra no débito</strong></span>
+                            <ng-template #deposito>
+                                <span class="text-black"><strong>Deposito na conta</strong></span>
+                            </ng-template>
                             <span class="text-grey text-size--12">{{ lancamento.date | date: 'd MMM YY' }}</span>
                         </div>
                         <span class="text-card--default content-padding--default">{{lancamento.descricao}}</span>
-                        <span class="text-red text-size--20">{{ lancamento.valor | currency }}</span>
+                        <span class="text-red text-size--20" [ngClass]="txtValor(lancamento.valor)" >{{ lancamento.valor | currency }}</span>
                     </div>
                 </div>
               </ng-template>
