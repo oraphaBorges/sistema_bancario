@@ -11,10 +11,11 @@ export class AuthService {
 
   setSession(session: ISession){
     if(session){
-      const { login, token, dataInicio, dataFim } = session;
+      const { nome,login, token, dataInicio, dataFim } = session;
 
       this.session = session;
 
+      localStorage.setItem('nome',JSON.stringify(nome));
       localStorage.setItem('login',JSON.stringify(login));
       localStorage.setItem('token',JSON.stringify(token));
       localStorage.setItem('dataInicio',JSON.stringify(dataInicio));
@@ -28,6 +29,7 @@ export class AuthService {
     }
 
     if(!this.session){
+      const nome = localStorage.getItem('nome')||"";
       const token = localStorage.getItem('token');
       const login = localStorage.getItem('login');
       const dataInicio = localStorage.getItem('dataInicio');
@@ -35,6 +37,7 @@ export class AuthService {
 
       if(token && login && dataInicio && dataFim){
         const storedSession: ISession = {
+          nome: JSON.parse(nome),
           login: JSON.parse(login),
           token: JSON.parse(token),
           dataInicio: JSON.parse(dataInicio),
