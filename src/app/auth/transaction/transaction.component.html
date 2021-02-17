@@ -7,7 +7,7 @@
  </div>
  <div class="content content-default content-flex content-justify">
   <div class="card transaction p-5">
-    <form id="transaction_form">
+    <form id="transaction_form" #transactionForm="ngForm" (ngSubmit)="onSubmit(transactionForm)">
         <div class="p-1 content-flex content-justify">
             <img src="../../../../assets/img/svg/transaction.svg" class="content-icon--big" alt="">
         </div>
@@ -57,7 +57,7 @@
             </div>
             <ng-template #accPlans>
               <select ngModel name="planoConta" class="align-last--center" id="planoConta" required>
-                  <option *ngFor="let plan of account_plans" value="{{plan}}">
+                  <option *ngFor="let plan of account_plans" value="{{plan.finalidade}}">
                     {{plan.finalidade}}
                   </option>
               </select>

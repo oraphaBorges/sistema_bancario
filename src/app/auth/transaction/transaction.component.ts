@@ -5,6 +5,7 @@ import { IAccountPlan } from 'src/app/shared/interfaces/account-plan.interface';
 import { ITransaction } from './transaction.interface';
 import { AccountPlanService } from 'src/app/shared/services/account-plan/account-plan.service';
 import { finalize, take } from 'rxjs/operators';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-transaction',
@@ -25,32 +26,48 @@ export class TransactionComponent {
     this.getAccountPlans();
   }
 
-  isTranfer(){
-    (this.operacao === "TRANSFERENCIA") ? this.transferencia = true : this.transferencia = false;
-  }
-
-  doTransaction(){
-    const transaction: ITransaction = {
-        contaDestino: {
-          login: 'emersonteste',
-          sigla: 'POUPANCA'
-        },
-        contaOrigem: {
-          login: 'emersonteste',
-          sigla: 'POUPANCA'
-        },
-        date: new Date(),
-        descricao: 'TESTE DE DESCRIÇÃO',
-        planoConta: 'PAGAMENTO',
-        valor: 252
-    }
-
-    const operacao = 'DEPOSITO';
-
+  doTransaction(transaction: ITransaction, operacao: string){
     this.service.doTransaction(transaction, operacao).subscribe();
   }
 
-  getAccountPlans(){
+  onSubmit(form: NgForm){
+    if(form.invalid){
+      alert('por favor, preencha todos os campos');
+
+      return;
+    }
+
+    this.createObjTransaction(form)
+  }
+
+  private createObjTransaction(data: NgForm){
+    const { operacao, descricao, origem_sigla, planoConta, valor } = data.value;
+
+    let transaction: ITransaction = {
+      contaDestino: {
+        login: '',
+        sigla: origem_sigla
+      },
+      contaOrigem: {
+        login: '',
+        sigla: origem_sigla
+      },
+      date: new Date(),
+      descricao: descricao,
+      planoConta: planoConta,
+      valor: valor
+    }
+
+    if(operacao === 'TRANSFERENCIA'){
+        const { destino_sigla, destino_login } = data.value;
+        transaction.contaDestino.login = destino_login
+        transaction.contaDestino.sigla = destino_sigla
+    }
+
+    this.doTransaction(transaction, operacao)
+  }
+
+  private getAccountPlans(){
       this.loading = true;
       this.accountPlanService.getAccountPlans()
       .pipe(
@@ -62,4 +79,7 @@ export class TransactionComponent {
       )
   }
 
+  isTranfer(){
+    (this.operacao === "TRANSFERENCIA") ? this.transferencia = true : this.transferencia = false;
+  }
 }
