@@ -11,6 +11,35 @@ body, html {
     font-weight: 900;
 }
 
+input {
+  width: 250px;
+  margin: 10px;
+  padding: 5px;
+  outline: none !important;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2 solid gray; 
+  &:focus, &:active {
+    border-color: $main;
+  }
+}
+select {
+  max-width: 450px;
+  width: 100%;
+  margin: 10px auto;
+  padding: 5px;
+  outline: none !important;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2 solid gray; 
+  background-color: $white;
+  &:focus, &:active {
+    border-color: $main;
+  }
+}
+
 #root{
   height: 100vh;
 }

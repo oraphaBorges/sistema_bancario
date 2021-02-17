@@ -3,7 +3,7 @@
     <app-headerdash [message]="message" ></app-headerdash>
   </div>
 </div>
-<div class="content-default">
+<div class="content-default m-1">
   <div class="card">
     <form id="form_period">
         <div style="flex-wrap: wrap" class="content-flex">
@@ -26,19 +26,39 @@
         </div>
         <button type="submit" (click)="filter()" class="btn btn-rounded btn-main-outline mt-2 mx-auto">Filtrar extrato</button>
     </form>
-    <div>
+    <div class="mt-2">
       Conta selecionada: {{ sigla }}
     </div>
-    <div>
-        Saldo: {{ loading ? 'Carregando...' : accountData.saldo }}
+    <div >
+        Saldo: <b [ngClass]="txtValor(accountData.saldo)">{{ loading ? 'Carregando...' : accountData.saldo | currency}}</b>
     </div>
     <ul>
       <li *ngFor="let lancamento of accountData.lancamentos">
-        Data: {{ lancamento.date | date: 'd MMM YY' }}
-        Descrição: {{ lancamento.descricao }}
-        Plano de conta:
-        Valor: {{ lancamento.valor | currency }}
       </li>
     </ul>
+    <table class="tg">
+      <thead>
+        <tr>
+          <th class="tg-0lax">Data</th>
+          <th class="tg-0lax">Descrição</th>
+          <th class="tg-0lax">Plano de Conta</th>
+          <th class="tg-0lax">Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let lancamento of accountData.lancamentos">
+          <td class="tg-0lax">{{ lancamento.date | date: 'dd MMM YY' }}</td>
+          <td class="tg-0lax">{{ lancamento.descricao }} <br>
+            <small *ngIf="lancamento.contaOrigem.login != lancamento.contaDestino.login
+                      ||  lancamento.contaOrigem.sigla != lancamento.contaDestino.sigla">
+              de: {{lancamento.contaOrigem.login}} - {{lancamento.contaOrigem.sigla}}<br>
+              para: {{lancamento.contaDestino.login}} - {{lancamento.contaDestino.sigla}}
+            </small>
+          </td>
+          <td class="tg-0lax"><small>{{ lancamento.planoConta }}</small></td>
+          <td [ngClass]="txtValor(lancamento.valor)" class="tg-0lax">{{ lancamento.valor | currency }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
