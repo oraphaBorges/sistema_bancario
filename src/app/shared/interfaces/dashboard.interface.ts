@@ -38,6 +38,15 @@ export interface ILancamento{
     date: Date,
     descricao: string,
     valor: number,
+    planoConta:string,
+    contaOrigem:{
+      login:string,
+      sigla:string
+    },
+    contaDestino:{
+      login:string,
+      sigla:string
+    },
 }
 
 export interface IAccountPlan{

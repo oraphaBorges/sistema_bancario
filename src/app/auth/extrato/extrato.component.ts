@@ -12,7 +12,7 @@ export class ExtratoComponent implements OnInit {
 
   constructor(private service: ExtratoService) { }
 
-  message: string = 'Olá, User, seja bem vind! :)'
+  message: string = ''
   loading: boolean = false;
   accountData: IResponseStatement = { lancamentos: [], saldo: -1 };
 
@@ -58,5 +58,11 @@ export class ExtratoComponent implements OnInit {
       response => this.accountData = response,
       error => console.error(error)
     )
+  }
+  txtValor(valor:number ){
+    return {
+      'text-positivo':valor>=0,
+      'text-negativo':valor<0
+    }
   }
 }
