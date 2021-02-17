@@ -44,10 +44,12 @@ export class ExtratoComponent implements OnInit {
 
   getStatementByPeriod(sigla: string, dataInicio: string, dataFim: string){
     this.loading = true;
-    if(!dataInicio)
-      dataInicio = '2020-12-20';
-    if(!dataFim)
-      dataFim = '2030-12-30';
+    
+      const data = new Date(Date.now()).toISOString().slice(0,10)  
+      if(!dataInicio)
+        dataInicio = data.slice(0,8)+'01'
+      if(!dataFim)
+        dataFim = data
 
     this.service.getStatementByPeriod({ dataFim, dataInicio, sigla }).
     pipe(
@@ -61,8 +63,9 @@ export class ExtratoComponent implements OnInit {
   }
   txtValor(valor:number ){
     return {
-      'text-positivo':valor>=0,
-      'text-negativo':valor<0
+      'text-positivo':valor>0,
+      'text-negativo':valor<0,
+      'text-neutro':valor==0,
     }
   }
 }
