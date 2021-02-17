@@ -1,9 +1,9 @@
 <app-nav></app-nav>
 <main class="card">
     <h2>Esqueci minha senha</h2>
-    <form class="card-form" id="form_forgot">
+    <form class="card-form" id="form_forgot" #form="ngForm" (submit)="onSubmit(form)">
         <p>Digite seu login cadastrado</p>
-        <input type="texto" name="conta" id="login" placeholder="Digite seu login" required>
+        <input type="texto" name="conta" id="login" [(ngModel)]="usuario" name="usuario" placeholder="Digite seu login" required>
         <small>Enviaremos o link de recuperação de senha</small>
         <button type="submit" class="btn btn-main-outline btn-rounded">Enviar</button>
     </form>

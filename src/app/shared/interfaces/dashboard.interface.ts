@@ -1,21 +1,46 @@
-export interface ITransaction{
-  contaDestino: {
-    login: string
-    sigla: string
-  },
-  contaOrigem: {
-    login: string
-    sigla: string
+export interface IAccount{
+  CORRENTE: {
+      id: number,
+      type: string,
+      icon: string,
+      colorValue: string,
+      saldo: number,
+      lancamentos: ILancamento[]
   },
 
-  date: Date,
-  descricao: string,
-  planoConta: string,
-  valor: number
+  POUPANCA: {
+    id: number,
+    type: string,
+    icon: string,
+    colorValue: string,
+    saldo: number,
+    lancamentos: ILancamento[]
+  },
+
+  CREDITO: {
+    id: number,
+    type: string,
+    icon: string,
+    colorValue: string,
+    saldo: number,
+    lancamentos: ILancamento[]
+  }
 }
 
-export interface IStatementByPeriod{
-  sigla: string,
-  dataInicio: Date,
-  dataFim: Date
+export interface IAccountResponse{
+  id: number,
+  tipo: string,
+  saldo: number,
+  lancamentos: ILancamento[]
+}
+
+export interface ILancamento{
+    date: Date,
+    descricao: string,
+    valor: number,
+}
+
+export interface IAccountPlan{
+  finalidade: string,
+  login: string,
 }

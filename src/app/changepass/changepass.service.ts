@@ -1,29 +1,23 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { IAccountResponse } from 'src/app/shared/interfaces/dashboard.interface';
-
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { environment } from 'src/environments/environment';
 
+//implementar rota privada para conseguir utilizar o serviço
 @Injectable({
   providedIn: 'root'
 })
-export class DashboardService {
+export class ChangePassService {
 
   API_URL = environment.API_URL
+  httpOptions = {};
+
 
   constructor(
     private http:HttpClient,
     private authService: AuthService
-  ) { }
-
-
-  public getAccountData(): Observable<IAccountResponse[]>{
-    const dataInicio = '2020-01-30';
-    const dataFim = '2030-01-30';
-
-    const httpOptions = {
+  ) {
+    this.httpOptions = {
       headers: new HttpHeaders(
         {
           'Content-Type': 'application/json',
@@ -31,12 +25,11 @@ export class DashboardService {
         }
       ),
     };
+  }
 
-    const params = new HttpParams()
-      .set('inicio', dataInicio)
-      .set('fim', dataFim)
-      .set('login', this.authService.getLogin())
+  public updatePassword(senha: string) {
+    const data = { senha: senha, usuario: this.authService.getLogin() }
 
-    return this.http.get<IAccountResponse[]>(`${this.API_URL}dashboard?${params}`, httpOptions)
+    return this.http.post(`${this.API_URL}altera-senha`, data, this.httpOptions)
   }
 }

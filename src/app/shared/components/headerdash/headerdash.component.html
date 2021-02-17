@@ -4,9 +4,9 @@
           {{ message }}
         </span>
         <span class="text-white m-1 p-1 date">
-            25 de janeiro de 2020
+           {{ now | date: "d 'de' MMMM 'de' YYYY"}}
         </span>
     </div>
-    <img src="{{updateIcon}}" class="icon update" id="icon_update">
-    <img src="{{logoutIcon}}" class="icon" id="icon_logout">
+    <img src="{{updateIcon}}" class="icon update" id="icon_update" (click)="reload()">
+    <img src="{{logoutIcon}}" class="icon" id="icon_logout" (click)="doLogout()">
 </div>
