@@ -51,13 +51,18 @@ export class ChangepassComponent implements OnInit {
         finalize(() => this.loading = false)
       )
       .subscribe(
-        response => alert ('Atualização realizada com sucesso!'),
+        response => console.log(response),
         error => this.onError(error)
       )
   }
 
-  private onError(error:HttpErrorResponse){
-    this.loading = false
-    this.msgError = error.error
+  private onError(errorComplete:HttpErrorResponse){
+    this.loading = false;
+
+    let { error:{ error } } = errorComplete;
+    this.msgError = `Implementação da API em andamento, ${error}`;
+    setTimeout(() => {
+      this.msgError = '';
+    }, 3000)
   }
 }
