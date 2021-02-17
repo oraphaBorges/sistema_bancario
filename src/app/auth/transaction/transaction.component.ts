@@ -4,7 +4,7 @@ import { TransactionService } from './transaction.service';
 import { IAccountPlan } from 'src/app/shared/interfaces/account-plan.interface';
 import { ITransaction } from './transaction.interface';
 import { AccountPlanService } from 'src/app/shared/services/account-plan/account-plan.service';
-import { finalize, take } from 'rxjs/operators';
+import { finalize, take, tap } from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -26,8 +26,16 @@ export class TransactionComponent {
     this.getAccountPlans();
   }
 
-  doTransaction(transaction: ITransaction, operacao: string){
-    this.service.doTransaction(transaction, operacao).subscribe();
+  //arrumar retorno p não dar erro e o formulário ser resetado no tap
+  doTransaction(transaction: ITransaction, operacao: string, form: NgForm){
+    this.loading = true;
+    this.service.doTransaction(transaction, operacao).pipe(
+      take(1),
+      tap(() => form.resetForm()),
+      finalize(() => this.loading = false)
+    ).subscribe(
+      error => alert(error)
+    );
   }
 
   onSubmit(form: NgForm){
@@ -37,11 +45,11 @@ export class TransactionComponent {
       return;
     }
 
-    this.createObjTransaction(form)
+    this.createObjTransaction(form);
   }
 
-  private createObjTransaction(data: NgForm){
-    const { operacao, descricao, origem_sigla, planoConta, valor } = data.value;
+  private createObjTransaction(form: NgForm){
+    const { operacao, descricao, origem_sigla, planoConta, valor } = form.value;
 
     let transaction: ITransaction = {
       contaDestino: {
@@ -59,12 +67,12 @@ export class TransactionComponent {
     }
 
     if(operacao === 'TRANSFERENCIA'){
-        const { destino_sigla, destino_login } = data.value;
+        const { destino_sigla, destino_login } = form.value;
         transaction.contaDestino.login = destino_login
         transaction.contaDestino.sigla = destino_sigla
     }
 
-    this.doTransaction(transaction, operacao)
+    this.doTransaction(transaction, operacao, form);
   }
 
   private getAccountPlans(){

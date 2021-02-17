@@ -21,6 +21,11 @@ export class TransactionService {
 
   //incluir responseType para o erro no console não ocorrer
   public doTransaction(data: ITransaction, operacao: string): Observable<string>{
+    data.contaOrigem.login = this.authService.getLogin();
+
+    if(operacao !== 'TRANSFERENCIA')
+      data.contaDestino.login = this.authService.getLogin();
+
     const params = new HttpParams()
       .set('operacao', operacao)
 
