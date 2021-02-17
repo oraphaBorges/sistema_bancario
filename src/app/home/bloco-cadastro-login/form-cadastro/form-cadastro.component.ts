@@ -82,7 +82,13 @@ export class FormCadastroComponent implements OnInit {
   doSignup(){
     this.errorLoging = false
     this.loading = true
-    const credencials:ISignup = {cpf: this.cpf,login:this.login,nome:this.nome,senha:this.senha,}
+    const credencials:ISignup = {
+      cpf: this.cpf.replace(/[^\d]+/g,'')	,
+      login:this.login,
+      nome:this.nome,
+      senha:this.senha,
+    }
+    
     this.cadastroService.doSignup(credencials)
       .pipe(
         take(1),
