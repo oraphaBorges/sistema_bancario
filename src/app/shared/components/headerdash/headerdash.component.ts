@@ -7,15 +7,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HeaderDashComponent implements OnInit {
 
-    @Input()
-    message = "Implemente pls"
-
+    @Input() message = ""
+    nome:string=""
     updateIcon = '../../../../assets/img/svg/update.svg'
     logoutIcon = '../../../../assets/img/svg/logout.svg'
-
+    
     constructor() { }
-
+    
     ngOnInit(): void {
+      this.nome = localStorage.getItem('nome')!
+      this.message = `Olá ${this.nome}, seja bem vind! ;)`
     }
 
 }

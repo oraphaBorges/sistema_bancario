@@ -15,7 +15,7 @@ export class AuthService {
 
       this.session = session;
 
-      localStorage.setItem('nome',JSON.stringify(nome));
+      localStorage.setItem('nome',nome);
       localStorage.setItem('login',JSON.stringify(login));
       localStorage.setItem('token',JSON.stringify(token));
       localStorage.setItem('dataInicio',JSON.stringify(dataInicio));
@@ -37,7 +37,7 @@ export class AuthService {
 
       if(token && login && dataInicio && dataFim){
         const storedSession: ISession = {
-          nome: JSON.parse(nome),
+          nome: nome,
           login: JSON.parse(login),
           token: JSON.parse(token),
           dataInicio: JSON.parse(dataInicio),
